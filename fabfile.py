@@ -8,6 +8,7 @@ from jinja2 import Template
 
 import app
 import app_config
+import app_utils
 from etc import github
 
 """
@@ -400,6 +401,26 @@ def cron_test():
     require('settings', provided_by=[production, staging])
 
     local('echo $DEPLOYMENT_TARGET > /tmp/cron_test.txt')
+
+
+"""
+Application-specific jobs
+"""
+def setup_tables():
+    app_utils.setup_tables()
+
+
+def update_data(sheet):
+    import_sheet(sheet)
+    parse_sheet(sheet)
+
+
+def import_sheet(sheet):
+    app_utils.import_sheet(sheet)
+
+
+def parse_sheet(sheet):
+    app_utils.parse_sheet(sheet)
 
 """
 Destruction
