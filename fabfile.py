@@ -396,6 +396,7 @@ def bootstrap_data():
     update_episodes()
     update_jokes()
     update_episodejokes()
+    update_episode_extras()
 
 
 def setup_tables():
@@ -424,6 +425,10 @@ def import_sheet(sheet):
 
 def parse_sheet(sheet, model):
     app_utils.parse_sheet(sheet, model)
+
+
+def update_episode_extras():
+    app_utils.update_episode_extras()
 
 """
 Destruction

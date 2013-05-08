@@ -1,24 +1,110 @@
 import csv
 
+from bs4 import BeautifulSoup
+import datetime
+from dateutil.parser import *
 import requests
 
 from models import db, Joke, Episode, EpisodeJoke
 
 
 def setup_tables():
+    """
+    Creates the tables for the Arrested Development database.
+    """
     db.connect()
     Joke.create_table()
     Episode.create_table()
     EpisodeJoke.create_table()
 
 
+def update_episode_extras():
+    """
+    Gets extra episode data from Wikipedia, including directors/writers, run date
+    and production code. Also grabs the newest season (4).
+    """
+    LABELS = ['episode', 'title', 'directed_by', 'written_by', 'run_date', 'production_code']
+    r = requests.get('http://en.wikipedia.org/wiki/List_of_Arrested_Development_episodes')
+    soup = BeautifulSoup(r.content)
+    tables = soup.select('table.wikitable')[1:5]
+    season = 1
+    episodes = []
+
+    for table in tables:
+        for row in table.select('tr')[1:]:
+            episode_dict = {}
+            episode_dict['season'] = season
+            for index in range(0, 6):
+                key = LABELS[index]
+                if row.select('td')[index].string:
+                    try:
+                        value = row.select('td')[index].string.replace(' & ', ', ')
+                    except AttributeError:
+                        value = row.select('td')[index].string
+                else:
+                    iterator = 0
+                    for string in row.select('td')[index].strings:
+                        if key == 'title':
+                            if iterator == 0:
+                                value = string.replace('"', '')
+                        if key == 'run_date':
+                            if iterator == 2:
+                                value = datetime.date(
+                                    parse(string).year,
+                                    parse(string).month,
+                                    parse(string).day)
+                        iterator += 1
+
+                if value:
+                    try:
+                        episode_dict[key] = int(value)
+                    except ValueError:
+                        episode_dict[key] = value
+                    except TypeError:
+                        episode_dict[key] = value
+
+            if episode_dict['season'] == 4 and episode_dict['episode'] == 15:
+                pass
+            elif episode_dict['season'] == 3 and episode_dict['episode'] == 13:
+                episode_dict['written_by'] = "Story by Mitchell Hurwitz and Richard Day. Teleplay by Chuck Tatham and Jim Vallely"
+                episodes.append(episode_dict)
+            else:
+                episodes.append(episode_dict)
+        season += 1
+
+    for episode in episodes:
+        try:
+            e = Episode.get(
+                Episode.season == episode['season'],
+                Episode.episode == episode['episode']
+            )
+            eq = Episode.update(**episode).where(Episode.code == e.code)
+            eq.execute()
+            e = Episode.get(
+                Episode.season == episode['season'],
+                Episode.episode == episode['episode']
+            )
+            print e.code
+        except Episode.DoesNotExist:
+            episode['code'] = 's%se%s' % (str(episode['season']).zfill(2), str(episode['episode']).zfill(2))
+            e = Episode.create(**episode)
+            e.save()
+            print e.code
+
+
 def import_sheet(sheet):
+    """
+    Writes a CSV file from our Arrested Development Google doc sheets.
+    """
     r = requests.get('https://docs.google.com/spreadsheet/pub?key=0Akb_aqtU8lsGdGhIRXhsT24taTlXNGI4YndnS1c4eEE&single=true&gid=%s&output=csv' % sheet)
     with open('data/arrested-%s.csv' % sheet, 'wb') as csv_file:
         csv_file.write(r.content)
 
 
 def parse_sheet(sheet, model):
+    """
+    Parses sheets with the appropriate parser.
+    """
     with open('data/arrested-%s.csv' % sheet) as csv_file:
         if sheet == '1':
             _parse_episodes(csv.DictReader(csv_file))
@@ -29,10 +115,14 @@ def parse_sheet(sheet, model):
                 _parse_episodejokes(csv.DictReader(csv_file), 3)
         if sheet in ['3', '4', '5']:
             _parse_episodejokes(csv.DictReader(csv_file), 0)
-    return
 
 
 def _parse_episodes(sheet):
+    """
+    Parses episode sheet.
+    Imports episodes.
+    Will not update.
+    """
     episodes = []
     seasons = []
     ratings = []
@@ -57,7 +147,7 @@ def _parse_episodes(sheet):
             episode_dict['season'] = int(episode[1])
             episode_dict['title'] = episode[3].decode('utf-8')
             episode_dict['rating'] = episode[2]
-            episode_dict['code'] = 's%se%s' % (episode[1], episode[0].zfill(2))
+            episode_dict['code'] = 's%se%s' % (episode[1].zfill(2), episode[0].zfill(2))
             output.append(episode_dict)
 
     for row in output:
@@ -69,10 +159,14 @@ def _parse_episodes(sheet):
             r = Episode.create(**row)
             r.save()
             print '+ Episode: %s' % r.title
-    return
 
 
 def _parse_jokes(sheet):
+    """
+    Parses joke sheet.
+    Imports jokes.
+    Will not update.
+    """
     for row in sheet:
         joke_dict = {}
         for item in ['code', 'primary_character', 'text']:
@@ -88,10 +182,14 @@ def _parse_jokes(sheet):
             j = Joke.create(**joke_dict)
             j.save()
             print '+ Joke: %s' % j.text
-    return
 
 
 def _parse_episodejokes(sheet, offset):
+    """
+    Parses joke sheet.
+    Imports episodejokes.
+    Will not update.
+    """
     start_column = 0 + offset
     end_column = 53 + offset
 
@@ -113,4 +211,3 @@ def _parse_episodejokes(sheet, offset):
                     ej = EpisodeJoke.create(**ej_dict)
                     ej.save()
                     print '+ EpisodeJoke: %s' % ej.code
-    return

@@ -18,9 +18,14 @@ class Episode(Model):
     episode = IntegerField()
     code = TextField()
     title = TextField()
-    rating = TextField()
 
+    rating = TextField(null=True)
+    directed_by = TextField(null=True)
+    written_by = TextField(null=True)
+    production_code = CharField(max_length=255, null=True)
     run_date = DateField(null=True)
+
+    wikipedia_link = TextField(null=True)
     netflix_link = TextField(null=True)
 
     class Meta:
