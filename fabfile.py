@@ -391,7 +391,15 @@ def cron_test():
 """
 Application-specific jobs
 """
+def bootstrap_data():
+    setup_tables()
+    update_episodes()
+    update_jokes()
+    update_episodejokes()
+
+
 def setup_tables():
+    local('rm -rf data/app.db')
     app_utils.setup_tables()
 
 

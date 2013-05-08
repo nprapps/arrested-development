@@ -63,12 +63,12 @@ def _parse_episodes(sheet):
     for row in output:
         try:
             r = Episode.get(Episode.code == row['code'])
-            print '* %s' % r.title
+            print '* Episode: %s' % r.title
 
         except Episode.DoesNotExist:
             r = Episode.create(**row)
             r.save()
-            print '+ %s' % r.title
+            print '+ Episode: %s' % r.title
     return
 
 
@@ -82,12 +82,12 @@ def _parse_jokes(sheet):
                 joke_dict[item] = row[item].decode('utf-8')
         try:
             j = Joke.get(Joke.code == joke_dict['code'])
-            print '* %s' % j.text
+            print '* Joke: %s' % j.text
 
         except Joke.DoesNotExist:
             j = Joke.create(**joke_dict)
             j.save()
-            print '+ %s' % j.text
+            print '+ Joke: %s' % j.text
     return
 
 
@@ -107,10 +107,10 @@ def _parse_episodejokes(sheet, offset):
 
                 try:
                     ej = EpisodeJoke.get(EpisodeJoke.code == ej_dict['code'])
-                    print '* %s' % ej.code
+                    print '* EpisodeJoke: %s' % ej.code
 
                 except EpisodeJoke.DoesNotExist:
                     ej = EpisodeJoke.create(**ej_dict)
                     ej.save()
-                    print '+ %s' % ej.code
+                    print '+ EpisodeJoke: %s' % ej.code
     return
