@@ -14,7 +14,7 @@ from render_utils import flatten_app_config, make_context
 app = Flask(app_config.PROJECT_NAME)
 
 
-@app.route('/episode_list.html')
+@app.route('/episodes.html')
 def _episode_list():
     context = make_context()
     context['episodes'] = []
@@ -24,11 +24,28 @@ def _episode_list():
     return render_template('episode_list.html', **context)
 
 
-@app.route('/<episode_code>.html')
+@app.route('/episode-<episode_code>.html')
 def _episode_detail(episode_code):
     context = make_context()
     context['episode'] = Episode.get(Episode.code == episode_code)
     return render_template('episode_detail.html', **context)
+
+
+@app.route('/jokes.html')
+def _joke_list():
+    context = make_context()
+    context['jokes'] = []
+    for joke in Joke.select():
+        context['jokes'].append(joke)
+    context['jokes'] = sorted(context['jokes'], key=lambda joke: joke.code)
+    return render_template('joke_list.html', **context)
+
+
+@app.route('/joke-<joke_code>.html')
+def _joke_detail(joke_code):
+    context = make_context()
+    context['joke'] = Joke.get(Joke.code == joke_code)
+    return render_template('joke_detail.html', **context)
 
 
 # Render LESS files on-demand
