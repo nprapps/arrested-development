@@ -99,20 +99,6 @@ def jst():
     """
     local('node_modules/.bin/jst --template underscore jst www/js/templates.js')
 
-def download_copy():
-    """
-    Downloads a Google Doc as an .xls file.
-    """
-    base_url = 'https://docs.google.com/spreadsheet/pub?key=%s&output=xls'
-    doc_url = base_url % app_config.COPY_GOOGLE_DOC_KEY
-    local('curl -o data/copy.xls "%s"' % doc_url)
-
-def update_copy():
-    """
-    Fetches the latest Google Doc and updates local JSON.
-    """
-    download_copy()
-
 def app_config_js():
     """
     Render app_config.js to file.
@@ -131,7 +117,6 @@ def render():
     """
     from flask import g
 
-    update_copy()
     less()
     jst()
 

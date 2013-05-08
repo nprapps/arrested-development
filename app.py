@@ -8,31 +8,28 @@ import envoy
 from flask import Flask, Markup, abort, render_template
 
 import app_config
+from models import db, Joke, Episode, EpisodeJoke
 from render_utils import flatten_app_config, make_context
 
 app = Flask(app_config.PROJECT_NAME)
 
-# Example application views
-@app.route('/')
-def index():
-    """
-    Example view demonstrating rendering a simple HTML page.
-    """
-    return render_template('index.html', **make_context())
 
-@app.route('/widget.html')
-def widget():
-    """
-    Embeddable widget example page.
-    """
-    return render_template('widget.html', **make_context())
+@app.route('/episode_list.html')
+def _episode_list():
+    context = make_context()
+    context['episodes'] = []
+    for episode in Episode.select():
+        context['episodes'].append(episode)
+    context['episodes'] = sorted(context['episodes'], key=lambda episode: episode.code)
+    return render_template('episode_list.html', **context)
 
-@app.route('/test_widget.html')
-def test_widget():
-    """
-    Example page displaying widget at different embed sizes.
-    """
-    return render_template('test_widget.html', **make_context())
+
+@app.route('/<episode_code>.html')
+def _episode_detail(episode_code):
+    context = make_context()
+    context['episode'] = Episode.get(Episode.code == episode_code)
+    return render_template('episode_detail.html', **context)
+
 
 # Render LESS files on-demand
 @app.route('/less/<string:filename>')
