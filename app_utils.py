@@ -1,9 +1,9 @@
 import csv
 
-import peewee
 import requests
 
 from models import db, Joke, Episode, EpisodeJoke
+
 
 def setup_tables():
     db.connect()
@@ -20,10 +20,10 @@ def import_sheet(sheet):
 
 def parse_sheet(sheet):
     with open('data/arrested-%s.csv' % sheet) as csv_file:
-        if sheet == '0':
-            _parse_jokes(csv.DictReader(csv_file))
         if sheet == '1':
             _parse_episodes(csv.DictReader(csv_file))
+        if sheet == '0':
+            _parse_jokes(csv.DictReader(csv_file))
 
 
 def _parse_episodes(sheet):
@@ -66,4 +66,18 @@ def _parse_episodes(sheet):
 
 
 def _parse_jokes(sheet):
-    print sheet
+    for row in sheet:
+        joke_dict = {}
+        for item in ['code', 'primary_character', 'text']:
+            try:
+                joke_dict[item] = int(row[item])
+            except ValueError:
+                joke_dict[item] = row[item].decode('utf-8')
+        try:
+            j = Joke.get(Joke.code == joke_dict['code'])
+            print '* %s' % j.text
+
+        except Joke.DoesNotExist:
+            j = Joke.create(**joke_dict)
+            j.save()
+            print '+ %s' % j.text
