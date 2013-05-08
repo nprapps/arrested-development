@@ -91,6 +91,11 @@ A site can have any number of rendered templates (i.e. pages). Each will need a 
 
 Run the project locally
 -----------------------
+The project's data is stored in a Google doc. This data is downloaded and parsed into a sqlite3 database via the peewee ORM layer.
+
+```
+fab bootstrap_data
+```
 
 A flask app is used to run the project locally. It will automatically recompile templates and assets on demand.
 
