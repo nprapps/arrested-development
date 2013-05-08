@@ -28,6 +28,8 @@ def _episode_list():
 def _episode_detail(episode_code):
     context = make_context()
     context['episode'] = Episode.get(Episode.code == episode_code)
+    context['episodejokes'] = EpisodeJoke.select().where(EpisodeJoke.episode == context['episode'])
+    context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.joke.code)
     return render_template('episode_detail.html', **context)
 
 
@@ -45,6 +47,8 @@ def _joke_list():
 def _joke_detail(joke_code):
     context = make_context()
     context['joke'] = Joke.get(Joke.code == joke_code)
+    context['episodejokes'] = EpisodeJoke.select().where(EpisodeJoke.joke == context['joke'])
+    context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.episode.code)
     return render_template('joke_detail.html', **context)
 
 

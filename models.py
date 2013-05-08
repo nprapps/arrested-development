@@ -1,3 +1,4 @@
+
 from peewee import *
 
 db = SqliteDatabase('data/app.db')
@@ -10,9 +11,6 @@ class Joke(Model):
 
     class Meta:
         database = db
-
-    def related_episodes(self):
-        return None
 
 
 class Episode(Model):
@@ -28,9 +26,6 @@ class Episode(Model):
     class Meta:
         database = db
 
-    def related_jokes(self):
-        return None
-
 
 class EpisodeJoke(Model):
     joke = ForeignKeyField(Joke, cascade=False)
@@ -44,3 +39,10 @@ class EpisodeJoke(Model):
 
     class Meta:
         database = db
+
+    def long_joke_type(self):
+        if self.joke_type == 'f':
+            return ' (f)'
+        if self.joke_type == 'b':
+            return ' (b)'
+        return ''

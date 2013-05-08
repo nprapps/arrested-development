@@ -7,5 +7,9 @@
     <li>Season: {{ episode.season }}</li>
     <li>Episode: {{ episode.episode }}</li>
     <li>Rating: {{ episode.rating }}</li>
+    <li>Related jokes:<ul>{% for ej in episodejokes %}
+            <li><a href="joke-{{ ej.joke.code }}.html">{{ ej.joke.primary_character }}: {{ ej.joke.text }}{{ ej.long_joke_type() }}</a></li>
+        {% endfor %}</ul>
+    </li>
 </ul>
 {% endblock %}

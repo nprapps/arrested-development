@@ -7,6 +7,10 @@
 <ul>
     <li>Primary character: {{ joke.primary_character }}</li>
     <li>Code: {{ joke.code }}</li>
+    <li>Related episodes:<ul>{% for ej in episodejokes %}
+            <li><a href="episode-{{ ej.episode.code }}.html">{{ ej.episode.code }}: {{ ej.episode.title }}</a></li>
+        {% endfor %}</ul>
+    </li>
 </ul>
 
 {% endblock %}
