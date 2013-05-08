@@ -1,6 +1,6 @@
 from peewee import *
 
-db = SqliteDatabase('app.db')
+db = SqliteDatabase('data/app.db')
 
 
 class Joke(Model):
@@ -10,6 +10,9 @@ class Joke(Model):
 
     class Meta:
         database = db
+
+    def related_episodes(self):
+        return None
 
 
 class Episode(Model):
@@ -25,12 +28,19 @@ class Episode(Model):
     class Meta:
         database = db
 
+    def related_jokes(self):
+        return None
+
 
 class EpisodeJoke(Model):
-    joke = ForeignKeyField(Joke, related_name='jokes', cascade=False)
-    episode = ForeignKeyField(Episode, related_name='episodes', cascade=False)
-    character = TextField()
-    text = TextField()
+    joke = ForeignKeyField(Joke, cascade=False)
+    episode = ForeignKeyField(Episode, cascade=False)
+    joke_type = CharField(length=1, help_text="Choices are: f, b or 1")
+    code = TextField()
+
+    details = TextField(null=True)
+    origin = TextField(null=True)
+    connection = TextField(null=True)
 
     class Meta:
         database = db

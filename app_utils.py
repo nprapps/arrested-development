@@ -18,12 +18,18 @@ def import_sheet(sheet):
         csv_file.write(r.content)
 
 
-def parse_sheet(sheet):
+def parse_sheet(sheet, model):
     with open('data/arrested-%s.csv' % sheet) as csv_file:
         if sheet == '1':
             _parse_episodes(csv.DictReader(csv_file))
         if sheet == '0':
-            _parse_jokes(csv.DictReader(csv_file))
+            if model == 'jokes':
+                _parse_jokes(csv.DictReader(csv_file))
+            if model == 'episodejokes':
+                _parse_episodejokes(csv.DictReader(csv_file), 3)
+        if sheet in ['3', '4', '5']:
+            _parse_episodejokes(csv.DictReader(csv_file), 0)
+    return
 
 
 def _parse_episodes(sheet):
@@ -63,6 +69,7 @@ def _parse_episodes(sheet):
             r = Episode.create(**row)
             r.save()
             print '+ %s' % r.title
+    return
 
 
 def _parse_jokes(sheet):
@@ -81,3 +88,29 @@ def _parse_jokes(sheet):
             j = Joke.create(**joke_dict)
             j.save()
             print '+ %s' % j.text
+    return
+
+
+def _parse_episodejokes(sheet, offset):
+    start_column = 0 + offset
+    end_column = 53 + offset
+
+    for row in sheet:
+        for column in range(start_column, end_column):
+            box = row.items()[column]
+            if box[1].decode('utf-8') in ['1', 'f', 'b']:
+                ej_dict = {}
+                ej_dict['joke'] = Joke.get(Joke.code == row['code'])
+                ej_dict['episode'] = Episode.get(Episode.title == box[0].decode('utf-8'))
+                ej_dict['joke_type'] = box[1].decode('utf-8')
+                ej_dict['code'] = '%sj%s' % (ej_dict['episode'].code, ej_dict['joke'].code)
+
+                try:
+                    ej = EpisodeJoke.get(EpisodeJoke.code == ej_dict['code'])
+                    print '* %s' % ej.code
+
+                except EpisodeJoke.DoesNotExist:
+                    ej = EpisodeJoke.create(**ej_dict)
+                    ej.save()
+                    print '+ %s' % ej.code
+    return

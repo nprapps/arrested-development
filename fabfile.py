@@ -395,17 +395,27 @@ def setup_tables():
     app_utils.setup_tables()
 
 
-def update_data(sheet):
-    import_sheet(sheet)
-    parse_sheet(sheet)
+def update_episodes():
+    import_sheet('1')
+    parse_sheet('1', 'episodes')
+
+
+def update_jokes():
+    import_sheet('0')
+    parse_sheet('0', 'jokes')
+
+
+def update_episodejokes():
+    import_sheet('0')
+    parse_sheet('0', 'episodejokes')
 
 
 def import_sheet(sheet):
     app_utils.import_sheet(sheet)
 
 
-def parse_sheet(sheet):
-    app_utils.parse_sheet(sheet)
+def parse_sheet(sheet, model):
+    app_utils.parse_sheet(sheet, model)
 
 """
 Destruction
