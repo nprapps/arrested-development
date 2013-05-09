@@ -84,12 +84,12 @@ def update_episode_extras():
                 Episode.season == episode['season'],
                 Episode.episode == episode['episode']
             )
-            print e.code
+            print '* Episode extra: %s' % e.code
         except Episode.DoesNotExist:
             episode['code'] = 's%se%s' % (str(episode['season']).zfill(2), str(episode['episode']).zfill(2))
             e = Episode.create(**episode)
             e.save()
-            print e.code
+            print '+ Episode extra: %s' % e.code
 
 
 def import_sheet(sheet):
@@ -114,7 +114,7 @@ def parse_sheet(sheet, model):
             if model == 'episodejokes':
                 _parse_episodejokes(csv.DictReader(csv_file), 3)
         if sheet in ['3', '4', '5']:
-            _parse_episodejokes(csv.DictReader(csv_file), 0)
+            _parse_episodejoke_details(csv.DictReader(csv_file), sheet)
 
 
 def _parse_episodes(sheet):
@@ -182,6 +182,34 @@ def _parse_jokes(sheet):
             j = Joke.create(**joke_dict)
             j.save()
             print '+ Joke: %s' % j.text
+
+
+def _parse_episodejoke_details(sheet, sheet_num):
+    FIELDS = [None, None, None, 'details', 'origin', 'connection']
+    field = FIELDS[int(sheet_num)]
+    broken = []
+    for row in sheet:
+        for column in range(3, 55):
+            episode_title, value = row.items()[column]
+            if value:
+                e = Episode.get(Episode.title == episode_title.decode('utf-8'))
+                j = Joke.get(Joke.code == row['code'])
+                ej_code = '%sj%s' % (e.code, j.code)
+                payload = {}
+                payload[field] = value
+
+                try:
+                    ej = EpisodeJoke.update(**payload).where(EpisodeJoke.code == ej_code)
+                    ej.execute()
+                    uej = EpisodeJoke.get(EpisodeJoke.code == ej_code)
+                    print '* EpisodeJoke: %s' % uej.code
+
+                except EpisodeJoke.DoesNotExist:
+                    broken.append({'episdode': e.code, 'joke': j.text, 'context': value, 'sheet': field})
+
+    with open('data/broken.txt', 'a') as brokenfile:
+        for b in broken:
+            brokenfile.write('%s\n' % b)
 
 
 def _parse_episodejokes(sheet, offset):

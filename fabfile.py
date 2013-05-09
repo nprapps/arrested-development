@@ -397,6 +397,9 @@ def bootstrap_data():
     update_jokes()
     update_episodejokes()
     update_episode_extras()
+    update_details()
+    update_origin()
+    update_connection()
 
 
 def setup_tables():
@@ -417,6 +420,21 @@ def update_jokes():
 def update_episodejokes():
     import_sheet('0')
     parse_sheet('0', 'episodejokes')
+
+
+def update_origin():
+    import_sheet('4')
+    parse_sheet('4', 'episodejokes')
+
+
+def update_connection():
+    import_sheet('5')
+    parse_sheet('5', 'episodejokes')
+
+
+def update_details():
+    import_sheet('3')
+    parse_sheet('3', 'episodejokes')
 
 
 def import_sheet(sheet):
@@ -488,4 +506,3 @@ def shiva_the_destroyer():
 
             if env['deploy_services']:
                 nuke_confs()
-
