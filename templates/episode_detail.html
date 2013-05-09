@@ -3,6 +3,7 @@
 {% block content %}
 
 <h1>{{ episode.code}}: {{ episode.title }}</h1>
+<p>Contains <a href="#jokes">{{ episodejokes|length }}</a> inside jokes.</p>
 <ul>
     <li>Season: {{ episode.season }}</li>
     <li>Episode: {{ episode.episode }}</li>
@@ -11,8 +12,13 @@
     <li>Written by: {{ episode.written_by }}</li>
     <li>Production code: {{ episode.production_code }}</li>
     <li>Run date: {{ episode.run_date }}</li>{% if episodejokes %}
-    <li>Related jokes:<ul>{% for ej in episodejokes %}
-            <li><a href="joke-{{ ej.joke.code }}.html">{{ ej.joke.primary_character }}: {{ ej.joke.text }}{{ ej.long_joke_type() }}</a></li>
+    <li id="jokes">Related jokes:
+        <ul>{% for ej in episodejokes %}
+            <li>
+                <a href="joke-{{ ej.joke.code }}.html">
+                    {{ ej.joke.primary_character.strip() }}: {{ ej.joke.text.strip() }}
+                </a>{{ ej.extras().strip()|safe }}
+            </li>
         {% endfor %}</ul>
     </li>
 {% endif %}</ul>

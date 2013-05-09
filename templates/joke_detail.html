@@ -3,12 +3,17 @@
 {% block content %}
 
 <h2>{{ joke.text }}</h2>
-
+<p>Appears in <a href="#episodes">{{ episodejokes|length }}</a> episodes.</p>
 <ul>
     <li>Primary character: {{ joke.primary_character }}</li>
     <li>Code: {{ joke.code }}</li>{% if episodejokes %}
-    <li>Related episodes:<ul>{% for ej in episodejokes %}
-            <li><a href="episode-{{ ej.episode.code }}.html">{{ ej.episode.code }}: {{ ej.episode.title }}</a></li>
+    <li id="episodes">Related episodes:
+        <ul>{% for ej in episodejokes %}
+            <li>
+                <a href="episode-{{ ej.episode.code }}.html">
+                    {{ ej.episode.code.strip() }}: {{ ej.episode.title.strip() }}
+                </a>{{ ej.extras().strip()|safe }}
+            </li>
         {% endfor %}</ul>
     </li>
 {% endif %}</ul>

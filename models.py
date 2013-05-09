@@ -45,9 +45,11 @@ class EpisodeJoke(Model):
     class Meta:
         database = db
 
-    def long_joke_type(self):
-        if self.joke_type == 'f':
-            return ' (f)'
-        if self.joke_type == 'b':
-            return ' (b)'
-        return ''
+    def extras(self):
+        payload = ''
+
+        for attribute in ['details', 'origin', 'connection']:
+            if getattr(self, attribute):
+                payload += '<span class="extra">%s</span>' % getattr(self, attribute)
+
+        return payload

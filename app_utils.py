@@ -206,10 +206,12 @@ def _parse_episodejoke_details(sheet, sheet_num):
                     print '* EpisodeJoke: %s' % uej.code
 
                 except EpisodeJoke.DoesNotExist:
-                    broken.append({'episdode': e.code, 'joke': j.text, 'context': value, 'sheet': field})
+                    broken.append({'episode': e.code, 'joke': j.text.encode('utf-8'), 'context': value, 'sheet': field})
 
-    with open('data/broken-%s.json' % field, 'a') as brokenfile:
-        brokenfile.write(json.dumps(broken))
+    with open('data/broken.csv', 'a') as brokenfile:
+        writer = csv.DictWriter(brokenfile, ['episode', 'joke', 'context', 'sheet'])
+        for row in broken:
+            writer.writerow(row)
 
 
 def _parse_episodejokes(sheet, offset):
