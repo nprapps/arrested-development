@@ -1,7 +1,13 @@
+import re
 
 from peewee import *
 
 db = SqliteDatabase('data/app.db')
+
+
+def slugify(text):
+    value = re.sub('[^\w\s-]', '', text).strip().lower()
+    return re.sub('[^\w\s-]', '', value).strip().lower()
 
 
 class Joke(Model):
@@ -11,6 +17,10 @@ class Joke(Model):
 
     class Meta:
         database = db
+
+    @classmethod
+    def slug():
+        return slugify(self.text)
 
 
 class Episode(Model):
@@ -31,6 +41,10 @@ class Episode(Model):
     class Meta:
         database = db
 
+    @classmethod
+    def slug():
+        return slugify(self.code)
+
 
 class EpisodeJoke(Model):
     joke = ForeignKeyField(Joke, cascade=False)
@@ -48,8 +62,12 @@ class EpisodeJoke(Model):
     def extras(self):
         payload = ''
 
-        for attribute in ['details', 'origin', 'connection']:
-            if getattr(self, attribute):
-                payload += '<span class="extra">%s</span>' % getattr(self, attribute)
+        for attribute in ['Details', 'Origin', 'Connection']:
+            if getattr(self, attribute.lower()):
+                payload += '<span class="extra"><strong>%s</strong>: %s</span>' % (attribute, getattr(self, attribute.lower()))
 
         return payload
+
+    @classmethod
+    def slug():
+        return slugify(self.code)

@@ -403,7 +403,9 @@ def bootstrap_data():
 
 
 def setup_tables():
-    local('rm -rf data/app.db')
+    with settings(warn_only=True):
+        local('rm -rf data/app.db')
+        local('rm -rf data/broken.csv')
     app_utils.setup_tables()
 
 
