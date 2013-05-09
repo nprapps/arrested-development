@@ -1,4 +1,5 @@
 import csv
+import json
 
 from bs4 import BeautifulSoup
 import datetime
@@ -207,9 +208,8 @@ def _parse_episodejoke_details(sheet, sheet_num):
                 except EpisodeJoke.DoesNotExist:
                     broken.append({'episdode': e.code, 'joke': j.text, 'context': value, 'sheet': field})
 
-    with open('data/broken.txt', 'a') as brokenfile:
-        for b in broken:
-            brokenfile.write('%s\n' % b)
+    with open('data/broken-%s.json' % field, 'a') as brokenfile:
+        brokenfile.write(json.dumps(broken))
 
 
 def _parse_episodejokes(sheet, offset):
