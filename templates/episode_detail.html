@@ -11,15 +11,23 @@
     <li>Directed by: {{ episode.directed_by }}</li>
     <li>Written by: {{ episode.written_by }}</li>
     <li>Production code: {{ episode.production_code }}</li>
-    <li>Run date: {{ episode.run_date }}</li>{% if episodejokes %}
-    <li id="jokes">Related jokes:
-        <ul>{% for ej in episodejokes %}
-            <li>
-                <a href="joke-{{ ej.joke.code }}.html">
-                    {{ ej.joke.primary_character.strip() }}: {{ ej.joke.text.strip() }}
-                </a>{{ ej.extras().strip()|safe }}
-            </li>
-        {% endfor %}</ul>
+    <li>Run date: {{ episode.run_date }}</li>
+</ul>
+
+<h2>Jokes in this episode</h2>
+<ul>{% for ej in episodejokes %}
+    <li>
+        <a href="joke-{{ ej.joke.code }}.html">
+            {{ ej.joke.primary_character.strip() }}: {{ ej.joke.text.strip() }}
+        </a>{% if ej.details != None %}
+            <span class="extra"><strong>Details</strong>: {{ ej.details }}</span>
+        {% endif %}{% if ej.connected_joke() != None %}
+            <span class="extra">
+                <a href="joke-{{ ej.connected_joke()['code'] }}.html">
+                    <strong>Connected</strong>: {{ ej.connected_joke()['text'] }}
+                </a>
+            </span>
+        {% endif %}
     </li>
-{% endif %}</ul>
+{% endfor %}</ul>
 {% endblock %}

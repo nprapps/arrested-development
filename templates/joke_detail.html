@@ -6,16 +6,24 @@
 <p>Appears in <a href="#episodes">{{ episodejokes|length }}</a> episodes.</p>
 <ul>
     <li>Primary character: {{ joke.primary_character }}</li>
-    <li>Code: {{ joke.code }}</li>{% if episodejokes %}
-    <li id="episodes">Related episodes:
-        <ul>{% for ej in episodejokes %}
-            <li>
-                <a href="episode-{{ ej.episode.code }}.html">
-                    {{ ej.episode.code.strip() }}: {{ ej.episode.title.strip() }}
-                </a>{{ ej.extras().strip()|safe }}
-            </li>
-        {% endfor %}</ul>
+    <li>Code: {{ joke.code }}</li>
+</ul>
+
+<h2>Episodes featuring this joke</h2>
+<ul>{% for ej in episodejokes %}
+    <li>
+        <a href="episode-{{ ej.episode.code }}.html">
+            {{ ej.episode.code.strip() }}: {{ ej.episode.title.strip() }}
+        </a>{% if ej.details != None %}
+            <span class="extra"><strong>Details</strong>: {{ ej.details }}</span>
+        {% endif %}{% if ej.connected_joke() != None %}
+            <span class="extra">
+                <a href="joke-{{ ej.connected_joke()['code'] }}.html">
+                    <strong>Connected</strong>: {{ ej.connected_joke()['text'] }}
+                </a>
+            </span>
+        {% endif %}
     </li>
-{% endif %}</ul>
+{% endfor %}</ul>
 
 {% endblock %}

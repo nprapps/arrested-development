@@ -85,12 +85,13 @@ def update_episode_extras():
                 Episode.season == episode['season'],
                 Episode.episode == episode['episode']
             )
-            print '* Episode extra: %s' % e.code
+            # print '* Episode extra: %s' % e.code
+
         except Episode.DoesNotExist:
             episode['code'] = 's%se%s' % (str(episode['season']).zfill(2), str(episode['episode']).zfill(2))
             e = Episode.create(**episode)
             e.save()
-            print '+ Episode extra: %s' % e.code
+            # print '+ Episode extra: %s' % e.code
 
 
 def import_sheet(sheet):
@@ -113,7 +114,7 @@ def parse_sheet(sheet, model):
             if model == 'jokes':
                 _parse_jokes(csv.DictReader(csv_file))
             if model == 'episodejokes':
-                _parse_episodejokes(csv.DictReader(csv_file), 3)
+                _parse_episodejokes(csv.DictReader(csv_file))
         if sheet in ['3', '4', '5']:
             _parse_episodejoke_details(csv.DictReader(csv_file), sheet)
 
@@ -154,12 +155,12 @@ def _parse_episodes(sheet):
     for row in output:
         try:
             r = Episode.get(Episode.code == row['code'])
-            print '* Episode: %s' % r.title
+            # print '* Episode: %s' % r.title
 
         except Episode.DoesNotExist:
             r = Episode.create(**row)
             r.save()
-            print '+ Episode: %s' % r.title
+            # print '+ Episode: %s' % r.title
 
 
 def _parse_jokes(sheet):
@@ -177,15 +178,19 @@ def _parse_jokes(sheet):
                 joke_dict[item] = row[item].decode('utf-8')
         try:
             j = Joke.get(Joke.code == joke_dict['code'])
-            print '* Joke: %s' % j.text
+            # print '* Joke: %s' % j.text
 
         except Joke.DoesNotExist:
             j = Joke.create(**joke_dict)
             j.save()
-            print '+ Joke: %s' % j.text
+            # print '+ Joke: %s' % j.text
 
 
 def _parse_episodejoke_details(sheet, sheet_num):
+    """
+    Parses the details, origin and connection sheets.
+    Adds data to existing episodejokes.
+    """
     FIELDS = [None, None, None, 'details', 'origin', 'connection']
     field = FIELDS[int(sheet_num)]
     broken = []
@@ -203,7 +208,7 @@ def _parse_episodejoke_details(sheet, sheet_num):
                     ej = EpisodeJoke.update(**payload).where(EpisodeJoke.code == ej_code)
                     ej.execute()
                     uej = EpisodeJoke.get(EpisodeJoke.code == ej_code)
-                    print '* EpisodeJoke: %s' % uej.code
+                    # print '* EpisodeJoke: %s' % uej.code
 
                 except EpisodeJoke.DoesNotExist:
                     broken.append({'episode': e.code, 'joke': j.text.encode('utf-8'), 'context': value, 'sheet': field})
@@ -214,17 +219,15 @@ def _parse_episodejoke_details(sheet, sheet_num):
             writer.writerow(row)
 
 
-def _parse_episodejokes(sheet, offset):
+def _parse_episodejokes(sheet):
     """
     Parses joke sheet.
     Imports episodejokes.
     Will not update.
     """
-    start_column = 0 + offset
-    end_column = 53 + offset
 
     for row in sheet:
-        for column in range(start_column, end_column):
+        for column in range(2, len(row.items())):
             box = row.items()[column]
             if box[1].decode('utf-8') in ['1', 'f', 'b']:
                 ej_dict = {}
@@ -235,9 +238,9 @@ def _parse_episodejokes(sheet, offset):
 
                 try:
                     ej = EpisodeJoke.get(EpisodeJoke.code == ej_dict['code'])
-                    print '* EpisodeJoke: %s' % ej.code
+                    # print '* EpisodeJoke: %s' % ej.code
 
                 except EpisodeJoke.DoesNotExist:
                     ej = EpisodeJoke.create(**ej_dict)
                     ej.save()
-                    print '+ EpisodeJoke: %s' % ej.code
+                    # print '+ EpisodeJoke: %s' % ej.code

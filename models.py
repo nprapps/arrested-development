@@ -22,6 +22,9 @@ class Joke(Model):
     def slug():
         return slugify(self.text)
 
+    def episode_count(self):
+        return EpisodeJoke.select().where(EpisodeJoke.joke == self).count()
+
 
 class Episode(Model):
     season = IntegerField()
@@ -45,6 +48,9 @@ class Episode(Model):
     def slug():
         return slugify(self.code)
 
+    def joke_count(self):
+        return EpisodeJoke.select().where(EpisodeJoke.episode == self).count()
+
 
 class EpisodeJoke(Model):
     joke = ForeignKeyField(Joke, cascade=False)
@@ -59,15 +65,16 @@ class EpisodeJoke(Model):
     class Meta:
         database = db
 
-    def extras(self):
-        payload = ''
-
-        for attribute in ['Details', 'Origin', 'Connection']:
-            if getattr(self, attribute.lower()):
-                payload += '<span class="extra"><strong>%s</strong>: %s</span>' % (attribute, getattr(self, attribute.lower()))
-
-        return payload
-
     @classmethod
     def slug():
         return slugify(self.code)
+
+    def connected_joke(self):
+        if self.connection:
+            try:
+                return Joke.get(Joke.text == self.connection)
+            except Joke.DoesNotExist:
+                print self.connection
+                return None
+        else:
+            return None

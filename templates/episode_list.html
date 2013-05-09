@@ -3,7 +3,7 @@
 {% block content %}
 
 <ul>{% for episode in episodes %}
-    <li><a href="/episode-{{ episode.code }}.html">{{ episode.code}}: {{ episode.title }}</a></li>
+    <li><a href="/episode-{{ episode.code }}.html">{{ episode.code}}: {{ episode.title }} ({{ episode.joke_count() }})</a></li>
 {% endfor %}</ul>
 
 {% endblock %}
