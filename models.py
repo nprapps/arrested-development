@@ -15,6 +15,9 @@ class Joke(Model):
     code = IntegerField()
     text = TextField()
 
+    blurb = TextField(null=True)
+    related_joke_code = IntegerField(null=True)
+
     class Meta:
         database = db
 

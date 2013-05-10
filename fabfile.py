@@ -397,6 +397,7 @@ def bootstrap_data():
     update_jokes()
     update_episodejokes()
     update_episode_extras()
+    update_joke_blurbs()
     update_details()
     update_origin()
     update_connection()
@@ -406,6 +407,7 @@ def setup_tables():
     with settings(warn_only=True):
         local('rm -rf data/app.db')
         local('rm -rf data/broken.csv')
+        local('rm -rf data/arrested*.csv')
     app_utils.setup_tables()
 
 
@@ -422,6 +424,11 @@ def update_jokes():
 def update_episodejokes():
     import_sheet('0')
     parse_sheet('0', 'episodejokes')
+
+
+def update_joke_blurbs():
+    import_sheet('7')
+    parse_sheet('7', 'blurbs')
 
 
 def update_origin():
@@ -449,6 +456,7 @@ def parse_sheet(sheet, model):
 
 def update_episode_extras():
     app_utils.update_episode_extras()
+
 
 """
 Destruction

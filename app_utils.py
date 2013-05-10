@@ -117,6 +117,20 @@ def parse_sheet(sheet, model):
                 _parse_episodejokes(csv.DictReader(csv_file))
         if sheet in ['3', '4', '5']:
             _parse_episodejoke_details(csv.DictReader(csv_file), sheet)
+        if sheet == '7':
+            _parse_joke_blurbs(csv.DictReader(csv_file))
+
+
+def _parse_joke_blurbs(sheet):
+    for row in sheet:
+        joke = Joke.get(Joke.code == row['Code'])
+        joke.blurb = row['Description']
+        try:
+            joke.related_joke_code = int(row['Related'])
+        except ValueError:
+            pass
+
+        joke.save()
 
 
 def _parse_episodes(sheet):
