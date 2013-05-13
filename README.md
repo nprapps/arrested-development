@@ -106,6 +106,14 @@ python app.py
 
 Visit [localhost:8000](http://localhost:8000) in your browser.
 
+To render the latest JSON, run:
+
+```
+fab write_jokes_json
+```
+
+It will write the file to www/live_data/
+
 Editing workflow
 -------------------
 
