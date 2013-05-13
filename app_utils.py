@@ -65,7 +65,7 @@ def write_jokes_json():
             joke_dict['episodejokes'].append(episode_dict)
         payload.append(joke_dict)
 
-    with open('data/jokes.json', 'wb') as jokefile:
+    with open('www/live-data/jokes.json', 'wb') as jokefile:
         jokefile.write(json.dumps(payload))
 
 

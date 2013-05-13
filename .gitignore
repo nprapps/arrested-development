@@ -41,5 +41,5 @@ confs/rendered/*
 data/copy.xls
 tumblr/rendered-theme.html
 data/*.csv
-data/*.json
+www/live-data/*.json
 *.db
