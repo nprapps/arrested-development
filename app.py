@@ -62,6 +62,19 @@ def _joke_detail(joke_code):
     return render_template('joke_detail.html', **context)
 
 
+@app.route('/viz.html')
+def _viz():
+    context = make_context()
+    context['jokes'] = []
+    
+    #for joke in Joke.select():
+    #    context['jokes'].append(joke)
+
+    context['jokes'] = sorted(context['jokes'], key=lambda joke: joke.code)
+
+    return render_template('viz.html', **context)
+
+
 # Render LESS files on-demand
 @app.route('/less/<string:filename>')
 def _less(filename):
