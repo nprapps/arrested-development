@@ -19,6 +19,56 @@ def setup_tables():
     EpisodeJoke.create_table()
 
 
+def build_connections():
+    """
+    For each joke:
+        Get all of the episodejokes for that joke.
+        For each of those episodejokes:
+            Get the joke attached via the "connection" field.
+            Loop back through the episodejokes again:
+                Find an episodejoke where the joke == the connected joke.
+                Write a connection to that episode joke on both sides.
+    """
+    for episode in Episode.select():
+        joke_list = []
+        for joke in EpisodeJoke.select().join(Episode).where(Episode.code == episode.code):
+            joke_list.append((joke.code, joke.joke.code))
+
+        for episode_joke_code, joke_code in joke_list:
+            joke = Joke.get(Joke.code == joke_code)
+            episode_joke = EpisodeJoke.get(EpisodeJoke.code == episode_joke_code)
+            if episode_joke.connection:
+                connected_joke = Joke.get(Joke.text == episode_joke.connection.strip())
+                for second_episode_joke_code, second_joke_code in joke_list:
+                    if episode_joke_code == second_episode_joke_code:
+                        pass
+                    elif second_joke_code == connected_joke.code:
+                        first_episode_joke = EpisodeJoke.get(EpisodeJoke.code == episode_joke_code)
+                        second_episode_joke = EpisodeJoke.get(EpisodeJoke.code == second_episode_joke_code)
+
+                        first_episode_joke.related_episode_joke = second_episode_joke
+                        first_episode_joke.save()
+
+                        second_episode_joke.related_episode_joke = first_episode_joke
+                        second_episode_joke.save()
+
+
+def write_jokes_json():
+    payload = []
+    for joke in Joke.select():
+        joke_dict = joke.__dict__['_data']
+        joke_dict['episodejokes'] = []
+        for ej in EpisodeJoke.select().join(Joke).where(Joke.code == joke.code):
+            episode_dict = ej.__dict__['_data']
+            episode_dict['episode_data'] = ej.episode.__dict__['_data']
+            episode_dict['episode_data']['run_date'] = episode_dict['episode_data']['run_date'].strftime('%Y-%m-%d')
+            joke_dict['episodejokes'].append(episode_dict)
+        payload.append(joke_dict)
+
+    with open('data/jokes.json', 'wb') as jokefile:
+        jokefile.write(json.dumps(payload))
+
+
 def update_episode_extras():
     """
     Gets extra episode data from Wikipedia, including directors/writers, run date
@@ -32,6 +82,7 @@ def update_episode_extras():
     episodes = []
 
     for table in tables:
+        counter = 54
         for row in table.select('tr')[1:]:
             episode_dict = {}
             episode_dict['season'] = season
@@ -69,8 +120,12 @@ def update_episode_extras():
             elif episode_dict['season'] == 3 and episode_dict['episode'] == 13:
                 episode_dict['written_by'] = "Story by Mitchell Hurwitz and Richard Day. Teleplay by Chuck Tatham and Jim Vallely"
                 episodes.append(episode_dict)
+            elif episode_dict['season'] == 4:
+                episode_dict['number'] = counter
             else:
                 episodes.append(episode_dict)
+
+            counter += 1
         season += 1
 
     for episode in episodes:
@@ -154,6 +209,7 @@ def _parse_episodes(sheet):
 
     output = []
 
+    index = 1
     for episode in zip(episodes, seasons, ratings, names):
         if episode[0] == 'EPISODE':
             pass
@@ -164,6 +220,8 @@ def _parse_episodes(sheet):
             episode_dict['title'] = episode[3].decode('utf-8')
             episode_dict['rating'] = episode[2]
             episode_dict['code'] = 's%se%s' % (episode[1].zfill(2), episode[0].zfill(2))
+            episode_dict['number'] = index
+            index += 1
             output.append(episode_dict)
 
     for row in output:

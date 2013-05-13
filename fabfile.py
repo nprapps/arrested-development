@@ -401,6 +401,7 @@ def bootstrap_data():
     update_details()
     update_origin()
     update_connection()
+    build_connections()
 
 
 def setup_tables():
@@ -456,6 +457,14 @@ def parse_sheet(sheet, model):
 
 def update_episode_extras():
     app_utils.update_episode_extras()
+
+
+def write_jokes_json():
+    app_utils.write_jokes_json()
+
+
+def build_connections():
+    app_utils.build_connections()
 
 
 """

@@ -2,7 +2,7 @@ import re
 
 from peewee import *
 
-db = SqliteDatabase('data/app.db')
+db = SqliteDatabase('data/app.db', autocommit=True)
 
 
 def slugify(text):
@@ -34,6 +34,7 @@ class Episode(Model):
     episode = IntegerField()
     code = TextField()
     title = TextField()
+    number = IntegerField()
 
     rating = TextField(null=True)
     directed_by = TextField(null=True)
@@ -57,6 +58,7 @@ class Episode(Model):
 
 class EpisodeJoke(Model):
     joke = ForeignKeyField(Joke, cascade=False)
+    related_episode_joke = ForeignKeyField('self', cascade=False, null=True)
     episode = ForeignKeyField(Episode, cascade=False)
     joke_type = CharField(length=1, help_text="Choices are: f, b or 1")
     code = TextField()
@@ -71,13 +73,3 @@ class EpisodeJoke(Model):
     @classmethod
     def slug():
         return slugify(self.code)
-
-    def connected_joke(self):
-        if self.connection:
-            try:
-                return Joke.get(Joke.text == self.connection)
-            except Joke.DoesNotExist:
-                print self.connection
-                return None
-        else:
-            return None
