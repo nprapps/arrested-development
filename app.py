@@ -14,16 +14,6 @@ from render_utils import flatten_app_config, make_context
 app = Flask(app_config.PROJECT_NAME)
 
 
-@app.route('/')
-def _homepage():
-    context = make_context()
-    context['jokes'] = []
-    for joke in Joke.select():
-        context['jokes'].append(joke)
-    context['jokes'] = sorted(context['jokes'], key=lambda joke: joke.code)
-    return render_template('joke_list.html', **context)
-
-
 @app.route('/episodes.html')
 def _episode_list():
     context = make_context()
@@ -61,12 +51,12 @@ def _joke_detail(joke_code):
     context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.episode.code)
     return render_template('joke_detail.html', **context)
 
-
+@app.route('/')
 @app.route('/viz.html')
 def _viz():
     context = make_context()
     context['jokes'] = []
-    
+
     for joke in Joke.select():
         context['jokes'].append(joke)
 
