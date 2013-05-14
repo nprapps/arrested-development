@@ -58,7 +58,6 @@ class Episode(Model):
 
 class EpisodeJoke(Model):
     joke = ForeignKeyField(Joke, cascade=False)
-    related_episode_joke = ForeignKeyField('self', cascade=False, null=True)
     episode = ForeignKeyField(Episode, cascade=False)
     joke_type = CharField(length=1, help_text="Choices are: f, b or 1")
     code = TextField()
@@ -73,3 +72,13 @@ class EpisodeJoke(Model):
     @classmethod
     def slug():
         return slugify(self.code)
+
+
+class JokeConnection(Model):
+    joke1 = ForeignKeyField(Joke, cascade=False)
+    joke2 = ForeignKeyField(Joke, cascade=False)
+    episode = ForeignKeyField(Episode, cascade=False)
+
+    class Meta:
+        database = db
+

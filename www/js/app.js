@@ -9,6 +9,7 @@ var viz_div = null;
 var paper = null;
 
 var joke_data;
+var connection_data;
 
 function render_joke_viz() {
     if (!Raphael.svg) {
@@ -39,48 +40,35 @@ function render_joke_viz() {
         }
 
         // Render related joke curves
-        for (var i = 0; i < joke_data.length; i++) {
-            var joke = joke_data[i];
-            var episodejokes = joke['episodejokes'];
+        for (var i = 0; i < connection_data.length; i++) {
+            var connection = connection_data[i];
+            var joke1_code = connection.joke1_code;
+            var joke2_code = connection.joke2_code;
+            var episode_number = connection.episode_number;
 
-            for (var j = 0; j < episodejokes.length; j++) {
-                var episodejoke = episodejokes[j];
-                var episode_number = episodejoke['episode_data']['number'];
-                var related_joke_code = episodejoke['related_episode_joke__code'];
+            var from_joke_id = joke1_code - 1;
+            var from_episode_id = episode_number;
 
-                if (related_joke_code === null) {
-                    continue;
-                }
+            var to_joke_id = joke2_code - 1
+            var to_episode_id = episode_number;
 
-                if (related_joke_code < joke['code']) {
-                    // Don't render South -> North relationships
-                    // as they are merely reciprocals
-                    continue;
-                }
+            var from_y = from_joke_id * line_interval + OFFSET_Y;
+            var from_x = from_episode_id * dot_interval + OFFSET_X;
 
-                var from_joke_id = joke['code'] - 1;
-                var from_episode_id = episode_number;
+            var to_y = to_joke_id * line_interval + OFFSET_Y;
+            var to_x = to_episode_id * dot_interval + OFFSET_X;
 
-                var to_joke_id = related_joke_code - 1
-                var to_episode_id = episode_number;
+            var control_x1 = from_x - (dot_interval * 0.75);
+            var control_y1 = from_y + line_interval;
 
-                var from_y = from_joke_id * line_interval + OFFSET_Y;
-                var from_x = from_episode_id * dot_interval + OFFSET_X;
+            var control_x2 = control_x1;
+            var control_y2 = to_y - line_interval;
 
-                var to_y = to_joke_id * line_interval + OFFSET_Y;
-                var to_x = to_episode_id * dot_interval + OFFSET_X;
+            var path = 'M' + from_x + ',' + from_y + ' C'  + control_x1 + ',' + control_y1 + ' ' + control_x2 + ',' + control_y2 + ' ' + to_x + ',' + to_y;
+            var line = paper.path(path);
 
-                var control_x1 = from_x - (dot_interval * 0.75);
-                var control_y1 = from_y + line_interval;
-
-                var control_x2 = control_x1;
-                var control_y2 = to_y - line_interval;
-
-                var path = 'M' + from_x + ',' + from_y + ' C'  + control_x1 + ',' + control_y1 + ' ' + control_x2 + ',' + control_y2 + ' ' + to_x + ',' + to_y;
-                var line = paper.path(path);
-
-                line.node.setAttribute('class', 'connection-line');
-            }
+            line.node.setAttribute('id', 'line-' + joke1_code + '-to-' + joke2_code + '-e' + episode_number);
+            line.node.setAttribute('class', 'connection-line');
         }
 
         // Render episode dots
@@ -96,10 +84,10 @@ function render_joke_viz() {
 
                 var dot = paper.circle((episode_number * dot_interval) + OFFSET_X, line_y, 5); 
 
-                dot.node.setAttribute('id', 'episodejoke-' + episodejoke['code']);
+                dot.node.setAttribute('id', 'episodejoke-' + episode_number);
 
                 var dot_class = 'dot ' + 'joke-type-' + episodejoke['joke_type'];  
-
+            
                 dot.node.setAttribute('class', dot_class);
             }
         }
@@ -111,8 +99,8 @@ $(function() {
     viz_div = $viz[0];
 
     $.getJSON('live-data/jokes.json', function(data) {
-        joke_data = data;
-        console.log(joke_data);
+        joke_data = data['jokes'];
+        connection_data = data['connections'];
 
         render_joke_viz();
     });
