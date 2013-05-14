@@ -76,6 +76,7 @@ def write_jokes_json():
             episode_dict['episode_data'] = ej.episode.__dict__['_data']
             episode_dict['episode_data']['run_date'] = episode_dict['episode_data']['run_date'].strftime('%Y-%m-%d')
             joke_dict['episodejokes'].append(episode_dict)
+        joke_dict['episodejokes'] = sorted(joke_dict['episodejokes'], key=lambda ej: ej['episode_data']['number'])
         payload.append(joke_dict)
 
     with open('www/live-data/jokes.json', 'wb') as jokefile:
