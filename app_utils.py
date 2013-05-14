@@ -75,13 +75,14 @@ def write_jokes_json():
             episode_dict = ej.__dict__['_data']
             episode_dict['episode_data'] = ej.episode.__dict__['_data']
             episode_dict['episode_data']['run_date'] = episode_dict['episode_data']['run_date'].strftime('%Y-%m-%d')
-            episode_dict['related_episode_joke__joke'] = ej.joke.code
+            episode_dict['related_episode_joke__code'] = ej.related_episode_joke.joke.code if ej.related_episode_joke else None
 
             del episode_dict['episode_data']['id']
 
             del episode_dict['episode']
             del episode_dict['joke']
             del episode_dict['id']
+            del episode_dict['related_episode_joke']
 
             joke_dict['episodejokes'].append(episode_dict)
         joke_dict['episodejokes'] = sorted(joke_dict['episodejokes'], key=lambda ej: ej['episode_data']['code'])
