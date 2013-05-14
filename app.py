@@ -15,13 +15,23 @@ app = Flask(app_config.PROJECT_NAME)
 
 
 @app.route('/episodes.html')
-def _episode_list():
+def episode_list():
     context = make_context()
     context['episodes'] = []
     for episode in Episode.select():
         context['episodes'].append(episode)
     context['episodes'] = sorted(context['episodes'], key=lambda episode: episode.code)
     return render_template('episode_list.html', **context)
+
+
+@app.route('/jokes.html')
+def joke_list():
+    context = make_context()
+    context['jokes'] = []
+    for joke in Joke.select():
+        context['jokes'].append(joke)
+    context['jokes'] = sorted(context['jokes'], key=lambda joke: joke.code)
+    return render_template('joke_list.html', **context)
 
 
 @app.route('/episode-<episode_code>.html')
@@ -31,16 +41,6 @@ def _episode_detail(episode_code):
     context['episodejokes'] = EpisodeJoke.select().where(EpisodeJoke.episode == context['episode'])
     context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.joke.code)
     return render_template('episode_detail.html', **context)
-
-
-@app.route('/jokes.html')
-def _joke_list():
-    context = make_context()
-    context['jokes'] = []
-    for joke in Joke.select():
-        context['jokes'].append(joke)
-    context['jokes'] = sorted(context['jokes'], key=lambda joke: joke.code)
-    return render_template('joke_list.html', **context)
 
 
 @app.route('/joke-<joke_code>.html')
