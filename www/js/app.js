@@ -1,8 +1,8 @@
 var EPISODE_COUNT = 53;
 
 var DOT_RADIUS = 5;
-var OFFSET_X = DOT_RADIUS;
-var OFFSET_Y = DOT_RADIUS;
+var OFFSET_X = DOT_RADIUS + 3;
+var OFFSET_Y = DOT_RADIUS + 3;
 
 var $viz = null;
 var viz_div = null;
