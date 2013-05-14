@@ -67,8 +67,8 @@ def _viz():
     context = make_context()
     context['jokes'] = []
     
-    #for joke in Joke.select():
-    #    context['jokes'].append(joke)
+    for joke in Joke.select():
+        context['jokes'].append(joke)
 
     context['jokes'] = sorted(context['jokes'], key=lambda joke: joke.code)
 
