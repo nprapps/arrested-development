@@ -112,6 +112,7 @@ def app_config_js():
     with open('www/js/app_config.js', 'w') as f:
         f.write(js)
 
+
 def render():
     """
     Render HTML templates and compile assets.
@@ -172,6 +173,7 @@ def render_pages():
     local('rm -rf www/joke*.html')
     _render_iterable(Joke.select(), 'joke', 'code')
     _render_iterable(Episode.select(), 'episode', 'code')
+    render()
 
 
 def _render_iterable(iterable, model, lookup):
@@ -404,7 +406,6 @@ def deploy(remote='origin'):
     if (env.settings == 'production' and env.branch != 'stable'):
         _confirm("You are trying to deploy the '%(branch)s' branch to production.\nYou should really only deploy a stable branch.\nDo you know what you're doing?" % env)
 
-    render()
     render_pages()
     _gzip_www()
     _deploy_to_s3()
