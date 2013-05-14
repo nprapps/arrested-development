@@ -112,7 +112,8 @@ To render the latest JSON, run:
 fab write_jokes_json
 ```
 
-It will write the file to www/live_data/
+It will write the file to www/live_data/jokes.json
+
 
 Editing workflow
 -------------------
