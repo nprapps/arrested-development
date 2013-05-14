@@ -6,7 +6,7 @@ import datetime
 from dateutil.parser import *
 import requests
 
-from models import db, Joke, Episode, EpisodeJoke
+from models import db, Joke, Episode, EpisodeJoke, JokeConnection
 
 
 def setup_tables():
@@ -17,6 +17,7 @@ def setup_tables():
     Joke.create_table()
     Episode.create_table()
     EpisodeJoke.create_table()
+    JokeConnection.create_table()
 
 
 def build_regression_csv():
@@ -37,37 +38,18 @@ def build_regression_csv():
 
 
 def build_connections():
-    """
-    For each joke:
-        Get all of the episodejokes for that joke.
-        For each of those episodejokes:
-            Get the joke attached via the "connection" field.
-            Loop back through the episodejokes again:
-                Find an episodejoke where the joke == the connected joke.
-                Write a connection to that episode joke on both sides.
-    """
-    for episode in Episode.select():
-        joke_list = []
-        for joke in EpisodeJoke.select().join(Episode).where(Episode.code == episode.code):
-            joke_list.append((joke.code, joke.joke.code))
+    for episode_joke in EpisodeJoke.select():
+        if episode_joke.connection:
+            joke1 = episode_joke.joke
+            joke2 = Joke.get(Joke.text == episode_joke.connection.strip())
+            episode = episode_joke.episode
 
-        for episode_joke_code, joke_code in joke_list:
-            joke = Joke.get(Joke.code == joke_code)
-            episode_joke = EpisodeJoke.get(EpisodeJoke.code == episode_joke_code)
-            if episode_joke.connection:
-                connected_joke = Joke.get(Joke.text == episode_joke.connection.strip())
-                for second_episode_joke_code, second_joke_code in joke_list:
-                    if episode_joke_code == second_episode_joke_code:
-                        pass
-                    elif second_joke_code == connected_joke.code:
-                        first_episode_joke = EpisodeJoke.get(EpisodeJoke.code == episode_joke_code)
-                        second_episode_joke = EpisodeJoke.get(EpisodeJoke.code == second_episode_joke_code)
+            if joke2.code < joke1.code:
+                tmp = joke2
+                joke2 = joke1
+                joke1 = tmp
 
-                        first_episode_joke.related_episode_joke = second_episode_joke
-                        first_episode_joke.save()
-
-                        second_episode_joke.related_episode_joke = first_episode_joke
-                        second_episode_joke.save()
+            JokeConnection(joke1=joke1, joke2=joke2, episode=episode).save()
 
 
 def write_jokes_json():
@@ -76,7 +58,12 @@ def write_jokes_json():
     Produces a list of jokes and within that a list of episodejokes
     where the joke appears, sorted by episode index number.
     """
-    payload = []
+
+    payload = {
+        'jokes': [],
+        'connections': []
+    }
+
     for joke in Joke.select():
         joke_dict = joke.__dict__['_data']
         joke_dict['episodejokes'] = []
@@ -84,7 +71,6 @@ def write_jokes_json():
             episode_dict = ej.__dict__['_data']
             episode_dict['episode_data'] = ej.episode.__dict__['_data']
             episode_dict['episode_data']['run_date'] = episode_dict['episode_data']['run_date'].strftime('%Y-%m-%d')
-            episode_dict['related_episode_joke__joke'] = ej.joke.code
 
             del episode_dict['episode_data']['id']
             del episode_dict['episode']
@@ -95,7 +81,18 @@ def write_jokes_json():
         joke_dict['episodejokes'] = sorted(joke_dict['episodejokes'], key=lambda ej: ej['episode_data']['code'])
 
         del joke_dict['id']
-        payload.append(joke_dict)
+        payload['jokes'].append(joke_dict)
+
+    payload['jokes'] = sorted(payload['jokes'], key=lambda j: j['code'])
+
+    for connection in JokeConnection.select():
+        payload['connections'].append({
+            'joke1_code': connection.joke1.code,
+            'joke2_code': connection.joke2.code,
+            'episode_number': connection.episode.number
+        })
+
+    payload['connections'] = sorted(payload['connections'], key=lambda c: c['joke1_code'])
 
     with open('www/live-data/jokes.json', 'wb') as jokefile:
         jokefile.write(json.dumps(payload))
@@ -302,7 +299,7 @@ def _parse_episodejoke_details(sheet, sheet_num):
     field = FIELDS[int(sheet_num)]
     broken = []
     for row in sheet:
-        for column in range(3, 55):
+        for column in range(2, 55):
             episode_title, value = row.items()[column]
             if value:
                 e = Episode.get(Episode.title == episode_title.decode('utf-8'))
