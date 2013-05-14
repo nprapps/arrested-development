@@ -19,6 +19,19 @@ def setup_tables():
     EpisodeJoke.create_table()
 
 
+def build_regression_csv():
+    with open('data/regression.csv', 'wb') as csvfile:
+        regressionwriter = csv.DictWriter(csvfile, ['episode_name', 'episode_id', 'jokes', 'rating'])
+        regressionwriter.writerow({'episode_name': 'episode_name', 'episode_id': 'episode_id', 'jokes': 'jokes', 'rating': 'rating'})
+        for episode in Episode.select():
+            episode_dict = {}
+            episode_dict['episode_name'] = episode.title.encode('utf-8')
+            episode_dict['episode_id'] = episode.number
+            episode_dict['rating'] = episode.rating
+            episode_dict['jokes'] = EpisodeJoke.select().where(EpisodeJoke.episode == episode).count()
+            regressionwriter.writerow(episode_dict)
+
+
 def build_connections():
     """
     For each joke:

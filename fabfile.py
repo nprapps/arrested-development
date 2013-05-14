@@ -467,6 +467,10 @@ def build_connections():
     app_utils.build_connections()
 
 
+def build_regression_csv():
+    app_utils.build_regression_csv()
+
+
 """
 Destruction
 
