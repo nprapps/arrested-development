@@ -1,5 +1,4 @@
 var EPISODE_COUNT = 53;
-var JOKE_COUNT = 10;
 
 var DOT_RADIUS = 5;
 var OFFSET_X = DOT_RADIUS;
@@ -9,10 +8,9 @@ var $viz = null;
 var viz_div = null;
 var paper = null;
 
-$(function() {
-    $viz = $('#viz');
-    viz_div = $viz[0];
+var joke_data;
 
+function render_joke_viz() {
     if (!Raphael.svg) {
         alert('No SVG support');
     } else {
@@ -21,17 +19,22 @@ $(function() {
 
         var paper = new Raphael(viz_div, width, height);
 
-        var line_interval = (height - (OFFSET_Y * 2)) / JOKE_COUNT;
+        var line_interval = (height - (OFFSET_Y * 2)) / joke_data.length;
         var dot_interval = (width - (OFFSET_X * 2)) / EPISODE_COUNT;
 
         // Render joke lines
-        for (var i = 0; i < JOKE_COUNT; i++) {
+        for (var i = 0; i < joke_data.length; i++) {
+            var joke = joke_data[i];
+            var episodejokes = joke['episodejokes'];
+            var first_episode_id = episodejokes[0]['episode'];
+            var last_episode_id = episodejokes[episodejokes.length - 1]['episode'];
+
             var line_y = (i * line_interval) + OFFSET_Y;
 
-            var path = 'M' + (0 + OFFSET_X) + "," + line_y + 'L' + (width - (OFFSET_X * 2)) + ',' + line_y;
+            var path = 'M' + (dot_interval * first_episode_id + OFFSET_X) + "," + line_y + 'L' + (dot_interval * last_episode_id - (OFFSET_X * 2)) + ',' + line_y;
             var line = paper.path(path)
 
-            line.node.setAttribute('id', 'joke-' + i);
+            line.node.setAttribute('id', 'joke-' + joke['code']);
             line.node.setAttribute('class', 'joke-line');
         }
 
@@ -62,16 +65,37 @@ $(function() {
 
 
         // Render episode dots
-        for (var i = 0; i < JOKE_COUNT; i++) {
+        for (var i = 0; i < joke_data.length; i++) {
+            var joke = joke_data[i];
+            var episodejokes = joke['episodejokes'];
+
             var line_y = i * line_interval + OFFSET_Y;
 
-            for (var j = 0; j < EPISODE_COUNT; j++) {
-                var dot = paper.circle((j * dot_interval) + OFFSET_X, line_y, 5); 
+            for (var j = 0; j < episodejokes.length; j++) {
+                var episodejoke = episodejokes[j];
+                var episode_id = episodejoke['episode'];
 
-                dot.node.setAttribute('id', 'joke-' + i + '-episode-' + j);
-                dot.node.setAttribute('class', 'dot episode-dot');
+                var dot = paper.circle((episode_id * dot_interval) + OFFSET_X, line_y, 5); 
+
+                dot.node.setAttribute('id', 'episodejoke-' + episodejoke['code']);
+
+                var dot_class = 'dot ' + 'joke-type-' + episodejoke['joke_type'];  
+
+                dot.node.setAttribute('class', dot_class);
             }
         }
-    }
+    } 
+}
+
+$(function() {
+    $viz = $('#viz');
+    viz_div = $viz[0];
+
+    $.getJSON('live-data/jokes.json', function(data) {
+        joke_data = data;
+        console.log(joke_data);
+
+        render_joke_viz();
+    });
 });
 
