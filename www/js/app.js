@@ -26,8 +26,8 @@ function render_joke_viz() {
         for (var i = 0; i < joke_data.length; i++) {
             var joke = joke_data[i];
             var episodejokes = joke['episodejokes'];
-            var first_episode_id = episodejokes[0]['episode'];
-            var last_episode_id = episodejokes[episodejokes.length - 1]['episode'];
+            var first_episode_id = episodejokes[0]['episode_data']['number'];
+            var last_episode_id = episodejokes[episodejokes.length - 1]['episode_data']['number'];
 
             var line_y = (i * line_interval) + OFFSET_Y;
 
@@ -45,7 +45,8 @@ function render_joke_viz() {
 
             for (var j = 0; j < episodejokes.length; j++) {
                 var episodejoke = episodejokes[j];
-                var episode_id = episodejoke['episode'];
+                var episode_id = episodejoke['episode_data']['number'];
+                var related_joke_id = episodejoke['related_joke_id'];
 
                 if (episodejoke['connection'] === null) {
                     continue;
@@ -54,7 +55,7 @@ function render_joke_viz() {
                 var from_joke_id = joke['id'] - 1;
                 var from_episode_id = episode_id;
 
-                var to_joke_id = 9 - 1;
+                var to_joke_id = related_joke_id - 1;
                 var to_episode_id = episode_id;
 
                 var from_x = from_episode_id * dot_interval + OFFSET_X;
@@ -85,7 +86,7 @@ function render_joke_viz() {
 
             for (var j = 0; j < episodejokes.length; j++) {
                 var episodejoke = episodejokes[j];
-                var episode_id = episodejoke['episode'];
+                var episode_id = episodejoke['episode_data']['number'];
 
                 var dot = paper.circle((episode_id * dot_interval) + OFFSET_X, line_y, 5); 
 
