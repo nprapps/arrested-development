@@ -76,7 +76,7 @@ def write_jokes_json():
             episode_dict['episode_data'] = ej.episode.__dict__['_data']
             episode_dict['episode_data']['run_date'] = episode_dict['episode_data']['run_date'].strftime('%Y-%m-%d')
             joke_dict['episodejokes'].append(episode_dict)
-        joke_dict['episodejokes'] = sorted(joke_dict['episodejokes'], key=lambda ej: ej['episode_data']['number'])
+        joke_dict['episodejokes'] = sorted(joke_dict['episodejokes'], key=lambda ej: ej['episode_data']['code'])
         payload.append(joke_dict)
 
     with open('www/live-data/jokes.json', 'wb') as jokefile:
@@ -212,6 +212,7 @@ def _parse_episodes(sheet):
     seasons = []
     ratings = []
     names = []
+    indexes = []
 
     zip_list = [seasons, episodes, ratings, None, names]
 
@@ -220,11 +221,11 @@ def _parse_episodes(sheet):
         if counter != 3:
             zip_list[counter] += row.values()
         counter += 1
+        indexes = row.keys()
 
     output = []
 
-    index = 1
-    for episode in zip(episodes, seasons, ratings, names):
+    for episode in zip(episodes, seasons, ratings, names, indexes):
         if episode[0] == 'EPISODE':
             pass
         else:
@@ -234,8 +235,7 @@ def _parse_episodes(sheet):
             episode_dict['title'] = episode[3].decode('utf-8')
             episode_dict['rating'] = episode[2]
             episode_dict['code'] = 's%se%s' % (episode[1].zfill(2), episode[0].zfill(2))
-            episode_dict['number'] = index
-            index += 1
+            episode_dict['number'] = int(episode[4]) + 1
             output.append(episode_dict)
 
     for row in output:
