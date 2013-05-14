@@ -20,6 +20,10 @@ def setup_tables():
 
 
 def build_regression_csv():
+    """
+    Builds an episode-based CSV for @stiles to do our regression.
+    Outputs a list of episodes with joke counts and ratings.
+    """
     with open('data/regression.csv', 'wb') as csvfile:
         regressionwriter = csv.DictWriter(csvfile, ['episode_name', 'episode_id', 'jokes', 'rating'])
         regressionwriter.writerow({'episode_name': 'episode_name', 'episode_id': 'episode_id', 'jokes': 'jokes', 'rating': 'rating'})
@@ -67,6 +71,11 @@ def build_connections():
 
 
 def write_jokes_json():
+    """
+    Writes the JSON for @onyxfish and @alykat's viz.
+    Produces a list of jokes and within that a list of episodejokes
+    where the joke appears, sorted by episode index number.
+    """
     payload = []
     for joke in Joke.select():
         joke_dict = joke.__dict__['_data']
@@ -78,13 +87,13 @@ def write_jokes_json():
             episode_dict['related_episode_joke__joke'] = ej.joke.code
 
             del episode_dict['episode_data']['id']
-
             del episode_dict['episode']
             del episode_dict['joke']
             del episode_dict['id']
 
             joke_dict['episodejokes'].append(episode_dict)
         joke_dict['episodejokes'] = sorted(joke_dict['episodejokes'], key=lambda ej: ej['episode_data']['code'])
+
         del joke_dict['id']
         payload.append(joke_dict)
 
@@ -200,6 +209,9 @@ def parse_sheet(sheet, model):
 
 
 def _parse_joke_blurbs(sheet):
+    """
+    Grab the joke blurbs sheet from Google docs.
+    """
     for row in sheet:
         joke = Joke.get(Joke.code == row['Code'])
         joke.blurb = row['Description']
@@ -302,8 +314,6 @@ def _parse_episodejoke_details(sheet, sheet_num):
                 try:
                     ej = EpisodeJoke.update(**payload).where(EpisodeJoke.code == ej_code)
                     ej.execute()
-                    uej = EpisodeJoke.get(EpisodeJoke.code == ej_code)
-                    # print '* EpisodeJoke: %s' % uej.code
 
                 except EpisodeJoke.DoesNotExist:
                     broken.append({'episode': e.code, 'joke': j.text.encode('utf-8'), 'context': value, 'sheet': field})

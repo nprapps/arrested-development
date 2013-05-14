@@ -2,24 +2,24 @@
 
 {% block content %}
 
-<h2>{{ joke.text }}</h2>
-<p>Appears in <a href="#episodes">{{ episodejokes|length }}</a> episodes.</p>
-<ul>
-    <li>Primary character: {{ joke.primary_character }}</li>
-    <li>Code: {{ joke.code }}</li>
-</ul>
-
-<h2>Episodes featuring this joke</h2>
+<h2><strong>{{ joke.primary_character }}</strong> {{ joke.text }}</h2>
+<h4>{{ joke.blurb }} This joke appears in <a href="#episodes">{{ episodejokes|length }}</a> episodes.</h4>
+<h2>Episodes featuring this joke:</h2>
 <ul>{% for ej in episodejokes %}
     <li>
         <a href="episode-{{ ej.episode.code }}.html">
-            {{ ej.episode.code.strip() }}: {{ ej.episode.title.strip() }}
-        </a>{% if ej.details != None %}
-            <span class="extra"><strong>Details</strong>: {{ ej.details }}</span>
-        {% endif %}{% if ej.connected_joke() != None %}
-            <span class="extra">
-                <a href="joke-{{ ej.connected_joke()['code'] }}.html">
-                    <strong>Connected</strong>: {{ ej.connected_joke()['text'] }}
+            Season {{ ej.episode.season }}, episode {{ ej.episode.episode }}: {{ ej.episode.title.strip() }}
+        </a>
+        {% if ej.details != None %}
+            <span class="extra details">
+                {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
+            </span>
+        {% endif %}
+        {% if ej.related_episode_joke %}
+            <span class="extra connection">
+                <a href="joke-{{ ej.related_episode_joke.joke['code'] }}.html">
+                    <strong>{{ ej.related_episode_joke.joke['primary_character'] }}</strong>
+                    {{ ej.related_episode_joke.joke['text'] }}
                 </a>
             </span>
         {% endif %}

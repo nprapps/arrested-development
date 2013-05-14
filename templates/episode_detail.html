@@ -2,29 +2,28 @@
 
 {% block content %}
 
-<h1>{{ episode.code}}: {{ episode.title }}</h1>
-<p>Contains <a href="#jokes">{{ episodejokes|length }}</a> inside jokes.</p>
-<ul>
-    <li>Season: {{ episode.season }}</li>
-    <li>Episode: {{ episode.episode }}</li>
-    <li>Rating: {{ episode.rating }}</li>
-    <li>Directed by: {{ episode.directed_by }}</li>
-    <li>Written by: {{ episode.written_by }}</li>
-    <li>Production code: {{ episode.production_code }}</li>
-    <li>Run date: {{ episode.run_date }}</li>
-</ul>
+<h1><strong>{{ episode.code}}</strong> {{ episode.title }}</h1>
+<p>The {{ episode.episode }} episode in season {{ episode.season }}, "{{ episode.title }}" originally aired on {{ episode.run_date.strftime('%A, %B %e, %Y') }} and was watched by {{ episode.rating }} million viewers.
+{% if episode.written_by == episode.directed_by %}
+It was written and directed by {{ episode.written_by.replace(', ', ' and ') }}.
+{% else %}It was written by {{ episode.written_by.replace(', ', ' and ') }} and directed by {{ episode.directed_by.replace(', ', ' and ') }}.{% endif %}</p>
 
-<h2>Jokes in this episode</h2>
+<h2>All {{ episodejokes|length }} recurring jokes in this episode:</h2>
 <ul>{% for ej in episodejokes %}
     <li>
         <a href="joke-{{ ej.joke.code }}.html">
-            {{ ej.joke.primary_character.strip() }}: {{ ej.joke.text.strip() }}
-        </a>{% if ej.details != None %}
-            <span class="extra"><strong>Details</strong>: {{ ej.details }}</span>
-        {% endif %}{% if ej.connected_joke() != None %}
-            <span class="extra">
-                <a href="joke-{{ ej.connected_joke()['code'] }}.html">
-                    <strong>Connected</strong>: {{ ej.connected_joke()['text'] }}
+            <strong>{{ ej.joke.primary_character.strip() }}</strong> {{ ej.joke.text.strip() }}
+        </a>
+        {% if ej.details != None %}
+            <span class="extra details">
+                {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
+            </span>
+        {% endif %}
+        {% if ej.related_episode_joke %}
+            <span class="extra connection">
+                <a href="joke-{{ ej.related_episode_joke.joke['code'] }}.html">
+                    <strong>{{ ej.related_episode_joke.joke['primary_character'] }}</strong>
+                    {{ ej.related_episode_joke.joke['text'] }}
                 </a>
             </span>
         {% endif %}
