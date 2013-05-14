@@ -31,7 +31,7 @@ function render_joke_viz() {
 
             var line_y = (i * line_interval) + OFFSET_Y;
 
-            var path = 'M' + (dot_interval * first_episode_id + OFFSET_X) + "," + line_y + 'L' + (dot_interval * last_episode_id - (OFFSET_X * 2)) + ',' + line_y;
+            var path = 'M' + (dot_interval * first_episode_id + OFFSET_X) + "," + line_y + 'L' + (dot_interval * (last_episode_id + 1) - (OFFSET_X * 2)) + ',' + line_y;
             var line = paper.path(path)
 
             line.node.setAttribute('id', 'joke-' + joke['code']);
@@ -39,30 +39,42 @@ function render_joke_viz() {
         }
 
         // Render related joke curves
-        var from_joke = 3;
-        var from_episode = 2;
+        for (var i = 0; i < joke_data.length; i++) {
+            var joke = joke_data[i];
+            var episodejokes = joke['episodejokes'];
 
-        var to_joke = 9;
-        var to_episode = 2;
+            for (var j = 0; j < episodejokes.length; j++) {
+                var episodejoke = episodejokes[j];
+                var episode_id = episodejoke['episode'];
 
-        var from_x = from_episode * dot_interval + OFFSET_X;
-        var from_y = from_joke * line_interval + OFFSET_Y;
+                if (episodejoke['connection'] === null) {
+                    continue;
+                }
 
-        var to_x = to_episode * dot_interval + OFFSET_X;
-        var to_y = to_joke * line_interval + OFFSET_Y;
+                var from_joke_id = joke['id'] - 1;
+                var from_episode_id = episode_id;
 
-        var control_x1 = from_x - (dot_interval * 0.75);
-        var control_y1 = from_y + line_interval;
+                var to_joke_id = 9 - 1;
+                var to_episode_id = episode_id;
 
-        var control_x2 = control_x1;
-        var control_y2 = to_y - line_interval;
+                var from_x = from_episode_id * dot_interval + OFFSET_X;
+                var from_y = from_joke_id * line_interval + OFFSET_Y;
 
-        var path = 'M' + from_x + ',' + from_y + ' C'  + control_x1 + ',' + control_y1 + ' ' + control_x2 + ',' + control_y2 + ' ' + to_x + ',' + to_y;
-        var line = paper.path(path);
+                var to_x = to_episode_id * dot_interval + OFFSET_X;
+                var to_y = to_joke_id * line_interval + OFFSET_Y;
 
-        line.node.setAttribute('id', 'connection-j' + from_joke + 'e' + from_episode + '-j' + to_joke + 'e' + to_episode);
-        line.node.setAttribute('class', 'connection-line');
+                var control_x1 = from_x - (dot_interval * 0.75);
+                var control_y1 = from_y + line_interval;
 
+                var control_x2 = control_x1;
+                var control_y2 = to_y - line_interval;
+
+                var path = 'M' + from_x + ',' + from_y + ' C'  + control_x1 + ',' + control_y1 + ' ' + control_x2 + ',' + control_y2 + ' ' + to_x + ',' + to_y;
+                var line = paper.path(path);
+
+                line.node.setAttribute('class', 'connection-line');
+            }
+        }
 
         // Render episode dots
         for (var i = 0; i < joke_data.length; i++) {
