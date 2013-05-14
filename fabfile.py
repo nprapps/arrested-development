@@ -10,6 +10,7 @@ import app
 import app_config
 import app_utils
 from etc import github
+from models import Joke, Episode
 
 """
 Base configuration
@@ -164,6 +165,45 @@ def render():
 
     # Un-fake-out deployment target
     app_config.configure_targets(app_config.DEPLOYMENT_TARGET)
+
+
+def render_pages():
+    _render_iterable(Joke.select(), 'joke', 'code')
+    _render_iterable(Episode.select(), 'episode', 'code')
+
+
+def _render_iterable(iterable, model, lookup):
+    """
+    View should be named _model_detail().
+    Path should be model-lookup.html.
+    Template is handled from the view.
+    """
+
+    from flask import g
+
+    # Fake out deployment target
+    app_config.configure_targets(env.get('settings', None))
+
+    compiled_includes = []
+
+    for instance in iterable:
+        path = '%s-%s.html' % (model, getattr(instance, lookup))
+        with app.app.test_request_context(path=path):
+
+            g.compile_includes = True
+            g.compiled_includes = compiled_includes
+
+            view = app.__dict__['_%s_detail' % model]
+            content = view(getattr(instance, lookup))
+
+            compiled_includes = g.compiled_includes
+
+        with open('www/%s' % path, 'w') as f:
+            f.write(content.encode('utf-8'))
+
+    # Un-fake-out deployment target
+    app_config.configure_targets(app_config.DEPLOYMENT_TARGET)
+
 
 def tests():
     """
@@ -363,6 +403,7 @@ def deploy(remote='origin'):
         _confirm("You are trying to deploy the '%(branch)s' branch to production.\nYou should really only deploy a stable branch.\nDo you know what you're doing?" % env)
 
     render()
+    render_pages()
     _gzip_www()
     _deploy_to_s3()
 
