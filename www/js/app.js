@@ -16,10 +16,12 @@ var $tooltip = null;
 
 var group_order;
 var joke_data;
+var connection_data;
+var episodes;
+
 var joke_code_to_index_map = {};
 var joke_code_to_line_y_map = {};
-var connection_data;
-
+var joke_code_to_related_jokes_map = {};
 
 /*
  * Loop through data, render the big graphic
@@ -31,7 +33,8 @@ function render_joke_viz() {
         var width = $viz.width();
         var height = $viz.height();
 
-        var labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
+        var episode_labels = '';
+        var joke_labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
         var headers = '';
         var paper = new Raphael(viz_div, width, height);
 
@@ -47,19 +50,24 @@ function render_joke_viz() {
                 var joke = jokes[i];
                 joke_code_to_index_map[joke['code']] = i;
                 joke_code_to_line_y_map[joke['code']] = line_y;
+                joke_code_to_related_jokes_map[joke['code']] = [];
 
                 var episodejokes = joke['episodejokes'];
-                var first_episode_number = episodejokes[0]['episode_data']['number'];
+                var first_episode_number = episodejokes[0]['episode_number'];
                 var last_episode_number = EPISODE_COUNT + 1; // +1 to make sure it goes off the side
 
                 var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * (last_episode_number + 1) + OFFSET_X_LEFT - (OFFSET_X_RIGHT * 2)) + ',' + line_y;
                 var line = paper.path(path)
 
                 line.node.setAttribute('id', 'joke-' + joke['code']);
-                line.node.setAttribute('class', 'joke-line');
+                line.node.setAttribute('class', 'joke-line joke-' + joke['code']);
+                line.node.setAttribute('data-joke', joke['code']);
                 
                 // add label
-                labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;">' + joke['text'] + '</li>';
+                joke_labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;">';
+                joke_labels += '<a href="joke-' + joke['code'] + '.html">';
+                joke_labels += joke['text'];
+                joke_labels += '</a></li>';
                 
                 // add header if applicable
                 if (i == 0 || (joke['primary_character'] != jokes[i-1]['primary_character'])) {
@@ -71,17 +79,45 @@ function render_joke_viz() {
         
             line_y += GROUP_INTERVAL;
         }
-            
-        labels += '</ul>';
-        $viz.append(labels);
+        joke_labels += '</ul>';
+        $viz.append(joke_labels);
         $viz.append(headers);
+        
+        // render episode labels
+        episode_labels += '<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px;">';
+        for (var e in episodes) {
+            var episode = episodes[e];
+            var episode_number = episode['number'];
+            var episode_episode = episode['episode'];
+            console.log(episode);
 
+            if (e == 1 || (episodes[e-1] != undefined && episode['season'] != episodes[e-1]['season'])) {
+                var label_x = dot_interval * (episode_number - 1) + DOT_RADIUS;
+
+                episode_labels += '<li class="episode-season-number" style="left: ' + label_x + 'px;">';
+                episode_labels += 'Season ' + episode['season'];
+                episode_labels += '</li>';
+                
+                if (e != 1) { // a dividing line before all seasons after the first
+                    var line_x = dot_interval * (episode_number - 1) + OFFSET_X_LEFT + (dot_interval / 2);
+                    var path = 'M' + line_x + ',' + 0 + 'L' + line_x + ',' + height;
+                    var line = paper.path(path);
+                    line.node.setAttribute('class', 'season-line');
+                }
+            }
+        }
+        episode_labels += '</ul>';
+        $viz.append(episode_labels);
+        
         // Render related joke curves
         for (var i = 0; i < connection_data.length; i++) {
             var connection = connection_data[i];
             var joke1_code = connection.joke1_code;
             var joke2_code = connection.joke2_code;
             var episode_number = connection.episode_number;
+
+            joke_code_to_related_jokes_map[joke1_code].push(joke2_code);
+            joke_code_to_related_jokes_map[joke2_code].push(joke1_code);
 
             var from_joke_id = joke_code_to_index_map[joke1_code];
             var from_episode_id = episode_number;
@@ -112,7 +148,7 @@ function render_joke_viz() {
             var line = paper.path(path);
 
             line.node.setAttribute('id', 'line-' + joke1_code + '-to-' + joke2_code + '-e' + episode_number);
-            line.node.setAttribute('class', 'connection-line');
+            line.node.setAttribute('class', 'connection-line joke-' + joke1_code + ' joke-' + joke2_code);
         }
 
         line_y = OFFSET_Y;
@@ -130,9 +166,10 @@ function render_joke_viz() {
 
                 for (var j = 0; j < episodejokes.length; j++) {
                     var episodejoke = episodejokes[j];
-                    var episode_number = episodejoke['episode_data']['number'];
-                    var episode_code = episodejoke['episode_data']['code'];
-                    var episode_title = episodejoke['episode_data']['title'];
+                    var episode = episodes[episodejoke['episode_number']];
+                    var episode_number = episode['number'];
+                    var episode_code = episode['code'];
+                    var episode_title = episode['title'];
 
                     var dot = paper.circle((episode_number * dot_interval) + OFFSET_X_LEFT, line_y, 5); 
 
@@ -177,6 +214,47 @@ function render_joke_viz() {
         ).click(function() {
             window.open('episode-' + $(this).data('episode') + '.html');
         });
+        
+        $('.joke-line').hover(
+            function(e) {
+                var joke_code = $(this).data('joke');
+                var connections = $('.connection-line.joke-' + joke_code);
+                var related_jokes = joke_code_to_related_jokes_map[joke_code];
+
+                for (var c = 0; c < connections.length; c++) {
+                    var el = connections[c];
+                    var attr = el.getAttribute('class') + ' highlight';
+                    el.setAttribute('class', attr);
+                }
+
+                for (var j = 0; j < related_jokes.length; j++) {
+                    var joke_code2 = related_jokes[j];
+                    var el = $('.joke-line.joke-' + joke_code2)[0];
+                    var attr = el.getAttribute('class') + ' highlight';
+                    el.setAttribute('class', attr);
+                }
+            },
+            function(e) {
+                var joke_code = $(this).data('joke');
+                var connections = $('.connection-line.joke-' + joke_code);
+                var related_jokes = joke_code_to_related_jokes_map[joke_code];
+
+                for (var c = 0; c < connections.length; c++) {
+                    var el = connections[c];
+                    var attr = el.getAttribute('class').replace(' highlight', '');
+                    el.setAttribute('class', attr);
+                }
+
+                for (var j = 0; j < related_jokes.length; j++) {
+                    var joke_code2 = related_jokes[j];
+                    var el = $('.joke-line.joke-' + joke_code2)[0];
+                    var attr = el.getAttribute('class').replace(' highlight', '');
+                    el.setAttribute('class', attr);
+                }
+            }
+        ).click(function() {
+            window.open('joke-' + $(this).data('joke') + '.html');
+        });
     } 
 }
 
@@ -208,6 +286,7 @@ $(function() {
         group_order = data['group_order'];
         joke_data = data['jokes'];
         connection_data = data['connections'];
+        episodes = data['episodes'];
 
         render_joke_viz();
     });

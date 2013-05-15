@@ -132,11 +132,26 @@ h1 + #story-meta { margin-top: -11px; }
     .joke-line {
         stroke-width: 8px;
         stroke: #f1f1f1;
+        
+        &:hover, &.highlight {
+            stroke: #F3D469;
+            cursor: pointer;
+        }
     }
     .connection-line {
         stroke: #ccc;
         stroke-opacity: .6;
         stroke-width: 1.5px;
+
+        &:hover, &.highlight {
+            stroke: #E38D2C;
+            stroke-width: 3px;
+            cursor: pointer;
+        }
+    }
+    .season-line {
+        stroke: #fff;
+        stroke-width: 6;
     }
 
     .dot {
@@ -152,7 +167,7 @@ h1 + #story-meta { margin-top: -11px; }
             stroke: #E38D2C;
         }
         &.joke-type-b { // joke in the background
-            fill: #FBF1CD;
+            fill: #F7E39B;
             stroke: #EFC637;
         }
         &.joke-type-f { // joke foreshadowed
@@ -205,6 +220,34 @@ h1 + #story-meta { margin-top: -11px; }
         text-transform: uppercase;
         height: 14px;
         overflow: hidden;
+    }
+    
+    .episode-labels {
+        position: absolute;
+        top: 0;
+        margin: -8px 0 0 0;
+        padding: 0;
+        list-style: none;
+        
+        li {
+            margin: 0;
+            padding: 0;
+            font-size: 9.5px;
+            line-height: 1;
+            display: inline-block;
+//            text-align: center;
+            color: #999;
+            
+            &.episode-season-number {
+                position: absolute;
+                top: 9px;
+                font-size: 11px;
+//                top: -5px;
+                text-transform: uppercase;
+                width: 80px;
+                white-space: nowrap;
+            }
+        }
     }
 }
 
@@ -308,6 +351,10 @@ footer {
 		.secondary ul { float: right; }
 		.secondary li { font-size: 10px; text-transform: none; }
 		.secondary a { color: #bccae5; }
+	}
+	
+	#viz {
+	    .episode-labels, .season-line, .connection-line { display: none; }
 	}
 }
 @media (max-width: 480px) {

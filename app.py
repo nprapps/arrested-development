@@ -8,10 +8,28 @@ import envoy
 from flask import Flask, Markup, abort, render_template
 
 import app_config
-from models import db, Joke, Episode, EpisodeJoke
+from models import Joke, Episode, EpisodeJoke
 from render_utils import flatten_app_config, make_context
 
 app = Flask(app_config.PROJECT_NAME)
+
+
+def _all_seasons():
+    output = []
+    for season in [1, 2, 3]:
+        season_dict = {}
+        season_dict['season'] = season
+        season_dict['episodes'] = []
+        for episode in Episode.select().where(Episode.season == season):
+            season_dict['episodes'].append({
+                'url': 'episode-%s.html' % episode.code,
+                'text': '%s: %s' % (episode.episode, episode.title),
+                'episode': episode.episode,
+                'code': episode.code
+            })
+        season_dict['episodes'] = sorted(season_dict['episodes'], key=lambda episode: episode['episode'])
+        output.append(season_dict)
+    return output
 
 
 @app.route('/episodes.html')
@@ -21,6 +39,7 @@ def episode_list():
     for episode in Episode.select():
         context['episodes'].append(episode)
     context['episodes'] = sorted(context['episodes'], key=lambda episode: episode.code)
+    context['seasons'] = _all_seasons()
     return render_template('episode_list.html', **context)
 
 
@@ -31,6 +50,7 @@ def joke_list():
     for joke in Joke.select():
         context['jokes'].append(joke)
     context['jokes'] = sorted(context['jokes'], key=lambda joke: joke.code)
+    context['seasons'] = _all_seasons()
     return render_template('joke_list.html', **context)
 
 
@@ -40,6 +60,7 @@ def _episode_detail(episode_code):
     context['episode'] = Episode.get(Episode.code == episode_code)
     context['episodejokes'] = EpisodeJoke.select().where(EpisodeJoke.episode == context['episode'])
     context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.joke.code)
+    context['seasons'] = _all_seasons()
     return render_template('episode_detail.html', **context)
 
 
@@ -49,7 +70,9 @@ def _joke_detail(joke_code):
     context['joke'] = Joke.get(Joke.code == joke_code)
     context['episodejokes'] = EpisodeJoke.select().where(EpisodeJoke.joke == context['joke'])
     context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.episode.code)
+    context['seasons'] = _all_seasons()
     return render_template('joke_detail.html', **context)
+
 
 @app.route('/')
 @app.route('/viz.html')
@@ -61,7 +84,7 @@ def _viz():
         context['jokes'].append(joke)
 
     context['jokes'] = sorted(context['jokes'], key=lambda joke: joke.code)
-
+    context['seasons'] = _all_seasons()
     return render_template('viz.html', **context)
 
 
