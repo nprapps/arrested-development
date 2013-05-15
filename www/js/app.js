@@ -145,13 +145,14 @@ function render_joke_viz() {
             function() {
                 var dot = $(this);
                 var dot_position = dot.position();
-                var dot_class = dot.attr('class').split(' ');
+                
                 $tooltip.empty();
                 $tooltip.append('<strong>Episode: ' + dot.data('episode-title') + ' (' + dot.data('episode') + ')</strong><br />');
                 $tooltip.append('<strong>' + dot.data('primary-character') + '</strong>: ' + dot.data('text'));
-                if (dot_class[1] == 'joke-type-b') {
+                
+                if (svgHasClass(dot,'joke-type-b')) {
                     $tooltip.append(' <em>(in background)</em>');
-                } else if (dot_class[1] == 'joke-type-f') {
+                } else if (svgHasClass(dot,'joke-type-f')) {
                     $tooltip.append(' <em>(foreshadowed)</em>');
                 }
                 $tooltip.css('left', (dot_position.left + (DOT_RADIUS * 2) + 3) + 'px' );
@@ -165,6 +166,19 @@ function render_joke_viz() {
             window.open('episode-' + $(this).data('episode') + '.html');
         });
     } 
+}
+
+function svgHasClass(obj,c) {
+    var classes = obj.attr('class').split(' ');
+    var hasClass = false;
+
+    for (var i = 0; i < classes.length; i ++) {
+        if (classes[i] == c) {
+            hasClass = true;
+            break;
+        }
+    }
+    return hasClass;
 }
 
 $(function() {
