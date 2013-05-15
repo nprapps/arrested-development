@@ -8,20 +8,21 @@
 
 <h2>All {{ episodejokes|length }} recurring jokes in this episode:</h2>
 <ul>{% for ej in episodejokes %}
-    <li>
+    <li class="{{ ej.formatted_type() }}">
         <a href="joke-{{ ej.joke.code }}.html">
-            <strong>{{ ej.joke.primary_character.strip() }}</strong> {{ ej.joke.text.strip() }}
+            <strong>{{ ej.joke.primary_character.strip() }}</strong>
+            {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
         </a>
         {% if ej.details != None %}
-            <span class="extra details">
+            <span class="extra details {{ ej.formatted_type() }}">
                 {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
             </span>
         {% endif %}
         {% if ej.connections() != [] %}{% for joke in ej.connections() %}
-            <span class="extra connection">
+            <span class="extra connection {{ ej.formatted_type() }}">
                 <a href="{{ joke.url }}">
                     <strong>{{ joke.primary_character }}</strong>
-                    {{ joke.text }}
+                    {{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
                 </a>
             </span>
         {% endfor %}{% endif %}
