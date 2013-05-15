@@ -1,7 +1,9 @@
 var EPISODE_COUNT = 53;
 
 var DOT_RADIUS = 5;
-var OFFSET_X = DOT_RADIUS + 3;
+var LABEL_WIDTH = 275;
+var OFFSET_X_RIGHT = DOT_RADIUS + 3;
+var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
 var OFFSET_Y = DOT_RADIUS + 3;
 
 var $viz = null;
@@ -18,10 +20,11 @@ function render_joke_viz() {
         var width = $viz.width();
         var height = $viz.height();
 
+        var labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
         var paper = new Raphael(viz_div, width, height);
 
         var line_interval = (height - (OFFSET_Y * 2)) / joke_data.length;
-        var dot_interval = (width - (OFFSET_X * 2)) / EPISODE_COUNT;
+        var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / EPISODE_COUNT;
 
         // Render joke lines
         for (var i = 0; i < joke_data.length; i++) {
@@ -32,12 +35,17 @@ function render_joke_viz() {
 
             var line_y = (i * line_interval) + OFFSET_Y;
 
-            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X) + "," + line_y + 'L' + (dot_interval * (last_episode_number + 1) - (OFFSET_X * 2)) + ',' + line_y;
+            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * (last_episode_number + 1) + OFFSET_X_LEFT - (OFFSET_X_RIGHT * 2)) + ',' + line_y;
             var line = paper.path(path)
 
             line.node.setAttribute('id', 'joke-' + joke['code']);
             line.node.setAttribute('class', 'joke-line');
+            
+            // add label
+            labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;"><strong>' + joke['primary_character'] + '</strong>: ' + joke['text'] + '</li>';
         }
+        labels += '</ul>';
+        $viz.append(labels);
 
         // Render related joke curves
         for (var i = 0; i < connection_data.length; i++) {
@@ -53,10 +61,10 @@ function render_joke_viz() {
             var to_episode_id = episode_number;
 
             var from_y = from_joke_id * line_interval + OFFSET_Y;
-            var from_x = from_episode_id * dot_interval + OFFSET_X;
+            var from_x = from_episode_id * dot_interval + OFFSET_X_LEFT;
 
             var to_y = to_joke_id * line_interval + OFFSET_Y;
-            var to_x = to_episode_id * dot_interval + OFFSET_X;
+            var to_x = to_episode_id * dot_interval + OFFSET_X_LEFT;
 
             var control_x1 = from_x - (dot_interval * 0.75);
             var control_y1 = from_y + line_interval;
@@ -82,7 +90,7 @@ function render_joke_viz() {
                 var episodejoke = episodejokes[j];
                 var episode_number = episodejoke['episode_data']['number'];
 
-                var dot = paper.circle((episode_number * dot_interval) + OFFSET_X, line_y, 5); 
+                var dot = paper.circle((episode_number * dot_interval) + OFFSET_X_LEFT, line_y, 5); 
 
                 dot.node.setAttribute('id', 'episodejoke-' + episode_number);
 
