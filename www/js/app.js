@@ -1,7 +1,7 @@
 var EPISODE_COUNT = 53;
 
 var DOT_RADIUS = 5;
-var LABEL_WIDTH = 275;
+var LABEL_WIDTH = 200;
 var OFFSET_X_RIGHT = DOT_RADIUS + 3;
 var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
 var OFFSET_Y = DOT_RADIUS + 3;
@@ -47,7 +47,7 @@ function render_joke_viz() {
             line.node.setAttribute('class', 'joke-line');
             
             // add label
-            labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;"><strong>' + joke['primary_character'] + '</strong>: ' + joke['text'] + '</li>';
+            labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;">' + joke['text'] + '</li>';
         }
 
         labels += '</ul>';
