@@ -19,6 +19,10 @@ var joke_code_to_index_map = {};
 var joke_code_to_line_y_map = {};
 var connection_data;
 
+
+/*
+ * Loop through data, render the big graphic
+ */
 function render_joke_viz() {
     if (!Raphael.svg) {
         alert('No SVG support');
@@ -44,7 +48,7 @@ function render_joke_viz() {
 
                 var episodejokes = joke['episodejokes'];
                 var first_episode_number = episodejokes[0]['episode_data']['number'];
-                var last_episode_number = episodejokes[episodejokes.length - 1]['episode_data']['number'];
+                var last_episode_number = EPISODE_COUNT + 1;
 
                 var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * (last_episode_number + 1) + OFFSET_X_LEFT - (OFFSET_X_RIGHT * 2)) + ',' + line_y;
                 var line = paper.path(path)
@@ -168,6 +172,11 @@ function render_joke_viz() {
     } 
 }
 
+
+/*
+ * Check if an SVG object has a particular class, 
+ * since jQuery .hasClass() doesn't work w/ classes applied to SVGs
+ */
 function svgHasClass(obj,c) {
     var classes = obj.attr('class').split(' ');
     var hasClass = false;
@@ -180,6 +189,7 @@ function svgHasClass(obj,c) {
     }
     return hasClass;
 }
+
 
 $(function() {
     $viz = $('#viz');
