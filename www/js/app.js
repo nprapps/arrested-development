@@ -64,7 +64,7 @@ function render_joke_viz() {
                 line.node.setAttribute('data-joke', joke['code']);
                 
                 // add label
-                joke_labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;">';
+                joke_labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '">';
                 joke_labels += '<a href="joke-' + joke['code'] + '.html">';
                 joke_labels += joke['text'];
                 joke_labels += '</a></li>';
@@ -246,8 +246,9 @@ function render_joke_viz() {
 
             for (var j = 0; j < related_jokes.length; j++) {
                 var joke_code2 = related_jokes[j];
+                var klass = joke_code2 == joke_code ? 'highlight-primary' : 'highlight';
                 var el = $('.joke-line.joke-' + joke_code2)[0];
-                var attr = el.getAttribute('class') + ' highlight';
+                var attr = el.getAttribute('class') + ' ' + klass;
                 el.setAttribute('class', attr);
             }
 
@@ -266,15 +267,16 @@ function render_joke_viz() {
 
             for (var j = 0; j < related_jokes.length; j++) {
                 var joke_code2 = related_jokes[j];
+                var klass = joke_code2 == joke_code ? 'highlight-primary' : 'highlight';
                 var el = $('.joke-line.joke-' + joke_code2)[0];
-                var attr = el.getAttribute('class').replace(' highlight', '');
+                var attr = el.getAttribute('class').replace(' ' + klass, '');
                 el.setAttribute('class', attr);
             }
 
             $('#label-' + joke_code).removeClass('highlight');
         }
         
-        $('.joke-line').hover(
+        $('.joke-line, .joke-label').hover(
             function(e) {
                 var joke_code = $(this).data('joke');
                 highlight_joke_network(joke_code);
