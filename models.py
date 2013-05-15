@@ -61,6 +61,14 @@ class EpisodeJoke(Model):
     class Meta:
         database = db
 
+    def formatted_type(self, **kwargs):
+            if self.joke_type == "f":
+                return "foreshadowing"
+            elif self.joke_type == "b":
+                return "background"
+            else:
+                return "standard"
+
     def connections(self):
         results = []
         output = []

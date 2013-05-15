@@ -3,8 +3,7 @@
 {% block content %}
 
 <h2><strong>{{ joke.primary_character }}</strong> {{ joke.text }}</h2>
-<h4>{{ joke.blurb }} This joke appears in <a href="#episodes">{{ episodejokes|length }}</a> episodes.</h4>
-<h2>Episodes featuring this joke:</h2>
+<h2>{{ episodejokes|length }} episodes feature this joke:</h2>
 <ul>{% for ej in episodejokes %}
     <li>
         <a href="episode-{{ ej.episode.code }}.html">

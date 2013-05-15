@@ -3,27 +3,26 @@
 {% block content %}
 
 <h1><strong>{{ episode.code}}</strong> {{ episode.title }}</h1>
-<p>The {{ episode.episode }} episode in season {{ episode.season }}, "{{ episode.title }}" originally aired on {{ episode.run_date.strftime('%A, %B %e, %Y') }} and was watched by {{ episode.rating }} million viewers.
-{% if episode.written_by == episode.directed_by %}
-It was written and directed by {{ episode.written_by.replace(', ', ' and ') }}.
-{% else %}It was written by {{ episode.written_by.replace(', ', ' and ') }} and directed by {{ episode.directed_by.replace(', ', ' and ') }}.{% endif %}</p>
+<p>Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }}.</p>
+<p>Watched by {{ episode.rating }} million viewers.</p>
 
-<h2>All {{ episodejokes|length }} recurring jokes in this episode:</h2>
+<h2>{{ episodejokes|length }} recurring jokes in this episode:</h2>
 <ul>{% for ej in episodejokes %}
-    <li>
+    <li class="{{ ej.formatted_type() }}">
         <a href="joke-{{ ej.joke.code }}.html">
-            <strong>{{ ej.joke.primary_character.strip() }}</strong> {{ ej.joke.text.strip() }}
+            <strong>{{ ej.joke.primary_character.strip() }}</strong>
+            {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
         </a>
         {% if ej.details != None %}
-            <span class="extra details">
+            <span class="extra details {{ ej.formatted_type() }}">
                 {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
             </span>
         {% endif %}
         {% if ej.connections() != [] %}{% for joke in ej.connections() %}
-            <span class="extra connection">
+            <span class="extra connection {{ ej.formatted_type() }}">
                 <a href="{{ joke.url }}">
                     <strong>{{ joke.primary_character }}</strong>
-                    {{ joke.text }}
+                    {{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
                 </a>
             </span>
         {% endfor %}{% endif %}
