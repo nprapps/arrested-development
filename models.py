@@ -21,10 +21,6 @@ class Joke(Model):
     class Meta:
         database = db
 
-    @classmethod
-    def slug():
-        return slugify(self.text)
-
     def episode_count(self):
         return EpisodeJoke.select().where(EpisodeJoke.joke == self).count()
 
@@ -48,10 +44,6 @@ class Episode(Model):
     class Meta:
         database = db
 
-    @classmethod
-    def slug():
-        return slugify(self.code)
-
     def joke_count(self):
         return EpisodeJoke.select().where(EpisodeJoke.episode == self).count()
 
@@ -69,9 +61,26 @@ class EpisodeJoke(Model):
     class Meta:
         database = db
 
-    @classmethod
-    def slug():
-        return slugify(self.code)
+    def connections(self):
+        results = []
+        output = []
+        try:
+            results.append(JokeConnection.get(joke1=self.joke, episode=self.episode).__dict__['_data'])
+        except JokeConnection.DoesNotExist:
+            pass
+        try:
+            results.append(JokeConnection.get(joke2=self.joke, episode=self.episode).__dict__['_data'])
+        except JokeConnection.DoesNotExist:
+            pass
+        for joke in results:
+            if joke['joke1'] == self.joke.id:
+                related = Joke.get(id=int(joke['joke2']))
+                output.append({'url': 'joke-%s.html' % related.code, 'text': related.text, 'primary_character': related.primary_character})
+            if joke['joke2'] == self.id:
+                related = Joke.get(id=int(joke['joke1']))
+                output.append({'url': 'joke-%s.html' % related.code, 'text': related.text, 'primary_character': related.primary_character})
+
+        return output
 
 
 class JokeConnection(Model):
@@ -81,4 +90,3 @@ class JokeConnection(Model):
 
     class Meta:
         database = db
-
