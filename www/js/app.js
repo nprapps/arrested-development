@@ -36,7 +36,8 @@ function render_joke_viz() {
 
             var episodejokes = joke['episodejokes'];
             var first_episode_number = episodejokes[0]['episode_data']['number'];
-            var last_episode_number = episodejokes[episodejokes.length - 1]['episode_data']['number'];
+//            var last_episode_number = episodejokes[episodejokes.length - 1]['episode_data']['number'];
+            var last_episode_number = EPISODE_COUNT + 1;
 
             var line_y = (i * line_interval) + OFFSET_Y;
 
