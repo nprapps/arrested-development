@@ -98,14 +98,21 @@ def write_jokes_json():
         jokefile.write(json.dumps(payload))
 
 
-def update_episode_extras():
+def load_wikipedia_html():
     """
-    Gets extra episode data from Wikipedia, including directors/writers, run date
-    and production code. Also grabs the newest season (4).
+    Fetches the wikipedia HTML file for AD episodes.
+    """
+    r = requests.get('http://en.wikipedia.org/wiki/List_of_Arrested_Development_episodes')
+    with open('data/List_of_Arrested_Development_episodes.html', 'wb') as htmlfile:
+        htmlfile.write(r.content)
+
+
+def parse_wikipedia_html(htmlfile):
+    """
+    Parses the wikipedia HTML for some episode extras.
     """
     LABELS = ['episode', 'title', 'directed_by', 'written_by', 'run_date', 'production_code']
-    r = requests.get('http://en.wikipedia.org/wiki/List_of_Arrested_Development_episodes')
-    soup = BeautifulSoup(r.content)
+    soup = BeautifulSoup(htmlfile)
     tables = soup.select('table.wikitable')[1:5]
     season = 1
     episodes = []
@@ -176,6 +183,21 @@ def update_episode_extras():
             e = Episode.create(**episode)
             e.save()
             # print '+ Episode extra: %s' % e.code
+
+
+def update_episode_extras():
+    """
+    Gets extra episode data from Wikipedia, including directors/writers, run date
+    and production code. Also grabs the newest season (4).
+    """
+
+    try:
+        with open('data/List_of_Arrested_Development_episodes.html', 'rb') as htmlfile:
+            parse_wikipedia_html(htmlfile)
+
+    except IOError:
+        load_wikipedia_html()
+        update_episode_extras()
 
 
 def import_sheet(sheet):
