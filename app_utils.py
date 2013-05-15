@@ -83,7 +83,7 @@ def write_jokes_json():
         del joke_dict['id']
         payload['jokes'].append(joke_dict)
 
-    payload['jokes'] = sorted(payload['jokes'], key=lambda j: j['code'])
+    payload['jokes'] = sorted(payload['jokes'], key=lambda j: j['episodejokes'][0]['episode_data']['number'])
 
     for connection in JokeConnection.select():
         payload['connections'].append({
