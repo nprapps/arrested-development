@@ -137,9 +137,8 @@ h1 + #story-meta { margin-top: -11px; }
             stroke: #F3D469;
             cursor: pointer;
         }
-
         &.highlight {
-            stroke: #ccc;
+            stroke: #f9eab4;
         }
     }
     .connection-line {
@@ -159,7 +158,6 @@ h1 + #story-meta { margin-top: -11px; }
     }
 
     .dot {
-        stroke: #B39429;
         stroke-width: 1px;
         
         &:hover {
@@ -167,16 +165,19 @@ h1 + #story-meta { margin-top: -11px; }
             cursor: pointer;
         }
         &.joke-type-1 { // regular joke instance
-            fill: #EFC637;
-            stroke: #E38D2C;
+            fill: #E38D2C;
+            stroke: #AA6A21;
+            &:hover { stroke: #AA6A21; }
         }
         &.joke-type-b { // joke in the background
-            fill: #F7E39B;
-            stroke: #EFC637;
+            fill: #EFC637;
+            stroke: #B39429;
+            &:hover { stroke: #AA6A21; }
         }
         &.joke-type-f { // joke foreshadowed
             fill: white;
-            stroke: #EFC637;
+            stroke: #B39429;
+            &:hover { stroke: #AA6A21; }
         }
     }
     
