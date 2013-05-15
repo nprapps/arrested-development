@@ -1,31 +1,37 @@
 {% extends "_base.html" %}
 
+{% block body_class %}episode-detail{% endblock body_class %}
+
 {% block content %}
+<div class="episode-header">
+    <p class="episode-meta">Season {{ episode.season}}, Episode {{ episode.episode }}</p>
+    <h1> {{ episode.title }}</h1>
+    <p class="episode-meta">Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }} | Watched by <span class="viewer-count">{{ episode.rating }} million</span> viewers.</p>
+    <h2><span class="joke-count">{{ episodejokes|length }}</span> recurring jokes in this episode:</h2>
+</div>
 
-<h1><strong>{{ episode.code}}</strong> {{ episode.title }}</h1>
-<p>Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }}.</p>
-<p>Watched by {{ episode.rating }} million viewers.</p>
+{% for group in episodejokes|groupby('joke.primary_character') %}
+<h3>{{ group.grouper.strip() }}</h3>
 
-<h2>{{ episodejokes|length }} recurring jokes in this episode:</h2>
-<ul>{% for ej in episodejokes %}
-    <li class="{{ ej.formatted_type() }}">
+<ul class="joke-list">{% for ej in group.list %}
+    <li class="joke {{ ej.formatted_type() }}">
         <a href="joke-{{ ej.joke.code }}.html">
-            <strong>{{ ej.joke.primary_character.strip() }}</strong>
             {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
         </a>
         {% if ej.details != None %}
-            <span class="extra details {{ ej.formatted_type() }}">
+            <p class="extra details {{ ej.formatted_type() }}">
                 {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
-            </span>
+            </p>
         {% endif %}
         {% if ej.connections() != [] %}{% for joke in ej.connections() %}
-            <span class="extra connection {{ ej.formatted_type() }}">
+            <p class="extra connection {{ ej.formatted_type() }}">
                 <a href="{{ joke.url }}">
                     <strong>{{ joke.primary_character }}</strong>
                     {{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
                 </a>
-            </span>
+            </p>
         {% endfor %}{% endif %}
     </li>
 {% endfor %}</ul>
+{% endfor %}
 {% endblock %}
