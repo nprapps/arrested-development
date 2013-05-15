@@ -1,0 +1,10 @@
+<div class="container">
+    <select>
+        {% for season in seasons %}
+        <option value=""><strong>Season {{ season.season }}</strong></option>
+        {% for episode in season.episodes %}
+        <option value="{{ episode.url }}">{{ episode.text }}</option>
+        {% endfor %}
+        {% endfor %}
+    </select>
+</div>
