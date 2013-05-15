@@ -192,11 +192,21 @@ h1 + #story-meta { margin-top: -11px; }
             line-height: 1;
             text-align: right;
             width: 100%;
+            height: 12px;
             overflow: hidden;
-            white-space: nowrap;
+            
+            a {
+                padding: 2px 4px;
+                margin-top: -2px;
+                display: block;
+                white-space: nowrap;
+                font-weight: 500;
+            }
 
             &:hover a, &.highlight a {
-                color: #F00;
+                color: #E38D2C;
+                font-weight: bold;
+                border-radius: 4px;
             }
         }
     }
