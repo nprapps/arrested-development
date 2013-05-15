@@ -22,6 +22,7 @@ var episodes;
 var joke_code_to_index_map = {};
 var joke_code_to_line_y_map = {};
 var joke_code_to_related_jokes_map = {};
+var episode_number_to_jokes_map = {};
 
 /*
  * Loop through data, render the big graphic
@@ -145,7 +146,7 @@ function render_joke_viz() {
             var line = paper.path(path);
 
             line.node.setAttribute('id', 'line-' + joke1_code + '-to-' + joke2_code + '-e' + episode_number);
-            line.node.setAttribute('class', 'connection-line joke-' + joke1_code + ' joke-' + joke2_code);
+            line.node.setAttribute('class', 'connection-line joke-' + joke1_code + ' joke-' + joke2_code + ' episode-' + episode_number);
         }
 
         line_y = OFFSET_Y;
@@ -172,10 +173,13 @@ function render_joke_viz() {
                     var episode_code = episode['code'];
                     var episode_title = episode['title'];
 
+                    if (!(episode_number in episode_number_to_jokes_map)) {
+                        episode_number_to_jokes_map[episode_number] = [];
+                    }
+
+                    episode_number_to_jokes_map[episode_number].push(joke_code);
+
                     var dot = paper.circle((episode_number * dot_interval) + OFFSET_X_LEFT, line_y, 5); 
-
-                    dot.node.setAttribute('id', 'episodejoke-' + episode_number);
-
                     var dot_class = 'dot ' + 'joke-type-' + episodejoke['joke_type'];  
                 
                     dot.node.setAttribute('class', dot_class);
@@ -183,6 +187,7 @@ function render_joke_viz() {
                     dot.node.setAttribute('data-joke', joke_code);
                     dot.node.setAttribute('data-text', joke_text);
                     dot.node.setAttribute('data-episode', episode_code);
+                    dot.node.setAttribute('data-episode-number', episode_number);
                     dot.node.setAttribute('data-episode-title', episode_title);
                 }
 
@@ -221,21 +226,27 @@ function render_joke_viz() {
                 $tooltip.css('top', tt_top + 'px' );
                 $tooltip.fadeIn('fast');
 
-                highlight_joke_network($dot.data('joke'));
+                highlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
             },
             function() {
                 var $dot = $(this);
 
                 $tooltip.fadeOut('fast');
                 
-                dehighlight_joke_network($dot.data('joke'));
+                dehighlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
             }
         ).click(function() {
             window.open('episode-' + $(this).data('episode') + '.html','_self');
         });
 
-        function highlight_joke_network(joke_code) {
-            var connections = $('.connection-line.joke-' + joke_code);
+        function highlight_joke_network(joke_code, episode_number) {
+            var selector = '.connection-line.joke-' + joke_code;
+
+            if (episode_number) {
+                selector += '.episode-' + episode_number;
+            }
+
+            var connections = $(selector);
             var related_jokes = joke_code_to_related_jokes_map[joke_code];
 
             for (var c = 0; c < connections.length; c++) {
@@ -246,6 +257,14 @@ function render_joke_viz() {
 
             for (var j = 0; j < related_jokes.length; j++) {
                 var joke_code2 = related_jokes[j];
+                
+                if (episode_number) {
+                    // When we have an episode number, only highlight directly connected joke lines
+                    if (!_.indexOf(episode_number_to_jokes_map[episode_number], joke_code)) {
+                        continue;
+                    }
+                }
+
                 var klass = joke_code2 == joke_code ? 'highlight-primary' : 'highlight';
                 var el = $('.joke-line.joke-' + joke_code2)[0];
                 var attr = el.getAttribute('class') + ' ' + klass;
@@ -255,8 +274,14 @@ function render_joke_viz() {
             $('#label-' + joke_code).addClass('highlight');
         }
 
-        function dehighlight_joke_network(joke_code) {
-            var connections = $('.connection-line.joke-' + joke_code);
+        function dehighlight_joke_network(joke_code, episode_number) {
+            var selector = '.connection-line.joke-' + joke_code;
+
+            if (episode_number) {
+                selector += '.episode-' + episode_number;
+            }
+
+            var connections = $(selector);
             var related_jokes = joke_code_to_related_jokes_map[joke_code];
 
             for (var c = 0; c < connections.length; c++) {
