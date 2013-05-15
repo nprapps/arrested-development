@@ -436,6 +436,10 @@ def cron_test():
 Application-specific jobs
 """
 def bootstrap_data():
+    """
+    Runs all the commands necessary to build the system from scratch
+    or rebuild the system to the latest available data.
+    """
     setup_tables()
     update_episodes()
     update_jokes()
@@ -449,6 +453,10 @@ def bootstrap_data():
 
 
 def setup_tables():
+    """
+    Deletes the sqlite db and associated data csv files.
+    Rebuilds the db and the tables for our models.
+    """
     with settings(warn_only=True):
         local('rm -rf data/app.db')
         local('rm -rf data/broken.csv')
@@ -457,61 +465,102 @@ def setup_tables():
 
 
 def update_episodes():
+    """
+    GoogleDocs: Parses episode data.
+    """
     import_sheet('1')
     parse_sheet('1', 'episodes')
 
 
 def update_jokes():
+    """
+    GoogleDocs: Parses joke data.
+    """
     import_sheet('0')
     parse_sheet('0', 'jokes')
 
 
 def update_episodejokes():
+    """
+    GoogleDocs: Parses episodejoke data.
+    """
     import_sheet('0')
     parse_sheet('0', 'episodejokes')
 
 
 def update_joke_blurbs():
+    """
+    GoogleDocs: Gets Adam's joke blurbs.
+    """
     import_sheet('7')
     parse_sheet('7', 'blurbs')
 
 
 def update_origin():
+    """
+    GoogleDocs: Parses episodejoke origin data.
+    """
     import_sheet('4')
     parse_sheet('4', 'episodejokes')
 
 
 def update_connection():
+    """
+    GoogleDocs: Parses episodejoke connection data.
+    """
     import_sheet('5')
     parse_sheet('5', 'episodejokes')
 
 
 def update_details():
+    """
+    GoogleDocs: Parses episodejoke detail data.
+    """
     import_sheet('3')
     parse_sheet('3', 'episodejokes')
 
 
 def import_sheet(sheet):
+    """
+    Imports a sheet from GoogleDocs.
+    Don't call this directly from fab.
+    """
     app_utils.import_sheet(sheet)
 
 
 def parse_sheet(sheet, model):
+    """
+    Parses a sheet from GoogleDocs.
+    Don't call this directly from fab.
+    """
     app_utils.parse_sheet(sheet, model)
 
 
 def update_episode_extras():
+    """
+    Gets episode extras from Wikipedia.
+    """
     app_utils.update_episode_extras()
 
 
 def write_jokes_json():
+    """
+    Writes jokes JSON.
+    """
     app_utils.write_jokes_json()
 
 
 def build_connections():
+    """
+    Builds connections between instances of episodejokes.
+    """
     app_utils.build_connections()
 
 
 def build_regression_csv():
+    """
+    Writes a CSV for @stiles to use to do a regression.
+    """
     app_utils.build_regression_csv()
 
 
