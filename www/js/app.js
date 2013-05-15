@@ -48,7 +48,7 @@ function render_joke_viz() {
 
                 var episodejokes = joke['episodejokes'];
                 var first_episode_number = episodejokes[0]['episode_data']['number'];
-                var last_episode_number = EPISODE_COUNT + 1;
+                var last_episode_number = EPISODE_COUNT + 1; // +1 to make sure it goes off the side
 
                 var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * (last_episode_number + 1) + OFFSET_X_LEFT - (OFFSET_X_RIGHT * 2)) + ',' + line_y;
                 var line = paper.path(path)
@@ -94,7 +94,7 @@ function render_joke_viz() {
                 to_y = from_y;
             }
 
-            var control_x1 = from_x - dot_interval;
+            var control_x1 = from_x + dot_interval;
             var control_y1 = from_y + LINE_INTERVAL;
 
             var control_x2 = control_x1;
