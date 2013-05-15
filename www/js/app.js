@@ -32,7 +32,8 @@ function render_joke_viz() {
         var width = $viz.width();
         var height = $viz.height();
 
-        var labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
+        var episode_labels = '';
+        var joke_labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
         var headers = '';
         var paper = new Raphael(viz_div, width, height);
 
@@ -61,10 +62,10 @@ function render_joke_viz() {
                 line.node.setAttribute('data-joke', joke['code']);
                 
                 // add label
-                labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;">';
-                labels += '<a href="joke-' + joke['code'] + '.html">';
-                labels += joke['text'];
-                labels += '</a></li>';
+                joke_labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;">';
+                joke_labels += '<a href="joke-' + joke['code'] + '.html">';
+                joke_labels += joke['text'];
+                joke_labels += '</a></li>';
                 
                 // add header if applicable
                 if (i == 0 || (joke['primary_character'] != jokes[i-1]['primary_character'])) {
@@ -76,13 +77,10 @@ function render_joke_viz() {
         
             line_y += GROUP_INTERVAL;
         }
-        labels += '</ul>';
-        $viz.append(labels);
+        joke_labels += '</ul>';
+        $viz.append(joke_labels);
         $viz.append(headers);
         
-        // Render episode labels / lines
-        console.log(joke_data);
-
         // Render related joke curves
         for (var i = 0; i < connection_data.length; i++) {
             var connection = connection_data[i];
@@ -160,6 +158,20 @@ function render_joke_viz() {
 
             line_y += GROUP_INTERVAL;
         }
+        
+        // render episode labels
+        episode_labels += '<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px;">';
+        for (var e in episodes) {
+            var episode = episodes[e];
+            if (e == 1 || (episodes[e-1] != undefined && episode['season'] != episodes[e-1]['season'])) {
+                episode_labels += '<li class="episode-season-number">Season ' + episode['season'];
+            }
+            episode_labels += '<li class="episode-number" style="width: ' + dot_interval + 'px;" id="' + episode['code'] + '" data-episode="' + episode['episode'] + '" data-id="' + episode['id'] + '" data-season="' + episode['season'] + '" + data-episode-title="' + episode['title'] + '">';
+            episode_labels += episode['episode'];
+            episode_labels += '</li>';
+        }
+        episode_labels += '</ul>';
+        $viz.append(episode_labels);
         
         $('.dot').hover(
             function() {
