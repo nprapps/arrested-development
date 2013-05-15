@@ -1,17 +1,29 @@
-<div class="container">
-    <select id="episodenav">
-        {% for season in seasons %}
-        <option value=""><strong>Season {{ season.season }}</strong></option>
-        {% for e in season.episodes %}
-        <option
-            {% if episode %}
-            {% if e.code == episode.code %}
-            selected=selected
-            {% endif %}
-            {% endif %}
-            value="{{ e.url }}">{{ e.text }}</option>
-        {% endfor %}
-        {% endfor %}
-    </select>
-    <script type="text/javascript">$('#episodenav').on('change', function(){if ($(this).attr('value') != '') {document.location.href = $(this).attr('value')}});</script>
-</div>
+<nav class="project-nav navbar navbar-static-top navbar-inverse">
+    <div class="navbar-inner">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+        <a class="brand">Come On</a>
+
+        <div class="nav-collapse collapse">
+            <ul class="nav">
+                {% for season in seasons %}
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Season {{ season.season }} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        {% for e in season.episodes %}<li>
+                            <a {% if episode %}
+                            {% if e.code == episode.code %}
+                            selected=selected
+                            {% endif %}
+                            {% endif %}
+                            href="{{ e.url }}">{{ e.text }}</a>
+                        </li>
+                    {% endfor %}</ul>
+                </li>{% endfor %}
+            </ul>
+        </div>
+        
+    </div>
+</nav>
