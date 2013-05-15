@@ -129,7 +129,7 @@ h1 + #story-meta { margin-top: -11px; }
         stroke-width: 8px;
         stroke: #f1f1f1;
         
-        &:hover {
+        &:hover, &.highlight {
             stroke: #F3D469;
             cursor: pointer;
         }
@@ -138,6 +138,11 @@ h1 + #story-meta { margin-top: -11px; }
         stroke: #ccc;
         stroke-opacity: .6;
         stroke-width: 1.5px;
+
+        &:hover, &.highlight {
+            stroke-width: 3px;
+            cursor: pointer;
+        }
     }
     .season-line {
         stroke: #fff;
