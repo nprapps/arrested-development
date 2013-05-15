@@ -58,13 +58,29 @@ def write_jokes_json():
     Produces a list of jokes and within that a list of episodejokes
     where the joke appears, sorted by episode index number.
     """
-
     payload = {
+        'group_order': [
+            'The Bluths',
+            'Michael',
+            'G.O.B.',
+            'Tobias',
+            'Lindsay',
+            'Buster',
+            'Oscar',
+            'George Sr.',
+            'Lucille',
+            'Maeby',
+            'George Michael',
+            'Miscellaneous'
+        ],
         'jokes': {},
         'connections': []
     }
 
     for joke in Joke.select().order_by(Joke.primary_character):
+        if joke.primary_character not in payload['group_order']:
+            joke.primary_character = 'Miscellaneous'
+
         if joke.primary_character not in payload['jokes']:
             payload['jokes'][joke.primary_character] = []
 

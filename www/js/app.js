@@ -13,8 +13,10 @@ var viz_div = null;
 var paper = null;
 var $tooltip = null;
 
+var group_order;
 var joke_data;
 var joke_code_to_index_map = {};
+var joke_code_to_line_y_map = {};
 var connection_data;
 
 function render_joke_viz() {
@@ -31,12 +33,14 @@ function render_joke_viz() {
         var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / EPISODE_COUNT;
 
         // Render joke lines
-        for (var group in joke_data) {
+        for (var g in group_order) {
+            var group = group_order[g];
             var jokes = joke_data[group];
 
             for (var i = 0; i < jokes.length; i++) {
                 var joke = jokes[i];
                 joke_code_to_index_map[joke['code']] = i;
+                joke_code_to_line_y_map[joke['code']] = line_y;
 
                 var episodejokes = joke['episodejokes'];
                 var first_episode_number = episodejokes[0]['episode_data']['number'];
@@ -61,7 +65,7 @@ function render_joke_viz() {
         $viz.append(labels);
 
         // Render related joke curves
-        /*for (var i = 0; i < connection_data.length; i++) {
+        for (var i = 0; i < connection_data.length; i++) {
             var connection = connection_data[i];
             var joke1_code = connection.joke1_code;
             var joke2_code = connection.joke2_code;
@@ -73,10 +77,10 @@ function render_joke_viz() {
             var to_joke_id = joke_code_to_index_map[joke2_code];
             var to_episode_id = episode_number;
 
-            var from_y = from_joke_id * LINE_INTERVAL+ OFFSET_Y;
+            var from_y = joke_code_to_line_y_map[joke1_code];;
             var from_x = from_episode_id * dot_interval + OFFSET_X_LEFT;
 
-            var to_y = to_joke_id * LINE_INTERVAL + OFFSET_Y;
+            var to_y = joke_code_to_line_y_map[joke2_code];;
             var to_x = to_episode_id * dot_interval + OFFSET_X_LEFT;
 
             // Ensure connections are drawn north->south
@@ -97,12 +101,13 @@ function render_joke_viz() {
 
             line.node.setAttribute('id', 'line-' + joke1_code + '-to-' + joke2_code + '-e' + episode_number);
             line.node.setAttribute('class', 'connection-line');
-        }*/
+        }
 
         line_y = OFFSET_Y;
 
         // Render episode dots
-        for (var group in joke_data) {
+        for (var g in group_order) {
+            var group = group_order[g];
             var jokes = joke_data[group];
 
             for (var i = 0; i < jokes.length; i++) {
@@ -168,6 +173,7 @@ $(function() {
     $tooltip = $('#viz-tooltip');
 
     $.getJSON('live-data/jokes.json', function(data) {
+        group_order = data['group_order'];
         joke_data = data['jokes'];
         connection_data = data['connections'];
 
