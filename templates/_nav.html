@@ -1,10 +1,17 @@
 <div class="container">
-    <select>
+    <select id="episodenav">
         {% for season in seasons %}
         <option value=""><strong>Season {{ season.season }}</strong></option>
-        {% for episode in season.episodes %}
-        <option value="{{ episode.url }}">{{ episode.text }}</option>
+        {% for e in season.episodes %}
+        <option
+            {% if episode %}
+            {% if e.code == episode.code %}
+            selected=selected
+            {% endif %}
+            {% endif %}
+            value="{{ e.url }}">{{ e.text }}</option>
         {% endfor %}
         {% endfor %}
     </select>
+    <script type="text/javascript">$('#episodenav').on('change', function(){if ($(this).attr('value') != '') {document.location.href = $(this).attr('value')}});</script>
 </div>

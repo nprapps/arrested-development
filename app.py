@@ -24,7 +24,8 @@ def _all_seasons():
             season_dict['episodes'].append({
                 'url': 'episode-%s.html' % episode.code,
                 'text': '%s: %s' % (episode.episode, episode.title),
-                'episode': episode.episode
+                'episode': episode.episode,
+                'code': episode.code
             })
         season_dict['episodes'] = sorted(season_dict['episodes'], key=lambda episode: episode['episode'])
         output.append(season_dict)

@@ -144,6 +144,10 @@ h1 + #story-meta { margin-top: -11px; }
             cursor: pointer;
         }
     }
+    .season-line {
+        stroke: #ccc;
+        stroke-width: 1;
+    }
 
     .dot {
         stroke: #B39429;
@@ -211,6 +215,30 @@ h1 + #story-meta { margin-top: -11px; }
         text-transform: uppercase;
         height: 14px;
         overflow: hidden;
+    }
+    
+    .episode-labels {
+        position: absolute;
+        top: 0;
+        margin: -6px 0 0 0;
+        padding: 0;
+        list-style: none;
+        
+        li {
+            margin: 0;
+            padding: 0;
+            font-size: 9.5px;
+            line-height: 1;
+            display: inline-block;
+            text-align: center;
+            color: #999;
+            
+            &.episode-season-number {
+                position: absolute;
+                top: -5px;
+                text-transform: uppercase;
+            }
+        }
     }
 }
 
