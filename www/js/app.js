@@ -9,6 +9,7 @@ var OFFSET_Y = DOT_RADIUS + 3;
 var $viz = null;
 var viz_div = null;
 var paper = null;
+var $tooltip = null;
 
 var joke_data;
 var connection_data;
@@ -83,12 +84,16 @@ function render_joke_viz() {
         for (var i = 0; i < joke_data.length; i++) {
             var joke = joke_data[i];
             var episodejokes = joke['episodejokes'];
+            var joke_primary_character = joke['primary_character'];
+            var joke_text = joke['text'];
 
             var line_y = i * line_interval + OFFSET_Y;
 
             for (var j = 0; j < episodejokes.length; j++) {
                 var episodejoke = episodejokes[j];
                 var episode_number = episodejoke['episode_data']['number'];
+                var episode_code = episodejoke['episode_data']['code'];
+                var episode_title = episodejoke['episode_data']['title'];
 
                 var dot = paper.circle((episode_number * dot_interval) + OFFSET_X_LEFT, line_y, 5); 
 
@@ -97,14 +102,43 @@ function render_joke_viz() {
                 var dot_class = 'dot ' + 'joke-type-' + episodejoke['joke_type'];  
             
                 dot.node.setAttribute('class', dot_class);
+                dot.node.setAttribute('data-primary-character', joke_primary_character);
+                dot.node.setAttribute('data-text', joke_text);
+                dot.node.setAttribute('data-episode', episode_code);
+                dot.node.setAttribute('data-episode-title', episode_title);
             }
         }
+        
+        $('.dot').hover(
+            function() {
+                var dot = $(this);
+                var dot_position = dot.position();
+                var dot_class = dot.attr('class').split(' ');
+                $tooltip.empty();
+                $tooltip.append('<strong>Episode: ' + dot.data('episode-title') + ' (' + dot.data('episode') + ')</strong><br />');
+                $tooltip.append('<strong>' + dot.data('primary-character') + '</strong>: ' + dot.data('text'));
+                if (dot_class[1] == 'joke-type-b') {
+                    $tooltip.append(' <em>(in background)</em>');
+                } else if (dot_class[1] == 'joke-type-f') {
+                    $tooltip.append(' <em>(foreshadowed)</em>');
+                }
+                $tooltip.css('left', (dot_position.left + (DOT_RADIUS * 2) + 3) + 'px' );
+                $tooltip.css('top', (dot_position.top + (DOT_RADIUS * 2) + 3) + 'px' );
+                $tooltip.fadeIn('fast');
+            },
+            function() {
+                $tooltip.fadeOut('fast');
+            }
+        ).click(function() {
+            window.open('episode-' + $(this).data('episode') + '.html');
+        });
     } 
 }
 
 $(function() {
     $viz = $('#viz');
     viz_div = $viz[0];
+    $tooltip = $('#viz-tooltip');
 
     $.getJSON('live-data/jokes.json', function(data) {
         joke_data = data['jokes'];
