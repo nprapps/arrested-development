@@ -25,11 +25,12 @@ function render_joke_viz() {
         var labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
         var paper = new Raphael(viz_div, width, height);
 
-        var line_interval = (height - (OFFSET_Y * 2)) / joke_data.length;
+        var joke_count = joke_data.length;
+        var line_interval = (height - (OFFSET_Y * 2)) / joke_count;
         var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / EPISODE_COUNT;
 
         // Render joke lines
-        for (var i = 0; i < joke_data.length; i++) {
+        for (var i = 0; i < joke_count; i++) {
             var joke = joke_data[i];
             joke_code_to_index_map[joke['code']] = i;
 
@@ -48,6 +49,7 @@ function render_joke_viz() {
             // add label
             labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;"><strong>' + joke['primary_character'] + '</strong>: ' + joke['text'] + '</li>';
         }
+
         labels += '</ul>';
         $viz.append(labels);
 
@@ -91,7 +93,7 @@ function render_joke_viz() {
         }
 
         // Render episode dots
-        for (var i = 0; i < joke_data.length; i++) {
+        for (var i = 0; i < joke_count; i++) {
             var joke = joke_data[i];
             var episodejokes = joke['episodejokes'];
             var joke_primary_character = joke['primary_character'];
