@@ -89,7 +89,6 @@ function render_joke_viz() {
             var episode = episodes[e];
             var episode_number = episode['number'];
             var episode_episode = episode['episode'];
-            console.log(episode);
 
             if (e == 1 || (episodes[e-1] != undefined && episode['season'] != episodes[e-1]['season'])) {
                 var label_x = dot_interval * (episode_number - 1) + DOT_RADIUS;
@@ -224,7 +223,6 @@ function render_joke_viz() {
         });
 
         function highlight_joke_network(joke_code) {
-            console.log(joke_code);
             var connections = $('.connection-line.joke-' + joke_code);
             var related_jokes = joke_code_to_related_jokes_map[joke_code];
 
