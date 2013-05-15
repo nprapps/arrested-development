@@ -9,6 +9,7 @@ var viz_div = null;
 var paper = null;
 
 var joke_data;
+var joke_code_to_index_map = {};
 var connection_data;
 
 function render_joke_viz() {
@@ -26,6 +27,8 @@ function render_joke_viz() {
         // Render joke lines
         for (var i = 0; i < joke_data.length; i++) {
             var joke = joke_data[i];
+            joke_code_to_index_map[joke['code']] = i;
+
             var episodejokes = joke['episodejokes'];
             var first_episode_number = episodejokes[0]['episode_data']['number'];
             var last_episode_number = episodejokes[episodejokes.length - 1]['episode_data']['number'];
@@ -46,10 +49,10 @@ function render_joke_viz() {
             var joke2_code = connection.joke2_code;
             var episode_number = connection.episode_number;
 
-            var from_joke_id = joke1_code - 1;
+            var from_joke_id = joke_code_to_index_map[joke1_code];
             var from_episode_id = episode_number;
 
-            var to_joke_id = joke2_code - 1
+            var to_joke_id = joke_code_to_index_map[joke2_code];
             var to_episode_id = episode_number;
 
             var from_y = from_joke_id * line_interval + OFFSET_Y;
@@ -58,7 +61,14 @@ function render_joke_viz() {
             var to_y = to_joke_id * line_interval + OFFSET_Y;
             var to_x = to_episode_id * dot_interval + OFFSET_X;
 
-            var control_x1 = from_x - (dot_interval * 0.75);
+            // Ensure connections are drawn north->south
+            if (to_y < from_y) {
+                var tmp = from_y;
+                from_y = to_y;
+                to_y = from_y;
+            }
+
+            var control_x1 = from_x - dot_interval;
             var control_y1 = from_y + line_interval;
 
             var control_x2 = control_x1;
