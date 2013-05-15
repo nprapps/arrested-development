@@ -16,10 +16,11 @@ var $tooltip = null;
 
 var group_order;
 var joke_data;
+var connection_data;
+var episodes;
+
 var joke_code_to_index_map = {};
 var joke_code_to_line_y_map = {};
-var connection_data;
-
 
 /*
  * Loop through data, render the big graphic
@@ -49,7 +50,7 @@ function render_joke_viz() {
                 joke_code_to_line_y_map[joke['code']] = line_y;
 
                 var episodejokes = joke['episodejokes'];
-                var first_episode_number = episodejokes[0]['episode_data']['number'];
+                var first_episode_number = episodejokes[0]['episode_number'];
                 var last_episode_number = EPISODE_COUNT + 1; // +1 to make sure it goes off the side
 
                 var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * (last_episode_number + 1) + OFFSET_X_LEFT - (OFFSET_X_RIGHT * 2)) + ',' + line_y;
@@ -130,9 +131,10 @@ function render_joke_viz() {
 
                 for (var j = 0; j < episodejokes.length; j++) {
                     var episodejoke = episodejokes[j];
-                    var episode_number = episodejoke['episode_data']['number'];
-                    var episode_code = episodejoke['episode_data']['code'];
-                    var episode_title = episodejoke['episode_data']['title'];
+                    var episode = episodes[episodejoke['episode_number']];
+                    var episode_number = episode['number'];
+                    var episode_code = episode['code'];
+                    var episode_title = episode['title'];
 
                     var dot = paper.circle((episode_number * dot_interval) + OFFSET_X_LEFT, line_y, 5); 
 
@@ -208,6 +210,7 @@ $(function() {
         group_order = data['group_order'];
         joke_data = data['jokes'];
         connection_data = data['connections'];
+        episodes = data['episodes'];
 
         render_joke_viz();
     });

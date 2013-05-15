@@ -74,7 +74,8 @@ def write_jokes_json():
             'Miscellaneous'
         ],
         'jokes': {},
-        'connections': []
+        'connections': [],
+        'episodes': {} 
     }
 
     for joke in Joke.select().order_by(Joke.primary_character):
@@ -85,27 +86,33 @@ def write_jokes_json():
             payload['jokes'][joke.primary_character] = []
 
         joke_dict = joke.__dict__['_data']
+
+        del joke_dict['id']
+
         joke_dict['episodejokes'] = []
 
         for ej in EpisodeJoke.select().join(Joke).where(Joke.code == joke.code):
             episode_dict = ej.__dict__['_data']
-            episode_dict['episode_data'] = ej.episode.__dict__['_data']
-            episode_dict['episode_data']['run_date'] = episode_dict['episode_data']['run_date'].strftime('%Y-%m-%d')
+            episode_dict['episode_number'] = ej.episode.number;
 
-            del episode_dict['episode_data']['id']
             del episode_dict['episode']
             del episode_dict['joke']
             del episode_dict['id']
 
             joke_dict['episodejokes'].append(episode_dict)
-        joke_dict['episodejokes'] = sorted(joke_dict['episodejokes'], key=lambda ej: ej['episode_data']['code'])
 
-        del joke_dict['id']
+        joke_dict['episodejokes'] = sorted(joke_dict['episodejokes'], key=lambda ej: ej['episode_number'])
 
         payload['jokes'][joke.primary_character].append(joke_dict)
 
+    for episode in Episode().select().order_by(Episode.number):
+        episode_dict = episode.__dict__['_data']
+        episode_dict['run_date'] = episode_dict['run_date'].strftime('%Y-%m-%d')
+
+        payload['episodes'][episode.number] = episode_dict
+
     for primary_character, jokes in payload['jokes'].items():
-        payload['jokes'][primary_character] = sorted(jokes, key=lambda j: j['episodejokes'][0]['episode_data']['number'])
+        payload['jokes'][primary_character] = sorted(jokes, key=lambda j: j['episodejokes'][0]['episode_number'])
 
     for connection in JokeConnection.select():
         payload['connections'].append({
