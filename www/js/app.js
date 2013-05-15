@@ -230,7 +230,7 @@ function render_joke_viz() {
                 dehighlight_joke_network($dot.data('joke'));
             }
         ).click(function() {
-            window.open('episode-' + $(this).data('episode') + '.html');
+            window.open('episode-' + $(this).data('episode') + '.html','_self');
         });
 
         function highlight_joke_network(joke_code) {
@@ -283,7 +283,7 @@ function render_joke_viz() {
                 dehighlight_joke_network(joke_code);
             }
         ).click(function() {
-            window.open('joke-' + $(this).data('joke') + '.html');
+            window.open('joke-' + $(this).data('joke') + '.html','_self');
         });
     } 
 }
