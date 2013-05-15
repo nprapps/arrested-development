@@ -50,7 +50,7 @@ function render_joke_viz() {
                 var joke = jokes[i];
                 joke_code_to_index_map[joke['code']] = i;
                 joke_code_to_line_y_map[joke['code']] = line_y;
-                joke_code_to_related_jokes_map[joke['code']] = [];
+                joke_code_to_related_jokes_map[joke['code']] = [joke['code']];
 
                 var episodejokes = joke['episodejokes'];
                 var first_episode_number = episodejokes[0]['episode_number'];
@@ -160,6 +160,7 @@ function render_joke_viz() {
 
             for (var i = 0; i < jokes.length; i++) {
                 var joke = jokes[i];
+                var joke_code = joke['code']
                 var episodejokes = joke['episodejokes'];
                 var joke_primary_character = joke['primary_character'];
                 var joke_text = joke['text'];
@@ -179,6 +180,7 @@ function render_joke_viz() {
                 
                     dot.node.setAttribute('class', dot_class);
                     dot.node.setAttribute('data-primary-character', joke_primary_character);
+                    dot.node.setAttribute('data-joke', joke_code);
                     dot.node.setAttribute('data-text', joke_text);
                     dot.node.setAttribute('data-episode', episode_code);
                     dot.node.setAttribute('data-episode-title', episode_title);
@@ -192,65 +194,80 @@ function render_joke_viz() {
         
         $('.dot').hover(
             function() {
-                var dot = $(this);
-                var dot_position = dot.position();
+                var $dot = $(this);
+                var dot_position = $dot.position();
                 
                 $tooltip.empty();
-                $tooltip.append('<strong>Episode: ' + dot.data('episode-title') + ' (' + dot.data('episode') + ')</strong><br />');
-                $tooltip.append('<strong>' + dot.data('primary-character') + '</strong>: ' + dot.data('text'));
+                $tooltip.append('<strong>Episode: ' + $dot.data('episode-title') + ' (' + $dot.data('episode') + ')</strong><br />');
+                $tooltip.append('<strong>' + $dot.data('primary-character') + '</strong>: ' + $dot.data('text'));
                 
-                if (svgHasClass(dot,'joke-type-b')) {
+                if (svgHasClass($dot,'joke-type-b')) {
                     $tooltip.append(' <em>(in background)</em>');
-                } else if (svgHasClass(dot,'joke-type-f')) {
+                } else if (svgHasClass($dot,'joke-type-f')) {
                     $tooltip.append(' <em>(foreshadowed)</em>');
                 }
                 $tooltip.css('left', (dot_position.left + (DOT_RADIUS * 2) + 3) + 'px' );
                 $tooltip.css('top', (dot_position.top + (DOT_RADIUS * 2) + 3) + 'px' );
                 $tooltip.fadeIn('fast');
+
+                highlight_joke_network($dot.data('joke'));
             },
             function() {
+                var $dot = $(this);
+
                 $tooltip.fadeOut('fast');
+                
+                dehighlight_joke_network($dot.data('joke'));
             }
         ).click(function() {
             window.open('episode-' + $(this).data('episode') + '.html');
         });
+
+        function highlight_joke_network(joke_code) {
+            console.log(joke_code);
+            var connections = $('.connection-line.joke-' + joke_code);
+            var related_jokes = joke_code_to_related_jokes_map[joke_code];
+
+            for (var c = 0; c < connections.length; c++) {
+                var el = connections[c];
+                var attr = el.getAttribute('class') + ' highlight';
+                el.setAttribute('class', attr);
+            }
+
+            for (var j = 0; j < related_jokes.length; j++) {
+                var joke_code2 = related_jokes[j];
+                var el = $('.joke-line.joke-' + joke_code2)[0];
+                var attr = el.getAttribute('class') + ' highlight';
+                el.setAttribute('class', attr);
+            }
+        }
+
+        function dehighlight_joke_network(joke_code) {
+            var connections = $('.connection-line.joke-' + joke_code);
+            var related_jokes = joke_code_to_related_jokes_map[joke_code];
+
+            for (var c = 0; c < connections.length; c++) {
+                var el = connections[c];
+                var attr = el.getAttribute('class').replace(' highlight', '');
+                el.setAttribute('class', attr);
+            }
+
+            for (var j = 0; j < related_jokes.length; j++) {
+                var joke_code2 = related_jokes[j];
+                var el = $('.joke-line.joke-' + joke_code2)[0];
+                var attr = el.getAttribute('class').replace(' highlight', '');
+                el.setAttribute('class', attr);
+            }
+        }
         
         $('.joke-line').hover(
             function(e) {
                 var joke_code = $(this).data('joke');
-                var connections = $('.connection-line.joke-' + joke_code);
-                var related_jokes = joke_code_to_related_jokes_map[joke_code];
-
-                for (var c = 0; c < connections.length; c++) {
-                    var el = connections[c];
-                    var attr = el.getAttribute('class') + ' highlight';
-                    el.setAttribute('class', attr);
-                }
-
-                for (var j = 0; j < related_jokes.length; j++) {
-                    var joke_code2 = related_jokes[j];
-                    var el = $('.joke-line.joke-' + joke_code2)[0];
-                    var attr = el.getAttribute('class') + ' highlight';
-                    el.setAttribute('class', attr);
-                }
+                highlight_joke_network(joke_code);
             },
             function(e) {
                 var joke_code = $(this).data('joke');
-                var connections = $('.connection-line.joke-' + joke_code);
-                var related_jokes = joke_code_to_related_jokes_map[joke_code];
-
-                for (var c = 0; c < connections.length; c++) {
-                    var el = connections[c];
-                    var attr = el.getAttribute('class').replace(' highlight', '');
-                    el.setAttribute('class', attr);
-                }
-
-                for (var j = 0; j < related_jokes.length; j++) {
-                    var joke_code2 = related_jokes[j];
-                    var el = $('.joke-line.joke-' + joke_code2)[0];
-                    var attr = el.getAttribute('class').replace(' highlight', '');
-                    el.setAttribute('class', attr);
-                }
+                dehighlight_joke_network(joke_code);
             }
         ).click(function() {
             window.open('joke-' + $(this).data('joke') + '.html');
