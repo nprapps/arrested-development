@@ -1,29 +1,37 @@
 {% extends "_base.html" %}
 
+{% block body_class %}joke-detail{% endblock body_class %}
+
 {% block content %}
 
-<h2><strong>{{ joke.primary_character }}</strong> {{ joke.text }}</h2>
-<h2>{{ episodejokes|length }} episodes feature this joke:</h2>
-<ul>{% for ej in episodejokes %}
+<div class="detail-header">
+    <h1><strong>{{ joke.primary_character }}</strong> {{ joke.text }}</h1>
+    <h2><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</h2>
+</div>
+{% for group in episodejokes|groupby('episode.season') %}
+<div class="season row-fluid">
+<h2>Season {{ group.grouper }}</h2>
+<ul>{% for ej in group.list %}
     <li>
         <a href="episode-{{ ej.episode.code }}.html">
-            Season {{ ej.episode.season }}, episode {{ ej.episode.episode }}: {{ ej.episode.title.strip() }}
+            {{ ej.episode.episode }}: {{ ej.episode.title.strip() }}
         </a>
         {% if ej.details != None %}
-            <span class="extra details">
+            <p class="extra details">
                 {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
-            </span>
+            </p>
         {% endif %}
         {% if ej.connections() != [] %}{% for joke in ej.connections() %}
             <h3>Related</h3>
-            <span class="extra connection">
+            <p class="extra connection">
                 <a href="{{ joke.url }}">
                     <strong>{{ joke.primary_character }}</strong>
                     {{ joke.text }}
                 </a>
-            </span>
+            </p>
         {% endfor %}{% endif %}
     </li>
 {% endfor %}</ul>
+</div>{% endfor %}
 
 {% endblock %}

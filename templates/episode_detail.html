@@ -3,17 +3,17 @@
 {% block body_class %}episode-detail{% endblock body_class %}
 
 {% block content %}
-<div class="episode-header">
+<div class="detail-header">
     <p class="episode-meta">Season {{ episode.season}}, Episode {{ episode.episode }}</p>
     <h1> {{ episode.title }}</h1>
     <p class="episode-meta">Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }} | Watched by <span class="viewer-count">{{ episode.rating }} million</span> viewers.</p>
-    <h2><span class="joke-count">{{ episodejokes|length }}</span> recurring jokes in this episode:</h2>
+    <h2><span class="count">{{ episodejokes|length }}</span> recurring jokes in this episode:</h2>
 </div>
 
-{% for group in episodejokes|groupby('joke.primary_character') %}
-<h3>{{ group.grouper.strip() }}</h3>
+{% for group in episodejokes|groupby('joke.primary_character') %}<div class="character row-fluid">
+<h3 class="span3">{{ group.grouper.strip() }}</h3>
 
-<ul class="joke-list">{% for ej in group.list %}
+<ul class="joke-list span9">{% for ej in group.list %}
     <li class="joke {{ ej.formatted_type() }}">
         <a href="joke-{{ ej.joke.code }}.html">
             {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
@@ -33,5 +33,5 @@
         {% endfor %}{% endif %}
     </li>
 {% endfor %}</ul>
-{% endfor %}
+</div>{% endfor %}
 {% endblock %}
