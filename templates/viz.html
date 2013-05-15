@@ -1,23 +1,29 @@
 {% extends "_base.html" %}
 
+{% block header_content %}
+{% include "_nav.html" %}
+{% endblock header_content %}
+
 {% block wide_content %}
+<section class="the-goods">
+    <div class="container">
+        <div id="dataviz" class="row">
+            <div class="span12">
 
-<div id="dataviz" class="row">
-    <div class="span12">
-
-        <h1>Arrested Development</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <h1>Arrested Development</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         
-        <p class="credits">Credits: Jeremy Bowers, Adam Cole, Christopher Groskopf and Alyson Hurt / NPR</p>
+                <p class="credits">Credits: Jeremy Bowers, Adam Cole, Christopher Groskopf and Alyson Hurt / NPR</p>
 
-        <h3>In-Jokes: In One Chart</h3>
-        <div id="viz" style="width: 100%; height: 2800px;">
-            <div id="viz-tooltip"></div>
+                <h3>In-Jokes: In One Chart</h3>
+                <div id="viz" style="width: 100%; height: 2800px;">
+                    <div id="viz-tooltip"></div>
+                </div>
+
+            </div>
         </div>
-
     </div>
 </div>
-
 {% endblock %}
 
 {% block extra_foot_js %}
