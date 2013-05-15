@@ -245,8 +245,9 @@ function render_joke_viz() {
 
             for (var j = 0; j < related_jokes.length; j++) {
                 var joke_code2 = related_jokes[j];
+                var klass = joke_code2 == joke_code ? 'highlight-primary' : 'highlight';
                 var el = $('.joke-line.joke-' + joke_code2)[0];
-                var attr = el.getAttribute('class') + ' highlight';
+                var attr = el.getAttribute('class') + ' ' + klass;
                 el.setAttribute('class', attr);
             }
 
@@ -265,8 +266,9 @@ function render_joke_viz() {
 
             for (var j = 0; j < related_jokes.length; j++) {
                 var joke_code2 = related_jokes[j];
+                var klass = joke_code2 == joke_code ? 'highlight-primary' : 'highlight';
                 var el = $('.joke-line.joke-' + joke_code2)[0];
-                var attr = el.getAttribute('class').replace(' highlight', '');
+                var attr = el.getAttribute('class').replace(' ' + klass, '');
                 el.setAttribute('class', attr);
             }
 
