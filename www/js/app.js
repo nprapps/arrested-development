@@ -2,11 +2,12 @@ var EPISODE_COUNT = 53;
 
 var DOT_RADIUS = 5;
 var LABEL_WIDTH = 200;
+var GROUP_LABEL_HEIGHT = 16;
 var LINE_INTERVAL = 15;
-var GROUP_INTERVAL = 60;
+var GROUP_INTERVAL = 33;
 var OFFSET_X_RIGHT = DOT_RADIUS + 3;
 var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
-var OFFSET_Y = DOT_RADIUS + 3;
+var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
 
 var $viz = null;
 var viz_div = null;
@@ -31,6 +32,7 @@ function render_joke_viz() {
         var height = $viz.height();
 
         var labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
+        var headers = '';
         var paper = new Raphael(viz_div, width, height);
 
         var line_y = OFFSET_Y;
@@ -58,6 +60,11 @@ function render_joke_viz() {
                 
                 // add label
                 labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;">' + joke['text'] + '</li>';
+                
+                // add header if applicable
+                if (i == 0 || (joke['primary_character'] != jokes[i-1]['primary_character'])) {
+                    headers += '<h4 class="joke-group-header" style="width: ' + LABEL_WIDTH + 'px; top: ' + line_y + 'px">' + joke['primary_character'] + '</h4>';
+                }
 
                 line_y += LINE_INTERVAL;
             }
@@ -67,6 +74,7 @@ function render_joke_viz() {
             
         labels += '</ul>';
         $viz.append(labels);
+        $viz.append(headers);
 
         // Render related joke curves
         for (var i = 0; i < connection_data.length; i++) {
