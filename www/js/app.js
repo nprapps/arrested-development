@@ -21,6 +21,7 @@ var episodes;
 
 var joke_code_to_index_map = {};
 var joke_code_to_line_y_map = {};
+var joke_code_to_related_jokes_map = {};
 
 /*
  * Loop through data, render the big graphic
@@ -48,6 +49,7 @@ function render_joke_viz() {
                 var joke = jokes[i];
                 joke_code_to_index_map[joke['code']] = i;
                 joke_code_to_line_y_map[joke['code']] = line_y;
+                joke_code_to_related_jokes_map[joke['code']] = [];
 
                 var episodejokes = joke['episodejokes'];
                 var first_episode_number = episodejokes[0]['episode_number'];
@@ -57,7 +59,7 @@ function render_joke_viz() {
                 var line = paper.path(path)
 
                 line.node.setAttribute('id', 'joke-' + joke['code']);
-                line.node.setAttribute('class', 'joke-line');
+                line.node.setAttribute('class', 'joke-line joke-' + joke['code']);
                 line.node.setAttribute('data-joke', joke['code']);
                 
                 // add label
@@ -90,6 +92,9 @@ function render_joke_viz() {
             var joke2_code = connection.joke2_code;
             var episode_number = connection.episode_number;
 
+            joke_code_to_related_jokes_map[joke1_code].push(joke2_code);
+            joke_code_to_related_jokes_map[joke2_code].push(joke1_code);
+
             var from_joke_id = joke_code_to_index_map[joke1_code];
             var from_episode_id = episode_number;
 
@@ -119,7 +124,7 @@ function render_joke_viz() {
             var line = paper.path(path);
 
             line.node.setAttribute('id', 'line-' + joke1_code + '-to-' + joke2_code + '-e' + episode_number);
-            line.node.setAttribute('class', 'connection-line');
+            line.node.setAttribute('class', 'connection-line joke-' + joke1_code + ' joke-' + joke2_code);
         }
 
         line_y = OFFSET_Y;
@@ -187,11 +192,41 @@ function render_joke_viz() {
         });
         
         $('.joke-line').hover(
-            function() {
-                // make all jokes on the line also highlight
+            function(e) {
+                var joke_code = $(this).data('joke');
+                var connections = $('.connection-line.joke-' + joke_code);
+                var related_jokes = joke_code_to_related_jokes_map[joke_code];
+
+                for (var c = 0; c < connections.length; c++) {
+                    var el = connections[c];
+                    var attr = el.getAttribute('class') + ' highlight';
+                    el.setAttribute('class', attr);
+                }
+
+                for (var j = 0; j < related_jokes.length; j++) {
+                    var joke_code2 = related_jokes[j];
+                    var el = $('.joke-line.joke-' + joke_code2)[0];
+                    var attr = el.getAttribute('class') + ' highlight';
+                    el.setAttribute('class', attr);
+                }
             },
-            function() {
-                // remove highlight from all jokes on the line
+            function(e) {
+                var joke_code = $(this).data('joke');
+                var connections = $('.connection-line.joke-' + joke_code);
+                var related_jokes = joke_code_to_related_jokes_map[joke_code];
+
+                for (var c = 0; c < connections.length; c++) {
+                    var el = connections[c];
+                    var attr = el.getAttribute('class').replace(' highlight', '');
+                    el.setAttribute('class', attr);
+                }
+
+                for (var j = 0; j < related_jokes.length; j++) {
+                    var joke_code2 = related_jokes[j];
+                    var el = $('.joke-line.joke-' + joke_code2)[0];
+                    var attr = el.getAttribute('class').replace(' highlight', '');
+                    el.setAttribute('class', attr);
+                }
             }
         ).click(function() {
             window.open('joke-' + $(this).data('joke') + '.html');
