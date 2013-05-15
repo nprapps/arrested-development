@@ -238,6 +238,8 @@ function render_joke_viz() {
                 var attr = el.getAttribute('class') + ' highlight';
                 el.setAttribute('class', attr);
             }
+
+            $('#label-' + joke_code).addClass('highlight');
         }
 
         function dehighlight_joke_network(joke_code) {
@@ -256,6 +258,8 @@ function render_joke_viz() {
                 var attr = el.getAttribute('class').replace(' highlight', '');
                 el.setAttribute('class', attr);
             }
+
+            $('#label-' + joke_code).removeClass('highlight');
         }
         
         $('.joke-line').hover(
