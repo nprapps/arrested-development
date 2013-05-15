@@ -3,6 +3,7 @@
 {% block content %}
 
 <h2><strong>{{ joke.primary_character }}</strong> {{ joke.text }}</h2>
+<p>{{ joke.blurb }}</p>
 <h2>{{ episodejokes|length }} episodes feature this joke:</h2>
 <ul>{% for ej in episodejokes %}
     <li>
@@ -15,6 +16,7 @@
             </span>
         {% endif %}
         {% if ej.connections() != [] %}{% for joke in ej.connections() %}
+            <h3>Related</h3>
             <span class="extra connection">
                 <a href="{{ joke.url }}">
                     <strong>{{ joke.primary_character }}</strong>

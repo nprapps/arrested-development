@@ -67,7 +67,7 @@
     {% block extra_head %}
     {% endblock extra_head %}
 </head>
-<body>
+<body class="{% block body_class %}{% endblock body_class %}">
     {% block outer_content %}
 
     <nav>
@@ -93,36 +93,35 @@
     {% endblock header_content %}
 
     <section class="the-goods">
-        <div class="container">
+
+        <div class="container-fluid">
             {% include "_nav.html" %}
             {% block wide_content %}
-            <div class="row">
-                <div id="main-content" class="span8">
+            <div class="row-fluid">
+                <div id="main-content" class="span12">
                     {% block content %}
                     <h1>{{ project_name }}</h1>
                     App content goes here.
                     {% endblock content %}
                 </div>
-                <div class="span4">
-                    {# 300x250 ad #}
-                    <div class="adwrapper">
-                        <div class="sponsor300">
-                            <script type="text/javascript">
-                            <!--
-                            try {
-                                DFP.renderLocation('desktop');
-                            } catch(e) {
-                                NPR.messaging.warning('Problem fetching/rendering desktop ad server code.', 'DFP.renderLocation', NPR.messaging.constants.SPONSORSHIP_ERROR);
-                            }
-                            // -->
-                            </script>
-                        </div>
-                    </div>
-                </div>
             </div>
             {% endblock wide_content %}
         </div>
     </section>
+    {# 300x250 ad #}
+    <div class="adwrapper">
+        <div class="sponsor300">
+            <script type="text/javascript">
+            <!--
+            try {
+                DFP.renderLocation('desktop');
+            } catch(e) {
+                NPR.messaging.warning('Problem fetching/rendering desktop ad server code.', 'DFP.renderLocation', NPR.messaging.constants.SPONSORSHIP_ERROR);
+            }
+            // -->
+            </script>
+        </div>
+    </div>
 
     <footer>
         <div class="primary">
