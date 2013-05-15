@@ -19,14 +19,14 @@ It was written and directed by {{ episode.written_by.replace(', ', ' and ') }}.
                 {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
             </span>
         {% endif %}
-        {% if ej.related_episode_joke %}
+        {% if ej.connections() != [] %}{% for joke in ej.connections() %}
             <span class="extra connection">
-                <a href="joke-{{ ej.related_episode_joke.joke['code'] }}.html">
-                    <strong>{{ ej.related_episode_joke.joke['primary_character'] }}</strong>
-                    {{ ej.related_episode_joke.joke['text'] }}
+                <a href="{{ joke.url }}">
+                    <strong>{{ joke.primary_character }}</strong>
+                    {{ joke.text }}
                 </a>
             </span>
-        {% endif %}
+        {% endfor %}{% endif %}
     </li>
 {% endfor %}</ul>
 {% endblock %}
