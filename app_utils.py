@@ -60,13 +60,17 @@ def write_jokes_json():
     """
 
     payload = {
-        'jokes': [],
+        'jokes': {},
         'connections': []
     }
 
-    for joke in Joke.select():
+    for joke in Joke.select().order_by(Joke.primary_character):
+        if joke.primary_character not in payload['jokes']:
+            payload['jokes'][joke.primary_character] = []
+
         joke_dict = joke.__dict__['_data']
         joke_dict['episodejokes'] = []
+
         for ej in EpisodeJoke.select().join(Joke).where(Joke.code == joke.code):
             episode_dict = ej.__dict__['_data']
             episode_dict['episode_data'] = ej.episode.__dict__['_data']
@@ -81,9 +85,11 @@ def write_jokes_json():
         joke_dict['episodejokes'] = sorted(joke_dict['episodejokes'], key=lambda ej: ej['episode_data']['code'])
 
         del joke_dict['id']
-        payload['jokes'].append(joke_dict)
 
-    payload['jokes'] = sorted(payload['jokes'], key=lambda j: j['episodejokes'][0]['episode_data']['number'])
+        payload['jokes'][joke.primary_character].append(joke_dict)
+
+    for primary_character, jokes in payload['jokes'].items():
+        payload['jokes'][primary_character] = sorted(jokes, key=lambda j: j['episodejokes'][0]['episode_data']['number'])
 
     for connection in JokeConnection.select():
         payload['connections'].append({
