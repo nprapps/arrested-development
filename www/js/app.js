@@ -195,18 +195,29 @@ function render_joke_viz() {
             function() {
                 var $dot = $(this);
                 var dot_position = $dot.position();
+                var tt_height;
                 
                 $tooltip.empty();
-                $tooltip.append('<strong>Episode: ' + $dot.data('episode-title') + ' (' + $dot.data('episode') + ')</strong><br />');
-                $tooltip.append('<strong>' + $dot.data('primary-character') + '</strong>: ' + $dot.data('text'));
-                
                 if (svgHasClass($dot,'joke-type-b')) {
-                    $tooltip.append(' <em>(in background)</em>');
+                    $tooltip.append('<span class="joke-type">Joke In The Background:</span>');
                 } else if (svgHasClass($dot,'joke-type-f')) {
-                    $tooltip.append(' <em>(foreshadowed)</em>');
+                    $tooltip.append('<span class="joke-type">Foreshadowed Joke:</span>');
+                } else {
+                    $tooltip.append('<span class="joke-type">Joke:</span>');
                 }
-                $tooltip.css('left', (dot_position.left + (DOT_RADIUS * 2) + 3) + 'px' );
-                $tooltip.css('top', (dot_position.top + (DOT_RADIUS * 2) + 3) + 'px' );
+                $tooltip.append('<span class="joke-info">' + $dot.data('primary-character') + ': ' + $dot.data('text') + '</span>');
+                $tooltip.append('<span class="episode-info">Episode: ' + $dot.data('episode-title') + ' (' + $dot.data('episode') + ')</span>');
+                
+                tt_height = $tooltip.height();
+                tt_width = $tooltip.outerWidth();
+                tt_top = dot_position.top - (tt_height / 2);
+                tt_left = dot_position.left + (DOT_RADIUS * 2) + DOT_RADIUS;
+                if ((tt_left + tt_width) > width) {
+                    tt_left = dot_position.left - tt_width - DOT_RADIUS;
+                }
+                
+                $tooltip.css('left', tt_left + 'px' );
+                $tooltip.css('top', tt_top + 'px' );
                 $tooltip.fadeIn('fast');
 
                 highlight_joke_network($dot.data('joke'));
