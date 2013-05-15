@@ -33,9 +33,9 @@ function render_joke_viz() {
         var width = $viz.width();
         var height = $viz.height();
 
-        var episode_labels = '';
+        var joke_headers = '';
         var joke_labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
-        var headers = '';
+        var season_labels = '';
         var paper = new Raphael(viz_div, width, height);
 
         var line_y = OFFSET_Y;
@@ -71,7 +71,7 @@ function render_joke_viz() {
                 
                 // add header if applicable
                 if (i == 0 || (joke['primary_character'] != jokes[i-1]['primary_character'])) {
-                    headers += '<h4 class="joke-group-header" style="width: ' + LABEL_WIDTH + 'px; top: ' + line_y + 'px">' + joke['primary_character'] + '</h4>';
+                    joke_headers += '<h4 class="joke-group-header" style="width: ' + LABEL_WIDTH + 'px; top: ' + line_y + 'px">' + joke['primary_character'] + '</h4>';
                 }
 
                 line_y += LINE_INTERVAL;
@@ -81,10 +81,10 @@ function render_joke_viz() {
         }
         joke_labels += '</ul>';
         $viz.append(joke_labels);
-        $viz.append(headers);
+        $viz.append(joke_headers);
         
-        // render episode labels
-        episode_labels += '<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px;">';
+        // render season labels
+        // loop through episodes and create labels (appended to page when various joke groupings are rendered)
         for (var e in episodes) {
             var episode = episodes[e];
             var episode_number = episode['number'];
@@ -93,9 +93,9 @@ function render_joke_viz() {
             if (e == 1 || (episodes[e-1] != undefined && episode['season'] != episodes[e-1]['season'])) {
                 var label_x = dot_interval * (episode_number - 1) + DOT_RADIUS;
 
-                episode_labels += '<li class="episode-season-number" style="left: ' + label_x + 'px;">';
-                episode_labels += 'Season ' + episode['season'];
-                episode_labels += '</li>';
+                season_labels += '<li class="episode-season-number" style="left: ' + label_x + 'px;">';
+                season_labels += 'Season ' + episode['season'];
+                season_labels += '</li>';
                 
                 if (e != 1) { // a dividing line before all seasons after the first
                     var line_x = dot_interval * (episode_number - 1) + OFFSET_X_LEFT + (dot_interval / 2);
@@ -105,8 +105,6 @@ function render_joke_viz() {
                 }
             }
         }
-        episode_labels += '</ul>';
-        $viz.append(episode_labels);
         
         // Render related joke curves
         for (var i = 0; i < connection_data.length; i++) {
@@ -157,6 +155,9 @@ function render_joke_viz() {
             var group = group_order[g];
             var jokes = joke_data[group];
 
+            // append a set of season labels atop each grouping
+            $viz.append('<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px; top: ' + line_y + 'px;">' + season_labels + '</ul>');
+
             for (var i = 0; i < jokes.length; i++) {
                 var joke = jokes[i];
                 var joke_code = joke['code']
@@ -206,7 +207,7 @@ function render_joke_viz() {
                     $tooltip.append('<span class="joke-type">Joke:</span>');
                 }
                 $tooltip.append('<span class="joke-info">' + $dot.data('primary-character') + ': ' + $dot.data('text') + '</span>');
-                $tooltip.append('<span class="episode-info">Episode: ' + $dot.data('episode-title') + ' (' + $dot.data('episode') + ')</span>');
+                $tooltip.append('<span class="episode-info">Episode: &ldquo;' + $dot.data('episode-title') + '&rdquo; (' + $dot.data('episode') + ')</span>');
                 
                 tt_height = $tooltip.height();
                 tt_width = $tooltip.outerWidth();
