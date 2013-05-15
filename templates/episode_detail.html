@@ -6,7 +6,7 @@
 <p>Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }}.</p>
 <p>Watched by {{ episode.rating }} million viewers.</p>
 
-<h2>All {{ episodejokes|length }} recurring jokes in this episode:</h2>
+<h2>{{ episodejokes|length }} recurring jokes in this episode:</h2>
 <ul>{% for ej in episodejokes %}
     <li class="{{ ej.formatted_type() }}">
         <a href="joke-{{ ej.joke.code }}.html">
