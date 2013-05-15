@@ -92,7 +92,11 @@ function render_joke_viz() {
             console.log(episode);
 
             if (e == 1 || (episodes[e-1] != undefined && episode['season'] != episodes[e-1]['season'])) {
-                episode_labels += '<li class="episode-season-number">Season ' + episode['season'];
+                var label_x = dot_interval * (episode_number - 1) + DOT_RADIUS;
+
+                episode_labels += '<li class="episode-season-number" style="left: ' + label_x + 'px;">';
+                episode_labels += 'Season ' + episode['season'];
+                episode_labels += '</li>';
                 
                 if (e != 1) { // a dividing line before all seasons after the first
                     var line_x = dot_interval * (episode_number - 1) + OFFSET_X_LEFT + (dot_interval / 2);
@@ -101,9 +105,6 @@ function render_joke_viz() {
                     line.node.setAttribute('class', 'season-line');
                 }
             }
-            episode_labels += '<li class="episode-number" style="width: ' + dot_interval + 'px;" id="' + episode['code'] + '" data-episode="' + episode['episode'] + '" data-id="' + episode['id'] + '" data-season="' + episode['season'] + '" + data-episode-title="' + episode['title'] + '">';
-            episode_labels += episode['episode'];
-            episode_labels += '</li>';
         }
         episode_labels += '</ul>';
         $viz.append(episode_labels);
