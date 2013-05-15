@@ -1,7 +1,7 @@
 var EPISODE_COUNT = 53;
 
 var DOT_RADIUS = 5;
-var LABEL_WIDTH = 200;
+var LABEL_WIDTH = 225;
 var GROUP_LABEL_HEIGHT = 16;
 var LINE_INTERVAL = 15;
 var GROUP_INTERVAL = 33;
@@ -33,9 +33,9 @@ function render_joke_viz() {
         var width = $viz.width();
         var height = $viz.height();
 
-        var episode_labels = '';
+        var joke_headers = '';
         var joke_labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
-        var headers = '';
+        var season_labels = '';
         var paper = new Raphael(viz_div, width, height);
 
         var line_y = OFFSET_Y;
@@ -64,14 +64,14 @@ function render_joke_viz() {
                 line.node.setAttribute('data-joke', joke['code']);
                 
                 // add label
-                joke_labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;">';
+                joke_labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '">';
                 joke_labels += '<a href="joke-' + joke['code'] + '.html">';
                 joke_labels += joke['text'];
                 joke_labels += '</a></li>';
                 
                 // add header if applicable
                 if (i == 0 || (joke['primary_character'] != jokes[i-1]['primary_character'])) {
-                    headers += '<h4 class="joke-group-header" style="width: ' + LABEL_WIDTH + 'px; top: ' + line_y + 'px">' + joke['primary_character'] + '</h4>';
+                    joke_headers += '<h4 class="joke-group-header" style="width: ' + LABEL_WIDTH + 'px; top: ' + line_y + 'px">' + joke['primary_character'] + '</h4>';
                 }
 
                 line_y += LINE_INTERVAL;
@@ -81,10 +81,10 @@ function render_joke_viz() {
         }
         joke_labels += '</ul>';
         $viz.append(joke_labels);
-        $viz.append(headers);
+        $viz.append(joke_headers);
         
-        // render episode labels
-        episode_labels += '<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px;">';
+        // render season labels
+        // loop through episodes and create labels (appended to page when various joke groupings are rendered)
         for (var e in episodes) {
             var episode = episodes[e];
             var episode_number = episode['number'];
@@ -93,9 +93,9 @@ function render_joke_viz() {
             if (e == 1 || (episodes[e-1] != undefined && episode['season'] != episodes[e-1]['season'])) {
                 var label_x = dot_interval * (episode_number - 1) + DOT_RADIUS;
 
-                episode_labels += '<li class="episode-season-number" style="left: ' + label_x + 'px;">';
-                episode_labels += 'Season ' + episode['season'];
-                episode_labels += '</li>';
+                season_labels += '<li class="episode-season-number" style="left: ' + label_x + 'px;">';
+                season_labels += 'Season ' + episode['season'];
+                season_labels += '</li>';
                 
                 if (e != 1) { // a dividing line before all seasons after the first
                     var line_x = dot_interval * (episode_number - 1) + OFFSET_X_LEFT + (dot_interval / 2);
@@ -105,8 +105,6 @@ function render_joke_viz() {
                 }
             }
         }
-        episode_labels += '</ul>';
-        $viz.append(episode_labels);
         
         // Render related joke curves
         for (var i = 0; i < connection_data.length; i++) {
@@ -157,6 +155,9 @@ function render_joke_viz() {
             var group = group_order[g];
             var jokes = joke_data[group];
 
+            // append a set of season labels atop each grouping
+            $viz.append('<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px; top: ' + line_y + 'px;">' + season_labels + '</ul>');
+
             for (var i = 0; i < jokes.length; i++) {
                 var joke = jokes[i];
                 var joke_code = joke['code']
@@ -195,18 +196,29 @@ function render_joke_viz() {
             function() {
                 var $dot = $(this);
                 var dot_position = $dot.position();
+                var tt_height;
                 
                 $tooltip.empty();
-                $tooltip.append('<strong>Episode: ' + $dot.data('episode-title') + ' (' + $dot.data('episode') + ')</strong><br />');
-                $tooltip.append('<strong>' + $dot.data('primary-character') + '</strong>: ' + $dot.data('text'));
-                
                 if (svgHasClass($dot,'joke-type-b')) {
-                    $tooltip.append(' <em>(in background)</em>');
+                    $tooltip.append('<span class="joke-type">Joke In The Background:</span>');
                 } else if (svgHasClass($dot,'joke-type-f')) {
-                    $tooltip.append(' <em>(foreshadowed)</em>');
+                    $tooltip.append('<span class="joke-type">Foreshadowed Joke:</span>');
+                } else {
+                    $tooltip.append('<span class="joke-type">Joke:</span>');
                 }
-                $tooltip.css('left', (dot_position.left + (DOT_RADIUS * 2) + 3) + 'px' );
-                $tooltip.css('top', (dot_position.top + (DOT_RADIUS * 2) + 3) + 'px' );
+                $tooltip.append('<span class="joke-info">' + $dot.data('primary-character') + ': ' + $dot.data('text') + '</span>');
+                $tooltip.append('<span class="episode-info">Episode: &ldquo;' + $dot.data('episode-title') + '&rdquo; (' + $dot.data('episode') + ')</span>');
+                
+                tt_height = $tooltip.height();
+                tt_width = $tooltip.outerWidth();
+                tt_top = dot_position.top - (tt_height / 2);
+                tt_left = dot_position.left + (DOT_RADIUS * 2) + DOT_RADIUS;
+                if ((tt_left + tt_width) > width) {
+                    tt_left = dot_position.left - tt_width - DOT_RADIUS;
+                }
+                
+                $tooltip.css('left', tt_left + 'px' );
+                $tooltip.css('top', tt_top + 'px' );
                 $tooltip.fadeIn('fast');
 
                 highlight_joke_network($dot.data('joke'));
@@ -219,7 +231,7 @@ function render_joke_viz() {
                 dehighlight_joke_network($dot.data('joke'));
             }
         ).click(function() {
-            window.open('episode-' + $(this).data('episode') + '.html');
+            window.open('episode-' + $(this).data('episode') + '.html','_self');
         });
 
         function highlight_joke_network(joke_code) {
@@ -234,10 +246,13 @@ function render_joke_viz() {
 
             for (var j = 0; j < related_jokes.length; j++) {
                 var joke_code2 = related_jokes[j];
+                var klass = joke_code2 == joke_code ? 'highlight-primary' : 'highlight';
                 var el = $('.joke-line.joke-' + joke_code2)[0];
-                var attr = el.getAttribute('class') + ' highlight';
+                var attr = el.getAttribute('class') + ' ' + klass;
                 el.setAttribute('class', attr);
             }
+
+            $('#label-' + joke_code).addClass('highlight');
         }
 
         function dehighlight_joke_network(joke_code) {
@@ -252,13 +267,16 @@ function render_joke_viz() {
 
             for (var j = 0; j < related_jokes.length; j++) {
                 var joke_code2 = related_jokes[j];
+                var klass = joke_code2 == joke_code ? 'highlight-primary' : 'highlight';
                 var el = $('.joke-line.joke-' + joke_code2)[0];
-                var attr = el.getAttribute('class').replace(' highlight', '');
+                var attr = el.getAttribute('class').replace(' ' + klass, '');
                 el.setAttribute('class', attr);
             }
+
+            $('#label-' + joke_code).removeClass('highlight');
         }
         
-        $('.joke-line').hover(
+        $('.joke-line, .joke-label').hover(
             function(e) {
                 var joke_code = $(this).data('joke');
                 highlight_joke_network(joke_code);
@@ -268,7 +286,7 @@ function render_joke_viz() {
                 dehighlight_joke_network(joke_code);
             }
         ).click(function() {
-            window.open('joke-' + $(this).data('joke') + '.html');
+            window.open('joke-' + $(this).data('joke') + '.html','_self');
         });
     } 
 }

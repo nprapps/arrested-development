@@ -6,6 +6,7 @@
 
 <div class="detail-header">
     <h1><strong>{{ joke.primary_character }}</strong> {{ joke.text }}</h1>
+    <p>{{ joke.blurb }}</p>
     <h2><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</h2>
 </div>
 {% for group in episodejokes|groupby('episode.season') %}
