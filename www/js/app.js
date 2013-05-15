@@ -188,10 +188,10 @@ function render_joke_viz() {
         
         $('.joke-line').hover(
             function() {
-                $(this).addClass('active-line');
+                // make all jokes on the line also highlight
             },
             function() {
-                $(this).removeClass('active-line');
+                // remove highlight from all jokes on the line
             }
         ).click(function() {
             window.open('joke-' + $(this).data('joke') + '.html');
