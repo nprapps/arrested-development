@@ -36,7 +36,6 @@ function render_joke_viz() {
         var joke_headers = '';
         var joke_labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
         var season_labels = '';
-        var season_labels_text = '';
         var paper = new Raphael(viz_div, width, height);
 
         var line_y = OFFSET_Y;
@@ -85,7 +84,7 @@ function render_joke_viz() {
         $viz.append(joke_headers);
         
         // render season labels
-        // loop through episodes and create labels
+        // loop through episodes and create labels (appended to page when various joke groupings are rendered)
         for (var e in episodes) {
             var episode = episodes[e];
             var episode_number = episode['number'];
@@ -94,9 +93,9 @@ function render_joke_viz() {
             if (e == 1 || (episodes[e-1] != undefined && episode['season'] != episodes[e-1]['season'])) {
                 var label_x = dot_interval * (episode_number - 1) + DOT_RADIUS;
 
-                season_labels_text += '<li class="episode-season-number" style="left: ' + label_x + 'px;">';
-                season_labels_text += 'Season ' + episode['season'];
-                season_labels_text += '</li>';
+                season_labels += '<li class="episode-season-number" style="left: ' + label_x + 'px;">';
+                season_labels += 'Season ' + episode['season'];
+                season_labels += '</li>';
                 
                 if (e != 1) { // a dividing line before all seasons after the first
                     var line_x = dot_interval * (episode_number - 1) + OFFSET_X_LEFT + (dot_interval / 2);
@@ -106,9 +105,6 @@ function render_joke_viz() {
                 }
             }
         }
-        // create a new instance of the season labels for every grouping
-//        season_labels += '<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px;">' + season_labels_text + '</ul>';
-//        $viz.append(season_labels);
         
         // Render related joke curves
         for (var i = 0; i < connection_data.length; i++) {
@@ -159,9 +155,8 @@ function render_joke_viz() {
             var group = group_order[g];
             var jokes = joke_data[group];
 
-            // create a new instance of the season labels for every grouping
-            var season_labels = '<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px; top: ' + line_y + 'px;">' + season_labels_text + '</ul>';
-            $viz.append(season_labels);
+            // append a set of season labels atop each grouping
+            $viz.append('<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px; top: ' + line_y + 'px;">' + season_labels + '</ul>');
 
             for (var i = 0; i < jokes.length; i++) {
                 var joke = jokes[i];
