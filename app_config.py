@@ -49,10 +49,23 @@ SERVERS = []
 DEBUG = True
 
 """
-COPY EDITING
+APP CONSTANTS
 """
-COPY_GOOGLE_DOC_KEY = '0AlXMOHKxzQVRdHZuX1UycXplRlBfLVB0UVNldHJYZmc'
-
+PRIMARY_CHARACTER_LIST = [
+    'The Bluths',
+    'Michael',
+    'G.O.B.',
+    'Tobias',
+    'Lindsay',
+    'Buster',
+    'Oscar',
+    'George Sr.',
+    'Lucille',
+    'Maeby',
+    'George Michael',
+    'Miscellaneous'
+]
+IMPORT_NEW_SEASON = False
 """
 SHARING
 """
@@ -131,4 +144,3 @@ Run automated configuration
 DEPLOYMENT_TARGET = os.environ.get('DEPLOYMENT_TARGET', None)
 
 configure_targets(DEPLOYMENT_TARGET)
-

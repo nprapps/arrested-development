@@ -16,7 +16,10 @@ app = Flask(app_config.PROJECT_NAME)
 
 def _all_seasons():
     output = []
-    for season in [1, 2, 3, 4]:
+    SEASONS = [1, 2, 3]
+    if app_config.IMPORT_NEW_SEASON is True:
+        SEASONS.append(4)
+    for season in SEASONS:
         season_dict = {}
         season_dict['season'] = season
         season_dict['episodes'] = []
@@ -58,8 +61,17 @@ def joke_list():
 def _episode_detail(episode_code):
     context = make_context()
     context['episode'] = Episode.get(Episode.code == episode_code)
-    context['episodejokes'] = EpisodeJoke.select().where(EpisodeJoke.episode == context['episode'])
-    context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.joke.code)
+    context['episodejokes'] = []
+    for character in app_config.PRIMARY_CHARACTER_LIST:
+        character_dict = {}
+        character_dict['name'] = character
+        character_dict['jokes'] = []
+        for joke in EpisodeJoke.select().where(EpisodeJoke.episode == context['episode']):
+            if joke.joke.primary_character == character:
+                character_dict['jokes'].append(joke)
+        if len(character_dict['jokes']) > 0:
+            character_dict['jokes'] = sorted(character_dict['jokes'], key=lambda ej: ej.episode.number)
+            context['episodejokes'].append(character_dict)
     context['seasons'] = _all_seasons()
     return render_template('episode_detail.html', **context)
 

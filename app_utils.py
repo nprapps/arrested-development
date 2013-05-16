@@ -6,6 +6,7 @@ import datetime
 from dateutil.parser import *
 import requests
 
+import app_config
 from models import db, Joke, Episode, EpisodeJoke, JokeConnection
 
 
@@ -59,20 +60,7 @@ def write_jokes_json():
     where the joke appears, sorted by episode index number.
     """
     payload = {
-        'group_order': [
-            'The Bluths',
-            'Michael',
-            'G.O.B.',
-            'Tobias',
-            'Lindsay',
-            'Buster',
-            'Oscar',
-            'George Sr.',
-            'Lucille',
-            'Maeby',
-            'George Michael',
-            'Miscellaneous'
-        ],
+        'group_order': app_config.PRIMARY_CHARACTER_LIST,
         'jokes': {},
         'connections': [],
         'episodes': {}
@@ -161,13 +149,16 @@ def parse_tvdb_xml(xmlfile):
                 Episode.get(code=episode_dict['code'])
                 Episode.update(**episode_dict).where(Episode.code == episode_dict['code']).execute()
             except Episode.DoesNotExist:
-                if episode_dict['season'] == 4:
-                    episode_dict['number'] = episode_dict['episode'] + 53
-                    episode_dict['code'] = 's%se%s' % (
-                        str(episode_dict['season']).zfill(2),
-                        str(episode_dict['episode']).zfill(2))
-                    episode_dict['title'] = episode.find('EpisodeName').text
-                Episode(**episode_dict).save()
+                if app_config.IMPORT_NEW_SEASON is True:
+                    if episode_dict['season'] == 4:
+                        episode_dict['number'] = episode_dict['episode'] + 53
+                        episode_dict['code'] = 's%se%s' % (
+                            str(episode_dict['season']).zfill(2),
+                            str(episode_dict['episode']).zfill(2))
+                        episode_dict['title'] = episode.find('EpisodeName').text
+                    Episode(**episode_dict).save()
+                else:
+                    pass
 
 
 def update_episode_extras():

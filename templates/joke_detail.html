@@ -19,7 +19,7 @@
 <ul class="episode-list span7">{% for ej in group.list %}
     <li>
         <a href="episode-{{ ej.episode.code }}.html">
-            {{ ej.episode.episode }}: {{ ej.episode.title.strip() }}
+            <span class="episode-number">{{ ej.episode.episode }}:</span> {{ ej.episode.title.strip() }}
         </a>
         {% if ej.details != None %}
             <p class="extra details">
@@ -36,9 +36,7 @@
 {% endfor %}</ul>
 </div>{% endfor %}
 
-<div class="content-footer row-fluid">
-    <p class="sources span10 offset1">Sources: Joke data compiled by Adam Cole / NPR. Episode metadata from <a href="http://thetvdb.com/">The TVDB</a> via a <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 United States (CC BY 3.0 US)</a> license.</p>
-</div>
+{% include "_source.html" %}
 
 
 {% include "_comments.html" %}
