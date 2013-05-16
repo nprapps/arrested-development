@@ -26,7 +26,7 @@ a:hover,a:active{color:#F39C77;text-decoration:none;}
 .global-nav ul.social-links .twitter a{background-position:0px -96px;border-right:2px solid white;}
 header{background-color:#ebebeb;padding:50px 30px 30px;margin:0;border-bottom:2px solid #fff;}header h1{font-size:48px;font-family:Helvetica,Arial,sans-serif;color:#555;margin-bottom:11px;}
 header h2{font-size:15px;color:#000;margin:0;}
-header p.sources,header p.credits{font-size:12px;line-height:1.3;color:#333;margin:0;}
+header p.sources,header p.credits{font-size:12px;line-height:1.3;color:#333;margin:0;}header p.sources a,header p.credits a{font-weight:bold;color:#F8E2CA;}header p.sources a:hover,header p.credits a:hover{opacity:.7;}
 header p.sources{margin:22px 0 3px 0;}
 .adwrapper{zoom:1;padding:0 0 12px 0;}
 .sponsor300{overflow:hidden;width:300px;margin:0 auto;}.sponsor300 p{margin:0;font-size:10px;color:#333;}

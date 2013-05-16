@@ -158,6 +158,7 @@ def parse_tvdb_xml(xmlfile):
                 str(episode_dict['season']).zfill(2),
                 str(episode_dict['episode']).zfill(2))
             try:
+                Episode.get(code=episode_dict['code'])
                 Episode.update(**episode_dict).where(Episode.code == episode_dict['code']).execute()
             except Episode.DoesNotExist:
                 if episode_dict['season'] == 4:

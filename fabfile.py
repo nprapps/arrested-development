@@ -450,6 +450,7 @@ def bootstrap_data():
     update_origin()
     update_connection()
     build_connections()
+    write_jokes_json()
 
 
 def setup_tables():

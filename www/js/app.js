@@ -173,7 +173,6 @@ function render_joke_viz() {
 
                 for (var j = 0; j < episodejokes.length; j++) {
                     var episodejoke = episodejokes[j];
-                    console.log(episodejoke);
                     var episode = episodes[episodejoke['episode_number']];
                     var episode_number = episode['number'];
                     var episode_code = episode['code'];
