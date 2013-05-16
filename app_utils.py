@@ -142,18 +142,23 @@ def parse_tvdb_xml(xmlfile):
         if season > 0:
             episode_dict = {}
             for model_field, xml_field, data_type in FIELDS_LIST:
-                if episode.find(xml_field):
-                    episode_dict[model_field] = episode.find(xml_field).text
-                    if data_type == 'int':
-                        episode_dict[model_field] = int(episode_dict[model_field])
-                    if data_type == 'date':
-                        d = parse(episode_dict[model_field])
-                        episode_dict[model_field] = datetime.date(d.year, d.month, d.day)
-
+                try:
+                    if episode.find(xml_field).text:
+                        episode_dict[model_field] = episode.find(xml_field).text
+                        if data_type == 'int':
+                            episode_dict[model_field] = int(episode_dict[model_field])
+                        if data_type == 'date':
+                            d = parse(episode_dict[model_field])
+                            episode_dict[model_field] = datetime.date(d.year, d.month, d.day)
+                except AttributeError:
+                    pass
+            if episode.find('filename').text:
+                episode_dict['tvdb_image'] = 'http://thetvdb.com/banners/_cache/%s' % episode.find('filename').text
+            episode_dict['code'] = 's%se%s' % (
+                str(episode_dict['season']).zfill(2),
+                str(episode_dict['episode']).zfill(2))
             try:
-                e = Episode.get(episode=episode_dict['episode'], season=episode_dict['season'])
-                uq = Episode.update(**episode_dict).where(Episode == e)
-                uq.execute()
+                Episode.update(**episode_dict).where(Episode.code == episode_dict['code']).execute()
             except Episode.DoesNotExist:
                 if episode_dict['season'] == 4:
                     episode_dict['number'] = episode_dict['episode'] + 53

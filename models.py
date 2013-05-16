@@ -37,8 +37,7 @@ class Episode(Model):
     run_date = DateField(null=True)
     blurb = TextField(null=True)
 
-    wikipedia_link = TextField(null=True)
-    netflix_link = TextField(null=True)
+    tvdb_image = TextField(null=True)
 
     class Meta:
         database = db
