@@ -72,7 +72,11 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             line.node.setAttribute('data-joke', joke['code']);
             
             // add label
-            joke_labels += '<li id="label-' + joke['code'] + '" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '">';
+            joke_labels += '<li id="label-' + joke['code'] + '" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '"';
+            if (joke_code == joke['code']) {
+                joke_labels += ' class="joke-label-detail"';
+            }
+            joke_labels += '>';
             joke_labels += '<a href="joke-' + joke['code'] + '.html">';
             joke_labels += joke['text'];
             joke_labels += '</a></li>';
