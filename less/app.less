@@ -93,13 +93,14 @@ header {
 	
 	h1 { font-size: 48px; font-family: Arial, Helvetica, sans-serif; color: #555; margin-bottom: 11px; }
 	h2 { font-size: 15px; color: #666; margin: 0; }
-
-    p.credits {
+	
+    p.sources, p.credits {
         font-size: 12px;
         line-height: 1.3;
         color: #999;
-        margin: 22px 0 0 0;
+        margin: 0;
     }
+    p.sources { margin: 22px 0 3px 0; }
 }
 
 
@@ -134,13 +135,39 @@ h1 + #story-meta { margin-top: -11px; }
 
 #dataviz {
     padding-top: 33px;
+    position: relative;
+    
+    ul.ad-key {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        float: right;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        
+        li {
+            display: inline-block;
+            margin-right: 18px;
+            font-size: 12px;
+            line-height: 14px;
+            color: #787878;
+            background: url('../img/ad-key.png') no-repeat;
+            padding-left: 18px;
+            
+            &.key-j { background-position: 0 -40px; }
+            &.key-b { background-position: 0 -20px; }
+            &.key-f { background-position: 0 0; }
+            &.key-c { background-position: 0 -54px; margin-right: 0; }
+        }
+    }
 }
 
 #viz {
     position: relative;
     
     .joke-line {
-        stroke-width: 12px;
+        stroke-width: 14px;
         stroke: #f1f1f1;
         
         &:hover, &.highlight-primary {
@@ -229,13 +256,13 @@ h1 + #story-meta { margin-top: -11px; }
         display: none;
         position: absolute;
         background-color: #E38D2C;
-        padding: 6px;
-        font-size: 12px;
-        line-height: 1.4;
+        padding: 9px 11px;
+        font-size: 14px;
+        line-height: 1.3;
         font-weight: 300;
         color: #fff;
         z-index: 1000;
-        width: 175px;
+        width: 200px;
         border-radius: 3px;
         box-shadow: 0px 0px 7px rgba(30,30,30,.4);
         
@@ -245,11 +272,23 @@ h1 + #story-meta { margin-top: -11px; }
             &.joke-type {
                 font-weight: 600;
                 color: #F8E2CA;
+                font-size: 85%;
+                margin-bottom: 2px;
             }
-            &.joke-info { }
-            &.episode-info {
-                font-size: 90%;
+            &.joke-info {
+                font-weight: 600;
+                margin-bottom: 4px;
+            }
+            &.related-joke, 
+            &.joke-details {
+                font-size: 85%;
                 color: #F8E2CA;
+                margin-bottom: 2px;
+            }
+            &.episode-info {
+                font-size: 85%;
+                color: #F8E2CA;
+                margin-bottom: 0;
             }
         }
     }
@@ -542,6 +581,10 @@ footer {
 	footer {
 		.primary { float: none; }
 		.secondary ul, .secondary p { margin-left: 0; float: left; }
+	}
+	#dataviz {
+	    h3 { margin-bottom: 11px; }
+        ul.ad-key { position: static; top: auto; right: auto; float: none; margin-bottom: 22px; }
 	}
 }
 @media (max-width: 767px) {

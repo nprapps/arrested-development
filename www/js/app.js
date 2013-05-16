@@ -80,6 +80,7 @@ function render_joke_viz() {
         
             line_y += GROUP_INTERVAL;
         }
+
         joke_labels += '</ul>';
         $viz.append(joke_labels);
         $viz.append(joke_headers);
@@ -117,10 +118,7 @@ function render_joke_viz() {
             joke_code_to_related_jokes_map[joke1_code].push(joke2_code);
             joke_code_to_related_jokes_map[joke2_code].push(joke1_code);
 
-            var from_joke_id = joke_code_to_index_map[joke1_code];
             var from_episode_id = episode_number;
-
-            var to_joke_id = joke_code_to_index_map[joke2_code];
             var to_episode_id = episode_number;
 
             var from_y = joke_code_to_line_y_map[joke1_code];;
@@ -133,14 +131,21 @@ function render_joke_viz() {
             if (to_y < from_y) {
                 var tmp = from_y;
                 from_y = to_y;
-                to_y = from_y;
+                to_y = tmp;
             }
 
             var control_x1 = from_x + dot_interval;
-            var control_y1 = from_y + LINE_INTERVAL;
-
             var control_x2 = control_x1;
+
+            var control_y1 = from_y + LINE_INTERVAL;
             var control_y2 = to_y - LINE_INTERVAL;
+
+            // Special case for connections that are adjacent
+            // Spread out the control points so they don't appear as triangles
+            if (control_y2 - control_y1 < LINE_INTERVAL) {
+                control_y1 -= LINE_INTERVAL;
+                control_y2 += LINE_INTERVAL;
+            }
 
             var path = 'M' + from_x + ',' + from_y + ' C'  + control_x1 + ',' + control_y1 + ' ' + control_x2 + ',' + control_y2 + ' ' + to_x + ',' + to_y;
             var line = paper.path(path);
@@ -168,10 +173,13 @@ function render_joke_viz() {
 
                 for (var j = 0; j < episodejokes.length; j++) {
                     var episodejoke = episodejokes[j];
+                    console.log(episodejoke);
                     var episode = episodes[episodejoke['episode_number']];
                     var episode_number = episode['number'];
                     var episode_code = episode['code'];
                     var episode_title = episode['title'];
+                    var episode_connection = episodejoke['connection'];
+                    var episode_details = episodejoke['details'];
 
                     if (!(episode_number in episode_number_to_jokes_map)) {
                         episode_number_to_jokes_map[episode_number] = [];
@@ -189,6 +197,12 @@ function render_joke_viz() {
                     dot.node.setAttribute('data-episode', episode_code);
                     dot.node.setAttribute('data-episode-number', episode_number);
                     dot.node.setAttribute('data-episode-title', episode_title);
+                    if (episode_connection) {
+                        dot.node.setAttribute('data-connection', episode_connection);
+                    }
+                    if (episode_details) {
+                        dot.node.setAttribute('data-details', episode_details);
+                    }
                 }
 
                 line_y += LINE_INTERVAL;
@@ -205,14 +219,20 @@ function render_joke_viz() {
                 
                 $tooltip.empty();
                 if (svgHasClass($dot,'joke-type-b')) {
-                    $tooltip.append('<span class="joke-type">Joke In The Background:</span>');
+                    $tooltip.append('<span class="joke-type">Joke In The Background</span>');
                 } else if (svgHasClass($dot,'joke-type-f')) {
-                    $tooltip.append('<span class="joke-type">Foreshadowed Joke:</span>');
+                    $tooltip.append('<span class="joke-type">Foreshadowed Joke</span>');
                 } else {
-                    $tooltip.append('<span class="joke-type">Joke:</span>');
+                    $tooltip.append('<span class="joke-type">Joke</span>');
                 }
                 $tooltip.append('<span class="joke-info">' + $dot.data('primary-character') + ': ' + $dot.data('text') + '</span>');
-                $tooltip.append('<span class="episode-info">Episode: &ldquo;' + $dot.data('episode-title') + '&rdquo; (' + $dot.data('episode') + ')</span>');
+                if ($dot.data('connection')) {
+                    $tooltip.append('<span class="related-joke"><strong>Related joke:</strong> ' + $dot.data('connection') + '</span>');
+                }
+                if ($dot.data('details')) {
+                    $tooltip.append('<span class="joke-details"><strong>Details:</strong> ' + $dot.data('details') + '</span>');
+                }
+                $tooltip.append('<span class="episode-info"><strong>Episode:</strong> &ldquo;' + $dot.data('episode-title') + '&rdquo; (' + $dot.data('episode') + ')</span>');
                 
                 tt_height = $tooltip.height();
                 tt_width = $tooltip.outerWidth();
@@ -269,6 +289,8 @@ function render_joke_viz() {
                 var el = $('.joke-line.joke-' + joke_code2)[0];
                 var attr = el.getAttribute('class') + ' ' + klass;
                 el.setAttribute('class', attr);
+            
+                $('#label-' + joke_code2).addClass('highlight');
             }
 
             $('#label-' + joke_code).addClass('highlight');
@@ -296,6 +318,8 @@ function render_joke_viz() {
                 var el = $('.joke-line.joke-' + joke_code2)[0];
                 var attr = el.getAttribute('class').replace(' ' + klass, '');
                 el.setAttribute('class', attr);
+                
+                $('#label-' + joke_code2).removeClass('highlight');
             }
 
             $('#label-' + joke_code).removeClass('highlight');
