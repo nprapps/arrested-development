@@ -123,8 +123,7 @@ def _joke_detail(joke_code):
 
 
 @app.route('/')
-@app.route('/viz.html')
-def _viz():
+def index():
     context = make_context()
     context['jokes'] = []
 
