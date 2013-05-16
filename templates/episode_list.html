@@ -6,4 +6,6 @@
     <li><a href="episode-{{ episode.code }}.html">{{ episode.code}}: {{ episode.title }} ({{ episode.joke_count() }})</a></li>
 {% endfor %}</ul>
 
+{% include "_comments.html" %}
+
 {% endblock %}

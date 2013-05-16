@@ -135,10 +135,17 @@ function render_joke_viz() {
             }
 
             var control_x1 = from_x + dot_interval;
-            var control_y1 = from_y + LINE_INTERVAL;
-
             var control_x2 = control_x1;
+
+            var control_y1 = from_y + LINE_INTERVAL;
             var control_y2 = to_y - LINE_INTERVAL;
+
+            // Special case for connections that are adjacent
+            // Spread out the control points so they don't appear as triangles
+            if (control_y2 - control_y1 < LINE_INTERVAL) {
+                control_y1 -= LINE_INTERVAL;
+                control_y2 += LINE_INTERVAL;
+            }
 
             var path = 'M' + from_x + ',' + from_y + ' C'  + control_x1 + ',' + control_y1 + ' ' + control_x2 + ',' + control_y2 + ' ' + to_x + ',' + to_y;
             var line = paper.path(path);
