@@ -17,7 +17,6 @@ var $joke_viz = null;
 var paper = null;
 var $tooltip = null;
 
-var joke_code_to_index_map = {};
 var joke_code_to_line_y_map = {};
 var joke_code_to_related_jokes_map = {};
 var episode_number_to_jokes_map = {};
@@ -54,7 +53,6 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
         for (var i = 0; i < jokes.length; i++) {
             var joke = jokes[i];
-            joke_code_to_index_map[joke['code']] = i;
             joke_code_to_line_y_map[joke['code']] = line_y;
             joke_code_to_related_jokes_map[joke['code']] = [joke['code']];
 

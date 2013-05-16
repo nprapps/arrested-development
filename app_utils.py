@@ -76,6 +76,7 @@ def write_jokes_json():
         joke_dict = joke.__dict__['_data']
 
         del joke_dict['id']
+        del joke_dict['blurb']
 
         joke_dict['episodejokes'] = []
 
@@ -83,9 +84,8 @@ def write_jokes_json():
             episode_dict = ej.__dict__['_data']
             episode_dict['episode_number'] = ej.episode.number
 
-            del episode_dict['episode']
-            del episode_dict['joke']
-            del episode_dict['id']
+            for k in ['episode', 'joke', 'id', 'origin']:
+                del episode_dict[k]
 
             joke_dict['episodejokes'].append(episode_dict)
 
@@ -96,6 +96,9 @@ def write_jokes_json():
     for episode in Episode().select().order_by(Episode.number):
         episode_dict = episode.__dict__['_data']
         episode_dict['run_date'] = episode_dict['run_date'].strftime('%Y-%m-%d')
+
+        for k in ['blurb', 'id', 'production_code', 'rating', 'tvdb_image']:
+            del episode_dict[k]
 
         payload['episodes'][episode.number] = episode_dict
 
