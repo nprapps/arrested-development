@@ -80,6 +80,7 @@ function render_joke_viz() {
         
             line_y += GROUP_INTERVAL;
         }
+
         joke_labels += '</ul>';
         $viz.append(joke_labels);
         $viz.append(joke_headers);
@@ -117,10 +118,7 @@ function render_joke_viz() {
             joke_code_to_related_jokes_map[joke1_code].push(joke2_code);
             joke_code_to_related_jokes_map[joke2_code].push(joke1_code);
 
-            var from_joke_id = joke_code_to_index_map[joke1_code];
             var from_episode_id = episode_number;
-
-            var to_joke_id = joke_code_to_index_map[joke2_code];
             var to_episode_id = episode_number;
 
             var from_y = joke_code_to_line_y_map[joke1_code];;
@@ -133,7 +131,7 @@ function render_joke_viz() {
             if (to_y < from_y) {
                 var tmp = from_y;
                 from_y = to_y;
-                to_y = from_y;
+                to_y = tmp;
             }
 
             var control_x1 = from_x + dot_interval;
