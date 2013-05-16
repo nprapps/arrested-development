@@ -87,17 +87,17 @@ a:hover, a:active { color: #F39C77; text-decoration: none; }
 // Header
 header {
 	background-color: #ebebeb;
-	padding: 50px 30px 30px 30px;
+	padding: 50px 30px 30px;
 	margin: 0;
 	border-bottom: 2px solid #fff;
 	
-	h1 { font-size: 48px; font-family: Arial, Helvetica, sans-serif; color: #555; margin-bottom: 11px; }
-	h2 { font-size: 15px; color: #666; margin: 0; }
+	h1 { font-size: 48px; font-family: Helvetica, Arial, sans-serif; color: #555; margin-bottom: 11px; }
+	h2 { font-size: 15px; color: #000; margin: 0; }
 	
     p.sources, p.credits {
         font-size: 12px;
         line-height: 1.3;
-        color: #999;
+        color: #333;
         margin: 0;
     }
     p.sources { margin: 22px 0 3px 0; }
@@ -334,12 +334,20 @@ h1 + #story-meta { margin-top: -11px; }
 }
 
 // Project nav
+.project-nav-wrap {
+    background: #333;
+    .no-gutter-row;
+}
 .project-nav {
     
     margin: 0 -20px;
 
     .navbar-inner {
         background: #333;
+        -webkit-box-shadow: none;
+           -moz-box-shadow: none;
+                box-shadow: none;
+        border: none;
 
         .dropdown {
 
@@ -385,10 +393,14 @@ h1 + #story-meta { margin-top: -11px; }
 // Viz page 
 .viz {
     > header {
-        background: #e05014;
-        h1,
-        h2,
-        p { color: #fff; }
+        .no-gutter-row;
+        background: @orange;
+        h1 {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        a { color: #fff; }
 
         .credits {
             color: #333;
@@ -405,38 +417,40 @@ h1 + #story-meta { margin-top: -11px; }
 
         h1 {
             font-family: Helvetica, Arial,sans-serif;
-            font-weight: normal;
+            font-weight: bold;
             font-size: 42px;
             margin-bottom: 10px;
+            color: #fff;
 
             strong {
                 font-weight: bold;
             }
         }
         h2 {
-            color: #fff;
+            color: #000;
             text-transform: uppercase;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
             line-height: 1;
             margin: 0 0 10px;
         }
 
         .detail-count {
-            color: #fff;
+            color: #000;
             font-size: 24px;
         }
 
         .count {
             display: inline-block;
-            height: 40px;
-            width: 40px;
-            line-height: 40px;
-            -webkit-border-radius: 20px;
-               -moz-border-radius: 20px;
-                    border-radius: 20px;
-            background: #fff;
+            height: 60px;
+            width: 60px;
+            line-height: 60px;
+            -webkit-border-radius: 30px;
+               -moz-border-radius: 30px;
+                    border-radius: 30px;
+            background: #000;
             color: @orange;
+            font-size: 32px;
             font-weight: bold;
             text-align: center;
             vertical-align: middle;
@@ -445,15 +459,15 @@ h1 + #story-meta { margin-top: -11px; }
 
     .character,
     .season {
-        border-bottom: 2px solid #333;
-        background: #222;
+        border-bottom: 2px solid #ddd;
+        background: #fff;
         .no-gutter-row;
 
         h2 {
             font-size: 32px;
             font-weight: bold;
-            color: #fff;
-            text-align: right;
+            color: #000;
+            //text-align: right;
             line-height: 1;
             margin-top: 0;
         }
@@ -464,23 +478,26 @@ h1 + #story-meta { margin-top: -11px; }
         li {
             font-size: 24px;
             line-height: 1.1;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
             clear: both;
+            border-bottom: 1px solid #ddd;
+
+            &:last-child {
+                border-bottom: none;
+            }
 
             .details {
                 font-style: italic;
                 font-size: 16px;
                 line-height: 1.3;
-                color: #eee;
+                color: #666;
                 margin: 5px 0;
             }
 
             .connection {
                 font-size: 14px;
-                background: #fff;
-                float: left;
-                clear: both;
-                padding: 10px;
+                margin-top: 10px;
             }
             &:after {
                 content: ' ';
@@ -529,13 +546,6 @@ h1 + #story-meta { margin-top: -11px; }
 // Joke detail 
 
 .joke-detail {
-
-    .season {
-        h2 {
-            color: #fff;
-            font-weight: bold;
-        }
-    }
 
     .episode-list {
         list-style: none;
