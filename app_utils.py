@@ -6,6 +6,7 @@ import datetime
 from dateutil.parser import *
 import requests
 
+import app_config
 from models import db, Joke, Episode, EpisodeJoke, JokeConnection
 
 
@@ -59,20 +60,7 @@ def write_jokes_json():
     where the joke appears, sorted by episode index number.
     """
     payload = {
-        'group_order': [
-            'The Bluths',
-            'Michael',
-            'G.O.B.',
-            'Tobias',
-            'Lindsay',
-            'Buster',
-            'Oscar',
-            'George Sr.',
-            'Lucille',
-            'Maeby',
-            'George Michael',
-            'Miscellaneous'
-        ],
+        'group_order': app_config.PRIMARY_CHARACTER_LIST,
         'jokes': {},
         'connections': [],
         'episodes': {}

@@ -13,10 +13,10 @@
     </div>
 </div>
 
-{% for group in episodejokes|groupby('joke.primary_character') %}<div class="character row-fluid">
-<h2 class="span3 offset1">{{ group.grouper.strip() }}</h2>
+{% for character in episodejokes %}<div class="character row-fluid">
+<h2 class="span3 offset1">{{ character.name }}</h2>
 
-<ul class="joke-list span7">{% for ej in group.list %}
+<ul class="joke-list span7">{% for ej in character.jokes %}
     <li class="joke {{ ej.formatted_type() }}">
         <a href="joke-{{ ej.joke.code }}.html">
             {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
