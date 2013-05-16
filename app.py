@@ -68,10 +68,6 @@ def _episode_detail(episode_code):
         if len(character_dict['jokes']) > 0:
             character_dict['jokes'] = sorted(character_dict['jokes'], key=lambda ej: ej.episode.number)
             context['episodejokes'].append(character_dict)
-
-    print context['episodejokes']
-    # context['episodejokes'] = EpisodeJoke.select().where(EpisodeJoke.episode == context['episode'])
-    # context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.joke.code)
     context['seasons'] = _all_seasons()
     return render_template('episode_detail.html', **context)
 
