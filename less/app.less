@@ -316,13 +316,17 @@ h1 + #story-meta { margin-top: -11px; }
     .episode-labels li { color: #999; }
 }
 #joke-viz {
-    h4.joke-group-header { color: @orange-2; }
+    h4.joke-group-header { color: #111; }
     #viz-labels {
-        li a { color: #fff; }
+        li a { color: #111; }
     }
-    .joke-line { stroke: #111; }
+    .joke-line { 
+        stroke: #c64c00;
+
+        &.joke-line-detail { stroke: #111; }
+    }
     .season-line { stroke: @orange; }
-    .episode-labels li { color: @orange-2; font-weight: 600; }
+    .episode-labels li { color: #111; font-weight: 600; }
 }
 
 .ad-key {
@@ -357,7 +361,7 @@ h1 + #story-meta { margin-top: -11px; }
         right: auto;
         float: none;
         margin-bottom: 22px;
-        li { color: @orange-2; }
+        li { color: #111; }
     }
 }
 
