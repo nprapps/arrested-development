@@ -13,9 +13,13 @@ from render_utils import flatten_app_config, make_context
 
 app = Flask(app_config.PROJECT_NAME)
 
+
 def _all_seasons():
     output = []
-    for season in [1, 2, 3, 4]:
+    SEASONS = [1, 2, 3]
+    if app_config.IMPORT_NEW_SEASON is True:
+        SEASONS.append(4)
+    for season in SEASONS:
         season_dict = {}
         season_dict['season'] = season
         season_dict['episodes'] = []
