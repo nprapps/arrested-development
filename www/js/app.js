@@ -36,7 +36,7 @@ function render_joke_viz() {
         var height = $viz.height();
         
         console.log(IS_MOBILE, LABEL_WIDTH, OFFSET_X_LEFT, width);
-        if (width < 768) {
+        if (width < 724) { // 724 = content width at 768px breakpoint
             IS_MOBILE = true;
             height = 5000;
             $viz.height(height + 'px');
