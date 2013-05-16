@@ -9,6 +9,12 @@
         <h2>{{ joke.primary_character }}</h2>
         <h1>{{ joke.text }}</h1>
         <p>{{ joke.blurb }}</p>
+        <p class="detail-count"><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</p>
+    </div>
+</div>
+
+<div class="season row-fluid viz-wrap">
+    <div class="span10 offset1">
         <ul class="ad-key">
             <li class="key-j">Joke</li>
             <li class="key-b">Joke in the background</li>
@@ -18,9 +24,10 @@
         <div id="joke-viz" class="viz" data-joke-code="{{ joke.code }}">
             <div id="viz-tooltip"></div>
         </div>
-        <p class="detail-count"><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</p>
     </div>
 </div>
+
+
 {% for group in episodejokes|groupby('episode.season') %}
 <div class="season row-fluid">
 <h2 class="span3 offset1">Season {{ group.grouper }}</h2>

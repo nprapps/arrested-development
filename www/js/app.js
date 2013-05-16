@@ -9,6 +9,7 @@ var OFFSET_X_RIGHT = DOT_RADIUS + 3;
 var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
 var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
 var IS_MOBILE = false;
+var WINDOW_WIDTH = $('body').width();
 
 var $body = null;
 var $full_viz = null;
@@ -29,7 +30,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
     var height = $viz.height();
     var joke_code = joke_code || null;
     
-    if (width < 724) { // 724 = content width at 768px breakpoint
+    if (WINDOW_WIDTH < 768) {
         IS_MOBILE = true;
         height = 5000;
         $viz.height(height + 'px');
