@@ -205,11 +205,11 @@ function render_joke_viz() {
                 
                 $tooltip.empty();
                 if (svgHasClass($dot,'joke-type-b')) {
-                    $tooltip.append('<span class="joke-type">Joke In The Background:</span>');
+                    $tooltip.append('<span class="joke-type">Joke In The Background</span>');
                 } else if (svgHasClass($dot,'joke-type-f')) {
-                    $tooltip.append('<span class="joke-type">Foreshadowed Joke:</span>');
+                    $tooltip.append('<span class="joke-type">Foreshadowed Joke</span>');
                 } else {
-                    $tooltip.append('<span class="joke-type">Joke:</span>');
+                    $tooltip.append('<span class="joke-type">Joke</span>');
                 }
                 $tooltip.append('<span class="joke-info">' + $dot.data('primary-character') + ': ' + $dot.data('text') + '</span>');
                 $tooltip.append('<span class="episode-info">Episode: &ldquo;' + $dot.data('episode-title') + '&rdquo; (' + $dot.data('episode') + ')</span>');
