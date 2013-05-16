@@ -8,6 +8,7 @@ var GROUP_INTERVAL = 33;
 var OFFSET_X_RIGHT = DOT_RADIUS + 3;
 var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
 var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
+var IS_MOBILE = false;
 
 var $viz = null;
 var viz_div = null;
@@ -33,14 +34,26 @@ function render_joke_viz() {
     } else {
         var width = $viz.width();
         var height = $viz.height();
+        
+        console.log(IS_MOBILE, LABEL_WIDTH, OFFSET_X_LEFT, width);
+        if (width < 768) {
+            IS_MOBILE = true;
+            height = 5000;
+            $viz.height(height + 'px');
+            LABEL_WIDTH = Math.round(width * .4);
+            LINE_INTERVAL = 30;
+            OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
+        }
+        console.log(IS_MOBILE, LABEL_WIDTH, OFFSET_X_LEFT, width);
 
         var joke_headers = '';
-        var joke_labels = '<ul id="vis-labels" style="width: ' + LABEL_WIDTH + 'px;">';
+        var joke_labels = '<ul id="viz-labels" style="width: ' + LABEL_WIDTH + 'px;">';
         var season_labels = '';
         var paper = new Raphael(viz_div, width, height);
 
         var line_y = OFFSET_Y;
         var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / EPISODE_COUNT;
+        console.log(dot_interval);
 
         // Render joke lines
         for (var g in group_order) {
@@ -65,7 +78,7 @@ function render_joke_viz() {
                 line.node.setAttribute('data-joke', joke['code']);
                 
                 // add label
-                joke_labels += '<li id="label-' + joke['code'] + '" class="joke-label" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '">';
+                joke_labels += '<li id="label-' + joke['code'] + '" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '">';
                 joke_labels += '<a href="joke-' + joke['code'] + '.html">';
                 joke_labels += joke['text'];
                 joke_labels += '</a></li>';
@@ -210,53 +223,55 @@ function render_joke_viz() {
             line_y += GROUP_INTERVAL;
         }
         
-        $('.dot').hover(
-            function() {
-                var $dot = $(this);
-                var dot_position = $dot.position();
-                var tt_height;
+        if (!IS_MOBILE) {
+            $('.dot').hover(
+                function() {
+                    var $dot = $(this);
+                    var dot_position = $dot.position();
+                    var tt_height;
                 
-                $tooltip.empty();
-                if (svgHasClass($dot,'joke-type-b')) {
-                    $tooltip.append('<span class="joke-type">Joke In The Background</span>');
-                } else if (svgHasClass($dot,'joke-type-f')) {
-                    $tooltip.append('<span class="joke-type">Foreshadowed Joke</span>');
-                } else {
-                    $tooltip.append('<span class="joke-type">Joke</span>');
-                }
-                $tooltip.append('<span class="joke-info">' + $dot.data('primary-character') + ': ' + $dot.data('text') + '</span>');
-                if ($dot.data('connection')) {
-                    $tooltip.append('<span class="related-joke"><strong>Related joke:</strong> ' + $dot.data('connection') + '</span>');
-                }
-                if ($dot.data('details')) {
-                    $tooltip.append('<span class="joke-details"><strong>Details:</strong> ' + $dot.data('details') + '</span>');
-                }
-                $tooltip.append('<span class="episode-info"><strong>Episode:</strong> &ldquo;' + $dot.data('episode-title') + '&rdquo; (' + $dot.data('episode') + ')</span>');
+                    $tooltip.empty();
+                    if (svgHasClass($dot,'joke-type-b')) {
+                        $tooltip.append('<span class="joke-type">Joke In The Background</span>');
+                    } else if (svgHasClass($dot,'joke-type-f')) {
+                        $tooltip.append('<span class="joke-type">Foreshadowed Joke</span>');
+                    } else {
+                        $tooltip.append('<span class="joke-type">Joke</span>');
+                    }
+                    $tooltip.append('<span class="joke-info">' + $dot.data('primary-character') + ': ' + $dot.data('text') + '</span>');
+                    if ($dot.data('connection')) {
+                        $tooltip.append('<span class="related-joke"><strong>Related joke:</strong> ' + $dot.data('connection') + '</span>');
+                    }
+                    if ($dot.data('details')) {
+                        $tooltip.append('<span class="joke-details"><strong>Details:</strong> ' + $dot.data('details') + '</span>');
+                    }
+                    $tooltip.append('<span class="episode-info"><strong>Episode:</strong> &ldquo;' + $dot.data('episode-title') + '&rdquo; (' + $dot.data('episode') + ')</span>');
                 
-                tt_height = $tooltip.height();
-                tt_width = $tooltip.outerWidth();
-                tt_top = dot_position.top - (tt_height / 2);
-                tt_left = dot_position.left + (DOT_RADIUS * 2) + DOT_RADIUS;
-                if ((tt_left + tt_width) > width) {
-                    tt_left = dot_position.left - tt_width - DOT_RADIUS;
-                }
+                    tt_height = $tooltip.height();
+                    tt_width = $tooltip.outerWidth();
+                    tt_top = dot_position.top - (tt_height / 2);
+                    tt_left = dot_position.left + (DOT_RADIUS * 2) + DOT_RADIUS;
+                    if ((tt_left + tt_width) > width) {
+                        tt_left = dot_position.left - tt_width - DOT_RADIUS;
+                    }
                 
-                $tooltip.css('left', tt_left + 'px' );
-                $tooltip.css('top', tt_top + 'px' );
-                $tooltip.fadeIn('fast');
+                    $tooltip.css('left', tt_left + 'px' );
+                    $tooltip.css('top', tt_top + 'px' );
+                    $tooltip.fadeIn('fast');
 
-                highlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
-            },
-            function() {
-                var $dot = $(this);
+                    highlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
+                },
+                function() {
+                    var $dot = $(this);
 
-                $tooltip.fadeOut('fast');
+                    $tooltip.fadeOut('fast');
                 
-                dehighlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
-            }
-        ).click(function() {
-            window.open('episode-' + $(this).data('episode') + '.html','_self');
-        });
+                    dehighlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
+                }
+            ).click(function() {
+                window.open('episode-' + $(this).data('episode') + '.html','_self');
+            });
+        }
 
         function highlight_joke_network(joke_code, episode_number) {
             var selector = '.connection-line.joke-' + joke_code;
@@ -324,18 +339,20 @@ function render_joke_viz() {
             $('#label-' + joke_code).removeClass('highlight');
         }
         
-        $('.joke-line, .joke-label').hover(
-            function(e) {
-                var joke_code = $(this).data('joke');
-                highlight_joke_network(joke_code);
-            },
-            function(e) {
-                var joke_code = $(this).data('joke');
-                dehighlight_joke_network(joke_code);
-            }
-        ).click(function() {
-            window.open('joke-' + $(this).data('joke') + '.html','_self');
-        });
+        if (!IS_MOBILE) {
+            $('.joke-line, .joke-label').hover(
+                function(e) {
+                    var joke_code = $(this).data('joke');
+                    highlight_joke_network(joke_code);
+                },
+                function(e) {
+                    var joke_code = $(this).data('joke');
+                    dehighlight_joke_network(joke_code);
+                }
+            ).click(function() {
+                window.open('joke-' + $(this).data('joke') + '.html','_self');
+            });
+        }
     } 
 }
 

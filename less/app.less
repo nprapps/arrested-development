@@ -225,7 +225,7 @@ h1 + #story-meta { margin-top: -11px; }
         }
     }
     
-    ul#vis-labels {
+    #viz-labels {
         position: absolute;
         left: 0;
         top: -5px;
@@ -233,7 +233,7 @@ h1 + #story-meta { margin-top: -11px; }
         padding: 0;
         list-style: none;
         
-        li.joke-label {
+        li {
             position: absolute;
             left: 0;
             color: #666;
@@ -592,7 +592,16 @@ footer {
 	}
 	
 	#viz {
+        h4.joke-group-header { margin-top: -30px; }
 	    .episode-labels, .season-line, .connection-line { display: none; }
+	    .joke-line { stroke-width: 28px; }
+	    #viz-labels {
+	        margin-top: -9px;
+	        li { 
+	            height: 28px; display: table; line-height: 1.2; font-size: 12px;
+	            a { white-space: normal; display: table-cell; vertical-align: middle; }
+	        }
+	    }
 	}
 
     .detail {
