@@ -74,8 +74,9 @@ h1+#story-meta{margin-top:-11px;}
 .viz>header{padding:60px 0 20px;background:#f95d1a;}.viz>header .row-fluid{margin:0 -20px;padding:20px;}
 .viz>header h1{font-weight:bold;color:#fff;}
 .viz>header a{color:#fff;}
-.viz>header h2{font-size:22px;line-height:1.4;}
-.viz>header .credits{color:#333;}
+.viz>header h2{font-size:32px;line-height:1.1;color:#fff;font-weight:bold;margin:20px 0;}
+.viz>header .credits{color:rgba(255, 255, 255, 0.6);font-size:18px;margin-bottom:20px;}
+.viz .content-footer{margin-bottom:0;}
 .detail .small-header{padding-top:20px;padding-bottom:20px;}
 .detail .detail-header{background:#f95d1a;margin:0 -20px;padding:20px;}.detail .detail-header h1{font-family:Helvetica,Arial,sans-serif;font-weight:bold;font-size:42px;margin-bottom:10px;color:#fff;}.detail .detail-header h1 strong{font-weight:bold;}
 .detail .detail-header h2{color:#000;text-transform:uppercase;font-weight:bold;font-size:14px;line-height:1;margin:0 0 10px;}
