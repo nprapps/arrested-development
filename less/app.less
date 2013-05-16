@@ -5,8 +5,10 @@
 @orange-1: #F8E2CA;
 @orange-2: #F1C696;
 @orange-3: #EAAA61;
+@orange-4: #E38D2C;
 @yellow-1: #FBF1CD;
 @yellow-2: #F7E39B;
+@yellow-2b: #f9eab4;
 @yellow-3: #F3D469;
 
 // Global mixins
@@ -154,14 +156,18 @@ h1 + #story-meta { margin-top: -11px; }
     
     .joke-line {
         stroke-width: 14px;
+        stroke: #f1f1f1;
         
-        &:hover, &.highlight-primary {
-            stroke: #F3D469;
+        &:hover, 
+        &.highlight-primary,
+        &.joke-line-detail.highlight-primary {
+            stroke: @yellow-3;
             cursor: pointer;
         }
         &.highlight {
-            stroke: #f9eab4;
+            stroke: @yellow-2b;
         }
+        &.joke-line-detail { stroke: @orange-3; }
     }
     .connection-line {
         stroke: #ccc;
@@ -169,7 +175,7 @@ h1 + #story-meta { margin-top: -11px; }
         stroke-width: 1.5px;
 
         &:hover, &.highlight {
-            stroke: #E38D2C;
+            stroke: @orange-4;
             stroke-width: 3px;
             cursor: pointer;
         }
@@ -184,7 +190,7 @@ h1 + #story-meta { margin-top: -11px; }
             cursor: pointer;
         }
         &.joke-type-1 { // regular joke instance
-            fill: #E38D2C;
+            fill: @orange-4;
             stroke: #AA6A21;
             &:hover { stroke: #AA6A21; }
         }
@@ -222,10 +228,11 @@ h1 + #story-meta { margin-top: -11px; }
                 display: block;
                 white-space: nowrap;
                 font-weight: 500;
+                color: #787878;
             }
 
             &:hover a, &.highlight a {
-                color: #E38D2C;
+                color: @orange-4;
                 font-weight: bold;
                 border-radius: 4px;
             }
@@ -243,6 +250,7 @@ h1 + #story-meta { margin-top: -11px; }
         width: 200px;
         border-radius: 3px;
         box-shadow: 0px 0px 7px rgba(30,30,30,.4);
+        background-color: @orange-4;
         
         span {
             display: block;
@@ -278,8 +286,8 @@ h1 + #story-meta { margin-top: -11px; }
         text-transform: uppercase;
         height: 14px;
         overflow: hidden;
+        color: #333;
     }
-    
     .episode-labels {
         position: absolute;
         top: 0;
@@ -290,56 +298,26 @@ h1 + #story-meta { margin-top: -11px; }
         li {
             margin: 0;
             padding: 0;
-            font-size: 9.5px;
-            line-height: 1;
+            position: absolute;
+            top: 9px;
+            width: 80px;
             display: inline-block;
-            
-            &.episode-season-number {
-                position: absolute;
-                top: 9px;
-                font-size: 11px;
-                text-transform: uppercase;
-                width: 80px;
-                white-space: nowrap;
-            }
+            font-size: 11px;
+            line-height: 1;
+            text-transform: uppercase;
+            white-space: nowrap;
         }
     }
 }
-#viz {
-    h4.joke-group-header { color: #333; }
-    #viz-labels {
-        li a { color: #787878; }
-    }
+.viz {
     #viz-tooltip {
-        background-color: #E38D2C;
         span {
             &.joke-info { color: #fff; }
             &.joke-type, &.related-joke, &.joke-details, &.episode-info { color: @orange-1; }
         }
     }
-    .joke-line { stroke: #f1f1f1; }
     .season-line { stroke: #fff; }
     .episode-labels li { color: #999; }
-}
-#joke-viz {
-    h4.joke-group-header { color: #111; }
-    #viz-labels {
-        li a { color: #111; }
-    }
-    #viz-tooltip {
-        background-color: #111;
-        span {
-            &.joke-info { color: #fff; }
-            &.joke-type, &.related-joke, &.joke-details, &.episode-info { color: @yellow-2; }
-        }
-    }
-    .joke-line { 
-        stroke: #c64c00;
-
-        &.joke-line-detail { stroke: #111; }
-    }
-    .season-line { stroke: @orange; }
-    .episode-labels li { color: #111; font-weight: 600; }
 }
 
 .ad-key {
