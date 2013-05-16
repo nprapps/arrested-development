@@ -269,6 +269,8 @@ function render_joke_viz() {
                 var el = $('.joke-line.joke-' + joke_code2)[0];
                 var attr = el.getAttribute('class') + ' ' + klass;
                 el.setAttribute('class', attr);
+            
+                $('#label-' + joke_code2).addClass('highlight');
             }
 
             $('#label-' + joke_code).addClass('highlight');
@@ -296,6 +298,8 @@ function render_joke_viz() {
                 var el = $('.joke-line.joke-' + joke_code2)[0];
                 var attr = el.getAttribute('class').replace(' ' + klass, '');
                 el.setAttribute('class', attr);
+                
+                $('#label-' + joke_code2).removeClass('highlight');
             }
 
             $('#label-' + joke_code).removeClass('highlight');
