@@ -33,13 +33,11 @@ class Episode(Model):
     number = IntegerField()
 
     rating = TextField(null=True)
-    directed_by = TextField(null=True)
-    written_by = TextField(null=True)
-    production_code = CharField(max_length=255, null=True)
+    production_code = TextField(null=True)
     run_date = DateField(null=True)
+    blurb = TextField(null=True)
 
-    wikipedia_link = TextField(null=True)
-    netflix_link = TextField(null=True)
+    tvdb_image = TextField(null=True)
 
     class Meta:
         database = db

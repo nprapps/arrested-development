@@ -16,7 +16,7 @@ app = Flask(app_config.PROJECT_NAME)
 
 def _all_seasons():
     output = []
-    for season in [1, 2, 3]:
+    for season in [1, 2, 3, 4]:
         season_dict = {}
         season_dict['season'] = season
         season_dict['episodes'] = []

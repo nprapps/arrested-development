@@ -90,13 +90,12 @@
     </nav>
 
     {% block header_content %}
+    {% include "_nav.html" %}
     {% endblock header_content %}
 
+    {% block wide_content %}
     <section class="the-goods">
-
         <div class="container-fluid">
-            {% include "_nav.html" %}
-            {% block wide_content %}
             <div class="row-fluid">
                 <div id="main-content" class="span12">
                     {% block content %}
@@ -105,7 +104,6 @@
                     {% endblock content %}
                 </div>
             </div>
-            {% endblock wide_content %}
         </div>
     </section>
     {# 300x250 ad #}
@@ -122,6 +120,7 @@
             </script>
         </div>
     </div>
+    {% endblock wide_content %}
 
     <footer>
         <div class="primary">
