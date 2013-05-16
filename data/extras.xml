@@ -1,0 +1,2647 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Data><Series>
+  <id>72173</id>
+  <Actors>|Jason Bateman|Jeffrey Tambor|Michael Cera|Jessica Walter|David Cross|Tony Hale|Alia Shawkat|Will Arnett|Portia de Rossi|</Actors>
+  <Airs_DayOfWeek>Monday</Airs_DayOfWeek>
+  <Airs_Time>8:00 PM</Airs_Time>
+  <ContentRating>TV-14</ContentRating>
+  <FirstAired>2003-11-01</FirstAired>
+  <Genre>|Comedy|</Genre>
+  <IMDB_ID>tt0367279</IMDB_ID>
+  <Language>en</Language>
+  <Network>FOX</Network>
+  <NetworkID></NetworkID>
+  <Overview>Level-headed son Michael Bluth takes over family affairs after his father is imprisoned. But the rest of his spoiled, dysfunctional family are making his job unbearable.</Overview>
+  <Rating>9.5</Rating>
+  <RatingCount>156</RatingCount>
+  <Runtime>30</Runtime>
+  <SeriesID>17005</SeriesID>
+  <SeriesName>Arrested Development</SeriesName>
+  <Status>Continuing</Status>
+  <added></added>
+  <addedBy></addedBy>
+  <banner>graphical/72173-g4.jpg</banner>
+  <fanart>fanart/original/72173-11.jpg</fanart>
+  <lastupdated>1368574984</lastupdated>
+  <poster>posters/72173-6.jpg</poster>
+  <zap2it_id>EP00598470</zap2it_id>
+</Series>
+<Episode>
+  <id>378723</id>
+  <Combined_episodenumber>1</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director>|Joe Russo|Anthony Russo|</Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>Extended Pilot</EpisodeName>
+  <EpisodeNumber>1</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars>|Hira Ambrosino|Jonathan Schmock|Andy Morrow|Paul Mendoza|Stacey Grenrock-Woods|Chad Einbinder|J. Hunter Ackerman|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>28 minute version of the pilot episode.</Overview>
+  <ProductionCode></ProductionCode>
+  <Rating>7.7</Rating>
+  <RatingCount>6</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer>|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename>episodes/72173/378723.jpg</filename>
+  <lastupdated>1336350825</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1107511</id>
+  <Combined_episodenumber>2</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>1</EpImgFlag>
+  <EpisodeName>Breaking Ground : Behind the scenes of Arrested Development</EpisodeName>
+  <EpisodeNumber>2</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Behind the scenes look at Arrested Development</Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename>episodes/72173/1107511.jpg</filename>
+  <lastupdated>1310332225</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1107521</id>
+  <Combined_episodenumber>3</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>3</EpImgFlag>
+  <EpisodeName>Ron Howard Sneak Peak at Season 2</EpisodeName>
+  <EpisodeNumber>3</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename>episodes/72173/1107521.jpg</filename>
+  <lastupdated>1313103001</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1107531</id>
+  <Combined_episodenumber>4</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>1</EpImgFlag>
+  <EpisodeName>TV Land - &quot;Arrested Development: The Making of a Future Classic&quot;</EpisodeName>
+  <EpisodeNumber>4</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Cast members talk about what it means to get the TV Land Future Classic award in their first year</Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename>episodes/72173/1107531.jpg</filename>
+  <lastupdated>1313103047</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1107541</id>
+  <Combined_episodenumber>5</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>1</EpImgFlag>
+  <EpisodeName>The Museum of Television &amp; Radio Cast Panel Discussion</EpisodeName>
+  <EpisodeNumber>5</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename>episodes/72173/1107541.jpg</filename>
+  <lastupdated>1310332254</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1107551</id>
+  <Combined_episodenumber>6</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>1</EpImgFlag>
+  <EpisodeName>&quot;TV Land Awards&quot; - The Future Classic Award</EpisodeName>
+  <EpisodeNumber>6</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>The cast accepts their TV Land award</Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename>episodes/72173/1107551.jpg</filename>
+  <lastupdated>1313103111</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324191</id>
+  <Combined_episodenumber>7</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>3</EpImgFlag>
+  <EpisodeName>S1 Deleted Scenes for Episodes 01-06</EpisodeName>
+  <EpisodeNumber>7</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode>7</airsbefore_episode>
+  <airsbefore_season>1</airsbefore_season>
+  <filename>episodes/72173/1324191.jpg</filename>
+  <lastupdated>1310331998</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4150213</id>
+  <Combined_episodenumber>8</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>1</EpImgFlag>
+  <EpisodeName>S1 Deleted Scenes for Episodes 07-08</EpisodeName>
+  <EpisodeNumber>8</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode>9</airsbefore_episode>
+  <airsbefore_season>1</airsbefore_season>
+  <filename>episodes/72173/4150213.jpg</filename>
+  <lastupdated>1367876437</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324201</id>
+  <Combined_episodenumber>9</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>3</EpImgFlag>
+  <EpisodeName>S1 Deleted Scenes for Episodes 09-14</EpisodeName>
+  <EpisodeNumber>9</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode>15</airsbefore_episode>
+  <airsbefore_season>1</airsbefore_season>
+  <filename>episodes/72173/1324201.jpg</filename>
+  <lastupdated>1313106179</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324211</id>
+  <Combined_episodenumber>10</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>3</EpImgFlag>
+  <EpisodeName>S1 Blooper</EpisodeName>
+  <EpisodeNumber>10</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>From the episode 'Beef Consomme', Tobias overcompensates..</Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode>14</airsbefore_episode>
+  <airsbefore_season>1</airsbefore_season>
+  <filename>episodes/72173/1324211.jpg</filename>
+  <lastupdated>1313104578</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324221</id>
+  <Combined_episodenumber>11</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>3</EpImgFlag>
+  <EpisodeName>S1 Deleted Scenes for Episodes 15-19</EpisodeName>
+  <EpisodeNumber>11</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode>20</airsbefore_episode>
+  <airsbefore_season>1</airsbefore_season>
+  <filename>episodes/72173/1324221.jpg</filename>
+  <lastupdated>1313106223</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324241</id>
+  <Combined_episodenumber>12</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Arrested Development Promo &quot;Blind&quot;</EpisodeName>
+  <EpisodeNumber>12</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode>1</airsbefore_episode>
+  <airsbefore_season>1</airsbefore_season>
+  <filename></filename>
+  <lastupdated>1313106352</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324251</id>
+  <Combined_episodenumber>13</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>S2 Bloopers</EpisodeName>
+  <EpisodeNumber>13</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating>7.0</Rating>
+  <RatingCount>1</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season>2</airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename>episodes/72173/1324251.jpg</filename>
+  <lastupdated>1367876457</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324261</id>
+  <Combined_episodenumber>14</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>S2 Deleted Scenes for Episodes 1-6</EpisodeName>
+  <EpisodeNumber>14</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode>7</airsbefore_episode>
+  <airsbefore_season>2</airsbefore_season>
+  <filename>episodes/72173/1324261.jpg</filename>
+  <lastupdated>1367876470</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324271</id>
+  <Combined_episodenumber>15</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>S2 Deleted Scenes for Episodes 7-12</EpisodeName>
+  <EpisodeNumber>15</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode>13</airsbefore_episode>
+  <airsbefore_season>2</airsbefore_season>
+  <filename>episodes/72173/1324271.jpg</filename>
+  <lastupdated>1367876483</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324281</id>
+  <Combined_episodenumber>16</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>S2 Deleted Scenes for Episodes 13-18</EpisodeName>
+  <EpisodeNumber>16</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season>2</airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename>episodes/72173/1324281.jpg</filename>
+  <lastupdated>1367876495</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>2018691</id>
+  <Combined_episodenumber>17</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>3</EpImgFlag>
+  <EpisodeName>S2 Campaign Videos for The Inmaculate Election</EpisodeName>
+  <EpisodeNumber>17</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode>15</airsbefore_episode>
+  <airsbefore_season>2</airsbefore_season>
+  <filename>episodes/72173/2018691.jpg</filename>
+  <lastupdated>1367876512</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>2018701</id>
+  <Combined_episodenumber>18</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>1</EpImgFlag>
+  <EpisodeName>Overview: Season One in 3 Minutes</EpisodeName>
+  <EpisodeNumber>18</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season>1</airsafter_season>
+  <airsbefore_episode>1</airsbefore_episode>
+  <airsbefore_season>2</airsbefore_season>
+  <filename>episodes/72173/2018701.jpg</filename>
+  <lastupdated>1367876526</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324291</id>
+  <Combined_episodenumber>19</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>S3 Deleted Scenes for Episodes 1-7</EpisodeName>
+  <EpisodeNumber>19</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season></airsafter_season>
+  <airsbefore_episode>8</airsbefore_episode>
+  <airsbefore_season>3</airsbefore_season>
+  <filename></filename>
+  <lastupdated>1313106260</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324301</id>
+  <Combined_episodenumber>20</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>S3 Deleted Scenes for Episodes 8-13</EpisodeName>
+  <EpisodeNumber>20</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season>3</airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename></filename>
+  <lastupdated>1313106254</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324311</id>
+  <Combined_episodenumber>21</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>S3 Bloopers</EpisodeName>
+  <EpisodeNumber>21</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>1</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season>3</airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename>episodes/72173/1324311.jpg</filename>
+  <lastupdated>1367876542</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>1324321</id>
+  <Combined_episodenumber>22</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>S3 The Last Day on Location</EpisodeName>
+  <EpisodeNumber>22</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season>3</airsafter_season>
+  <airsbefore_episode></airsbefore_episode>
+  <airsbefore_season></airsbefore_season>
+  <filename>episodes/72173/1324321.jpg</filename>
+  <lastupdated>1367876553</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4564302</id>
+  <Combined_episodenumber>23</Combined_episodenumber>
+  <Combined_season>0</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>The Arrested Development Documentary Project</EpisodeName>
+  <EpisodeNumber>23</EpisodeNumber>
+  <FirstAired>2013-05-03</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID>tt1240538</IMDB_ID>
+  <Language>en</Language>
+  <Overview>This documentary follows the story of the show through fan, cast and crew, and celebrity interviews.</Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>0</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <airsafter_season>3</airsafter_season>
+  <airsbefore_episode>1</airsbefore_episode>
+  <airsbefore_season>4</airsbefore_season>
+  <filename></filename>
+  <lastupdated>1368067267</lastupdated>
+  <seasonid>19640</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75834</id>
+  <Combined_episodenumber>1.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid>1</DVD_discid>
+  <DVD_episodenumber>1.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Joe Russo|Anthony Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Pilot</EpisodeName>
+  <EpisodeNumber>1</EpisodeNumber>
+  <FirstAired>2003-11-02</FirstAired>
+  <GuestStars>|Hira Ambrosino|Jonathan Schmock|Andy Morrow|Paul Mendoza|Stacey Grenrock-Woods|Chad Einbinder|J. Hunter Ackerman|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Meet the Bluths. In the pilot, Michael decides to take a job in Arizona after being passed over by George Sr. for head of the Bluth Company. George Sr. is jailed, and the family realizes they need Michael.
+</Overview>
+  <ProductionCode>1AJD79</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>80</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75834.jpg</filename>
+  <lastupdated>1286319445</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75835</id>
+  <Combined_episodenumber>2.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid>1</DVD_discid>
+  <DVD_episodenumber>2.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Anthony Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Top Banana</EpisodeName>
+  <EpisodeNumber>2</EpisodeNumber>
+  <FirstAired>2003-11-09</FirstAired>
+  <GuestStars>|Patrice O'Neal|Scott Atkinson|Tom Kiesche|Clayton Staggs|Kendall Clement|Monika Jolly|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael puts George Michael in charge of the Bluth Bannana Stand, and his son subsequently burns down the stand. Elsewhere, Tobias auditions for a commercial, and Lindsay inadvertantly gets the part.</Overview>
+  <ProductionCode>1AJD01</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>66</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|John Levenstein|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75835.jpg</filename>
+  <lastupdated>1276628636</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75836</id>
+  <Combined_episodenumber>3.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid>1</DVD_discid>
+  <DVD_episodenumber>3.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Joe Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Bringing Up Buster</EpisodeName>
+  <EpisodeNumber>3</EpisodeNumber>
+  <FirstAired>2003-11-16</FirstAired>
+  <GuestStars>|Leonor Varela|Richard Simmons|Justin Grant Wade|Jim Ishida|Bart Tangredi|Pat Warren|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael spends quality time with Buster. George Michael auditions for a school play to get closer to Maeby. Gob breaks up with his girlfriend and has nowhere to go.</Overview>
+  <ProductionCode>1AJD02</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>61</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Mitchell Hurwitz|Richard Rosenstock|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75836.jpg</filename>
+  <lastupdated>1276628692</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75837</id>
+  <Combined_episodenumber>4.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid>1</DVD_discid>
+  <DVD_episodenumber>4.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Anthony Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Key Decisions</EpisodeName>
+  <EpisodeNumber>4</EpisodeNumber>
+  <FirstAired>2003-11-23</FirstAired>
+  <GuestStars>|Leonor Varela|Clint Howard|David Reynolds|Stacey Grenrock-Woods|Rocky McMurray|Eduardo Palomo|Bruno Oliver|Lee Ryan|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Gob decides to lock himself in his father's prison for 24 hours to get back in with the alliance, and to spend quality time with his father. Michael takes Gob's girlfriend to an awards show, and Buster inadvertently flirts with his mother's rival.</Overview>
+  <ProductionCode>1AJD03</ProductionCode>
+  <Rating>7.9</Rating>
+  <RatingCount>61</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Brad Copeland|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75837.jpg</filename>
+  <lastupdated>1276628745</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75838</id>
+  <Combined_episodenumber>6.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid>1</DVD_discid>
+  <DVD_episodenumber>6.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Greg Mottola|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Charity Drive</EpisodeName>
+  <EpisodeNumber>5</EpisodeNumber>
+  <FirstAired>2003-11-30</FirstAired>
+  <GuestStars>|Mel Gorham|Bruno Oliver|Christopher Gehrman|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael and Lindsay try to prove their charitable sides to each other. Gob demands George Michael's respect, and Buster continues avoiding Lucille 2.</Overview>
+  <ProductionCode>1AJD05</ProductionCode>
+  <Rating>7.9</Rating>
+  <RatingCount>60</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Barbie Feldman Adler|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75838.jpg</filename>
+  <lastupdated>1276628777</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75839</id>
+  <Combined_episodenumber>5.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>5.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Greg Mottola|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Visiting Ours</EpisodeName>
+  <EpisodeNumber>6</EpisodeNumber>
+  <FirstAired>2003-12-07</FirstAired>
+  <GuestStars>|Ski Carr|Tom Kiesche|Rocky McMurray|Bob Odenkirk|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael sets up an &quot;intimate conjugal visit&quot; for his parents, while it is revealed that George Sr. had an affair with Kitty, his secretary who recently slept with Gob. Tobias and Lindsay see a marriage counselor.</Overview>
+  <ProductionCode>1AJD04</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>52</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|John Levenstein|Richard Rosenstock|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75839.jpg</filename>
+  <lastupdated>1276628800</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75840</id>
+  <Combined_episodenumber>8.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>8.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Joe Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>In God We Trust</EpisodeName>
+  <EpisodeNumber>7</EpisodeNumber>
+  <FirstAired>2003-12-14</FirstAired>
+  <GuestStars>|Evan Lee Dahl|Blaine Pate|John Michael Higgins|Sam Pancake|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael attempts to fire the family's incompetent, but likeable attorney. George Michael impresses Maeby with a muscle suit for a &quot;Living Classics&quot; pagent. Tobias has a psychological affliction where he is unable to take off his clothes.</Overview>
+  <ProductionCode>1AJD06</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>54</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Abraham Higginbotham|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75840.jpg</filename>
+  <lastupdated>1289527210</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75841</id>
+  <Combined_episodenumber>7.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>7.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Jay Chandrasekhar|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>My Mother, The Car</EpisodeName>
+  <EpisodeNumber>8</EpisodeNumber>
+  <FirstAired>2003-12-21</FirstAired>
+  <GuestStars>|Mark Blankfield|David Reynolds|Mim Drew|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael loses his short-term memory, which Lucille uses to her advantage. Gob attempts to use the family yacht before Michael sells it. George Michael and Maeby attempt to see an R-rated movie about cousins having an affair. Buster and Lucille 2 take &quot;the next step&quot;.</Overview>
+  <ProductionCode>1AJD07</ProductionCode>
+  <Rating>7.9</Rating>
+  <RatingCount>44</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Chuck Martin|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75841.jpg</filename>
+  <lastupdated>1289527218</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75842</id>
+  <Combined_episodenumber>9.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>9.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Greg Mottola|</Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>Storming the Castle</EpisodeName>
+  <EpisodeNumber>9</EpisodeNumber>
+  <FirstAired>2004-01-04</FirstAired>
+  <GuestStars>|Marc Grapey|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael cannot go through with his plan to break up Gob and Marta. A thug magician wants to take Gob's &quot;legs&quot;. Maeby wears all leather to get back at her mother, and Lucille decides to confront Buster's relationship with Lucille 2.</Overview>
+  <ProductionCode>1AJD09</ProductionCode>
+  <Rating>7.9</Rating>
+  <RatingCount>60</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Brad Copeland|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75842.jpg</filename>
+  <lastupdated>1276628954</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75843</id>
+  <Combined_episodenumber>10.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>10.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Joe Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Pier Pressure</EpisodeName>
+  <EpisodeNumber>10</EpisodeNumber>
+  <FirstAired>2004-01-11</FirstAired>
+  <GuestStars>|Greg Kohout|Jason Aaron Tinero|Caitlin Sedio|Curtis Blanck|Steve Ryan|Jase Wirey|Dan Horton|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Buster realizes that medical marijuana will help cure Lucille 2's vertigo, and pays George Michael to get it for him from Gob. Lindsay sends Maeby to spend a day with Lucille to punish her for bad grades. Michael thinks George Michael is on drugs and attempts to teach him a lesson.</Overview>
+  <ProductionCode>1AJD09</ProductionCode>
+  <Rating>8.1</Rating>
+  <RatingCount>55</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Jim Vallely|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75843.jpg</filename>
+  <lastupdated>1276628988</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75844</id>
+  <Combined_episodenumber>11.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>11.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Lee Shallat-Chemel|</Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>Public Relations</EpisodeName>
+  <EpisodeNumber>11</EpisodeNumber>
+  <FirstAired>2004-01-25</FirstAired>
+  <GuestStars>|Jill Ritchie|Carl Weathers|Jordan Orr|Stacey Grenrock-Woods|Don Perry|Harry Murphy|John Rothman|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>When George Michael is a rejected by a private school due to the family's reputation, Michael hires a publicist from his gym who he's been flirting with to change the public perspective of the Bluths. Meanwhile, Tobias is sent to Boston to reclaim his medical license.</Overview>
+  <ProductionCode>1AJD10</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>53</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Courtney Lilly|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75844.jpg</filename>
+  <lastupdated>1276629010</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75845</id>
+  <Combined_episodenumber>12.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>12.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Joe Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Marta Complex</EpisodeName>
+  <EpisodeNumber>12</EpisodeNumber>
+  <FirstAired>2004-02-08</FirstAired>
+  <GuestStars>|Carlos Albert|Carl Weathers|Marco Pelaez|Oliver Patrick Sandino|Casey Sandino|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>When Lucille throws an anniversary party for Tobias and Lindsay on Valentine's Day, Michael gives an impassioned speech about love. This makes Marta realize she has feelings for him and Lindsay realize she wants a divorce. Meanwhile, Buster decides to move out of the penthouse and Lucille revels in living alone for the first time.</Overview>
+  <ProductionCode>1AJD11</ProductionCode>
+  <Rating>7.8</Rating>
+  <RatingCount>50</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|John Levenstein|Jim Vallely|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75845.jpg</filename>
+  <lastupdated>1276629028</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75846</id>
+  <Combined_episodenumber>13.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>13.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Jay Chandrasekhar|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Beef Consomme</EpisodeName>
+  <EpisodeNumber>13</EpisodeNumber>
+  <FirstAired>2004-02-15</FirstAired>
+  <GuestStars>|Jesus Nebot|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>After learning that Marta has feelings for him, Michael goes to her and they decide to get permission from Gob before taking things to the next level. Meanwhile, Lindsay and Tobias finally get to the heart of his &quot;never-nude&quot; problem and George Sr. faces his first hearing.</Overview>
+  <ProductionCode>1AJD12</ProductionCode>
+  <Rating>8.1</Rating>
+  <RatingCount>46</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Chuck Martin|Richard Rosenstock|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75846.jpg</filename>
+  <lastupdated>1276629090</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75847</id>
+  <Combined_episodenumber>14.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>14.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Joe Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Shock and Aww</EpisodeName>
+  <EpisodeNumber>14</EpisodeNumber>
+  <FirstAired>2004-03-07</FirstAired>
+  <GuestStars>|Michael Blieden|Iqbal Theba|Jane Lynch|Justin Grant Wade|Maliabeth Johnson|Matthew Richards|Matt Price|Heather Graham|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael falls for his George Michael's ethics teacher, whom his son also has a crush on. Meanwhile, Lucille adopts a 14-year old Korean boy, and George Sr.'s &quot;Caged Wisdom&quot; tapes have given him a new admirer.</Overview>
+  <ProductionCode>1AJD13</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>48</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Jim Vallely|Chuck Martin|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75847.jpg</filename>
+  <lastupdated>1276629130</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75848</id>
+  <Combined_episodenumber>15.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>15.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|John Fortenberry|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Staff Infection</EpisodeName>
+  <EpisodeNumber>15</EpisodeNumber>
+  <FirstAired>2004-03-14</FirstAired>
+  <GuestStars>|Matt Price|Alden Villaverde|Michael Blieden|BW Gonazalez|David Reynolds|James Lipton|Bradley Stryker|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>When Michael discovers his family has been receiving paychecks without working, he forces them all to get jobs within the company. Lindsay questions his management skills, and Tobias checks himself in at George Sr.'s prison to research a film role.</Overview>
+  <ProductionCode>1AJD14</ProductionCode>
+  <Rating>7.6</Rating>
+  <RatingCount>48</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Brad Copeland|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75848.jpg</filename>
+  <lastupdated>1276629157</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75851</id>
+  <Combined_episodenumber>17.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>17.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Jay Chandrasekhar|</Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>Altar Egos</EpisodeName>
+  <EpisodeNumber>16</EpisodeNumber>
+  <FirstAired>2004-03-17</FirstAired>
+  <GuestStars>|Julia Louis-Dreyfus|James Lipton|Steve Witting|Jane Lynch|Verda Bridges|Tim Starks|Frank Whiteman|Angela Russo|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael attempts to have a one-night stand with an attorney whom he doesn't know is not only blind, but the prosecutor who is trying to put his father in jail. Also, Gob gets married on a dare, Maeby pretends to be a girl with a made up disease, and George Sr.'s admirer turns out to be an undercover SEC agent who has truly fallen for him.</Overview>
+  <ProductionCode>1AJD16</ProductionCode>
+  <Rating>8.2</Rating>
+  <RatingCount>46</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Barbie Feldman Adler|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75851.jpg</filename>
+  <lastupdated>1276629229</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75849</id>
+  <Combined_episodenumber>18.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>18.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Jay Chandrasekhar|</Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>Justice Is Blind</EpisodeName>
+  <EpisodeNumber>17</EpisodeNumber>
+  <FirstAired>2004-03-21</FirstAired>
+  <GuestStars>|Julia Louis-Dreyfus|Ping Wu|Timothy Davis-Reed|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Gob steals a file on the government's case against the Bluth Company that Maggie had given to Michael. Tobias is sent to Maggie's house to get evidence, George Michael tries to prove Maeby's fraud, and Lindsay fights to remove the Ten Commandments from the courthouse lawn. </Overview>
+  <ProductionCode>1AJD17</ProductionCode>
+  <Rating>8.1</Rating>
+  <RatingCount>45</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Abraham Higginbotham|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75849.jpg</filename>
+  <lastupdated>1276629276</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75850</id>
+  <Combined_episodenumber>16.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>16.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Joe Russo|</Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>Missing Kitty</EpisodeName>
+  <EpisodeNumber>18</EpisodeNumber>
+  <FirstAired>2004-03-28</FirstAired>
+  <GuestStars>|James Lipton|Pat Crawford Brown|J. David Krassner|Allan Villaverde|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Gob attempts to make good on his promise to make the family yacht disappear. Meanwhile, Lindsay and Maeby try to track down Lindsay's grandmother, Tobias seeks George Sr.'s respect, and Michael attempts to fire Kitty, who claims to have information that could bring down the company.</Overview>
+  <ProductionCode>1AJD15</ProductionCode>
+  <Rating>8.2</Rating>
+  <RatingCount>37</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|John Levenstein|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75850.jpg</filename>
+  <lastupdated>1276629307</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75852</id>
+  <Combined_episodenumber>19.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>19.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Lee Shallat-Chemel|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Best Man for the Gob</EpisodeName>
+  <EpisodeNumber>19</EpisodeNumber>
+  <FirstAired>2004-04-04</FirstAired>
+  <GuestStars>|Michael Hitchcock|Lauren Bowles|Michael Blieden|Dan Horton|Luciano Giancarlo|Danielle Cipolla|Andrew Hill Newman|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>George Sr. uses Gob's bachelor party as an opportunity to set up his accountant in a compromising position so that he can blackmail him.  Meanwhile, Michael tries to prove he's a fun guy, and the Funkes reunite their family folk-music band.</Overview>
+  <ProductionCode>1AJD18</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>44</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Richard Rosenstock|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75852.jpg</filename>
+  <lastupdated>1276629343</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75853</id>
+  <Combined_episodenumber>20.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>20.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Paul Feig|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Whistler's Mother</EpisodeName>
+  <EpisodeNumber>20</EpisodeNumber>
+  <FirstAired>2004-04-11</FirstAired>
+  <GuestStars>|Dave Allen|Brian Gattas|Peter Jason|Ethan Phillips|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael deals with numerous requests for some unfrozen money, and chastises Lucille for being too coddling with Buster. Lindsay decides to protest the war to boost her self esteem while Tobias and Gob decide to start a coffee company.</Overview>
+  <ProductionCode>1AJD19</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>39</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|John Levenstein|Jim Vallely|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75853.jpg</filename>
+  <lastupdated>1276629369</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75854</id>
+  <Combined_episodenumber>21.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>21.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Lee Shallat-Chemel|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Not Without My Daughter</EpisodeName>
+  <EpisodeNumber>21</EpisodeNumber>
+  <FirstAired>2004-04-25</FirstAired>
+  <GuestStars>|Jerry Minor|Danielle Cipolla|Christian Lavery|Kevin McDonald|Jonathan Penner|Jay Johnston|John Ennis|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael takes Maeby to work with him on Take Your Daughter to Work Day. After being slighted by Michael, Tobias, George-Michael and Gob all go to the mall to prove that they are just manly. Oscar takes Lucille and Buster to Annyong's soceer game.</Overview>
+  <ProductionCode>1AJD20</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>38</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Mitchell Hurwitz|Richard Rosenstock|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75854.jpg</filename>
+  <lastupdated>1276629404</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75855</id>
+  <Combined_episodenumber>22.0</Combined_episodenumber>
+  <Combined_season>1</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>22.0</DVD_episodenumber>
+  <DVD_season>1</DVD_season>
+  <Director>|Paul Feig|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Let 'Em Eat Cake</EpisodeName>
+  <EpisodeNumber>22</EpisodeNumber>
+  <FirstAired>2004-06-06</FirstAired>
+  <GuestStars>|Ian Roberts|Judy Greer|Stacey Grenrock-Woods|Matt Walsh|Alessandra Toreson|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>In the first season finale, George Sr. has a heart attack, and Maeby is jealous when George Michael likes another girl. Meanwhile, Lindsay decides to leave Tobias until a book he wrote a long time ago becomes a gay bestseller, and Buster and Annyong compete over women.</Overview>
+  <ProductionCode>1AJD21</ProductionCode>
+  <Rating>8.1</Rating>
+  <RatingCount>41</RatingCount>
+  <SeasonNumber>1</SeasonNumber>
+  <Writer>|Jim Vallely|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75855.jpg</filename>
+  <lastupdated>1276629433</lastupdated>
+  <seasonid>3621</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75856</id>
+  <Combined_episodenumber>1.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>1.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Lee Shallat-Chemel|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>The One Where Michael Leaves</EpisodeName>
+  <EpisodeNumber>1</EpisodeNumber>
+  <FirstAired>2004-11-07</FirstAired>
+  <GuestStars>|Lynne Marie Stewart|Bill Rutkoski|Steve Tom|Jay Johnston|Ian Roberts|Blue Man Group|Ed Helms|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael and George Michael leave for Phoenix but go back to ensure the family misses them. Lindsay wants to have an open marriage, which causes Tobias to try to join the Blue Man Group under the impression that they are a support group for depressed men. Lucille signs Buster up for the Army after being goaded by a Michael Moore look-alike. Gob becomes president of the Bluth Company. </Overview>
+  <ProductionCode>2AJD01</ProductionCode>
+  <Rating>7.9</Rating>
+  <RatingCount>45</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Mitchell Hurwitz|Richard Rosenstock|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75856.jpg</filename>
+  <lastupdated>1276629511</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75857</id>
+  <Combined_episodenumber>2.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>2.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Patty Jenkins|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>The One Where They Build a House</EpisodeName>
+  <EpisodeNumber>2</EpisodeNumber>
+  <FirstAired>2004-11-14</FirstAired>
+  <GuestStars>|Christian Duguay|Thomas Jane|Zitto Kazann|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael is driven crazy by Gob when he impresses the board as the new company figurehead due to Michael's legal troubles. Meanwhile, George Sr. is arrested in Mexico for a crime Oscar committed, and Buster witnesses something that utterly shocks him.</Overview>
+  <ProductionCode>2AJD02</ProductionCode>
+  <Rating>7.9</Rating>
+  <RatingCount>40</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Jim Vallely|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75857.jpg</filename>
+  <lastupdated>1276629535</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75858</id>
+  <Combined_episodenumber>3.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>3.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Lee Shallat-Chemel|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Amigos</EpisodeName>
+  <EpisodeNumber>3</EpisodeNumber>
+  <FirstAired>2004-11-21</FirstAired>
+  <GuestStars>|Martin Mull|Malik Yoba|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael is increasingly frustrated over being abandoned by the family, and when the staircar is found in Mexico, Michael vows to find his father and give him a piece of his mind. Also, Buster spends time with Lupe's family and thinks he's in Mexico.</Overview>
+  <ProductionCode>2AJD03</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>45</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Brad Copeland|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75858.jpg</filename>
+  <lastupdated>1276629562</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75859</id>
+  <Combined_episodenumber>4.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>4.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Jeff Melman|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Good Grief!</EpisodeName>
+  <EpisodeNumber>4</EpisodeNumber>
+  <FirstAired>2004-12-05</FirstAired>
+  <GuestStars>|Malik Yoba|Abraham Higginbotham|Ben Stiller|Jason Aaron Tinero|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Lucille hires a bounty hunter, Ice, to find George Sr., who may be closer than everyone thinks. Gob tries to pull off an elaborate illusion, Maeby tries to set Lindsay up with Ice, and Michael tries to mend George Michael's broken relationship.</Overview>
+  <ProductionCode>2AJD04</ProductionCode>
+  <Rating>8.1</Rating>
+  <RatingCount>40</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|John Levenstein|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75859.jpg</filename>
+  <lastupdated>1314791171</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75860</id>
+  <Combined_episodenumber>5.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>5.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Peter Lauer|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Sad Sack</EpisodeName>
+  <EpisodeNumber>5</EpisodeNumber>
+  <FirstAired>2004-12-12</FirstAired>
+  <GuestStars>|John Michael Higgins|Justin Grant Wade|Sam Pancake|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>George Sr. fears he's losing Lucille to Oscar. Gob motivates Buster for the Army while Lindsay spends more time with Maeby to get closer to Steve Holt and Tobias starts working out.</Overview>
+  <ProductionCode>2AJD05</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>41</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Barbie Feldman Adler|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75860.jpg</filename>
+  <lastupdated>1276629681</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75861</id>
+  <Combined_episodenumber>6.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>6.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Jason Bateman|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Afternoon Delight</EpisodeName>
+  <EpisodeNumber>6</EpisodeNumber>
+  <FirstAired>2004-12-19</FirstAired>
+  <GuestStars>|J.J. Wall|Al Eisenmann|Jim Gaines Sullivan|Tom Saunders|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Gob stages mass firings after being inadvertently roasted at the Bluth Company Christmas party. Michael is forced to rebuild the Banana Stand, and Buster plays hooky from the Army at an arcade game.</Overview>
+  <ProductionCode>2AJD06</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>43</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Abraham Higginbotham|Chuck Martin|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75861.jpg</filename>
+  <lastupdated>1276629712</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75862</id>
+  <Combined_episodenumber>7.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>7.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Paul Feig|Courtney Lilly|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Switch Hitter</EpisodeName>
+  <EpisodeNumber>7</EpisodeNumber>
+  <FirstAired>2005-01-16</FirstAired>
+  <GuestStars>|Jayson Oertel|Ed Begley Jr.|Andy Richter|Jeff Garlin|J.K. Simmons|Jake Hoffman|Danielle Cipolla|Steve Bannos|Jason Aaron Tinero|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>The Bluths rival development company hires Gob, who finds the company president a father figure, in preparation for the Bluth-Sitwell softball game; Lindsay hallucinates from taking anti-depressants.</Overview>
+  <ProductionCode>2AJD07</ProductionCode>
+  <Rating>7.7</Rating>
+  <RatingCount>46</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Barbie Feldman Adler|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75862.jpg</filename>
+  <lastupdated>1276629736</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75863</id>
+  <Combined_episodenumber>8.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>8.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Andrew Flemming|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Queen for a Day</EpisodeName>
+  <EpisodeNumber>8</EpisodeNumber>
+  <FirstAired>2005-01-23</FirstAired>
+  <GuestStars>|Ed Begley Jr.|Jeff Garlin|Tom Virtue|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael sells a portion of his stock in the Bluth company to buy a car, and Lucille 2 returns, only to discover that Buster is dating the company secretary Starla.</Overview>
+  <ProductionCode>2AJD08</ProductionCode>
+  <Rating>7.8</Rating>
+  <RatingCount>40</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Brad Copeland|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75863.jpg</filename>
+  <lastupdated>1276629766</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75864</id>
+  <Combined_episodenumber>9.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>9.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Paul Feig|</Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>Burning Love</EpisodeName>
+  <EpisodeNumber>9</EpisodeNumber>
+  <FirstAired>2005-01-30</FirstAired>
+  <GuestStars>|Christine Taylor|Ed Begley Jr.|Rob Corddry|Justin Grant Wade|Spencer Redford|Kevin Kirkpatrick|Jack McBrayer|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael reunites with his long, lost love Sally Sitwell, but faces interference from parents. Meanwhile, the two Lucilles need someone to bid on them at the bachelorette auction with Buster already in a relationship.</Overview>
+  <ProductionCode>2AJD09</ProductionCode>
+  <Rating>7.8</Rating>
+  <RatingCount>42</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Chuck Martin|Lisa Parsons|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75864.jpg</filename>
+  <lastupdated>1276629791</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75865</id>
+  <Combined_episodenumber>10.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>10.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Paul Feig|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Ready, Aim, Marry Me</EpisodeName>
+  <EpisodeNumber>10</EpisodeNumber>
+  <FirstAired>2005-02-13</FirstAired>
+  <GuestStars>|Martin Short|Troy R. Brenna|Ed Begley Jr.|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>With the company in dire financial straits and the Bluths no longer the primary shareholders, Michael must turn to old family friend &quot;Uncle&quot; Jack Dorso for financial assistance. Uncle Jack, however, wants something in return.</Overview>
+  <ProductionCode>2AJD10</ProductionCode>
+  <Rating>7.7</Rating>
+  <RatingCount>39</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Lisa Parsons|Chuck Martin|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75865.jpg</filename>
+  <lastupdated>1276629814</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75866</id>
+  <Combined_episodenumber>11.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>11.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Danny Leiner|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Out on a Limb</EpisodeName>
+  <EpisodeNumber>11</EpisodeNumber>
+  <FirstAired>2005-03-06</FirstAired>
+  <GuestStars>|Julia Louis-Dreyfus|Christine Taylor|Dave Martel|Gerry Del Sol|Maggie Rowe|Becky Thyre|Rick Hall|Jerry Minor|Jay Johnston|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Just as Michael's relationship with Sally starts to flourish, Maggie Lizer returns nine months pregnant, and Michael immediately assumes he's the father. George Michael attempts to break up with Ann, and Buster learns he's being deployed to Iraq.</Overview>
+  <ProductionCode>2AJD11</ProductionCode>
+  <Rating>7.7</Rating>
+  <RatingCount>40</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Jim Vallely|Chuck Martin|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75866.jpg</filename>
+  <lastupdated>1276629835</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75867</id>
+  <Combined_episodenumber>12.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>12.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Joe Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Hand to God</EpisodeName>
+  <EpisodeNumber>12</EpisodeNumber>
+  <FirstAired>2005-03-06</FirstAired>
+  <GuestStars>|Julia Louis-Dreyfus|Jerry Minor|Jay Johnston|Maggie Rowe|Joe Russo|Steve Seagren|Becky Thyre|Ian Roberts|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael tries to find out who's the father of Maggie's baby, or if it's just another of her lies; Gob tries to find out whether he was responsible for Buster's accident.</Overview>
+  <ProductionCode>2AJD12</ProductionCode>
+  <Rating>7.8</Rating>
+  <RatingCount>35</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Mitchell Hurwitz|Chuck Martin|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75867.jpg</filename>
+  <lastupdated>1276629854</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75868</id>
+  <Combined_episodenumber>13.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>13.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Joe Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Motherboy XXX</EpisodeName>
+  <EpisodeNumber>13</EpisodeNumber>
+  <FirstAired>2005-03-13</FirstAired>
+  <GuestStars>|Timothy Brennen|Sammy Fine|Carl Weathers|Dave Attell|Henry Winkler|Karly Rothenberg|Gil Glasgow|Ryan Raddatz|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Lucille abducts George Michael for a mother-son dance, Buster adjusts to having a hook for a hand and Gob reunites with his estranged wife. Also, Tobias stars as George Sr. in a biopic about the Bluth family, which causes Lindsay to become more attracted to him.</Overview>
+  <ProductionCode>2AJD13</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>35</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Jim Vallely|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75868.jpg</filename>
+  <lastupdated>1276629877</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75869</id>
+  <Combined_episodenumber>14.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>14.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Joe Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>The Immaculate Election</EpisodeName>
+  <EpisodeNumber>14</EpisodeNumber>
+  <FirstAired>2005-03-20</FirstAired>
+  <GuestStars>|Phyllis Smith|Justin Grant Wade|Ron Michaelson|Omi Vaidya|Abraham Higginbotham|Michael Coleman|Armie Hammer|John Harrington Bland|Rob Corddry|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>George Michael runs for student body president, which Gob manages to ruin. Buster has an affair with Lupe, who is being sought after by Lindsay and Tobias attempts to move out of the model home, then develops a new persona when he regrets his decision.</Overview>
+  <ProductionCode>2AJD14</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>41</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Barbie Feldman Adler|Abraham Higginbotham|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75869.jpg</filename>
+  <lastupdated>1276629911</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75870</id>
+  <Combined_episodenumber>15.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>15.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Peter Lauer|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Sword of Destiny</EpisodeName>
+  <EpisodeNumber>15</EpisodeNumber>
+  <FirstAired>2005-03-27</FirstAired>
+  <GuestStars>|Craig Anstett|Ben Hoffman|Bob Glouberman|David McMillan|George Cheung|Kevin Heffernan|Paul Feig|Ian Roberts|Dan Castellaneta|Ben Stiller|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Gob and Buster team up for some magic tricks with the help of Buster's fake hand, but when Tony Wonder, a rival magician, starts to mentor them, somebody gets the finger. Meanwhile, Michael is forced to delegate some work when he's hospitalized and Lindsay teaches George Michael how to drive using the staircar.</Overview>
+  <ProductionCode>2AJD15</ProductionCode>
+  <Rating>8.1</Rating>
+  <RatingCount>40</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Brad Copeland|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75870.jpg</filename>
+  <lastupdated>1276629934</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75871</id>
+  <Combined_episodenumber>16.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>16.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Richard Rosenstock|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Meat the Veals</EpisodeName>
+  <EpisodeNumber>16</EpisodeNumber>
+  <FirstAired>2005-04-03</FirstAired>
+  <GuestStars>|Ione Skye|Alan Tudyk|Mario Joyner|Simon Helberg|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>George Sr. tries to find a way to attend an anniversary dinner for Lucille while Michael deliberately offends Ann's devout Christian parents. Tobias goes overboard performing his &quot;Mrs. Featherbottom&quot; persona.</Overview>
+  <ProductionCode>2AJD16</ProductionCode>
+  <Rating>8.2</Rating>
+  <RatingCount>40</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Barbie Feldman Adler|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75871.jpg</filename>
+  <lastupdated>1276629966</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75872</id>
+  <Combined_episodenumber>17.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>17.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Anthony Russo|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Spring Breakout</EpisodeName>
+  <EpisodeNumber>17</EpisodeNumber>
+  <FirstAired>2005-04-10</FirstAired>
+  <GuestStars>|Dick Van Patten|Zach Braff|Jeff Garlin|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Gob confronts the editor of the videos that showcased his magic mistakes. Michael tricks Lucille in to rehab, and then attempts to get her out after George Sr. is kidnapped.</Overview>
+  <ProductionCode>2AJD17</ProductionCode>
+  <Rating>7.9</Rating>
+  <RatingCount>45</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Abraham Higginbotham|Barbie Feldman Adler|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75872.jpg</filename>
+  <lastupdated>1276629988</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>75873</id>
+  <Combined_episodenumber>18.0</Combined_episodenumber>
+  <Combined_season>2</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>18.0</DVD_episodenumber>
+  <DVD_season>2</DVD_season>
+  <Director>|Chuck Martin|</Director>
+  <EpImgFlag>2</EpImgFlag>
+  <EpisodeName>Righteous Brothers</EpisodeName>
+  <EpisodeNumber>18</EpisodeNumber>
+  <FirstAired>2005-04-17</FirstAired>
+  <GuestStars>|Henry Winkler|Jeff Garlin|Marc Cherry|Ron Heubel|John Michael Higgins|Rob Huebel|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Gob hides George Sr. while the model home's plumbing is checked; George Michael helps Ann protest Maeby's new movie; Tobias takes a liking to Kitty after Michael asks him to keep an eye on her.</Overview>
+  <ProductionCode>2AJD18</ProductionCode>
+  <Rating>8.1</Rating>
+  <RatingCount>40</RatingCount>
+  <SeasonNumber>2</SeasonNumber>
+  <Writer>|Mitchell Hurwitz|Jim Vallely|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/75873.jpg</filename>
+  <lastupdated>1276630014</lastupdated>
+  <seasonid>3622</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>302635</id>
+  <Combined_episodenumber>1.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>1.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>|Paul Feig|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>The Cabin Show</EpisodeName>
+  <EpisodeNumber>1</EpisodeNumber>
+  <FirstAired>2005-09-19</FirstAired>
+  <GuestStars>|Justin Grant Wade|John Beard|Henry Winkler|Judy Greer|Blue Man Group|Gary Kraus|A. DeSantis Martin|Brandon Johnson|Paul Vogt|Jim Cramer|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael learns that it's actually George Sr.'s twin brother Oscar serving time in prison, not George. After getting a tip from Barry, Michael heads to Reno to find George, but that costs him a camping trip he promised his son.</Overview>
+  <ProductionCode>3AJD01</ProductionCode>
+  <Rating>7.9</Rating>
+  <RatingCount>43</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>|Mitchell Hurwitz|Jim Vallely|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/302635.jpg</filename>
+  <lastupdated>1314791495</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>306154</id>
+  <Combined_episodenumber>2.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>2.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>|John Fortenberry|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>For British Eyes Only</EpisodeName>
+  <EpisodeNumber>2</EpisodeNumber>
+  <FirstAired>2005-09-26</FirstAired>
+  <GuestStars>|Justin Grant Wade|BW Gonzalez|Charlize Theron|John Beard|Jonathan Schmock|Clinton Leupp|Rory Knox Johnston|Steve Stapenhorst|Harry Hamlin|Justin Grant Wade|Dave Thomas|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Investigating his father's claim that a British group set him up, Michael goes to &quot;Wee Britain&quot; and is smitten with a beautiful woman named Rita. Lindsay attempts to seduce the new family attorney, and Gob goes to extremes to avoid his newly discovered son.</Overview>
+  <ProductionCode>3AJD02</ProductionCode>
+  <Rating>7.8</Rating>
+  <RatingCount>35</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>|Richard Day|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/306154.jpg</filename>
+  <lastupdated>1314791667</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>306155</id>
+  <Combined_episodenumber>3.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>3.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>John Amodeo</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Forget Me Now</EpisodeName>
+  <EpisodeNumber>3</EpisodeNumber>
+  <FirstAired>2005-10-03</FirstAired>
+  <GuestStars>Jonathan Schmock|Justin Grant Wade|Bob Einstein|Dave Thomas|Scott Baio|Asante Jones</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>George Sr. is placed under house arrest by the family's new attorney Bob Loblaw, and finds that it's not exactly a walk in the park. Michael sets up his first date with Rita, but Rita has an unfortunate encounter with the family beforehand.</Overview>
+  <ProductionCode>3AJD03</ProductionCode>
+  <Rating>7.9</Rating>
+  <RatingCount>36</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>Tom Saunders</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/306155.jpg</filename>
+  <lastupdated>1276630100</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>306156</id>
+  <Combined_episodenumber>4.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>4.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>Lev L. Spiro</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Notapusy</EpisodeName>
+  <EpisodeNumber>4</EpisodeNumber>
+  <FirstAired>2005-11-07</FirstAired>
+  <GuestStars>Scott Baio|Dave Thomas|Mae Whitman|Justin Grant Wade|Bronwen Masters|Nathalia Ramos|Marcy Goldman|Charlize Theron</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>To prove he's a man to Rita, Michael and his nephew Steve Holt compete in the Church And State Fair's annual triathlon. George Sr. tries to scare some at-risk youth, and Tobias tries to help George-Michael's girlfriend Ann to compete in the fairs' &quot;inner beauty&quot; pageant.</Overview>
+  <ProductionCode>3AJD04</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>35</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>Ron Weiner</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/306156.jpg</filename>
+  <lastupdated>1276630135</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>306157</id>
+  <Combined_episodenumber>5.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>5.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>Arlene Sanford</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Mr. F</EpisodeName>
+  <EpisodeNumber>5</EpisodeNumber>
+  <FirstAired>2005-11-07</FirstAired>
+  <GuestStars>Bob Einstein|Frankie Muniz|Branden Weslee Kong</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael must deal with a huge mole problem in order to salvage a major real estate deal with Japanese investors. In an effort to help Michael, Gob and Buster team up with George Sr.'s surrogate, Larry, to devise a plan and save the deal, but their plan falls apart in a big way. Meanwhile, Tobias mistakes a CIA agent for a CAA agent and inadvertently betrays the family, and Michael makes Rita a proposal she can't refuse. Frankie Muniz makes a cameo as himself.</Overview>
+  <ProductionCode>3AJD05</ProductionCode>
+  <Rating>8.4</Rating>
+  <RatingCount>34</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>Richard Day|Jim Vallely</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/306157.jpg</filename>
+  <lastupdated>1276630157</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>306158</id>
+  <Combined_episodenumber>6.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>6.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>|Paul Feig|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>The Ocean Walker</EpisodeName>
+  <EpisodeNumber>6</EpisodeNumber>
+  <FirstAired>2005-12-05</FirstAired>
+  <GuestStars>|Charlize Theron|Dave Thomas|Bob Einstein|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>After Michael announces he's marrying Rita, George Sr. worries that she's after the family's money. But when Rita's Uncle Trevor tries to stop the wedding by revealing some surprising information about Rita, Michael must decide if he wants to walk down the aisle.</Overview>
+  <ProductionCode>3AJD06</ProductionCode>
+  <Rating>8.1</Rating>
+  <RatingCount>39</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>|Sam Laybourne|Jake Farrow|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/306158.jpg</filename>
+  <lastupdated>1276630179</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>306159</id>
+  <Combined_episodenumber>7.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>7.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>|Bob Berlinger|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Prison Break-In</EpisodeName>
+  <EpisodeNumber>7</EpisodeNumber>
+  <FirstAired>2005-12-12</FirstAired>
+  <GuestStars>|Mackenzie Hannigan|Sema'jay Hall|Ruby Jossen|James Lipton|Kenneth Kimmins|Hector Atreyu Ruiz|Cameron Covell|Andrew Vo|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>The family plans their annual fund raiser, and they actually have a cause this time. Tobias is ailing due to his transplanted hair plugs, which appear to be rejecting him. Lindsay uses the illness as her ticket back into high society, and Michael learns of the prison warden's true intentions with his mother after reading the warden's screenplay.</Overview>
+  <ProductionCode>3AJD07</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>37</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>|Karey Dornetto|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/306159.jpg</filename>
+  <lastupdated>1276630242</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>302606</id>
+  <Combined_episodenumber>8.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>8.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>|Peter Lauer|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Making a Stand</EpisodeName>
+  <EpisodeNumber>8</EpisodeNumber>
+  <FirstAired>2005-12-19</FirstAired>
+  <GuestStars>|Jeff Garlin|Joe Camareno|Alan Marco|Jason Jurman|Justin Grant Wade|Scott Baio|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Michael is tired of his father always having Gob compete with him, so Michael gets Gob his own banana stand franchise, only to find that Gob has set it up 20 feet from the old one. After the two compete, they decide to teach their father an elaborate lesson, and Buster refuses to use his handicap to scare kids. Meanwhile, Maeby uses Lucille's surgery in a horror film.</Overview>
+  <ProductionCode>3AJD08</ProductionCode>
+  <Rating>8.1</Rating>
+  <RatingCount>38</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>|Chuck Tatham|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/302606.jpg</filename>
+  <lastupdated>1314792043</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>304984</id>
+  <Combined_episodenumber>9.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>9.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>|Bob Berlinger|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>S.O.B's</EpisodeName>
+  <EpisodeNumber>9</EpisodeNumber>
+  <FirstAired>2006-01-02</FirstAired>
+  <GuestStars>|John Beard|Andy Richter|Helen Slayton-Hughes|Richard Belzer|Andy Dick|Ben Stiller|John Larroquette|Zach Braff|Judge Reinhold|Bob Einstein|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>George Sr. suggests a last-ditch effort to save the family by holding a fund raiser to raise money to pay their legal expenses. Michael suggests to Lindsay that she take over the house work, and he sends George-Michael to an expensive boarding school. Meanwhile, Maeby has trouble with a snowboarding film and Tobias tries to be a &quot;discipline daddy&quot;.</Overview>
+  <ProductionCode>3AJD09</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>38</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>|Jim Vallely|Richard Day|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/304984.jpg</filename>
+  <lastupdated>1314792158</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>306160</id>
+  <Combined_episodenumber>10.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>10.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>|Lev L. Spiro|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Fakin' It</EpisodeName>
+  <EpisodeNumber>10</EpisodeNumber>
+  <FirstAired>2006-02-10</FirstAired>
+  <GuestStars>|John Michael Higgins|Bronwen Masters|Peter Michael Goetz|Carrie Preston|Michael P. Byrne|John Fremont|John Farley|Ron Matthews|Michael Bartel|William Hung|Judge Reinhold|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>George, Sr. hires a new attorney who asks the Bluths to participate in a mock trial to help prepare them for the real thing. The attorney gets actor Judge Reinhold to preside over the mock case. Meanwhile, Buster fakes a coma to get out of testifying, and George Michael and Maeby participate in a mock wedding to entertain hospital patients. Back at the office, Michael discovers that he may have a long-lost sister named Nellie Bluth.</Overview>
+  <ProductionCode>3AJD10</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>42</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>|Dean Lorey|Chuck Tatham|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/306160.jpg</filename>
+  <lastupdated>1314792265</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>306161</id>
+  <Combined_episodenumber>11.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>11.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>|Bob Berlinger|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Family Ties</EpisodeName>
+  <EpisodeNumber>11</EpisodeNumber>
+  <FirstAired>2006-02-10</FirstAired>
+  <GuestStars>Tom Saunders|Ron Riggle|Mark Mueller|Ben Carroll|Olanrewaju Idewu|Charlie Hartsock|Bronwen Masters|Justine Bateman|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>In an effort to get to the bottom of things, Michael tracks Nellie down and hires her as a consultant for the Bluth Co. Unfortunately, Michael discovers Nellie's hands-on approach is more than he bargained for.</Overview>
+  <ProductionCode>3AJD11</ProductionCode>
+  <Rating>8.0</Rating>
+  <RatingCount>41</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>|Rob Weiner|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/306161.jpg</filename>
+  <lastupdated>1314792341</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>306162</id>
+  <Combined_episodenumber>12.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>12.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>|Lev L. Spiro|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Exit Strategy</EpisodeName>
+  <EpisodeNumber>12</EpisodeNumber>
+  <FirstAired>2006-02-10</FirstAired>
+  <GuestStars>John Michael Higgins|James O. Evans|Gary Cole|Jon Curry|Robert Michael Morris|Kathy Kolla|Cooper Thornton|Michael A. Shepperd|Richard Belzer|Mousa Kraish|Bashar Rahal|Ross Gibby|Hector Atreyu Ruiz|Tyler Sedustine|Erica Vittina Phillips|Mitsu Hadeishi|Bro</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Gob goes to Iraq to perform his Christian magic act on the USO tour and ends up incarcerated. Michael learns George, Sr. sent Gob to Iraq to burn down the model home he built there, so Michael and Buster fly to Iraq to spring their brother from prison.</Overview>
+  <ProductionCode>3AJD12</ProductionCode>
+  <Rating>8.3</Rating>
+  <RatingCount>40</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>|Dean Lorey|Chuck Tatham|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/306162.jpg</filename>
+  <lastupdated>1314792475</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>306163</id>
+  <Combined_episodenumber>13.0</Combined_episodenumber>
+  <Combined_season>3</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber>13.0</DVD_episodenumber>
+  <DVD_season>3</DVD_season>
+  <Director>John Fortenberry|</Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Development Arrested</EpisodeName>
+  <EpisodeNumber>13</EpisodeNumber>
+  <FirstAired>2006-02-10</FirstAired>
+  <GuestStars>Jim Cramer|Bill Rutkowski|J.J. Wall|Somer Dice|Brandon Hilluam|</GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>After returning home from Iraq, George Sr. is finally cleared of all charges, and Michael is relieved to be the head of a successful company for a change. The real brains behind the madness is revealed, and just as the family begins to celebrate their victory, a whole new set of problems emerge.</Overview>
+  <ProductionCode>3AJD13</ProductionCode>
+  <Rating>8.3</Rating>
+  <RatingCount>38</RatingCount>
+  <SeasonNumber>3</SeasonNumber>
+  <Writer>Richard Day|Mitchell Hurwitz|</Writer>
+  <absolute_number></absolute_number>
+  <filename>episodes/72173/306163.jpg</filename>
+  <lastupdated>1314792571</lastupdated>
+  <seasonid>3623</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4392165</id>
+  <Combined_episodenumber>1</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Michael (1)</EpisodeName>
+  <EpisodeNumber>1</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD01</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>54</absolute_number>
+  <filename></filename>
+  <lastupdated>1368350189</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460000</id>
+  <Combined_episodenumber>2</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Michael (2)</EpisodeName>
+  <EpisodeNumber>2</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD02</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>55</absolute_number>
+  <filename></filename>
+  <lastupdated>1368350211</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460002</id>
+  <Combined_episodenumber>3</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>George Sr. (1)</EpisodeName>
+  <EpisodeNumber>3</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD03</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>56</absolute_number>
+  <filename></filename>
+  <lastupdated>1368350282</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460003</id>
+  <Combined_episodenumber>4</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>George Sr. (2)</EpisodeName>
+  <EpisodeNumber>4</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD04</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>57</absolute_number>
+  <filename></filename>
+  <lastupdated>1368350295</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460004</id>
+  <Combined_episodenumber>5</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Lindsay (1)</EpisodeName>
+  <EpisodeNumber>5</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD05</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>58</absolute_number>
+  <filename></filename>
+  <lastupdated>1368350310</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460005</id>
+  <Combined_episodenumber>6</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Lindsay (2)</EpisodeName>
+  <EpisodeNumber>6</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD06</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>59</absolute_number>
+  <filename></filename>
+  <lastupdated>1368350323</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460007</id>
+  <Combined_episodenumber>7</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Tobias</EpisodeName>
+  <EpisodeNumber>7</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD07</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>60</absolute_number>
+  <filename></filename>
+  <lastupdated>1368309636</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460008</id>
+  <Combined_episodenumber>8</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Gob</EpisodeName>
+  <EpisodeNumber>8</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD08</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>61</absolute_number>
+  <filename></filename>
+  <lastupdated>1368309643</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460009</id>
+  <Combined_episodenumber>9</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Maeby</EpisodeName>
+  <EpisodeNumber>9</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD09</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>62</absolute_number>
+  <filename></filename>
+  <lastupdated>1368309651</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460011</id>
+  <Combined_episodenumber>10</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Lucille (1)</EpisodeName>
+  <EpisodeNumber>10</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD10</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>63</absolute_number>
+  <filename></filename>
+  <lastupdated>1368350338</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460012</id>
+  <Combined_episodenumber>11</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Buster</EpisodeName>
+  <EpisodeNumber>11</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD11</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>64</absolute_number>
+  <filename></filename>
+  <lastupdated>1368309669</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460013</id>
+  <Combined_episodenumber>12</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>George Michael (1)</EpisodeName>
+  <EpisodeNumber>12</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD12</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>65</absolute_number>
+  <filename></filename>
+  <lastupdated>1368350351</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460014</id>
+  <Combined_episodenumber>13</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>George Michael (2)</EpisodeName>
+  <EpisodeNumber>13</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD13</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>66</absolute_number>
+  <filename></filename>
+  <lastupdated>1368350362</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4460015</id>
+  <Combined_episodenumber>14</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Gob (2)</EpisodeName>
+  <EpisodeNumber>14</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode>4AJD14</ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number>67</absolute_number>
+  <filename></filename>
+  <lastupdated>1368350406</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
+  <id>4543822</id>
+  <Combined_episodenumber>15</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Lucille 2</EpisodeName>
+  <EpisodeNumber>15</EpisodeNumber>
+  <FirstAired>2013-05-26</FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview></Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <filename></filename>
+  <lastupdated>1368309704</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+</Data>
