@@ -44,8 +44,15 @@
 
 {% include "_source.html" %}
 
-
 {% include "_comments.html" %}
+
+<script type="text/javascript">
+    var group_order = {{ group_order }};
+    var joke_data = {{ joke_data }};
+    var connection_data = {{ connection_data }};
+    var episodes = {{ episodes }};
+</script>
+
 {% endblock %}
 
 {% block extra_foot_js %}

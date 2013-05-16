@@ -171,7 +171,6 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes) {
         if ($viz.selector == '#viz' || season_labeled == false) {
             $viz.append('<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px; top: ' + line_y + 'px;">' + season_labels + '</ul>');
             season_labeled = true;
-            console.log($viz.selector);
         }
 
         for (var i = 0; i < jokes.length; i++) {
@@ -375,46 +374,16 @@ $(function() {
     $joke_viz = $('#joke-viz');
     $tooltip = $('#viz-tooltip');
 
-    $.getJSON('live-data/jokes.json', function(data) {
-        var group_order = data['group_order'];
-        var joke_data = data['jokes'];
-        var connection_data = data['connections'];
-        var episodes = data['episodes'];
-
-        if (!Raphael.svg) {
-            alert('No SVG support');
-        } else { 
-            if ($body.hasClass('joke-detail')) {
-                var joke_code = parseInt($joke_viz.data('joke-code'));
-                var connected_joke_codes = [];
-
-                connection_data = _.filter(connection_data, function(c) {
-                    if (c['joke1_code'] == joke_code || c['joke2_code'] == joke_code) {
-                        connected_joke_codes.push(c['joke1_code']);
-                        connected_joke_codes.push(c['joke2_code']);
-
-                        return true;
-                    } else {
-                        return false;
-                    }
-                });
-
-                for (var group in joke_data) {
-                    joke_data[group] = _.filter(joke_data[group], function(j) {
-                        return _.indexOf(connected_joke_codes, j['code']) >= 0;
-                    });
-
-                    if (joke_data[group].length == 0) {
-                        delete joke_data[group];
-                        delete group_order[_.indexOf(group_order, group)];
-                    }
-                }
-
-                render_viz($joke_viz, group_order, joke_data, connection_data, episodes);
-            } else if ($body.hasClass('viz')) {
-                render_viz($full_viz, group_order, joke_data, connection_data, episodes);
-            }
+    if (!Raphael.svg) {
+        alert('No SVG support');
+    } else { 
+        // Joke detail page
+        if ($body.hasClass('joke-detail')) {
+            render_viz($joke_viz, group_order, joke_data, connection_data, episodes);
+        // Index / full viz page
+        } else if ($body.hasClass('viz')) {
+            render_viz($full_viz, group_order, joke_data, connection_data, episodes);
         }
-    });
+    }
 });
 
