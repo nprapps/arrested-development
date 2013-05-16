@@ -5,7 +5,7 @@ var LABEL_WIDTH = 225;
 var GROUP_LABEL_HEIGHT = 16;
 var LINE_INTERVAL = 15;
 var GROUP_INTERVAL = 33;
-var OFFSET_X_RIGHT = DOT_RADIUS + 3;
+var OFFSET_X_RIGHT = DOT_RADIUS + 10;
 var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
 var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
 var IS_MOBILE = false;
@@ -377,17 +377,13 @@ $(function() {
     $joke_viz = $('#joke-viz');
     $tooltip = $('#viz-tooltip');
 
-    if (!Raphael.svg) {
-        alert('No SVG support');
-    } else { 
-        // Joke detail page
-        if ($body.hasClass('joke-detail')) {
-			var joke_code = parseInt($joke_viz.data('joke-code'));
-            render_viz($joke_viz, group_order, joke_data, connection_data, episodes, joke_code);
-        // Index / full viz page
-        } else if ($body.hasClass('viz')) {
-            render_viz($full_viz, group_order, joke_data, connection_data, episodes);
-        }
+    // Joke detail page
+    if ($body.hasClass('joke-detail')) {
+        var joke_code = parseInt($joke_viz.data('joke-code'));
+        render_viz($joke_viz, group_order, joke_data, connection_data, episodes, joke_code);
+    // Index / full viz page
+    } else if ($body.hasClass('viz')) {
+        render_viz($full_viz, group_order, joke_data, connection_data, episodes);
     }
 });
 
