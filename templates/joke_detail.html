@@ -15,7 +15,9 @@
             <li class="key-f">Foreshadowed joke</li>
             <li class="key-c">Related joke</li>
         </ul>
-        <div id="joke-viz" class="viz" data-joke-code="{{ joke.code }}"></div>
+        <div id="joke-viz" class="viz" data-joke-code="{{ joke.code }}">
+            <div id="viz-tooltip"></div>
+        </div>
         <p class="detail-count"><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</p>
     </div>
 </div>

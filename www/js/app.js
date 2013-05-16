@@ -24,9 +24,10 @@ var episode_number_to_jokes_map = {};
 /*
  * Loop through data, render the big graphic
  */
-function render_viz($viz, group_order, joke_data, connection_data, episodes) {
+function render_viz($viz, group_order, joke_data, connection_data, episodes, joke_code) {
     var width = $viz.width();
     var height = $viz.height();
+    var joke_code = joke_code || null;
     
     if (width < 724) { // 724 = content width at 768px breakpoint
         IS_MOBILE = true;
@@ -64,7 +65,11 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes) {
             var line = paper.path(path)
 
             line.node.setAttribute('id', 'joke-' + joke['code']);
-            line.node.setAttribute('class', 'joke-line joke-' + joke['code']);
+            if (joke_code == joke['code']) {
+                line.node.setAttribute('class', 'joke-line joke-' + joke['code'] + ' joke-line-detail');
+            } else {
+                line.node.setAttribute('class', 'joke-line joke-' + joke['code']);
+            }
             line.node.setAttribute('data-joke', joke['code']);
             
             // add label
@@ -379,7 +384,8 @@ $(function() {
     } else { 
         // Joke detail page
         if ($body.hasClass('joke-detail')) {
-            render_viz($joke_viz, group_order, joke_data, connection_data, episodes);
+			var joke_code = parseInt($joke_viz.data('joke-code'));
+            render_viz($joke_viz, group_order, joke_data, connection_data, episodes, joke_code);
         // Index / full viz page
         } else if ($body.hasClass('viz')) {
             render_viz($full_viz, group_order, joke_data, connection_data, episodes);
