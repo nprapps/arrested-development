@@ -11,16 +11,10 @@ var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
 var IS_MOBILE = false;
 
 var $body = null;
-var $viz = null;
+var $full_viz = null;
 var $joke_viz = null;
-var viz_div = null;
 var paper = null;
 var $tooltip = null;
-
-var group_order;
-var joke_data;
-var connection_data;
-var episodes;
 
 var joke_code_to_index_map = {};
 var joke_code_to_line_y_map = {};
@@ -30,11 +24,10 @@ var episode_number_to_jokes_map = {};
 /*
  * Loop through data, render the big graphic
  */
-function render_full_viz() {
+function render_viz($viz, group_order, joke_data, connection_data, episodes) {
     var width = $viz.width();
     var height = $viz.height();
     
-    console.log(IS_MOBILE, LABEL_WIDTH, OFFSET_X_LEFT, width);
     if (width < 724) { // 724 = content width at 768px breakpoint
         IS_MOBILE = true;
         height = 5000;
@@ -43,16 +36,14 @@ function render_full_viz() {
         LINE_INTERVAL = 30;
         OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
     }
-    console.log(IS_MOBILE, LABEL_WIDTH, OFFSET_X_LEFT, width);
 
     var joke_headers = '';
     var joke_labels = '<ul id="viz-labels" style="width: ' + LABEL_WIDTH + 'px;">';
     var season_labels = '';
-    var paper = new Raphael(viz_div, width, height);
+    var paper = new Raphael($viz[0], '100%', '100%');
 
     var line_y = OFFSET_Y;
     var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / EPISODE_COUNT;
-    console.log(dot_interval);
 
     // Render joke lines
     for (var g in group_order) {
@@ -96,6 +87,9 @@ function render_full_viz() {
     joke_labels += '</ul>';
     $viz.append(joke_labels);
     $viz.append(joke_headers);
+
+    height = line_y + OFFSET_Y - GROUP_INTERVAL
+    $viz.height(height);
     
     // render season labels
     // loop through episodes and create labels (appended to page when various joke groupings are rendered)
@@ -286,9 +280,6 @@ function render_full_viz() {
     }
 }
 
-function render_joke_viz() {
-}
-
 function highlight_joke_network(joke_code, episode_number) {
     var selector = '.connection-line.joke-' + joke_code;
 
@@ -376,24 +367,48 @@ function svgHasClass(obj,c) {
 
 $(function() {
     $body = $('body');
-    $viz = $('#viz');
+    $full_viz = $('#viz');
     $joke_viz = $('#joke-viz');
-    viz_div = $viz[0];
     $tooltip = $('#viz-tooltip');
 
     $.getJSON('live-data/jokes.json', function(data) {
-        group_order = data['group_order'];
-        joke_data = data['jokes'];
-        connection_data = data['connections'];
-        episodes = data['episodes'];
+        var group_order = data['group_order'];
+        var joke_data = data['jokes'];
+        var connection_data = data['connections'];
+        var episodes = data['episodes'];
 
         if (!Raphael.svg) {
             alert('No SVG support');
         } else { 
             if ($body.hasClass('joke-detail')) {
-                render_joke_viz();
+                var joke_code = parseInt($joke_viz.data('joke-code'));
+                var connected_joke_codes = [];
+
+                connection_data = _.filter(connection_data, function(c) {
+                    if (c['joke1_code'] == joke_code || c['joke2_code'] == joke_code) {
+                        connected_joke_codes.push(c['joke1_code']);
+                        connected_joke_codes.push(c['joke2_code']);
+
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+
+                for (var group in joke_data) {
+                    joke_data[group] = _.filter(joke_data[group], function(j) {
+                        return _.indexOf(connected_joke_codes, j['code']) >= 0;
+                    });
+
+                    if (joke_data[group].length == 0) {
+                        delete joke_data[group];
+                        delete group_order[_.indexOf(group_order, group)];
+                    }
+                }
+
+                render_viz($joke_viz, group_order, joke_data, connection_data, episodes);
             } else if ($body.hasClass('viz')) {
-                render_full_viz();
+                render_viz($full_viz, group_order, joke_data, connection_data, episodes);
             }
         }
     });
