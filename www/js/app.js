@@ -36,14 +36,14 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes) {
         LINE_INTERVAL = 30;
         OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
     }
+    var paper = new Raphael($viz[0], '100%', '100%');
+    var line_y = OFFSET_Y;
+    var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / EPISODE_COUNT;
 
     var joke_headers = '';
     var joke_labels = '<ul id="viz-labels" style="width: ' + LABEL_WIDTH + 'px;">';
     var season_labels = '';
-    var paper = new Raphael($viz[0], '100%', '100%');
-
-    var line_y = OFFSET_Y;
-    var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / EPISODE_COUNT;
+    var season_labeled = false;
 
     // Render joke lines
     for (var g in group_order) {
@@ -168,7 +168,11 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes) {
         var jokes = joke_data[group];
 
         // append a set of season labels atop each grouping
-        $viz.append('<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px; top: ' + line_y + 'px;">' + season_labels + '</ul>');
+        if ($viz.selector == '#viz' || season_labeled == false) {
+            $viz.append('<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px; top: ' + line_y + 'px;">' + season_labels + '</ul>');
+            season_labeled = true;
+            console.log($viz.selector);
+        }
 
         for (var i = 0; i < jokes.length; i++) {
             var joke = jokes[i];

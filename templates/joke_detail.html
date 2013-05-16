@@ -9,7 +9,13 @@
         <h2>{{ joke.primary_character }}</h2>
         <h1>{{ joke.text }}</h1>
         <p>{{ joke.blurb }}</p>
-        <div id="joke-viz" data-joke-code="{{ joke.code }}" style="width:100%; height: 50px;"></div>
+        <ul class="ad-key">
+            <li class="key-j">Joke</li>
+            <li class="key-b">Joke in the background</li>
+            <li class="key-f">Foreshadowed joke</li>
+            <li class="key-c">Related joke</li>
+        </ul>
+        <div id="joke-viz" class="viz" data-joke-code="{{ joke.code }}"></div>
         <p class="detail-count"><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</p>
     </div>
 </div>
