@@ -1,13 +1,14 @@
 {% extends "_base.html" %}
 
-{% block body_class %}joke-detail{% endblock body_class %}
+{% block body_class %}detail joke-detail{% endblock body_class %}
 
 {% block content %}
 
 <div class="detail-header">
-    <h1><strong>{{ joke.primary_character }}</strong> {{ joke.text }}</h1>
+    <h2>{{ joke.primary_character }}</h2>
+    <h1>{{ joke.text }}</h1>
     <p>{{ joke.blurb }}</p>
-    <h2><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</h2>
+    <p class="detail-count"><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</p>
 </div>
 {% for group in episodejokes|groupby('episode.season') %}
 <div class="season row-fluid">
@@ -25,16 +26,15 @@
         {% if ej.connections() != [] %}{% for joke in ej.connections() %}
             <h3>Related</h3>
             <p class="extra connection">
-                <a href="{{ joke.url }}">
-                    <strong>{{ joke.primary_character }}</strong>
-                    {{ joke.text }}
-                </a>
+                <a href="{{ joke.url }}">{{ joke.text }}</a>
             </p>
         {% endfor %}{% endif %}
     </li>
 {% endfor %}</ul>
 </div>{% endfor %}
 
-{% include "_comments.html" %}
+<p class="sources">Sources: Joke data compiled by Adam Cole / NPR. Episode metadata from <a href="http://thetvdb.com/">The TVDB</a> via a <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 United States (CC BY 3.0 US)</a> license.</p>
 
+
+{% include "_comments.html" %}
 {% endblock %}

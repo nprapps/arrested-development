@@ -1,19 +1,20 @@
 {% extends "_base.html" %}
 
-{% block body_class %}episode-detail{% endblock body_class %}
+{% block body_class %}detail episode-detail{% endblock body_class %}
 
 {% block content %}
 <div class="detail-header">
     <p class="episode-meta">Season {{ episode.season}}, Episode {{ episode.episode }}</p>
     <h1> {{ episode.title }}</h1>
     <p class="episode-meta">Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }} | Watched by <span class="viewer-count">{{ episode.rating }} million</span> viewers.</p>
-    <h2><span class="count">{{ episodejokes|length }}</span> recurring jokes in this episode:</h2>
+    <p class="blurb">{{ episode.blurb }}</p>
+    <p class="detail-count"><span class="count">{{ episodejokes|length }}</span> recurring jokes in this episode:</p>
 </div>
 
 {% for group in episodejokes|groupby('joke.primary_character') %}<div class="character row-fluid">
-<h3 class="span3">{{ group.grouper.strip() }}</h3>
+<h2 class="span2">{{ group.grouper.strip() }}</h2>
 
-<ul class="joke-list span9">{% for ej in group.list %}
+<ul class="joke-list span10">{% for ej in group.list %}
     <li class="joke {{ ej.formatted_type() }}">
         <a href="joke-{{ ej.joke.code }}.html">
             {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
@@ -25,16 +26,15 @@
         {% endif %}
         {% if ej.connections() != [] %}{% for joke in ej.connections() %}
             <p class="extra connection {{ ej.formatted_type() }}">
-                <a href="{{ joke.url }}">
-                    <strong>{{ joke.primary_character }}</strong>
-                    {{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
-                </a>
+                <strong>Related Joke:</strong> <a href="{{ joke.url }}">{{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}</a>
             </p>
         {% endfor %}{% endif %}
     </li>
 {% endfor %}</ul>
 </div>{% endfor %}
 
-{% include "_comments.html" %}
 
+<p class="sources">Sources: Joke data compiled by Adam Cole / NPR. Episode metadata from <a href="http://thetvdb.com/">The TVDB</a> via a <a href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 United States (CC BY 3.0 US)</a> license.</p>
+
+{% include "_comments.html" %}
 {% endblock %}
