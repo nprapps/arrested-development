@@ -5,7 +5,7 @@ var LABEL_WIDTH = 225;
 var GROUP_LABEL_HEIGHT = 16;
 var LINE_INTERVAL = 15;
 var GROUP_INTERVAL = 33;
-var OFFSET_X_RIGHT = DOT_RADIUS + 10;
+var OFFSET_X_RIGHT = DOT_RADIUS;
 var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
 var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
 var IS_MOBILE = false;
@@ -39,7 +39,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
     }
     var paper = new Raphael($viz[0], '100%', '100%');
     var line_y = OFFSET_Y;
-    var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / EPISODE_COUNT;
+    var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / (EPISODE_COUNT + 1);
 
     var joke_headers = '';
     var joke_labels = '<ul id="viz-labels" style="width: ' + LABEL_WIDTH + 'px;">';
@@ -60,7 +60,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             var first_episode_number = episodejokes[0]['episode_number'];
             var last_episode_number = EPISODE_COUNT + 1; // +1 to make sure it goes off the side
 
-            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * (last_episode_number + 1) + OFFSET_X_LEFT - (OFFSET_X_RIGHT * 2)) + ',' + line_y;
+            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT) + ',' + line_y;
             var line = paper.path(path)
 
             line.node.setAttribute('id', 'joke-' + joke['code']);
