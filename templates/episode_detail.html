@@ -2,6 +2,17 @@
 
 {% block body_class %}detail episode-detail{% endblock body_class %}
 
+{% block header_content %}
+<div class="small-header container-fluid">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <a href="/"><img src="/img/title-small.png"></a>
+        </div>
+    </div>
+</div>
+{{ super() }}
+{% endblock header_content %}
+
 {% block content %}
 <div class="detail-header row-fluid">
     <div class="span10 offset1">

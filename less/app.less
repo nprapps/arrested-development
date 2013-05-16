@@ -363,18 +363,22 @@ h1 + #story-meta { margin-top: -11px; }
 // Project nav
 .project-nav-wrap {
     background: #333;
-    .no-gutter-row;
+    margin: 0 -20px;
+    padding: 0 20px;
 }
 .project-nav {
-    
-    margin: 0 -20px;
-
     .navbar-inner {
         background: #333;
         -webkit-box-shadow: none;
            -moz-box-shadow: none;
                 box-shadow: none;
         border: none;
+        padding: 0;
+
+        .brand {
+            color: #ddd;
+            font-weight: normal;
+        }
 
         .dropdown {
 
@@ -443,6 +447,11 @@ h1 + #story-meta { margin-top: -11px; }
 
 // Detail pages
 .detail {
+
+    .small-header {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 
     .detail-header {
         background: @orange;
@@ -519,10 +528,14 @@ h1 + #story-meta { margin-top: -11px; }
             margin-bottom: 10px;
             padding-bottom: 10px;
             clear: both;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 2px solid #eee;
 
             &:last-child {
                 border-bottom: none;
+            }
+
+            > a {
+                text-transform: capitalize;
             }
 
             .details {
@@ -571,14 +584,6 @@ h1 + #story-meta { margin-top: -11px; }
 
     .joke-list {
         list-style: none;
-
-        li {
-            font-size: 24px;
-            line-height: 1.1;
-        }
-        .connection {
-            display: block;
-        }
     }
 }
 
@@ -586,11 +591,19 @@ h1 + #story-meta { margin-top: -11px; }
 
 .joke-detail {
 
+    .detail-header {
+        h1 {
+            text-transform: capitalize;
+        }
+    }
     .episode-list {
         list-style: none;
 
         .episode-number {
             color: #000;
+            display: inline-block;
+            width: 33px;
+            text-align: right;
         }
     }
 }
@@ -650,9 +663,17 @@ footer {
 	}
 }
 @media (max-width: 767px) {
+
+    .project-nav .navbar-inner {
+        padding: 0 20px;
+
+        .brand {
+            padding-left: 0;
+        }
+    }
 	nav, header, footer { margin-left: -20px; margin-right: -20px; }
 	nav .site-links { margin-left: 20px; }
-	footer { 
+	footer {
 		.primary { display: none; }
 		.secondary p { float: left; font-size: 10px; color: #bccae5; }
 		.secondary ul { float: right; }
@@ -681,7 +702,6 @@ footer {
     }
 }
 @media (max-width: 480px) {
-	section.the-goods { margin-top: 33px; }
 	h1 { font-size: 26px; }
 	#story-meta p { font-size: 11px; }
 	nav .site-links {
