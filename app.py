@@ -91,7 +91,7 @@ def _joke_detail(joke_code):
     joke_data = data['jokes']
     connections = data['connections']
 
-    connected_joke_codes = []
+    connected_joke_codes = [int(joke_code)]
 
     def filter_connections(c):
         if c['joke1_code'] == int(joke_code) or c['joke2_code'] == int(joke_code):
