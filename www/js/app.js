@@ -173,10 +173,13 @@ function render_joke_viz() {
 
                 for (var j = 0; j < episodejokes.length; j++) {
                     var episodejoke = episodejokes[j];
+                    console.log(episodejoke);
                     var episode = episodes[episodejoke['episode_number']];
                     var episode_number = episode['number'];
                     var episode_code = episode['code'];
                     var episode_title = episode['title'];
+                    var episode_connection = episodejoke['connection'];
+                    var episode_details = episodejoke['details'];
 
                     if (!(episode_number in episode_number_to_jokes_map)) {
                         episode_number_to_jokes_map[episode_number] = [];
@@ -194,6 +197,12 @@ function render_joke_viz() {
                     dot.node.setAttribute('data-episode', episode_code);
                     dot.node.setAttribute('data-episode-number', episode_number);
                     dot.node.setAttribute('data-episode-title', episode_title);
+                    if (episode_connection) {
+                        dot.node.setAttribute('data-connection', episode_connection);
+                    }
+                    if (episode_details) {
+                        dot.node.setAttribute('data-details', episode_details);
+                    }
                 }
 
                 line_y += LINE_INTERVAL;
@@ -217,7 +226,13 @@ function render_joke_viz() {
                     $tooltip.append('<span class="joke-type">Joke</span>');
                 }
                 $tooltip.append('<span class="joke-info">' + $dot.data('primary-character') + ': ' + $dot.data('text') + '</span>');
-                $tooltip.append('<span class="episode-info">Episode: &ldquo;' + $dot.data('episode-title') + '&rdquo; (' + $dot.data('episode') + ')</span>');
+                if ($dot.data('connection')) {
+                    $tooltip.append('<span class="related-joke"><strong>Related joke:</strong> ' + $dot.data('connection') + '</span>');
+                }
+                if ($dot.data('details')) {
+                    $tooltip.append('<span class="joke-details"><strong>Details:</strong> ' + $dot.data('details') + '</span>');
+                }
+                $tooltip.append('<span class="episode-info"><strong>Episode:</strong> &ldquo;' + $dot.data('episode-title') + '&rdquo; (' + $dot.data('episode') + ')</span>');
                 
                 tt_height = $tooltip.height();
                 tt_width = $tooltip.outerWidth();
