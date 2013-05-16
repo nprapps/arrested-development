@@ -13,9 +13,13 @@ from render_utils import flatten_app_config, make_context
 
 app = Flask(app_config.PROJECT_NAME)
 
+
 def _all_seasons():
     output = []
-    for season in [1, 2, 3, 4]:
+    SEASONS = [1, 2, 3]
+    if app_config.IMPORT_NEW_SEASON is True:
+        SEASONS.append(4)
+    for season in SEASONS:
         season_dict = {}
         season_dict['season'] = season
         season_dict['episodes'] = []
@@ -68,10 +72,6 @@ def _episode_detail(episode_code):
         if len(character_dict['jokes']) > 0:
             character_dict['jokes'] = sorted(character_dict['jokes'], key=lambda ej: ej.episode.number)
             context['episodejokes'].append(character_dict)
-
-    print context['episodejokes']
-    # context['episodejokes'] = EpisodeJoke.select().where(EpisodeJoke.episode == context['episode'])
-    # context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.joke.code)
     context['seasons'] = _all_seasons()
     return render_template('episode_detail.html', **context)
 
@@ -83,6 +83,42 @@ def _joke_detail(joke_code):
     context['episodejokes'] = EpisodeJoke.select().where(EpisodeJoke.joke == context['joke'])
     context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.episode.code)
     context['seasons'] = _all_seasons()
+
+    with open('www/live-data/jokes.json') as f:
+        data = json.load(f)
+
+    group_order = data['group_order']
+    joke_data = data['jokes']
+    connections = data['connections']
+
+    connected_joke_codes = [int(joke_code)]
+
+    def filter_connections(c):
+        if c['joke1_code'] == int(joke_code) or c['joke2_code'] == int(joke_code):
+            connected_joke_codes.append(c['joke1_code'])
+            connected_joke_codes.append(c['joke2_code'])
+
+            return True
+        
+        return False
+
+    connections = filter(filter_connections, connections)
+
+    def filter_jokes(c):
+        return c['code'] in connected_joke_codes
+
+    for group, jokes in joke_data.items():
+        joke_data[group] = filter(filter_jokes, jokes)
+        
+        if len(joke_data[group]) == 0:
+            del joke_data[group]
+            group_order.remove(group)
+
+    context['group_order'] = Markup(json.dumps(group_order))
+    context['joke_data'] = Markup(json.dumps(joke_data))
+    context['connection_data'] = Markup(json.dumps(connections))
+    context['episodes'] = Markup(json.dumps(data['episodes']))
+
     return render_template('joke_detail.html', **context)
 
 
@@ -97,6 +133,15 @@ def _viz():
 
     context['jokes'] = sorted(context['jokes'], key=lambda joke: joke.code)
     context['seasons'] = _all_seasons()
+
+    with open('www/live-data/jokes.json') as f:
+        data = json.load(f)
+
+    context['group_order'] = Markup(json.dumps(data['group_order']))
+    context['joke_data'] = Markup(json.dumps(data['jokes']))
+    context['connection_data'] = Markup(json.dumps(data['connections']))
+    context['episodes'] = Markup(json.dumps(data['episodes']))
+
     return render_template('viz.html', **context)
 
 

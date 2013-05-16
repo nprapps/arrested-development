@@ -76,6 +76,7 @@ def write_jokes_json():
         joke_dict = joke.__dict__['_data']
 
         del joke_dict['id']
+        del joke_dict['blurb']
 
         joke_dict['episodejokes'] = []
 
@@ -83,9 +84,8 @@ def write_jokes_json():
             episode_dict = ej.__dict__['_data']
             episode_dict['episode_number'] = ej.episode.number
 
-            del episode_dict['episode']
-            del episode_dict['joke']
-            del episode_dict['id']
+            for k in ['episode', 'joke', 'id', 'origin']:
+                del episode_dict[k]
 
             joke_dict['episodejokes'].append(episode_dict)
 
@@ -96,6 +96,9 @@ def write_jokes_json():
     for episode in Episode().select().order_by(Episode.number):
         episode_dict = episode.__dict__['_data']
         episode_dict['run_date'] = episode_dict['run_date'].strftime('%Y-%m-%d')
+
+        for k in ['blurb', 'id', 'production_code', 'rating', 'tvdb_image']:
+            del episode_dict[k]
 
         payload['episodes'][episode.number] = episode_dict
 
@@ -149,13 +152,16 @@ def parse_tvdb_xml(xmlfile):
                 Episode.get(code=episode_dict['code'])
                 Episode.update(**episode_dict).where(Episode.code == episode_dict['code']).execute()
             except Episode.DoesNotExist:
-                if episode_dict['season'] == 4:
-                    episode_dict['number'] = episode_dict['episode'] + 53
-                    episode_dict['code'] = 's%se%s' % (
-                        str(episode_dict['season']).zfill(2),
-                        str(episode_dict['episode']).zfill(2))
-                    episode_dict['title'] = episode.find('EpisodeName').text
-                Episode(**episode_dict).save()
+                if app_config.IMPORT_NEW_SEASON is True:
+                    if episode_dict['season'] == 4:
+                        episode_dict['number'] = episode_dict['episode'] + 53
+                        episode_dict['code'] = 's%se%s' % (
+                            str(episode_dict['season']).zfill(2),
+                            str(episode_dict['episode']).zfill(2))
+                        episode_dict['title'] = episode.find('EpisodeName').text
+                    Episode(**episode_dict).save()
+                else:
+                    pass
 
 
 def update_episode_extras():

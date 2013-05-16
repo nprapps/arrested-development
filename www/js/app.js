@@ -5,24 +5,18 @@ var LABEL_WIDTH = 225;
 var GROUP_LABEL_HEIGHT = 16;
 var LINE_INTERVAL = 15;
 var GROUP_INTERVAL = 33;
-var OFFSET_X_RIGHT = DOT_RADIUS + 3;
+var OFFSET_X_RIGHT = DOT_RADIUS;
 var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
 var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
 var IS_MOBILE = false;
+var WINDOW_WIDTH = $('body').width();
 
 var $body = null;
-var $viz = null;
+var $full_viz = null;
 var $joke_viz = null;
-var viz_div = null;
 var paper = null;
 var $tooltip = null;
 
-var group_order;
-var joke_data;
-var connection_data;
-var episodes;
-
-var joke_code_to_index_map = {};
 var joke_code_to_line_y_map = {};
 var joke_code_to_related_jokes_map = {};
 var episode_number_to_jokes_map = {};
@@ -30,12 +24,12 @@ var episode_number_to_jokes_map = {};
 /*
  * Loop through data, render the big graphic
  */
-function render_full_viz() {
+function render_viz($viz, group_order, joke_data, connection_data, episodes, joke_code) {
     var width = $viz.width();
     var height = $viz.height();
+    var joke_code = joke_code || null;
     
-    console.log(IS_MOBILE, LABEL_WIDTH, OFFSET_X_LEFT, width);
-    if (width < 724) { // 724 = content width at 768px breakpoint
+    if (WINDOW_WIDTH < 768) {
         IS_MOBILE = true;
         height = 5000;
         $viz.height(height + 'px');
@@ -43,16 +37,14 @@ function render_full_viz() {
         LINE_INTERVAL = 30;
         OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
     }
-    console.log(IS_MOBILE, LABEL_WIDTH, OFFSET_X_LEFT, width);
+    var paper = new Raphael($viz[0], '100%', '100%');
+    var line_y = OFFSET_Y;
+    var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / (EPISODE_COUNT + 1);
 
     var joke_headers = '';
     var joke_labels = '<ul id="viz-labels" style="width: ' + LABEL_WIDTH + 'px;">';
     var season_labels = '';
-    var paper = new Raphael(viz_div, width, height);
-
-    var line_y = OFFSET_Y;
-    var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / EPISODE_COUNT;
-    console.log(dot_interval);
+    var season_labeled = false;
 
     // Render joke lines
     for (var g in group_order) {
@@ -61,7 +53,6 @@ function render_full_viz() {
 
         for (var i = 0; i < jokes.length; i++) {
             var joke = jokes[i];
-            joke_code_to_index_map[joke['code']] = i;
             joke_code_to_line_y_map[joke['code']] = line_y;
             joke_code_to_related_jokes_map[joke['code']] = [joke['code']];
 
@@ -69,15 +60,23 @@ function render_full_viz() {
             var first_episode_number = episodejokes[0]['episode_number'];
             var last_episode_number = EPISODE_COUNT + 1; // +1 to make sure it goes off the side
 
-            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * (last_episode_number + 1) + OFFSET_X_LEFT - (OFFSET_X_RIGHT * 2)) + ',' + line_y;
+            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT) + ',' + line_y;
             var line = paper.path(path)
 
             line.node.setAttribute('id', 'joke-' + joke['code']);
-            line.node.setAttribute('class', 'joke-line joke-' + joke['code']);
+            if (joke_code == joke['code']) {
+                line.node.setAttribute('class', 'joke-line joke-' + joke['code'] + ' joke-line-detail');
+            } else {
+                line.node.setAttribute('class', 'joke-line joke-' + joke['code']);
+            }
             line.node.setAttribute('data-joke', joke['code']);
             
             // add label
-            joke_labels += '<li id="label-' + joke['code'] + '" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '">';
+            joke_labels += '<li id="label-' + joke['code'] + '" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '"';
+            if (joke_code == joke['code']) {
+                joke_labels += ' class="joke-label-detail"';
+            }
+            joke_labels += '>';
             joke_labels += '<a href="joke-' + joke['code'] + '.html">';
             joke_labels += joke['text'];
             joke_labels += '</a></li>';
@@ -96,6 +95,9 @@ function render_full_viz() {
     joke_labels += '</ul>';
     $viz.append(joke_labels);
     $viz.append(joke_headers);
+
+    height = line_y + OFFSET_Y - GROUP_INTERVAL
+    $viz.height(height);
     
     // render season labels
     // loop through episodes and create labels (appended to page when various joke groupings are rendered)
@@ -174,7 +176,10 @@ function render_full_viz() {
         var jokes = joke_data[group];
 
         // append a set of season labels atop each grouping
-        $viz.append('<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px; top: ' + line_y + 'px;">' + season_labels + '</ul>');
+        if ($viz.selector == '#viz' || season_labeled == false) {
+            $viz.append('<ul class="episode-labels" style="left: ' + (OFFSET_X_LEFT + DOT_RADIUS + 3) + 'px; top: ' + line_y + 'px;">' + season_labels + '</ul>');
+            season_labeled = true;
+        }
 
         for (var i = 0; i < jokes.length; i++) {
             var joke = jokes[i];
@@ -286,9 +291,6 @@ function render_full_viz() {
     }
 }
 
-function render_joke_viz() {
-}
-
 function highlight_joke_network(joke_code, episode_number) {
     var selector = '.connection-line.joke-' + joke_code;
 
@@ -376,26 +378,17 @@ function svgHasClass(obj,c) {
 
 $(function() {
     $body = $('body');
-    $viz = $('#viz');
+    $full_viz = $('#viz');
     $joke_viz = $('#joke-viz');
-    viz_div = $viz[0];
     $tooltip = $('#viz-tooltip');
 
-    $.getJSON('live-data/jokes.json', function(data) {
-        group_order = data['group_order'];
-        joke_data = data['jokes'];
-        connection_data = data['connections'];
-        episodes = data['episodes'];
-
-        if (!Raphael.svg) {
-            alert('No SVG support');
-        } else { 
-            if ($body.hasClass('joke-detail')) {
-                render_joke_viz();
-            } else if ($body.hasClass('viz')) {
-                render_full_viz();
-            }
-        }
-    });
+    // Joke detail page
+    if ($body.hasClass('joke-detail')) {
+        var joke_code = parseInt($joke_viz.data('joke-code'));
+        render_viz($joke_viz, group_order, joke_data, connection_data, episodes, joke_code);
+    // Index / full viz page
+    } else if ($body.hasClass('viz')) {
+        render_viz($full_viz, group_order, joke_data, connection_data, episodes);
+    }
 });
 

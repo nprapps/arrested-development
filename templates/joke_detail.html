@@ -2,6 +2,17 @@
 
 {% block body_class %}detail joke-detail{% endblock body_class %}
 
+{% block header_content %}
+<div class="small-header container-fluid">
+    <div class="row-fluid">
+        <div class="span10 offset1">
+            <a href="/"><img src="/img/title-small.png"></a>
+        </div>
+    </div>
+</div>
+{{ super() }}
+{% endblock header_content %}
+
 {% block content %}
 
 <div class="detail-header row-fluid">
@@ -9,10 +20,25 @@
         <h2>{{ joke.primary_character }}</h2>
         <h1>{{ joke.text }}</h1>
         <p>{{ joke.blurb }}</p>
-        <div id="#joke-viz" style="width:100%; height: 100px;"></div>
         <p class="detail-count"><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</p>
     </div>
 </div>
+
+<div class="season row-fluid viz-wrap">
+    <div class="span10 offset1">
+        <ul class="ad-key">
+            <li class="key-j">Joke</li>
+            <li class="key-b">Joke in the background</li>
+            <li class="key-f">Foreshadowed joke</li>
+            <li class="key-c">Related joke</li>
+        </ul>
+        <div id="joke-viz" class="viz" data-joke-code="{{ joke.code }}">
+            <div id="viz-tooltip"></div>
+        </div>
+    </div>
+</div>
+
+
 {% for group in episodejokes|groupby('episode.season') %}
 <div class="season row-fluid">
 <h2 class="span3 offset1">Season {{ group.grouper }}</h2>
@@ -38,8 +64,15 @@
 
 {% include "_source.html" %}
 
-
 {% include "_comments.html" %}
+
+<script type="text/javascript">
+    var group_order = {{ group_order }};
+    var joke_data = {{ joke_data }};
+    var connection_data = {{ connection_data }};
+    var episodes = {{ episodes }};
+</script>
+
 {% endblock %}
 
 {% block extra_foot_js %}
