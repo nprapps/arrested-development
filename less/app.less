@@ -424,9 +424,13 @@ h1 + #story-meta { margin-top: -11px; }
 // Viz page 
 .viz {
     > header {
-        .no-gutter-row;
-        padding-top:60px;
+        padding: 60px 0 20px;
         background: @orange;
+
+        .row-fluid {
+            .no-gutter-row;
+        }
+
         h1 {
             font-weight: bold;
             color: #fff;
@@ -672,6 +676,7 @@ footer {
         }
     }
 	nav, header, footer { margin-left: -20px; margin-right: -20px; }
+    .viz > header { padding: 20px; }
 	nav .site-links { margin-left: 20px; }
 	footer {
 		.primary { display: none; }
@@ -708,7 +713,7 @@ footer {
 		li { display: none; }
 		.npr { display: block; }
 	}
-	header {
+	.viz > header {
 		padding: 33px 20px;
 		h1 { font-size: 36px; }
 	}
