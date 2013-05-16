@@ -75,7 +75,7 @@ def write_jokes_json():
         ],
         'jokes': {},
         'connections': [],
-        'episodes': {} 
+        'episodes': {}
     }
 
     for joke in Joke.select().order_by(Joke.primary_character):
@@ -93,7 +93,7 @@ def write_jokes_json():
 
         for ej in EpisodeJoke.select().join(Joke).where(Joke.code == joke.code):
             episode_dict = ej.__dict__['_data']
-            episode_dict['episode_number'] = ej.episode.number;
+            episode_dict['episode_number'] = ej.episode.number
 
             del episode_dict['episode']
             del episode_dict['joke']
@@ -127,105 +127,51 @@ def write_jokes_json():
         jokefile.write(json.dumps(payload))
 
 
-def load_wikipedia_html():
-    """
-    Fetches the wikipedia HTML file for AD episodes.
-    """
-    r = requests.get('http://en.wikipedia.org/wiki/List_of_Arrested_Development_episodes')
-    with open('data/List_of_Arrested_Development_episodes.html', 'wb') as htmlfile:
-        htmlfile.write(r.content)
-
-
-def parse_wikipedia_html(htmlfile):
-    """
-    Parses the wikipedia HTML for some episode extras.
-    """
-    LABELS = ['episode', 'title', 'directed_by', 'written_by', 'run_date', 'production_code']
-    soup = BeautifulSoup(htmlfile)
-    tables = soup.select('table.wikitable')[1:5]
-    season = 1
-    episodes = []
-
-    for table in tables:
-        counter = 54
-        for row in table.select('tr')[1:]:
+def parse_tvdb_xml(xmlfile):
+    FIELDS_LIST = [
+        ('blurb', 'Overview', 'str'),
+        ('run_date', 'FirstAired', 'date'),
+        ('season', 'Combined_season', 'int'),
+        ('production_code', 'ProductionCode', 'str'),
+        ('episode', 'EpisodeNumber', 'int'),
+        ('season', 'Season', 'int')
+    ]
+    soup = BeautifulSoup(xmlfile, "xml")
+    for episode in soup.findAll('Episode'):
+        season = int(episode.find('Combined_season').text)
+        if season > 0:
             episode_dict = {}
-            episode_dict['season'] = season
-            for index in range(0, 6):
-                key = LABELS[index]
-                if row.select('td')[index].string:
-                    try:
-                        value = row.select('td')[index].string.replace(' & ', ', ')
-                    except AttributeError:
-                        value = row.select('td')[index].string
-                else:
-                    iterator = 0
-                    for string in row.select('td')[index].strings:
-                        if key == 'title':
-                            if iterator == 0:
-                                value = string.replace('"', '')
-                        if key == 'run_date':
-                            if iterator == 2:
-                                value = datetime.date(
-                                    parse(string).year,
-                                    parse(string).month,
-                                    parse(string).day)
-                        iterator += 1
+            for model_field, xml_field, data_type in FIELDS_LIST:
+                if episode.find(xml_field):
+                    episode_dict[model_field] = episode.find(xml_field).text
+                    if data_type == 'int':
+                        episode_dict[model_field] = int(episode_dict[model_field])
+                    if data_type == 'date':
+                        d = parse(episode_dict[model_field])
+                        episode_dict[model_field] = datetime.date(d.year, d.month, d.day)
 
-                if value:
-                    try:
-                        episode_dict[key] = int(value)
-                    except ValueError:
-                        episode_dict[key] = value
-                    except TypeError:
-                        episode_dict[key] = value
-
-            if episode_dict['season'] == 4 and episode_dict['episode'] == 15:
-                pass
-            elif episode_dict['season'] == 3 and episode_dict['episode'] == 13:
-                episode_dict['written_by'] = "Story by Mitchell Hurwitz and Richard Day. Teleplay by Chuck Tatham and Jim Vallely"
-                episodes.append(episode_dict)
-            elif episode_dict['season'] == 4:
-                episode_dict['number'] = counter
-            else:
-                episodes.append(episode_dict)
-
-            counter += 1
-        season += 1
-
-    for episode in episodes:
-        try:
-            e = Episode.get(
-                Episode.season == episode['season'],
-                Episode.episode == episode['episode']
-            )
-            eq = Episode.update(**episode).where(Episode.code == e.code)
-            eq.execute()
-            e = Episode.get(
-                Episode.season == episode['season'],
-                Episode.episode == episode['episode']
-            )
-            # print '* Episode extra: %s' % e.code
-
-        except Episode.DoesNotExist:
-            episode['code'] = 's%se%s' % (str(episode['season']).zfill(2), str(episode['episode']).zfill(2))
-            e = Episode.create(**episode)
-            e.save()
-            # print '+ Episode extra: %s' % e.code
+            try:
+                e = Episode.get(episode=episode_dict['episode'], season=episode_dict['season'])
+                uq = Episode.update(**episode_dict).where(Episode == e)
+                uq.execute()
+            except Episode.DoesNotExist:
+                if episode_dict['season'] == 4:
+                    episode_dict['number'] = episode_dict['episode'] + 53
+                    episode_dict['code'] = 's%se%s' % (
+                        str(episode_dict['season']).zfill(2),
+                        str(episode_dict['episode']).zfill(2))
+                    episode_dict['title'] = episode.find('EpisodeName').text
+                Episode(**episode_dict).save()
 
 
 def update_episode_extras():
-    """
-    Gets extra episode data from Wikipedia, including directors/writers, run date
-    and production code. Also grabs the newest season (4).
-    """
-
     try:
-        with open('data/List_of_Arrested_Development_episodes.html', 'rb') as htmlfile:
-            parse_wikipedia_html(htmlfile)
-
+        with open('data/extras.xml', 'rb') as xmlfile:
+            parse_tvdb_xml(xmlfile)
     except IOError:
-        load_wikipedia_html()
+        r = requests.get('http://thetvdb.com/api/983EF67DBCBB1A2D/series/72173/all/en.xml')
+        with open('data/extras.xml', 'wb') as xmlfile:
+            xmlfile.write(r.content)
         update_episode_extras()
 
 
