@@ -11,8 +11,8 @@
 </div>
 {% for group in episodejokes|groupby('episode.season') %}
 <div class="season row-fluid">
-<h2>Season {{ group.grouper }}</h2>
-<ul>{% for ej in group.list %}
+<h2 class="span2">Season {{ group.grouper }}</h2>
+<ul class="episode-list span10">{% for ej in group.list %}
     <li>
         <a href="episode-{{ ej.episode.code }}.html">
             {{ ej.episode.episode }}: {{ ej.episode.title.strip() }}
