@@ -14,7 +14,7 @@ import os
 NAMES
 """
 # Project name used for display
-PROJECT_NAME = 'Arrested Development'
+PROJECT_NAME = 'Previously, On Arrested Development'
 
 # Project name used for paths on the filesystem and in urls
 # Use dashes, not underscores
@@ -87,8 +87,8 @@ FACEBOOK = {
 }
 
 NPR_DFP = {
-    'STORY_ID': '171421875',
-    'TARGET': '\/news_politics;storyid=171421875'
+    'STORY_ID': '184818002',
+    'TARGET': '\/arts___life_pop_culture;storyid=184818002'
 }
 
 """

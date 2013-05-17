@@ -6,7 +6,7 @@
 <div class="small-header container-fluid">
     <div class="row-fluid">
         <div class="span10 offset1">
-            <a href="/"><img src="img/title-small.png"></a>
+            <a href="../"><img src="img/title-small.png"></a>
         </div>
     </div>
 </div>
@@ -42,7 +42,7 @@
     </div>
 </div>
 
-<div class="season row-fluid viz-wrap">
+<div class="season row-fluid viz-row">
     <div class="span10 offset1">
         <ul class="ad-key">
             <li class="key-j">Joke</li>
@@ -50,8 +50,10 @@
             <li class="key-f">Foreshadowed joke</li>
             <li class="key-c">Related joke</li>
         </ul>
-        <div id="joke-viz" class="viz" data-joke-code="{{ joke.code }}">
+        <div class="viz-wrap">
             <div id="viz-tooltip"></div>
+            <div id="joke-viz" class="viz" data-joke-code="{{ joke.code }}">
+        </div>
         </div>
     </div>
 </div>

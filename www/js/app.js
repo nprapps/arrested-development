@@ -3,13 +3,14 @@ var EPISODE_COUNT = 53;
 var DOT_RADIUS = 5;
 var LABEL_WIDTH = 200;
 var GROUP_LABEL_HEIGHT = 16;
-var LINE_INTERVAL = 15;
+var LINE_INTERVAL = 18;
 var GROUP_INTERVAL = 33;
 var OFFSET_X_RIGHT = DOT_RADIUS;
 var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
 var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
 var IS_MOBILE = false;
 var WINDOW_WIDTH = $('body').width();
+var IS_WEBKIT = $.browser.webkit;
 
 var $body = null;
 var $full_viz = null;
@@ -37,7 +38,8 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
         LINE_INTERVAL = 30;
         OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
     }
-    var paper = new Raphael($viz[0], '100%', '100%');
+
+    paper = new Raphael($viz[0], '100%', '100%');
     var line_y = OFFSET_Y;
     var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / (EPISODE_COUNT + 1);
 
@@ -74,7 +76,9 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             // add label
             joke_labels += '<li id="label-' + joke['code'] + '" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '"';
             if (joke_code == joke['code']) {
-                joke_labels += ' class="joke-label-detail"';
+                joke_labels += ' class="joke-label-detail joke-label"';
+            } else {
+                joke_labels += ' class="joke-label"';
             }
             joke_labels += '>';
             joke_labels += '<a href="joke-' + joke['code'] + '.html">';
@@ -255,12 +259,19 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 tt_width = $tooltip.outerWidth();
                 tt_top = dot_position.top - (tt_height / 2);
                 tt_left = dot_position.left + (DOT_RADIUS * 2) + DOT_RADIUS;
+
                 if ((tt_left + tt_width) > width) {
                     tt_left = dot_position.left - tt_width - DOT_RADIUS;
                 }
-            
+                
+                if (!IS_WEBKIT) {
+                    tt_left -= $viz.offset().left;
+                    tt_top -= $viz.offset().top;
+                }
+
                 $tooltip.css('left', tt_left + 'px' );
                 $tooltip.css('top', tt_top + 'px' );
+
                 $tooltip.fadeIn('fast');
 
                 highlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
@@ -275,7 +286,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
         ).click(function() {
             window.open('episode-' + $(this).data('episode') + '.html','_self');
         });
-
+        
         $('.joke-line, .joke-label').hover(
             function(e) {
                 var joke_code = $(this).data('joke');
@@ -285,10 +296,11 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 var joke_code = $(this).data('joke');
                 dehighlight_joke_network(joke_code);
             }
-        ).click(function() {
-            window.open('joke-' + $(this).data('joke') + '.html','_self');
-        });
+        );
     }
+    $('.joke-line, .joke-label').click(function() {
+        window.open('joke-' + $(this).data('joke') + '.html','_self');
+    });
 }
 
 function highlight_joke_network(joke_code, episode_number) {
@@ -376,19 +388,36 @@ function svgHasClass(obj,c) {
 }
 
 
+function resize_viz() {
+    var $viz = null;
+    var joke_code = null;
+
+    // Joke detail page
+    if ($body.hasClass('joke-detail')) {
+        $viz = $joke_viz;
+        joke_code = parseInt($joke_viz.data('joke-code'));
+    // Index / full viz page
+    } else if ($body.hasClass('viz-index')) {
+        $viz = $full_viz;
+    }
+
+    if (paper) {
+        paper.remove();
+        $viz.empty();
+    }
+
+    render_viz($viz, group_order, joke_data, connection_data, episodes, joke_code);
+}
+
+
 $(function() {
     $body = $('body');
     $full_viz = $('#viz');
     $joke_viz = $('#joke-viz');
     $tooltip = $('#viz-tooltip');
 
-    // Joke detail page
-    if ($body.hasClass('joke-detail')) {
-        var joke_code = parseInt($joke_viz.data('joke-code'));
-        render_viz($joke_viz, group_order, joke_data, connection_data, episodes, joke_code);
-    // Index / full viz page
-    } else if ($body.hasClass('viz-index')) {
-        render_viz($full_viz, group_order, joke_data, connection_data, episodes);
-    }
+    $(window).resize(resize_viz);
+
+    resize_viz();
 });
 

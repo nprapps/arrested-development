@@ -6,7 +6,7 @@
 <div class="small-header container-fluid">
     <div class="row-fluid">
         <div class="span10 offset1">
-            <a href="/"><img src="img/title-small.png"></a>
+            <a href="../"><img src="img/title-small.png"></a>
         </div>
     </div>
 </div>
@@ -21,7 +21,7 @@
             <h1> {{ episode.title }}</h1>
             <p class="episode-meta">Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }} | Watched by <span class="viewer-count">{{ episode.rating }} million</span> viewers.</p>
             <p class="blurb">{{ episode.blurb }}</p>
-            <p class="detail-count"><span class="count">{{ episodejokes|length }}</span> recurring jokes in this episode:</p>
+            <p class="detail-count"><span class="count">{{ joke_count }}</span> recurring jokes in this episode:</p>
         </div>
 
         {# 300x250 ad #}
@@ -40,29 +40,32 @@
         </div>
     </div>
 </div>
-{% for character in episodejokes %}<div class="character row-fluid">
 
+{% for group in group_order %}
+{% set episodejokes = jokes[group] %}
+<div class="character row-fluid">
 
-<img class="span1 offset1 character-icon" src="img/characters/{{ character.name|lower|replace(" ", "")|replace(".", "") }}.png">
-<h2 class="span3">{{ character.name }}</h2>
+    <img class="span1 offset1 character-icon" src="img/characters/{{ group|lower|replace(" ", "")|replace(".", "") }}.png">
+    <h2 class="span3">{{ group }}</h2>
 
-<ul class="joke-list span6">{% for ej in character.jokes %}
-    <li class="joke {{ ej.formatted_type() }}">
-        <a href="joke-{{ ej.joke.code }}.html">
-            {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
-        </a>
-        {% if ej.details != None %}
-            <p class="extra details {{ ej.formatted_type() }}">
-                {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
-            </p>
-        {% endif %}
-        {% if ej.connections() != [] %}{% for joke in ej.connections() %}
-            <p class="extra connection {{ ej.formatted_type() }}">
-                <strong>Related Joke:</strong> <a href="{{ joke.url }}">{{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}</a>
-            </p>
-        {% endfor %}{% endif %}
-    </li>
-{% endfor %}</ul>
+    <ul class="joke-list span6">{% for ej in episodejokes %}
+
+        <li class="joke {{ ej.formatted_type() }}">
+            <a href="joke-{{ ej.joke.code }}.html">
+                {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
+            </a>
+            {% if ej.details != None %}
+                <p class="extra details {{ ej.formatted_type() }}">
+                    {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
+                </p>
+            {% endif %}
+            {% if ej.connections() != [] %}{% for joke in ej.connections() %}
+                <p class="extra connection {{ ej.formatted_type() }}">
+                    <strong>Related Joke:</strong> <a href="{{ joke.url }}">{{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}</a>
+                </p>
+            {% endfor %}{% endif %}
+        </li>
+    {% endfor %}</ul>
 </div>{% endfor %}
 
 {% include "_comments.html" %}

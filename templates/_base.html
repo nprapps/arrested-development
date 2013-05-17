@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>{{ PROJECT_NAME }}</title>
+    <title>{{ PROJECT_NAME }} : NPR</title>
 
     <meta name="description" content="{{ PROJECT_DESCRIPTION }}">
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
@@ -19,6 +19,12 @@
     {{ CSS.push('less/app.less') }}
     {% block extra_css %}{% endblock extra_css %}
     {{ CSS.render('css/app.min.css') }}
+    
+    <!--[if lt IE 9]>
+    <style type="text/css">
+        .viz-row { display: none; }
+    </style>
+    <![endif]-->
 
     <!-- AD CODE -->
     <script>
