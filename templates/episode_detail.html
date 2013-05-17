@@ -51,12 +51,14 @@
     <ul class="joke-list span6">{% for ej in episodejokes %}
 
         <li class="joke {{ ej.formatted_type() }}">
-            <a href="joke-{{ ej.joke.code }}.html">
-                {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
-            </a>
+            <h3>
+                <a href="joke-{{ ej.joke.code }}.html">
+                    {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
+                </a>
+            </h3>
             {% if ej.details != None %}
                 <p class="extra details {{ ej.formatted_type() }}">
-                    {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
+                    {{ ej.details.replace("/", "</p><p class='extra details'>")|safe }}
                 </p>
             {% endif %}
             {% if ej.connections() != [] %}{% for joke in ej.connections() %}

@@ -318,7 +318,7 @@ header {
     li {
         display: inline-block;
         margin-right: 18px;
-        font-size: 16px;
+        font-size: 14px;
         line-height: 14px;
         color: #333;
         background: url('../img/ad-key.png') no-repeat;
@@ -569,7 +569,7 @@ header {
     .episode-list,
     .joke-list {
         li {
-            font-size: 24px;
+            font-size: 18px;
             line-height: 1.1;
             margin-bottom: 10px;
             padding-bottom: 10px;
@@ -584,17 +584,35 @@ header {
                 text-transform: capitalize;
             }
 
+            h3 {
+                font-size: 18px;
+                margin: 0;
+            }
+
             .details {
                 font-style: italic;
-                font-size: 16px;
+                font-size: 24px;
                 line-height: 1.3;
-                color: #666;
-                margin: 5px 0;
+                color: #fff;
+                margin: 15px 0 0;
+                background: @orange;
+                padding: 10px;
+                float: left;
+                clear: both;
+                &:after,
+                &:before {
+                    content: ' ';
+                    display: table;
+                    width: 100%;
+                    overflow: hidden;
+                    clear: both;
+                }
             }
 
             .connection {
                 font-size: 14px;
-                margin-top: 10px;
+                padding-top: 15px;
+                clear: both;
             }
             &:after {
                 content: ' ';
@@ -630,6 +648,12 @@ header {
 
     .joke-list {
         list-style: none;
+
+        .joke {
+            h3 {
+                font-weight: bold;
+            }
+        }
     }
 }
 
@@ -645,11 +669,15 @@ header {
     .episode-list {
         list-style: none;
 
+        .episode {
+            h3 {
+                font-weight: bold;
+            }
+        }
+
         .episode-number {
             color: #000;
-            display: inline-block;
-            width: 33px;
-            text-align: right;
+            font-weight: bold;
         }
     }
 }
@@ -704,16 +732,20 @@ footer {
 		.secondary ul, .secondary p { margin-left: 0; float: left; }
 	}
 	#dataviz {
-        ul.ad-key { position: static; top: auto; right: auto; float: none; margin-bottom: 22px; }
+        p { margin-left:0; }
 	}
-}
-@media (max-width: 767px) {
+    ul.ad-key { margin-bottom: 33px;}
+    ul.ad-key li { margin-bottom:5px; font-size:12px; }
 
     .adwrapper,
     .viz-index .title-header .span10 .adwrapper,
     .detail .detail-header .detail-header-content .adwrapper  {
         display: none !important;
     }
+}
+@media (max-width: 767px) {
+
+
 
     .project-nav .navbar-inner {
         padding: 0 20px;
@@ -745,6 +777,7 @@ footer {
 	        }
 	    }
 	}
+    ul.ad-key { margin-left:0; }
 
     .detail {
         .character,
@@ -754,8 +787,8 @@ footer {
 
         .character-icon {
             display: block;
-            max-width: 33.33333%;
-            margin: 0 auto;
+            max-width: 33%;
+            margin: 0 auto !important;
         }
     }
 }
