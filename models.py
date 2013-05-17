@@ -2,6 +2,8 @@ import re
 
 from peewee import *
 
+from app_config import PRIMARY_CHARACTER_LIST
+
 db = SqliteDatabase('data/app.db', autocommit=True)
 
 
@@ -23,6 +25,14 @@ class Joke(Model):
 
     def episode_count(self):
         return EpisodeJoke.select().where(EpisodeJoke.joke == self).count()
+
+    def category(self):
+        if self.primary_character == u"Lucille 2":
+            return u"Miscellaneous"
+        elif self.primary_character in PRIMARY_CHARACTER_LIST:
+            return self.primary_character
+        else:
+            return u"Miscellaneous"
 
 
 class Episode(Model):
