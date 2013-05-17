@@ -102,6 +102,13 @@ def _joke_detail(joke_code):
     context['connection_data'] = Markup(json.dumps(connections))
     context['episodes'] = Markup(json.dumps(data['episodes']))
 
+    group = context['joke'].primary_character
+
+    if group not in app_config.PRIMARY_CHARACTER_LIST:
+        group = 'Miscellaneous'
+
+    context['group'] = group
+
     return render_template('joke_detail.html', **context)
 
 
