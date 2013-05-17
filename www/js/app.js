@@ -109,6 +109,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
     height = line_y + OFFSET_Y - GROUP_INTERVAL
     $viz.height(height);
+    $viz.find('#viz-labels').height(height);
     
     // render season labels
     // loop through episodes and create labels (appended to page when various joke groupings are rendered)
