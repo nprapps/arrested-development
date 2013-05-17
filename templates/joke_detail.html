@@ -44,12 +44,7 @@
 
 <div class="season row-fluid viz-row">
     <div class="span10 offset1">
-        <ul class="ad-key">
-            <li class="key-j">Joke</li>
-            <li class="key-b">Joke in the background</li>
-            <li class="key-f">Foreshadowed joke</li>
-            <li class="key-c">Related joke</li>
-        </ul>
+        {% include "_key.html" %}
         <div class="viz-wrap">
             <div id="viz-tooltip"></div>
             <div id="joke-viz" class="viz" data-joke-code="{{ joke.code }}">
