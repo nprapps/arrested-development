@@ -366,7 +366,7 @@ header {
 
         .dropdown {
 
-            a {
+            > a {
                 text-transform: none;
                 line-height: 24px;
                 color: #ddd;
@@ -391,6 +391,7 @@ header {
                 a {
                     &:hover {
                         background: @orange;
+                        color: #fff;
                     }
                 }
             }
@@ -400,7 +401,7 @@ header {
                    -moz-border-radius: 0;
                         border-radius: 0;
                         
-                a { color:#333; }
+                > a { color:#333; }
             }
         }
 
@@ -802,7 +803,7 @@ footer {
         .character-icon {
             display: block;
             max-width: 33%;
-            margin: 0 auto !important;
+            margin: 0 auto  20px !important;
         }
     }
 }
