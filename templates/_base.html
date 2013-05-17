@@ -19,6 +19,12 @@
     {{ CSS.push('less/app.less') }}
     {% block extra_css %}{% endblock extra_css %}
     {{ CSS.render('css/app.min.css') }}
+    
+    <!--[if lt IE 9]>
+    <style type="text/css">
+        .viz-row { display: none; }
+    </style>
+    <![endif]-->
 
     <!-- AD CODE -->
     <script>
