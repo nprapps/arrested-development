@@ -45,7 +45,7 @@
 {% set episodejokes = jokes[group] %}
 <div class="character row-fluid">
 
-    <img class="span1 offset1 character-icon" src="img/characters/{{ group|lower|replace(" ", "")|replace(".", "") }}.png">
+    <img class="span1 offset1 character-icon" src="img/characters/{{ group|lower|replace(" ", "")|replace(".", "")|replace("miscellaneous", "thebluths") }}.png">
     <h2 class="span3">{{ group }}</h2>
 
     <ul class="joke-list span6">{% for ej in episodejokes %}
