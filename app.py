@@ -35,28 +35,6 @@ def _all_seasons():
     return output
 
 
-@app.route('/episodes.html')
-def episode_list():
-    context = make_context()
-    context['episodes'] = []
-    for episode in Episode.select():
-        context['episodes'].append(episode)
-    context['episodes'] = sorted(context['episodes'], key=lambda episode: episode.code)
-    context['seasons'] = _all_seasons()
-    return render_template('episode_list.html', **context)
-
-
-@app.route('/jokes.html')
-def joke_list():
-    context = make_context()
-    context['jokes'] = []
-    for joke in Joke.select():
-        context['jokes'].append(joke)
-    context['jokes'] = sorted(context['jokes'], key=lambda joke: joke.code)
-    context['seasons'] = _all_seasons()
-    return render_template('joke_list.html', **context)
-
-
 @app.route('/episode-<episode_code>.html')
 def _episode_detail(episode_code):
     context = make_context()
@@ -99,7 +77,6 @@ def _joke_detail(joke_code):
             connected_joke_codes.append(c['joke2_code'])
 
             return True
-        
         return False
 
     connections = filter(filter_connections, connections)
@@ -109,7 +86,6 @@ def _joke_detail(joke_code):
 
     for group, jokes in joke_data.items():
         joke_data[group] = filter(filter_jokes, jokes)
-        
         if len(joke_data[group]) == 0:
             del joke_data[group]
             group_order.remove(group)
