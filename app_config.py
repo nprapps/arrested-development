@@ -69,7 +69,7 @@ IMPORT_NEW_SEASON = False
 """
 SHARING
 """
-PROJECT_DESCRIPTION = 'NPR\'s guide to the running gags on Arrested Development.'
+PROJECT_DESCRIPTION = 'NPR\'s slightly obsessive guide to the running gags on Arrested Development.'
 SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 
