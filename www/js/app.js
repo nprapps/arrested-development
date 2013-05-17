@@ -11,6 +11,7 @@ var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
 var IS_MOBILE = false;
 var WINDOW_WIDTH = $('body').width();
 var IS_WEBKIT = $.browser.webkit;
+var IS_IE8 = ($.browser.msie && parseInt($.browser.version) == 8);
 
 var $body = null;
 var $full_viz = null;
@@ -416,8 +417,12 @@ $(function() {
     $joke_viz = $('#joke-viz');
     $tooltip = $('#viz-tooltip');
 
-    $(window).resize(resize_viz);
+    if (IS_IE8) {
+        alert('its ie8, run screaming.');
+    } else {
+        $(window).resize(resize_viz);
 
-    resize_viz();
+        resize_viz();
+    }
 });
 
