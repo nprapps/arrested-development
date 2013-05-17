@@ -16,10 +16,10 @@
 {% block content %}
 
 <div class="detail-header row-fluid">
-    <div class="span1 offset1">
+    <div class="span2 offset1">
         <img class="character-icon" src="img/characters/{{ joke.primary_character|lower|replace(" ", "")|replace(".", "")|replace("miscellaneous", "thebluths") }}.png">
     </div>
-    <div class="span9 detail-header-content">
+    <div class="span8 detail-header-content">
         <div class="detail-header-wrapper">
             <h2>{{ joke.primary_character }}</h2>
             <h1>{{ joke.text|safe }}</h1>
@@ -66,13 +66,15 @@
 <div class="season row-fluid">
 <h2 class="span3 offset1">Season {{ group.grouper }}</h2>
 <ul class="episode-list span7">{% for ej in group.list %}
-    <li>
-        <a href="episode-{{ ej.episode.code }}.html">
-            <span class="episode-number">{{ ej.episode.episode }}:</span> {{ ej.episode.title.strip() }}
-        </a>
+    <li class="episode">
+        <h3>
+            <a href="episode-{{ ej.episode.code }}.html">
+                <span class="episode-number">{{ ej.episode.episode }}:</span> {{ ej.episode.title.strip() }}
+            </a>
+        </h3>
         {% if ej.details != None %}
             <p class="extra details">
-                {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
+                {{ ej.details.replace("/", "</p><p class='extra details'>")|safe }}
             </p>
         {% endif %}
         {% if ej.connections() != [] %}{% for joke in ej.connections() %}
