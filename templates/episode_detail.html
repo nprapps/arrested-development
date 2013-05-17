@@ -23,13 +23,15 @@
     </div>
 </div>
 <div class="row-fluid">
-    <p class="detail-count span10 offset1"><span class="count">{{ episodejokes|length }}</span> recurring jokes in this episode:</p>
+    <p class="detail-count span10 offset1"><span class="count">{{ joke_count }}</span> recurring jokes in this episode:</p>
 </div>
-{% for character in episodejokes %}<div class="character row-fluid">
+{% for group in group_order %}
+{% set episodejokes = jokes[group] %}
+<div class="character row-fluid">
 
-<h2 class="span3 offset1">{{ character.name }}</h2>
+<h2 class="span3 offset1">{{ group }}</h2>
 
-<ul class="joke-list span7">{% for ej in character.jokes %}
+<ul class="joke-list span7">{% for ej in episodejokes %}
     <li class="joke {{ ej.formatted_type() }}">
         <a href="joke-{{ ej.joke.code }}.html">
             {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}

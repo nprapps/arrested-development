@@ -3,7 +3,7 @@ var EPISODE_COUNT = 53;
 var DOT_RADIUS = 5;
 var LABEL_WIDTH = 200;
 var GROUP_LABEL_HEIGHT = 16;
-var LINE_INTERVAL = 15;
+var LINE_INTERVAL = 18;
 var GROUP_INTERVAL = 33;
 var OFFSET_X_RIGHT = DOT_RADIUS;
 var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
@@ -76,7 +76,9 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             // add label
             joke_labels += '<li id="label-' + joke['code'] + '" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '"';
             if (joke_code == joke['code']) {
-                joke_labels += ' class="joke-label-detail"';
+                joke_labels += ' class="joke-label-detail joke-label"';
+            } else {
+                joke_labels += ' class="joke-label"';
             }
             joke_labels += '>';
             joke_labels += '<a href="joke-' + joke['code'] + '.html">';
@@ -257,17 +259,18 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 tt_width = $tooltip.outerWidth();
                 tt_top = dot_position.top - (tt_height / 2);
                 tt_left = dot_position.left + (DOT_RADIUS * 2) + DOT_RADIUS;
+
                 if ((tt_left + tt_width) > width) {
                     tt_left = dot_position.left - tt_width - DOT_RADIUS;
                 }
                 
                 if (!IS_WEBKIT) {
-                    tt_left -= $('#joke-viz').offset().left;
-                    tt_top -= $('#joke-viz').offset().top;
+                    tt_left -= $viz.offset().left;
+                    tt_top -= $viz.offset().top;
                 }
+
                 $tooltip.css('left', tt_left + 'px' );
                 $tooltip.css('top', tt_top + 'px' );
-
 
                 $tooltip.fadeIn('fast');
 
@@ -283,6 +286,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
         ).click(function() {
             window.open('episode-' + $(this).data('episode') + '.html','_self');
         });
+        
         $('.joke-line, .joke-label').hover(
             function(e) {
                 var joke_code = $(this).data('joke');
