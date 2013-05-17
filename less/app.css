@@ -98,7 +98,7 @@ header p.sources{margin:22px 0 3px 0;}
 .joke-detail .detail-header h1{text-transform:capitalize;}
 .joke-detail .episode-list{list-style:none;}.joke-detail .episode-list .episode h3{font-weight:bold;}
 .joke-detail .episode-list .episode-number{color:#000;font-weight:bold;}
-.content-footer{margin:0 -20px;padding:20px;background:#eee;font-style:italic;color:#999;margin-bottom:40px;}
+.content-footer{margin:0 -20px;padding:20px;background:#eee;font-style:italic;color:#999;}
 footer{padding:0 15px 10px 15px;font-size:10px;border-top:2px solid #e0e0e0;}footer ul{list-style:none;margin:0;padding:0;}
 footer li,footer p{float:left;}
 footer a,footer a:link,footer a:visited{color:#6d8ac4;font-weight:bold;}
