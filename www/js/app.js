@@ -428,7 +428,14 @@ $(function() {
     // IE8 likes to throw random resize events and redraw everything
     if (!IS_IE8) {
         $(window).resize(resize_viz);
+    } else {
+        if ($body.hasClass('viz-index')) {
+            $('#click-for-details').remove();
+            $full_viz.append('<img src="img/full-vis-ie8.png" style="margin-left: ' + (LABEL_WIDTH + OFFSET_X_RIGHT) + 'px;" />');
+        }
     }
+
     resize_viz();
+
 });
 
