@@ -15,6 +15,7 @@ NAMES
 """
 # Project name used for display
 PROJECT_NAME = 'Previously, On Arrested Development'
+PROJECT_SUBTITLE = 'NPR\'s guide to the running gags from the show.'
 
 # Project name used for paths on the filesystem and in urls
 # Use dashes, not underscores
