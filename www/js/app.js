@@ -60,7 +60,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             var first_episode_number = episodejokes[0]['episode_number'];
             var last_episode_number = EPISODE_COUNT + 1; // +1 to make sure it goes off the side
 
-            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT) + ',' + line_y;
+            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT - DOT_RADIUS) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT) + ',' + line_y;
             var line = paper.path(path)
 
             line.node.setAttribute('id', 'joke-' + joke['code']);
