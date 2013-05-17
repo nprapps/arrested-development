@@ -1,7 +1,7 @@
 var EPISODE_COUNT = 53;
 
 var DOT_RADIUS = 5;
-var LABEL_WIDTH = 225;
+var LABEL_WIDTH = 200;
 var GROUP_LABEL_HEIGHT = 16;
 var LINE_INTERVAL = 15;
 var GROUP_INTERVAL = 33;
@@ -60,7 +60,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             var first_episode_number = episodejokes[0]['episode_number'];
             var last_episode_number = EPISODE_COUNT + 1; // +1 to make sure it goes off the side
 
-            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT) + ',' + line_y;
+            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT - DOT_RADIUS) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT) + ',' + line_y;
             var line = paper.path(path)
 
             line.node.setAttribute('id', 'joke-' + joke['code']);
@@ -387,7 +387,7 @@ $(function() {
         var joke_code = parseInt($joke_viz.data('joke-code'));
         render_viz($joke_viz, group_order, joke_data, connection_data, episodes, joke_code);
     // Index / full viz page
-    } else if ($body.hasClass('viz')) {
+    } else if ($body.hasClass('viz-index')) {
         render_viz($full_viz, group_order, joke_data, connection_data, episodes);
     }
 });

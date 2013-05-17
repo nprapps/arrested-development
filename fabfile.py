@@ -169,11 +169,11 @@ def render():
 
 
 def render_pages():
+    render()
     local('rm -rf www/episode*.html')
     local('rm -rf www/joke*.html')
     _render_iterable(Joke.select(), 'joke', 'code')
     _render_iterable(Episode.select(), 'episode', 'code')
-    render()
 
 
 def _render_iterable(iterable, model, lookup):
