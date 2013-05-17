@@ -10,6 +10,7 @@ var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
 var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
 var IS_MOBILE = false;
 var WINDOW_WIDTH = $('body').width();
+var IS_WEBKIT = $.browser.webkit;
 
 var $body = null;
 var $full_viz = null;
@@ -259,9 +260,15 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 if ((tt_left + tt_width) > width) {
                     tt_left = dot_position.left - tt_width - DOT_RADIUS;
                 }
-            
+                
+                if (!IS_WEBKIT) {
+                    tt_left -= $('#joke-viz').offset().left;
+                    tt_top -= $('#joke-viz').offset().top;
+                }
                 $tooltip.css('left', tt_left + 'px' );
                 $tooltip.css('top', tt_top + 'px' );
+
+
                 $tooltip.fadeIn('fast');
 
                 highlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
