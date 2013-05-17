@@ -425,8 +425,10 @@ $(function() {
     $joke_viz = $('#joke-viz');
     $tooltip = $('#viz-tooltip');
 
-    $(window).resize(resize_viz);
-
+    // IE8 likes to throw random resize events and redraw everything
+    if (!IS_IE8) {
+        $(window).resize(resize_viz);
+    }
     resize_viz();
 });
 
