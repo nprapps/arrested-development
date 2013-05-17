@@ -76,7 +76,9 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             // add label
             joke_labels += '<li id="label-' + joke['code'] + '" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '"';
             if (joke_code == joke['code']) {
-                joke_labels += ' class="joke-label-detail"';
+                joke_labels += ' class="joke-label-detail joke-label"';
+            } else {
+                joke_labels += ' class="joke-label"';
             }
             joke_labels += '>';
             joke_labels += '<a href="joke-' + joke['code'] + '.html">';
@@ -284,6 +286,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
         ).click(function() {
             window.open('episode-' + $(this).data('episode') + '.html','_self');
         });
+        
         $('.joke-line, .joke-label').hover(
             function(e) {
                 var joke_code = $(this).data('joke');
