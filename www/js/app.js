@@ -1,7 +1,7 @@
 var EPISODE_COUNT = 53;
 
 var DOT_RADIUS = 5;
-var LABEL_WIDTH = 225;
+var LABEL_WIDTH = 200;
 var GROUP_LABEL_HEIGHT = 16;
 var LINE_INTERVAL = 15;
 var GROUP_INTERVAL = 33;
@@ -387,7 +387,7 @@ $(function() {
         var joke_code = parseInt($joke_viz.data('joke-code'));
         render_viz($joke_viz, group_order, joke_data, connection_data, episodes, joke_code);
     // Index / full viz page
-    } else if ($body.hasClass('viz')) {
+    } else if ($body.hasClass('viz-index')) {
         render_viz($full_viz, group_order, joke_data, connection_data, episodes);
     }
 });
