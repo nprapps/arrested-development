@@ -17,11 +17,13 @@
 
 <div class="detail-header row-fluid">
     <div class="span2 offset1">
-        <img class="character-icon" src="img/characters/{{ joke.primary_character|lower|replace(" ", "")|replace(".", "")|replace("miscellaneous", "thebluths") }}.png">
+        <a href="./#{{ joke.category().replace(' ', '-') }}">
+            <img class="character-icon" src="img/characters/{{ joke.primary_character|lower|replace(" ", "")|replace(".", "")|replace("miscellaneous", "thebluths") }}.png">
+        </a>    
     </div>
     <div class="span8 detail-header-content">
         <div class="detail-header-wrapper">
-            <h2>{{ joke.category() }}</h2>
+            <h2><a href="./#{{ joke.category().replace(' ', '-') }}">{{ joke.category() }}</a></h2>
             <h1>{{ joke.text|safe }}</h1>
             <p>{{ joke.blurb|safe }}</p>
         </div>

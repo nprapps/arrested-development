@@ -94,7 +94,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             
             // add header if applicable
             if (i == 0 || (joke['primary_character'] != jokes[i-1]['primary_character'])) {
-                joke_headers += '<h4 class="joke-group-header" style="width: ' + LABEL_WIDTH + 'px; top: ' + line_y + 'px">' + joke['primary_character'] + '</h4>';
+                joke_headers += '<h4 id="' + group.replace(' ', '-') + '"class="joke-group-header" style="width: ' + LABEL_WIDTH + 'px; top: ' + line_y + 'px">' + joke['primary_character'] + '</h4>';
             }
 
             line_y += LINE_INTERVAL;
