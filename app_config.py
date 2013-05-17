@@ -74,7 +74,7 @@ SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 
 TWITTER = {
-    'TEXT': PROJECT_NAME,
+    'TEXT': 'Hey, brother. Previously, on Arrested Development...',
     'URL': SHARE_URL
 }
 
