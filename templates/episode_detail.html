@@ -15,41 +15,61 @@
 
 {% block content %}
 <div class="detail-header row-fluid">
-    <div class="span10 offset1">
-        <h2>Season {{ episode.season}}, Episode {{ episode.episode }}</h2>
-        <h1> {{ episode.title }}</h1>
-        <p class="episode-meta">Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }} | Watched by <span class="viewer-count">{{ episode.rating }} million</span> viewers.</p>
-        <p class="blurb">{{ episode.blurb }}</p>
+    <div class="span10 detail-header-content offset1">
+        <div class="detail-header-wrapper">
+            <h2>Season {{ episode.season}}, Episode {{ episode.episode }}</h2>
+            <h1> {{ episode.title }}</h1>
+            <p class="episode-meta">Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }} | Watched by <span class="viewer-count">{{ episode.rating }} million</span> viewers.</p>
+            <p class="blurb">{{ episode.blurb }}</p>
+            <p class="detail-count"><span class="count">{{ joke_count }}</span> recurring jokes in this episode:</p>
+        </div>
+
+        {# 300x250 ad #}
+        <div class="adwrapper">
+            <div class="sponsor300">
+                <script type="text/javascript">
+                <!--
+                try {
+                    DFP.renderLocation('desktop');
+                } catch(e) {
+                    NPR.messaging.warning('Problem fetching/rendering desktop ad server code.', 'DFP.renderLocation', NPR.messaging.constants.SPONSORSHIP_ERROR);
+                }
+                // -->
+                </script>
+            </div>
+        </div>
     </div>
 </div>
-<div class="row-fluid">
-    <p class="detail-count span10 offset1"><span class="count">{{ joke_count }}</span> recurring jokes in this episode:</p>
-</div>
+
 {% for group in group_order %}
 {% set episodejokes = jokes[group] %}
 <div class="character row-fluid">
 
-<h2 class="span3 offset1">{{ group }}</h2>
+    <img class="span1 offset1 character-icon" src="img/characters/{{ group|lower|replace(" ", "")|replace(".", "") }}.png">
+    <h2 class="span3">{{ group }}</h2>
 
-<ul class="joke-list span7">{% for ej in episodejokes %}
-    <li class="joke {{ ej.formatted_type() }}">
-        <a href="joke-{{ ej.joke.code }}.html">
-            {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
-        </a>
-        {% if ej.details != None %}
-            <p class="extra details {{ ej.formatted_type() }}">
-                {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
-            </p>
-        {% endif %}
-        {% if ej.connections() != [] %}{% for joke in ej.connections() %}
-            <p class="extra connection {{ ej.formatted_type() }}">
-                <strong>Related Joke:</strong> <a href="{{ joke.url }}">{{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}</a>
-            </p>
-        {% endfor %}{% endif %}
-    </li>
-{% endfor %}</ul>
+    <ul class="joke-list span6">{% for ej in episodejokes %}
+
+        <li class="joke {{ ej.formatted_type() }}">
+            <a href="joke-{{ ej.joke.code }}.html">
+                {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
+            </a>
+            {% if ej.details != None %}
+                <p class="extra details {{ ej.formatted_type() }}">
+                    {{ ej.details.replace("/", "</span><span class='extra details'>")|safe }}
+                </p>
+            {% endif %}
+            {% if ej.connections() != [] %}{% for joke in ej.connections() %}
+                <p class="extra connection {{ ej.formatted_type() }}">
+                    <strong>Related Joke:</strong> <a href="{{ joke.url }}">{{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}</a>
+                </p>
+            {% endfor %}{% endif %}
+        </li>
+    {% endfor %}</ul>
 </div>{% endfor %}
 
-{% include "_source.html" %}
 {% include "_comments.html" %}
+
+{% include "_source.html" %}
+
 {% endblock %}

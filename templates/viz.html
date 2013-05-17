@@ -4,18 +4,35 @@
 
 {% block header_content %}
 <header class="title-header">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span10 offset1">
-                <h1><img alt="{{ PROJECT_NAME }}" src="img/title.png"></h1>
-                <h2>NPR's guide to the running gags from the show.</h2>
-                <p class="credits">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span10 offset1">
+                <div class="title-wrapper">
+                    <h1><img alt="We've made a huge mistake" src="img/title.png"></h1>
+                    <h2>NPR's guide to the running gags from the show.</h2>
+                    <p class="credits">May 17, 2013</p>
+                    <p class="credits">
                     By Jeremy Bowers, Adam Cole, Danny DeBelius, Christopher Groskopf and Alyson Hurt / NPR<br/>
                     May 18, 2013
                 </p>
-            </div>
-        </div>
-    </div>
+                </div>
+                {# 300x250 ad #}
+                <div class="adwrapper">
+                    <div class="sponsor300">
+                        <script type="text/javascript">
+                        <!--
+                        try {
+                            DFP.renderLocation('desktop');
+                        } catch(e) {
+                            NPR.messaging.warning('Problem fetching/rendering desktop ad server code.', 'DFP.renderLocation', NPR.messaging.constants.SPONSORSHIP_ERROR);
+                        }
+                        // -->
+                        </script>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
 </header>
 {% include "_nav.html" %}
 {% endblock header_content %}

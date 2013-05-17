@@ -71,16 +71,22 @@ h1+#story-meta{margin-top:-11px;}
 .project-nav .navbar-inner .dropdown>a{text-transform:uppercase;}
 .project-nav .navbar-inner .dropdown li{height:auto;line-height:1;margin-left:0;float:none;}.project-nav .navbar-inner .dropdown li a:hover{background:#f95d1a;}
 .project-nav .navbar-inner .dropdown .dropdown-menu{border:none;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
-.viz>header{padding:60px 0 20px;background:#f95d1a;}.viz>header .row-fluid{margin:0 -20px;padding:20px;}
-.viz>header h1{font-weight:bold;color:#fff;}
-.viz>header a{color:#fff;}
-.viz>header h2{font-size:32px;line-height:1.1;color:#fff;font-weight:bold;margin:20px 0;}
-.viz>header .credits{color:rgba(255, 255, 255, 0.6);font-size:18px;margin-bottom:20px;}
-.viz .content-footer{margin-bottom:0;}
+.viz-index .title-header .span10{display:table;}.viz-index .title-header .span10 .adwrapper,.viz-index .title-header .span10 .title-wrapper{display:table-cell;vertical-align:top;}
+.viz-index .title-header .span10 .adwrapper{padding-left:40px;}
+.viz-index>header{padding:60px 0 20px;background:#f95d1a;}.viz-index>header .row-fluid{margin:0 -20px;padding:20px;}
+.viz-index>header h1{font-weight:bold;color:#fff;}
+.viz-index>header a{color:#fff;}
+.viz-index>header h2{font-size:24px;line-height:1.1;color:#fff;font-weight:bold;margin:20px 0;}
+.viz-index>header .credits{color:rgba(255, 255, 255, 0.6);font-size:18px;margin-bottom:20px;}
+.viz-index .content-footer{margin-bottom:0;}
 .detail .small-header{background:#f95d1a;}.detail .small-header .row-fluid{background:#f95d1a;margin:0 -20px;padding:20px;}
-.detail .detail-header{margin:0 -20px;padding:20px;}.detail .detail-header h1{font-family:Helvetica,Arial,sans-serif;font-weight:bold;font-size:42px;margin-bottom:10px;color:#000;}.detail .detail-header h1 strong{font-weight:bold;}
+.detail #main-content{display:table;}.detail #main-content .detail-wrapper,.detail #main-content .adwrapper{display:table-cell;vertical-align:top;}
+.detail .detail-header{margin:0 -20px;padding:20px;}.detail .detail-header .detail-header-content{display:table;}.detail .detail-header .detail-header-content .detail-header-wrapper,.detail .detail-header .detail-header-content .adwrapper{display:table-cell;vertical-align:top;}
+.detail .detail-header .detail-header-content .adwrapper{padding-left:40px;}
+.detail .detail-header h1{font-family:Helvetica,Arial,sans-serif;font-weight:bold;font-size:42px;margin-bottom:10px;color:#000;}.detail .detail-header h1 strong{font-weight:bold;}
 .detail .detail-header h2{color:#000;text-transform:uppercase;font-weight:bold;font-size:14px;line-height:1;margin:0 0 10px;}
 .detail .detail-header p{font-size:22px;line-height:1.4;margin-bottom:0;}
+.detail .detail-header .adwrapper p{font-size:10px;}
 .detail .detail-count{color:#000;font-size:24px;margin-top:20px;}
 .detail .count{display:inline-block;height:60px;width:60px;line-height:60px;-webkit-border-radius:30px;-moz-border-radius:30px;border-radius:30px;background:#f95d1a;color:#fff;font-size:32px;font-weight:bold;text-align:center;vertical-align:middle;}
 .detail .character,.detail .season{border-bottom:2px solid #eee;background:#fff;margin:0 -20px;padding:20px;}.detail .character h2,.detail .season h2{font-size:32px;font-weight:bold;color:#000;line-height:1;margin-top:0;}
@@ -89,7 +95,7 @@ h1+#story-meta{margin-top:-11px;}
 .detail .episode-list li .details,.detail .joke-list li .details{font-style:italic;font-size:16px;line-height:1.3;color:#666;margin:5px 0;}
 .detail .episode-list li .connection,.detail .joke-list li .connection{font-size:14px;margin-top:10px;}
 .detail .episode-list li:after,.detail .joke-list li:after{content:' ';display:table;width:100%;overflow:hidden;clear:both;}
-.episode-detail p.episode-meta{font-size:14px;line-height:1.1;text-transform:uppercase;color:#000;margin-bottom:10px;}
+.episode-detail p.episode-meta{font-size:14px;line-height:1.1;text-transform:uppercase;color:#999;margin-bottom:10px;}
 .episode-detail .count,.episode-detail .viewer-count{font-weight:bold;}
 .episode-detail .joke-list{list-style:none;}
 .joke-detail .detail-header h1{text-transform:capitalize;}
@@ -106,4 +112,4 @@ footer .secondary{height:52px;}footer .secondary p{margin-left:30px;line-height:
 footer .secondary ul{float:right;margin-left:30px;}
 footer .secondary li{line-height:52px;font-size:12px;margin-left:15px;}
 footer .secondary a{color:#999;font-weight:normal;}
-@media (max-width:979px){nav .site-links-2{display:none;} footer .primary{float:none;} footer .secondary ul,footer .secondary p{margin-left:0;float:left;} #dataviz h3{margin-bottom:11px;} #dataviz ul.ad-key{position:static;top:auto;right:auto;float:none;margin-bottom:22px;}}@media (max-width:767px){.project-nav .navbar-inner{padding:0 20px;}.project-nav .navbar-inner .brand{padding-left:0;} nav,header,footer{margin-left:-20px;margin-right:-20px;} .viz>header{padding:20px;} nav .site-links{margin-left:20px;} footer .primary{display:none;} footer .secondary p{float:left;font-size:10px;color:#bccae5;} footer .secondary ul{float:right;} footer .secondary li{font-size:10px;text-transform:none;} footer .secondary a{color:#bccae5;} #viz h4.joke-group-header{margin-top:-30px;} #viz .episode-labels,#viz .season-line,#viz .connection-line{display:none;} #viz .joke-line{stroke-width:28px;} #viz #viz-labels{margin-top:-9px;}#viz #viz-labels li{height:28px;display:table;line-height:1.2;font-size:12px;}#viz #viz-labels li a{white-space:normal;display:table-cell;vertical-align:middle;} .detail .character h2,.detail .season h2{text-align:left;}}@media (max-width:480px){h1{font-size:26px;} #story-meta p{font-size:11px;} nav .site-links li{display:none;} nav .site-links .npr{display:block;} .viz>header{padding:33px 20px;}.viz>header h1{font-size:36px;} footer{border-top:1px solid #CCC;margin-top:24px;}}
+@media (max-width:979px){nav .site-links-2{display:none;} footer .primary{float:none;} footer .secondary ul,footer .secondary p{margin-left:0;float:left;} #dataviz h3{margin-bottom:11px;} #dataviz ul.ad-key{position:static;top:auto;right:auto;float:none;margin-bottom:22px;}}@media (max-width:767px){.adwrapper,.viz-index .title-header .span10 .adwrapper,.detail .detail-header .detail-header-content .adwrapper{display:none !important;} .project-nav .navbar-inner{padding:0 20px;}.project-nav .navbar-inner .brand{padding-left:0;} nav,header,footer{margin-left:-20px;margin-right:-20px;} .viz-index>header{padding:20px;} nav .site-links{margin-left:20px;} footer .primary{display:none;} footer .secondary p{float:left;font-size:10px;color:#bccae5;} footer .secondary ul{float:right;} footer .secondary li{font-size:10px;text-transform:none;} footer .secondary a{color:#bccae5;} .viz h4.joke-group-header{margin-top:-30px;} .viz .episode-labels,.viz .season-line,.viz .connection-line{display:none;} .viz .joke-line{stroke-width:28px;} .viz #viz-labels{margin-top:-9px;}.viz #viz-labels li{height:28px;display:table;line-height:1.2;font-size:12px;}.viz #viz-labels li a{white-space:normal;display:table-cell;vertical-align:middle;} .detail .character h2,.detail .season h2{text-align:left;} .detail .character-icon{display:block;max-width:33.33333%;margin:0 auto;}}@media (max-width:480px){h1{font-size:26px;} #story-meta p{font-size:11px;} nav .site-links li{display:none;} nav .site-links .npr{display:block;} .viz-index>header{padding:33px 20px;}.viz-index>header h1{font-size:36px;} footer{border-top:1px solid #CCC;margin-top:24px;}}
