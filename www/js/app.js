@@ -37,7 +37,8 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
         LINE_INTERVAL = 30;
         OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
     }
-    var paper = new Raphael($viz[0], '100%', '100%');
+
+    paper = new Raphael($viz[0], '100%', '100%');
     var line_y = OFFSET_Y;
     var dot_interval = (width - (OFFSET_X_LEFT + OFFSET_X_RIGHT)) / (EPISODE_COUNT + 1);
 
@@ -376,19 +377,36 @@ function svgHasClass(obj,c) {
 }
 
 
+function resize_viz() {
+    var $viz = null;
+    var joke_code = null;
+
+    // Joke detail page
+    if ($body.hasClass('joke-detail')) {
+        $viz = $joke_viz;
+        joke_code = parseInt($joke_viz.data('joke-code'));
+    // Index / full viz page
+    } else if ($body.hasClass('viz-index')) {
+        $viz = $full_viz;
+    }
+
+    if (paper) {
+        paper.remove();
+        $viz.empty();
+    }
+
+    render_viz($viz, group_order, joke_data, connection_data, episodes, joke_code);
+}
+
+
 $(function() {
     $body = $('body');
     $full_viz = $('#viz');
     $joke_viz = $('#joke-viz');
     $tooltip = $('#viz-tooltip');
 
-    // Joke detail page
-    if ($body.hasClass('joke-detail')) {
-        var joke_code = parseInt($joke_viz.data('joke-code'));
-        render_viz($joke_viz, group_order, joke_data, connection_data, episodes, joke_code);
-    // Index / full viz page
-    } else if ($body.hasClass('viz-index')) {
-        render_viz($full_viz, group_order, joke_data, connection_data, episodes);
-    }
+    $(window).resize(resize_viz);
+
+    resize_viz();
 });
 
