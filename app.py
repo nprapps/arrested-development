@@ -39,18 +39,25 @@ def _all_seasons():
 def _episode_detail(episode_code):
     context = make_context()
     context['episode'] = Episode.get(Episode.code == episode_code)
-    context['episodejokes'] = []
-    for character in app_config.PRIMARY_CHARACTER_LIST:
-        character_dict = {}
-        character_dict['name'] = character
-        character_dict['jokes'] = []
-        for joke in EpisodeJoke.select().where(EpisodeJoke.episode == context['episode']):
-            if joke.joke.primary_character == character:
-                character_dict['jokes'].append(joke)
-        if len(character_dict['jokes']) > 0:
-            character_dict['jokes'] = sorted(character_dict['jokes'], key=lambda ej: ej.episode.number)
-            context['episodejokes'].append(character_dict)
+    context['jokes'] = {}
+    context['joke_count'] = 0
+ 
+    for joke in EpisodeJoke.select().where(EpisodeJoke.episode == context['episode']):
+        group = joke.joke.primary_character
+
+        if group not in app_config.PRIMARY_CHARACTER_LIST:
+            group = 'Miscellaneous'
+
+        if group not in context['jokes']:
+            context['jokes'][group] = []
+
+        context['jokes'][group].append(joke)
+        context['joke_count'] += 1
+
     context['seasons'] = _all_seasons()
+    
+    context['group_order'] = [g for g in app_config.PRIMARY_CHARACTER_LIST if g in context['jokes']]
+
     return render_template('episode_detail.html', **context)
 
 
