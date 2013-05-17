@@ -275,7 +275,6 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
         ).click(function() {
             window.open('episode-' + $(this).data('episode') + '.html','_self');
         });
-
         $('.joke-line, .joke-label').hover(
             function(e) {
                 var joke_code = $(this).data('joke');
@@ -285,10 +284,11 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 var joke_code = $(this).data('joke');
                 dehighlight_joke_network(joke_code);
             }
-        ).click(function() {
-            window.open('joke-' + $(this).data('joke') + '.html','_self');
-        });
+        );
     }
+    $('.joke-line, .joke-label').click(function() {
+        window.open('joke-' + $(this).data('joke') + '.html','_self');
+    });
 }
 
 function highlight_joke_network(joke_code, episode_number) {
