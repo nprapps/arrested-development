@@ -4,17 +4,18 @@
 
 {% block header_content %}
 <header class="title-header">
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span10 offset1">
-
-                <h1><img alt="We've made a huge mistake" src="img/title.png"></h1>
-                <h2>NPR's guide to the running gags from Arrested Development.</h2>
-                <p class="credits">By Jeremy Bowers, Adam Cole, Danny DeBelius, Christopher Groskopf and Alyson Hurt / NPR</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-			</div>
-		</div>
-	</div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span10 offset1">
+                <h1><img alt="{{ PROJECT_NAME }}" src="img/title.png"></h1>
+                <h2>NPR's guide to the running jokes from the show.</h2>
+                <p class="credits">
+                    By Jeremy Bowers, Adam Cole, Danny DeBelius, Christopher Groskopf and Alyson Hurt / NPR<br/>
+                    May 18, 2013
+                </p>
+            </div>
+        </div>
+    </div>
 </header>
 {% include "_nav.html" %}
 {% endblock header_content %}
