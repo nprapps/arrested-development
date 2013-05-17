@@ -242,6 +242,44 @@ h1 + #story-meta { margin-top: -11px; }
         }
     }
     
+    
+    h4.joke-group-header {
+        position: absolute;
+        left: 0;
+        text-align: right;
+        margin: -24px 0 0 0;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        height: 14px;
+        overflow: hidden;
+        color: #333;
+    }
+    .episode-labels {
+        position: absolute;
+        top: 0;
+        margin: -32px 0 0 0;
+        padding: 0;
+        list-style: none;
+        
+        li {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 9px;
+            width: 80px;
+            display: inline-block;
+            font-size: 11px;
+            line-height: 1;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+    }
+}
+
+.viz-wrap {
+    position: relative;
+
     #viz-tooltip {
         display: none;
         position: absolute;
@@ -278,47 +316,16 @@ h1 + #story-meta { margin-top: -11px; }
             }
         }
     }
-    
-    h4.joke-group-header {
-        position: absolute;
-        left: 0;
-        text-align: right;
-        margin: -24px 0 0 0;
-        font-size: 12px;
-        font-weight: bold;
-        text-transform: uppercase;
-        height: 14px;
-        overflow: hidden;
-        color: #333;
-    }
-    .episode-labels {
-        position: absolute;
-        top: 0;
-        margin: -32px 0 0 0;
-        padding: 0;
-        list-style: none;
-        
-        li {
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            top: 9px;
-            width: 80px;
-            display: inline-block;
-            font-size: 11px;
-            line-height: 1;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-    }
-}
-.viz {
+
     #viz-tooltip {
         span {
             &.joke-info { color: #fff; }
             &.joke-type, &.related-joke, &.joke-details, &.episode-info { color: @orange-1; }
         }
     }
+}
+
+.viz {
     .season-line { stroke: #fff; }
     .episode-labels li { color: #999; }
 }

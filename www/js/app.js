@@ -257,17 +257,18 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 tt_width = $tooltip.outerWidth();
                 tt_top = dot_position.top - (tt_height / 2);
                 tt_left = dot_position.left + (DOT_RADIUS * 2) + DOT_RADIUS;
+
                 if ((tt_left + tt_width) > width) {
                     tt_left = dot_position.left - tt_width - DOT_RADIUS;
                 }
                 
                 if (!IS_WEBKIT) {
-                    tt_left -= $('#joke-viz').offset().left;
-                    tt_top -= $('#joke-viz').offset().top;
+                    tt_left -= $viz.offset().left;
+                    tt_top -= $viz.offset().top;
                 }
+
                 $tooltip.css('left', tt_left + 'px' );
                 $tooltip.css('top', tt_top + 'px' );
-
 
                 $tooltip.fadeIn('fast');
 
