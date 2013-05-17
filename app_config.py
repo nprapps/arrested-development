@@ -15,6 +15,7 @@ NAMES
 """
 # Project name used for display
 PROJECT_NAME = 'Previously, On Arrested Development'
+PROJECT_SUBTITLE = 'NPR\'s guide to the running gags from the show.'
 
 # Project name used for paths on the filesystem and in urls
 # Use dashes, not underscores
@@ -69,12 +70,12 @@ IMPORT_NEW_SEASON = False
 """
 SHARING
 """
-PROJECT_DESCRIPTION = 'An opinionated project template for (mostly) server-less apps.'
+PROJECT_DESCRIPTION = 'NPR\'s slightly obsessive guide to the running gags on Arrested Development.'
 SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 
 TWITTER = {
-    'TEXT': PROJECT_NAME,
+    'TEXT': 'Hey, brother. Previously, on Arrested Development...',
     'URL': SHARE_URL
 }
 
@@ -82,7 +83,7 @@ FACEBOOK = {
     'TITLE': PROJECT_NAME,
     'URL': SHARE_URL,
     'DESCRIPTION': PROJECT_DESCRIPTION,
-    'IMAGE_URL': '',
+    'IMAGE_URL': 'http://apps.npr.org/arrested-development/img/promo-facebook.png',
     'APP_ID': '138837436154588'
 }
 

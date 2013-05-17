@@ -399,6 +399,8 @@ header {
                 -webkit-border-radius: 0;
                    -moz-border-radius: 0;
                         border-radius: 0;
+                        
+                a { color:#333; }
             }
         }
 
@@ -464,6 +466,13 @@ header {
 
     .small-header {
         background: @orange;
+        p {
+            margin:11px 0 0;
+            line-height:14px;
+            font-size: 14px;
+            font-weight: bold;
+            color:white;
+        }
 
         .row-fluid {
             background: @orange;
@@ -483,6 +492,7 @@ header {
 
     .detail-header {
         .no-gutter-row;
+        padding-top:44px;
 
         .detail-header-content {
             display: table;
