@@ -57,7 +57,7 @@
 </div>
 
 <div class="detail-count-row row-fluid">
-    <p class="detail-count span4 offset1"><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</p>
+    <p class="detail-count offset1"><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</p>
 </div>
 
 {% for group in episodejokes|groupby('episode.season') %}
