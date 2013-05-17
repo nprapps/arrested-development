@@ -16,10 +16,29 @@
 {% block content %}
 
 <div class="detail-header row-fluid">
-    <div class="span10 offset1">
-        <h2>{{ joke.primary_character }}</h2>
-        <h1>{{ joke.text }}</h1>
-        <p>{{ joke.blurb }}</p>
+    <div class="span1 offset1">
+        <img class="character-icon" src="img/characters/{{ joke.primary_character|lower|replace(" ", "")|replace(".", "")|replace("etc", "thebluths") }}.png">
+    </div>
+    <div class="span9 detail-header-content">
+        <div class="detail-header-wrapper">
+            <h2>{{ joke.primary_character }}</h2>
+            <h1>{{ joke.text|safe }}</h1>
+            <p>{{ joke.blurb|safe }}</p>
+        </div>
+        {# 300x250 ad #}
+        <div class="adwrapper">
+            <div class="sponsor300">
+                <script type="text/javascript">
+                <!--
+                try {
+                    DFP.renderLocation('desktop');
+                } catch(e) {
+                    NPR.messaging.warning('Problem fetching/rendering desktop ad server code.', 'DFP.renderLocation', NPR.messaging.constants.SPONSORSHIP_ERROR);
+                }
+                // -->
+                </script>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -37,9 +56,8 @@
     </div>
 </div>
 
-
-<div class="row-fluid">
-    <p class="detail-count span10 offset1"><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</p>
+<div class="detail-count-row row-fluid">
+    <p class="detail-count span4 offset1"><span class="count">{{ episodejokes|length }}</span> episodes feature this joke:</p>
 </div>
 
 {% for group in episodejokes|groupby('episode.season') %}
@@ -56,18 +74,17 @@
             </p>
         {% endif %}
         {% if ej.connections() != [] %}{% for joke in ej.connections() %}
-            <h3>Related</h3>
-            <p class="extra connection">
-                <a href="{{ joke.url }}">{{ joke.text }}</a>
+            <p class="extra connection {{ ej.formatted_type() }}">
+                <strong>Related Joke:</strong> <a href="{{ joke.url }}">{{ joke.text|safe }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}</a>
             </p>
         {% endfor %}{% endif %}
     </li>
 {% endfor %}</ul>
 </div>{% endfor %}
 
-{% include "_source.html" %}
-
 {% include "_comments.html" %}
+
+{% include "_source.html" %}
 
 <script type="text/javascript">
     var group_order = {{ group_order }};

@@ -423,6 +423,22 @@ h1 + #story-meta { margin-top: -11px; }
 
 // Viz page 
 .viz-index {
+
+
+    .title-header {
+        .span10 {
+            display: table;
+            .adwrapper,
+            .title-wrapper {
+                display: table-cell;
+                vertical-align: top;
+            }
+
+            .adwrapper {
+                padding-left: 40px;
+            }
+        }
+    }
     > header {
         padding: 60px 0 20px;
         background: @orange;
@@ -439,7 +455,7 @@ h1 + #story-meta { margin-top: -11px; }
         a { color: #fff; }
 
         h2 {
-            font-size: 32px;
+            font-size: 24px;
             line-height: 1.1;
             color: #fff;
             font-weight: bold;
@@ -470,8 +486,31 @@ h1 + #story-meta { margin-top: -11px; }
         }
     }
 
+    #main-content {
+        display: table;
+
+        .detail-wrapper,
+        .adwrapper {
+            display: table-cell;
+            vertical-align: top;
+        }
+    }
+
     .detail-header {
         .no-gutter-row;
+
+        .detail-header-content {
+            display: table;
+
+            .detail-header-wrapper,
+            .adwrapper {
+                display: table-cell;
+                vertical-align: top;
+            }
+            .adwrapper {
+                padding-left: 40px;
+            }
+        }
 
         h1 {
             font-family: Helvetica, Arial,sans-serif;
@@ -497,6 +536,10 @@ h1 + #story-meta { margin-top: -11px; }
             font-size: 22px;
             line-height: 1.4;
             margin-bottom: 0;
+        }
+
+        .adwrapper p {
+            font-size: 10px;
         }
     }
 
@@ -587,7 +630,7 @@ h1 + #story-meta { margin-top: -11px; }
         font-size: 14px;
         line-height: 1.1;
         text-transform: uppercase;
-        color: #000;
+        color: #999;
         margin-bottom: 10px;
     }
 
@@ -682,6 +725,12 @@ footer {
 }
 @media (max-width: 767px) {
 
+    .adwrapper,
+    .viz-index .title-header .span10 .adwrapper,
+    .detail .detail-header .detail-header-content .adwrapper  {
+        display: none !important;
+    }
+
     .project-nav .navbar-inner {
         padding: 0 20px;
 
@@ -717,6 +766,12 @@ footer {
         .character,
         .season {
             h2 { text-align: left;}
+        }
+
+        .character-icon {
+            display: block;
+            max-width: 33.33333%;
+            margin: 0 auto;
         }
     }
 }
