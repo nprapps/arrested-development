@@ -1,5 +1,7 @@
 {% extends "_base.html" %}
 
+{% block page_title %}{{ joke.category() }}: {{ joke.text|safe }} - {% endblock page_title %}
+
 {% block body_class %}detail joke-detail{% endblock body_class %}
 
 {% block header_content %}
