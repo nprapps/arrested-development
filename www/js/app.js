@@ -8,7 +8,7 @@ var GROUP_INTERVAL = 33;
 var OFFSET_X_RIGHT = DOT_RADIUS;
 var OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
 var OFFSET_Y = DOT_RADIUS + 3 + GROUP_LABEL_HEIGHT;
-var IS_MOBILE = false;
+var IS_MOBILE = Modernizr.touch; // disable certain features for touch devices
 var WINDOW_WIDTH = $('body').width();
 var IS_WEBKIT = $.browser.webkit;
 var IS_IE8 = ($.browser.msie && parseInt($.browser.version) == 8);
