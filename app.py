@@ -41,7 +41,7 @@ def _episode_detail(episode_code):
     context['episode'] = Episode.get(Episode.code == episode_code)
     context['jokes'] = {}
     context['joke_count'] = 0
- 
+
     for joke in EpisodeJoke.select().where(EpisodeJoke.episode == context['episode']):
         group = joke.joke.primary_character
 
@@ -55,7 +55,7 @@ def _episode_detail(episode_code):
         context['joke_count'] += 1
 
     context['seasons'] = _all_seasons()
-    
+
     context['group_order'] = [g for g in app_config.PRIMARY_CHARACTER_LIST if g in context['jokes']]
 
     return render_template('episode_detail.html', **context)
@@ -64,7 +64,7 @@ def _episode_detail(episode_code):
 @app.route('/joke-<joke_code>.html')
 def _joke_detail(joke_code):
     context = make_context()
-    context['joke'] = Joke.get(Joke.code == joke_code)
+    context['joke'] = Joke.get(Joke.code == int(joke_code))
     context['episodejokes'] = EpisodeJoke.select().where(EpisodeJoke.joke == context['joke'])
     context['episodejokes'] = sorted(context['episodejokes'], key=lambda ej: ej.episode.code)
     context['seasons'] = _all_seasons()
