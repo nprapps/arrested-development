@@ -12,6 +12,7 @@ var IS_MOBILE = false;
 var WINDOW_WIDTH = $('body').width();
 var IS_WEBKIT = $.browser.webkit;
 var IS_IE8 = ($.browser.msie && parseInt($.browser.version) == 8);
+var INITIAL_LOAD = false;
 
 var $body = null;
 var $full_viz = null;
@@ -399,24 +400,28 @@ function svgHasClass(obj,c) {
 
 
 function resize_viz() {
-    var $viz = null;
-    var joke_code = null;
+    var new_width = $('body').width();
+    if (new_width != WINDOW_WIDTH || INITIAL_LOAD == false) {
+        var $viz = null;
+        var joke_code = null;
 
-    // Joke detail page
-    if ($body.hasClass('joke-detail')) {
-        $viz = $joke_viz;
-        joke_code = parseInt($joke_viz.data('joke-code'));
-    // Index / full viz page
-    } else if ($body.hasClass('viz-index')) {
-        $viz = $full_viz;
+        // Joke detail page
+        if ($body.hasClass('joke-detail')) {
+            $viz = $joke_viz;
+            joke_code = parseInt($joke_viz.data('joke-code'));
+        // Index / full viz page
+        } else if ($body.hasClass('viz-index')) {
+            $viz = $full_viz;
+        }
+
+        if (paper) {
+            paper.remove();
+            $viz.empty();
+        }
+        
+        render_viz($viz, group_order, joke_data, connection_data, episodes, joke_code);
+        INITIAL_LOAD = true;
     }
-
-    if (paper) {
-        paper.remove();
-        $viz.empty();
-    }
-
-    render_viz($viz, group_order, joke_data, connection_data, episodes, joke_code);
 }
 
 
@@ -435,8 +440,6 @@ $(function() {
             $full_viz.append('<img src="img/full-vis-ie8.png" style="margin-left: ' + (LABEL_WIDTH + OFFSET_X_RIGHT) + 'px;" />');
         }
     }
-
     resize_viz();
-
 });
 
