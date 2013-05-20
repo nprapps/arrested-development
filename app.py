@@ -118,6 +118,20 @@ def _joke_detail(joke_code):
 
     context['group'] = group
 
+    counter = 0
+    jokes_list = Joke.select().order_by(Joke.primary_character)
+    for joke in jokes_list:
+        if joke == context['joke']:
+            try:
+                context['prev'] = jokes_list[counter - 1]
+            except IndexError:
+                context['prev'] = None
+            try:
+                context['next'] = jokes_list[counter + 1]
+            except IndexError:
+                context['next'] = None
+        counter += 1
+
     return render_template('joke_detail.html', **context)
 
 
