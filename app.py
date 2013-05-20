@@ -58,6 +58,15 @@ def _episode_detail(episode_code):
 
     context['group_order'] = [g for g in app_config.PRIMARY_CHARACTER_LIST if g in context['jokes']]
 
+    try:
+        context['next'] = Episode.get(number=context['episode'].number + 1)
+    except Episode.DoesNotExist:
+        context['next'] = None
+    try:
+        context['prev'] = Episode.get(number=context['episode'].number - 1)
+    except Episode.DoesNotExist:
+        context['prev'] = None
+
     return render_template('episode_detail.html', **context)
 
 
