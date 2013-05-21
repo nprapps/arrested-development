@@ -58,6 +58,15 @@ def _episode_detail(episode_code):
 
     context['group_order'] = [g for g in app_config.PRIMARY_CHARACTER_LIST if g in context['jokes']]
 
+    try:
+        context['next'] = Episode.get(number=context['episode'].number + 1)
+    except Episode.DoesNotExist:
+        context['next'] = None
+    try:
+        context['prev'] = Episode.get(number=context['episode'].number - 1)
+    except Episode.DoesNotExist:
+        context['prev'] = None
+
     return render_template('episode_detail.html', **context)
 
 
@@ -108,6 +117,32 @@ def _joke_detail(joke_code):
         group = 'Miscellaneous'
 
     context['group'] = group
+
+    counter = 0
+    jokes_list = []
+    for joke in Joke.select():
+        if joke.primary_character not in app_config.PRIMARY_CHARACTER_LIST:
+            joke.primary_character = 'Miscellaneous'
+        jokes_list.append(joke)
+
+    jokes_list = sorted(jokes_list, key=lambda joke: (joke.character_value(), joke.first_appearance()))
+
+    for joke in jokes_list:
+        print joke.text
+        if joke == context['joke']:
+            if counter == 0:
+                context['prev'] = None
+            else:
+                try:
+                    context['prev'] = jokes_list[counter - 1]
+                except IndexError:
+                    context['prev'] = None
+
+            try:
+                context['next'] = jokes_list[counter + 1]
+            except IndexError:
+                context['next'] = None
+        counter += 1
 
     return render_template('joke_detail.html', **context)
 

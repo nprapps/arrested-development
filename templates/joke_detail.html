@@ -22,12 +22,26 @@
     <div class="span2 offset1">
         <a href="./#{{ joke.category().replace(' ', '-') }}">
             <img class="character-icon" src="img/characters/{{ joke.primary_character|lower|replace(" ", "")|replace(".", "")|replace("miscellaneous", "banana") }}.png">
-        </a>    
+        </a>
     </div>
     <div class="span8 detail-header-content">
         <div class="detail-header-wrapper">
             <h2><a href="./#{{ joke.category().replace(' ', '-') }}">{{ joke.category() }}</a></h2>
             <h1>{{ joke.text|safe }}</h1>
+            <p class="next-prev">
+                {% if next %}
+                <p class="next">
+                    <a href="joke-{{ next.code }}.html">{{ next.primary_character }} {{ next.text }} &rarr;</a>
+                </p>
+                {% endif %}
+                {% if prev %}
+                <p class="prev">
+                    <a href="joke-{{ prev.code }}.html">
+                        &larr; {{ prev.primary_character }} {{ prev.text }}
+                    </a>
+                </p>
+                {% endif %}
+            </p>
             <p>{{ joke.blurb|safe }}</p>
         </div>
         {# 300x250 ad #}

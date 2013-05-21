@@ -34,6 +34,20 @@ class Joke(Model):
         else:
             return u"Miscellaneous"
 
+    def character_value(self):
+        index = 0
+        if self.primary_character not in PRIMARY_CHARACTER_LIST:
+            self.primary_character = 'Miscellaneous'
+
+        for character in PRIMARY_CHARACTER_LIST:
+            if self.primary_character == character:
+                return index
+            index += 1
+
+    def first_appearance(self):
+        ej = EpisodeJoke.select().join(Episode).where(EpisodeJoke.joke == self).order_by(Episode.code)
+        return ej[0].episode.code
+
 
 class Episode(Model):
     season = IntegerField()
