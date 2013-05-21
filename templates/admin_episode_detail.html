@@ -1,6 +1,10 @@
 {% extends "_admin_base.html" %}
 
-{% block title %}{{ episode.title }}{% endblock %}
+{% block title %}
+    {% if prev %}<a href="/admin/episodes/{{ prev.code }}/">&larr;</a>{% endif %}
+    <a target="_blank" href="https://docs.google.com/spreadsheet/ccc?key=0Akb_aqtU8lsGdGhIRXhsT24taTlXNGI4YndnS1c4eEE#gid=1">{{ episode.title }}</a>
+    {% if next %}<a href="/admin/episodes/{{ next.code }}/">&rarr; </a>{% endif %}
+{% endblock %}
 
 {% block content %}
     <div id="episode">

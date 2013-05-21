@@ -177,6 +177,17 @@ def _admin_episodes(episode_code):
         context['episode'] = Episode.get(code=episode_code)
         context['episodejokes'] = EpisodeJoke.select().join(Episode).where(Episode.code == episode_code)
         context['jokes'] = Joke.select()
+        context['seasons'] = _all_seasons()
+
+        try:
+            context['next'] = Episode.get(number=context['episode'].number + 1)
+        except Episode.DoesNotExist:
+            context['next'] = None
+        try:
+            context['prev'] = Episode.get(number=context['episode'].number - 1)
+        except Episode.DoesNotExist:
+            context['prev'] = None
+
         return render_template('admin_episode_detail.html', **context)
 
     if request.method == 'PUT':
