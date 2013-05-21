@@ -22,22 +22,26 @@
         <div class="detail-header-wrapper">
             <h2>Season {{ episode.season}}, Episode {{ episode.episode }}</h2>
             <h1>{{ episode.title }}</h1>
-            <p class="next-prev">
-                {% if next %}
-                <p class="next">
-                    <a href="episode-{{ next.code }}.html">{{ next.code }} {{ next.title }} &rarr;</a>
-                </p>
-                {% endif %}
+            <p class="episode-meta">Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }} | Watched by <span class="viewer-count">{{ episode.rating }} million</span> viewers.</p>
+            <p class="blurb">{{ episode.blurb }}</p>
+            <nav class="next-prev">
                 {% if prev %}
                 <p class="prev">
                     <a href="episode-{{ prev.code }}.html">
-                        &larr; {{ prev.code }} {{ prev.title }}
+                        <span>Previous Episode</span>
+                        {{ prev.title }}
                     </a>
                 </p>
                 {% endif %}
-            </p>
-            <p class="episode-meta">Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }} | Watched by <span class="viewer-count">{{ episode.rating }} million</span> viewers.</p>
-            <p class="blurb">{{ episode.blurb }}</p>
+                {% if next %}
+                <p class="next">
+                     <a href="episode-{{ next.code }}.html">
+                        <span>Next Episode</span>
+                        {{ next.title }}
+                    </a>
+                </p>
+                {% endif %}
+            </nav>
             <p class="detail-count"><span class="count">{{ joke_count }}</span> recurring jokes in this episode:</p>
         </div>
 
