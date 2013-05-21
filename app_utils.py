@@ -93,7 +93,12 @@ def write_jokes_json():
 
         payload['jokes'][joke.primary_character].append(joke_dict)
 
-    for episode in Episode().select().order_by(Episode.number):
+    if app_config.IMPORT_NEW_SEASON is True:
+        episodes = Episode().select().order_by(Episode.number)
+    else:
+        episodes = Episode().select().where(Episode.season != 4).order_by(Episode.number)
+
+    for episode in episodes:
         episode_dict = episode.__dict__['_data']
         episode_dict['run_date'] = episode_dict['run_date'].strftime('%Y-%m-%d')
 
@@ -152,16 +157,19 @@ def parse_tvdb_xml(xmlfile):
                 Episode.get(code=episode_dict['code'])
                 Episode.update(**episode_dict).where(Episode.code == episode_dict['code']).execute()
             except Episode.DoesNotExist:
-                if app_config.IMPORT_NEW_SEASON is True:
-                    if episode_dict['season'] == 4:
-                        episode_dict['number'] = episode_dict['episode'] + 53
-                        episode_dict['code'] = 's%se%s' % (
-                            str(episode_dict['season']).zfill(2),
-                            str(episode_dict['episode']).zfill(2))
-                        episode_dict['title'] = episode.find('EpisodeName').text
-                    Episode(**episode_dict).save()
-                else:
-                    pass
+                pass
+                ## Probably do not want to create new episodes
+                ## from the TVDB. Uses the spreadsheet instead.
+                # if app_config.IMPORT_NEW_SEASON is True:
+                #     if episode_dict['season'] == 4:
+                #         episode_dict['number'] = episode_dict['episode'] + 53
+                #         episode_dict['code'] = 's%se%s' % (
+                #             str(episode_dict['season']).zfill(2),
+                #             str(episode_dict['episode']).zfill(2))
+                #         episode_dict['title'] = episode.find('EpisodeName').text
+                #     Episode(**episode_dict).save()
+                # else:
+                #     pass
 
 
 def update_episode_extras():

@@ -134,13 +134,38 @@ def index():
     return render_template('viz.html', **context)
 
 
-@app.route('/admin/episodes/<episode_code>/')
+@app.route('/admin/episodes/<episode_code>/', methods=['GET', 'PUT', 'POST'])
 def _admin_episodes(episode_code):
-    context = {}
-    context['episode'] = Episode.get(code=episode_code)
-    context['episodejokes'] = EpisodeJoke.select().join(Episode).where(Episode.code == episode_code)
-    context['jokes'] = Joke.select()
-    return render_template('admin_episode_detail.html', **context)
+    from flask import request
+    if request.method == 'GET':
+        context = {}
+        context['episode'] = Episode.get(code=episode_code)
+        context['episodejokes'] = EpisodeJoke.select().join(Episode).where(Episode.code == episode_code)
+        context['jokes'] = Joke.select()
+        return render_template('admin_episode_detail.html', **context)
+
+    if request.method == 'POST':
+        episode_joke_id = request.form.get('episode_joke_id', None)
+        EpisodeJoke.delete().where(EpisodeJoke.id == int(episode_joke_id)).execute()
+        return episode_joke_id
+
+    if request.method == 'PUT':
+        joke_code = request.form.get('joke_code', None)
+        details = request.form.get('details', None)
+        joke_type = request.form.get('type', None)
+
+        joke = Joke.get(code=int(joke_code))
+        episode = Episode.get(code=episode_code)
+        code = 's%se%sj%s' % (
+            str(episode.season).zfill(2),
+            str(episode.episode).zfill(2),
+            joke.code
+        )
+
+        context = {}
+        context['ej'] = EpisodeJoke(joke=joke, episode=episode, joke_type=joke_type, details=details, code=code)
+        context['ej'].save()
+        return render_template('_episodejoke_form_row.html', **context)
 
 
 # Render LESS files on-demand
@@ -154,14 +179,16 @@ def _less(filename):
 
     r = envoy.run('node_modules/.bin/lessc -', data=less)
 
-    return r.std_out, 200, { 'Content-Type': 'text/css' }
+    return r.std_out, 200, {'Content-Type': 'text/css'}
+
 
 # Render JST templates on-demand
 @app.route('/js/templates.js')
 def _templates_js():
     r = envoy.run('node_modules/.bin/jst --template underscore jst')
 
-    return r.std_out, 200, { 'Content-Type': 'application/javascript' }
+    return r.std_out, 200, {'Content-Type': 'application/javascript'}
+
 
 # Render application configuration
 @app.route('/js/app_config.js')
@@ -169,29 +196,18 @@ def _app_config_js():
     config = flatten_app_config()
     js = 'window.APP_CONFIG = ' + json.dumps(config)
 
-    return js, 200, { 'Content-Type': 'application/javascript' }
+    return js, 200, {'Content-Type': 'application/javascript'}
+
 
 # Server arbitrary static files on-demand
 @app.route('/<path:path>')
 def _static(path):
     try:
         with open('www/%s' % path) as f:
-            return f.read(), 200, { 'Content-Type': guess_type(path)[0] }
+            return f.read(), 200, {'Content-Type': guess_type(path)[0]}
     except IOError:
         abort(404)
 
-@app.template_filter('urlencode')
-def urlencode_filter(s):
-    """
-    Filter to urlencode strings.
-    """
-    if type(s) == 'Markup':
-        s = s.unescape()
-
-    s = s.encode('utf8')
-    s = urllib.quote_plus(s)
-
-    return Markup(s)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=app_config.DEBUG)

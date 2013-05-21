@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 
 from glob import glob
+import gzip
 import os
 
+import boto
 from fabric.api import *
 from jinja2 import Template
+import requests
 
 import app
 import app_config
@@ -435,6 +438,33 @@ def cron_test():
 """
 Application-specific jobs
 """
+def ship_db():
+    require('settings', provided_by=[production, staging])
+    local_path = 'data/app.db'
+
+    for bucket in env.s3_buckets:
+        conn = boto.connect_s3()
+        bucket = conn.get_bucket(bucket)
+        key = boto.s3.key.Key(bucket)
+        key.key = '%s/%s' % (app_config.PROJECT_SLUG, local_path)
+        key.set_contents_from_filename(
+            local_path,
+            policy='public-read',
+            headers={
+                'Cache-Control': 'max-age=5 no-cache no-store must-revalidate',
+                'Content-Encoding': 'text/plain'
+            }
+        )
+
+
+def get_db():
+    require('settings', provided_by=[production, staging])
+    for bucket in env.s3_buckets:
+        r = requests.get('http://%s/%s/data/app.db.gz' % (bucket, app_config.PROJECT_SLUG))
+        with open('data/app.db', 'wb') as dbfile:
+            dbfile.write(r.content)
+
+
 def bootstrap_data():
     """
     Runs all the commands necessary to build the system from scratch

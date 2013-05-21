@@ -1,49 +1,99 @@
-<html>
-<head>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-</head>
-<body>
-    <form>
-        <label>Title
-            <input type="text" value="{{ episode.title }}"></input>
-        </label>
-        <label>Blurb
-            <textarea>{{ episode.blurb }}</textarea>
-        </label>
-    </form>
+{% extends "_admin_base.html" %}
 
-    <h2>Jokes</h2>
-    <form>
-        {% for ej in episodejokes %}
-        <div id="episodejoke-{{ ej.id }}">
-            <button class="btn btn-danger btn-mini delete" data-ejid="episodejoke-{{ ej.id }}">Delete</button>
-            <span><strong>{{ ej.joke.primary_character }}</strong></span>
-            <span>{{ ej.joke.text }}</span>
-            <span>{{ ej.details }}</span>
+{% block title %}{{ episode.title }}{% endblock %}
+
+{% block content %}
+    <label>Blurb<label>
+    <textarea>{{ episode.blurb }}</textarea>
+
+    <h4>New joke <a href="#" class="btn btn btn-info show-form"><i class="icon-plus icon-white"></i></a></h4>
+    <div id="new" class="clearfix" style="display:none;">
+        <div class="row-fluid">
+            <p class="span12"><label>Joke</label>
+                <input class="typeahead" type="text" data-provide="typeahead" data-items="10"></input>
+                <p id="selected" style="display:none;"></p>
+            </p>
         </div>
+        <div class="row-fluid">
+            <p class="span12"><label>Details</label> <textarea></textarea></p>
+        </div>
+        <div class="row-fluid">
+            <p class="span3"><label>Type</label>
+                <select>
+                    <option value="1">mention</option>
+                    <option value="f">foreshadowing</option>
+                    <option value="b">background</option>
+                </select>
+            </p>
+            <p class="span6"><a href="#" class="btn btn-success btn save">Save</a></p>
+        </div>
+        <div class="row-fluid">
+
+        </div>
+    </div>
+
+    <h4>Jokes</h4>
+    <div id="joke-list">
+        {% for ej in episodejokes %}
+            {% include '_episodejoke_form_row.html' %}
         {% endfor %}
-        <div><button class="btn btn-success btn-mini save">Save</button><label>Joke<input class="typeahead" type="text" data-provide="typeahead" data-items="10"></input></label><label>Details<textarea></textarea></label></div>
-    </form>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    </div>
+{% endblock %}
+
+{% block scripts %}
     <script type="text/javascript">
         $('.typeahead').typeahead({
-            'source': [{% for joke in jokes %}"<h5>{{ joke.code }}: {{ joke.text }}</h5><p class='tiny'>{{ joke.blurb }}</p>",{% endfor %}],
+            'source': [{% for joke in jokes %}"{{ joke.code }}: {{ joke.text }}<br/>{{ joke.blurb }}",{% endfor %}],
             'updater': function(item){
-                console.log(item.split(':')[0]);
+                $('#selected').attr('data-joke-code', item.split(':')[0]);
+                $('#selected').html('<a href="#" id="kill-new-ej" class="btn btn-mini btn-danger">X</a>' + item);
+                $('#new input.typeahead').toggle();
+                $('#selected').toggle();
             }
         });
-        $('button.delete').on('click', function(){
-            var ejid = $(this).attr('data-ejid');
-            $('#' + ejid).remove();
+        $('a.show-form').on('click', function(){
+            $('#new').toggle();
+        });
+        $('#new').on('click', 'a#kill-new-ej', function(){
+            $('#new input.typeahead').toggle();
+            $('#selected').toggle();
             return false;
         });
-        $('button.save').on('click', function(){
-            var joke =
-            console.log('yay!');
+        $('#joke-list').on('click', 'a.delete', function(){
+            data = {}
+            data['episode_joke_id'] = parseInt($(this).attr('data-episodejoke-id'));
+            $.ajax('episodejoke/', {
+                'async': true,
+                'cache': false,
+                'data': data,
+                'type': 'POST',
+                'success': function(response){
+                    var $deathElement = $('div#episodejoke-' + response);
+                    $deathElement.remove();
+                }
+            });
+            return false;
+        });
+        $('a.save').on('click', function(){
+            data = {}
+            data['joke_code'] = $('#new .selected').attr('data-joke-code');
+            data['details'] = $('#new textarea').val();
+            data['type'] = $('#new option:selected').attr('value');
+
+            $.ajax('episodejoke/', {
+                'async': true,
+                'cache': false,
+                'data': data,
+                'type': 'PUT',
+                'success': function(response){
+                    $('#selected').html('');
+                    $('#selected').attr('data-joke-code', '');
+                    $('#new textarea').val('');
+                    $('#new option:selected').removeAttr('selected');
+                    $('#joke-list').append(response);
+                }
+            });
             return false;
         });
     </script>
-</body>
-</html>
+{% endblock %}

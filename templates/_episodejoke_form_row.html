@@ -1,0 +1,4 @@
+<div class="joke-row clearfix" id="episodejoke-{{ ej.id }}">
+    <span class="span3"><a class="btn btn-danger btn-small delete" data-episodejoke-id="{{ ej.id }}"><i class="icon-remove icon-white"></i></a> <strong>{{ ej.joke.primary_character|safe }}</strong> {{ ej.joke.text|safe }}</span>
+    <span class="span7">{{ ej.details|safe }}</span>
+</div>

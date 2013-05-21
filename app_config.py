@@ -66,7 +66,9 @@ PRIMARY_CHARACTER_LIST = [
     'George Michael',
     'Miscellaneous'
 ]
+
 IMPORT_NEW_SEASON = False
+
 """
 SHARING
 """
