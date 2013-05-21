@@ -1,5 +1,5 @@
 .no-gutter-row{margin:0 -20px;padding:20px;}
-body{font:16px/1.5em Helvetica,Arial,sans-serif;color:#111;-webkit-font-smoothing:antialiased;}
+body{font:16px/1.5em Helvetica,Arial,sans-serif;color:#111;}
 h1{font:normal 32px/1.125 Georgia,serif;margin:0 0 22px 0;}
 h2{font-weight:normal;line-height:1.2;color:#333;margin-bottom:22px;font-size:22px;}
 h3,h4,h5,h6{font-weight:normal;line-height:1.2;color:#999;margin-bottom:22px;}
@@ -44,7 +44,7 @@ header p.sources{margin:22px 0 3px 0;}
 .viz .dot.joke-type-1{fill:#e38d2c;stroke:#AA6A21;}.viz .dot.joke-type-1:hover{stroke:#AA6A21;}
 .viz .dot.joke-type-b{fill:#EFC637;stroke:#B39429;}.viz .dot.joke-type-b:hover{stroke:#AA6A21;}
 .viz .dot.joke-type-f{fill:white;stroke:#B39429;}.viz .dot.joke-type-f:hover{stroke:#AA6A21;}
-.viz #viz-labels{position:absolute;left:0;top:-5px;margin:0;padding:0;list-style:none;}.viz #viz-labels li{position:absolute;left:0;font-size:12px;line-height:1;text-align:right;width:100%;height:13px;overflow:hidden;}.viz #viz-labels li a{display:block;white-space:nowrap;font-weight:500;color:#787878;}
+.viz #viz-labels{position:absolute;left:0;top:-5px;margin:0;padding:0;list-style:none;background:url('../img/characters.png') no-repeat 0 10px;}.viz #viz-labels li{position:absolute;left:0;font-size:12px;line-height:1;text-align:right;width:100%;height:13px;overflow:hidden;}.viz #viz-labels li a{display:block;white-space:nowrap;font-weight:500;color:#787878;}
 .viz #viz-labels li:hover a,.viz #viz-labels li.highlight a,.viz #viz-labels li.joke-label-detail a{color:#e38d2c;font-weight:bold;border-radius:4px;}
 .viz h4.joke-group-header{position:absolute;left:0;text-align:right;margin:-24px 0 0 0;font-size:12px;font-weight:bold;text-transform:uppercase;height:14px;overflow:hidden;color:#333;}
 .viz .episode-labels{position:absolute;top:0;margin:-32px 0 0 0;padding:0;list-style:none;}.viz .episode-labels li{margin:0;padding:0;position:absolute;top:9px;width:80px;display:inline-block;font-size:11px;line-height:1;text-transform:uppercase;white-space:nowrap;color:#999;}
@@ -58,6 +58,7 @@ header p.sources{margin:22px 0 3px 0;}
 .ad-key li.key-c{background-position:0 -54px;margin-right:0;}
 .detail .detail-header>.span10{position:relative;}
 .detail .ad-key{position:relative;top:auto;right:auto;float:none;margin-bottom:22px;}.detail .ad-key li{color:#111;}
+.detail .viz #viz-labels{background:none;}
 .project-nav-wrap{background:#333;margin:0 -20px;padding:0 20px;}
 .project-nav .navbar-inner{background:#333;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;border:none;padding:0;}.project-nav .navbar-inner .brand{color:#ddd;font-weight:normal;font-size:16px;}
 .project-nav .navbar-inner .dropdown>a{text-transform:none;line-height:24px;color:#ddd;}.project-nav .navbar-inner .dropdown>a.dropdown-toggle{text-transform:lowercase;}
@@ -78,23 +79,27 @@ header p.sources{margin:22px 0 3px 0;}
 .detail #main-content{display:table;}.detail #main-content .detail-wrapper,.detail #main-content .adwrapper{display:table-cell;vertical-align:top;}
 .detail .detail-header{margin:0 -20px;padding:20px;padding-top:44px;}.detail .detail-header .detail-header-content{display:table;}.detail .detail-header .detail-header-content .detail-header-wrapper,.detail .detail-header .detail-header-content .adwrapper{display:table-cell;vertical-align:top;}
 .detail .detail-header .detail-header-content .adwrapper{padding-left:40px;}
-.detail .detail-header h1{font-family:Helvetica,Arial,sans-serif;font-weight:bold;font-size:42px;margin-bottom:10px;color:#000;}.detail .detail-header h1 strong{font-weight:bold;}
-.detail .detail-header h2{color:#000;text-transform:uppercase;font-weight:bold;font-size:14px;line-height:1;margin:0 0 10px;}
-.detail .detail-header p{font-size:22px;line-height:1.4;margin-bottom:0;}
+.detail .detail-header h1{font-family:Helvetica,Arial,sans-serif;font-weight:bold;font-size:42px;margin-bottom:20px;color:#000;}.detail .detail-header h1 strong{font-weight:bold;}
+.detail .detail-header h2{color:#000;text-transform:uppercase;font-weight:bold;font-size:14px;line-height:1;margin:0 0 20px;}
+.detail .detail-header p{font-size:18px;line-height:1.4;margin-bottom:20px;}
 .detail .detail-header .adwrapper p{font-size:10px;}
 .detail .detail-count{color:#000;font-size:24px;margin-top:20px;}
 .detail .count{display:inline-block;height:60px;width:60px;line-height:60px;-webkit-border-radius:30px;-moz-border-radius:30px;border-radius:30px;background:#f95d1a;color:#fff;font-size:32px;font-weight:bold;text-align:center;vertical-align:middle;}
 .detail .character,.detail .season{border-bottom:2px solid #eee;background:#fff;margin:0 -20px;padding:20px;}.detail .character h2,.detail .season h2{font-size:32px;font-weight:bold;color:#000;line-height:1;margin-top:0;}
-.detail .episode-list li,.detail .joke-list li{font-size:18px;line-height:1.1;margin-bottom:10px;padding-bottom:10px;clear:both;border-bottom:2px solid #eee;}.detail .episode-list li:last-child,.detail .joke-list li:last-child{border-bottom:none;}
+.detail .episode-list li,.detail .joke-list li{font-size:18px;line-height:1.1;margin-bottom:20px;padding-bottom:20px;clear:both;border-bottom:2px solid #eee;}.detail .episode-list li:last-child,.detail .joke-list li:last-child{border-bottom:none;}
 .detail .episode-list li>a,.detail .joke-list li>a{text-transform:capitalize;}
 .detail .episode-list li h3,.detail .joke-list li h3{font-size:18px;margin:0;}
 .detail .episode-list li .details,.detail .joke-list li .details{font-style:italic;font-size:24px;line-height:1.3;color:#fff;margin:15px 0 0;background:#f95d1a;padding:10px;float:left;clear:both;}.detail .episode-list li .details:after,.detail .joke-list li .details:after,.detail .episode-list li .details:before,.detail .joke-list li .details:before{content:' ';display:table;width:100%;overflow:hidden;clear:both;}
 .detail .episode-list li .connection,.detail .joke-list li .connection{font-size:14px;padding-top:15px;clear:both;}
 .detail .episode-list li:after,.detail .joke-list li:after{content:' ';display:table;width:100%;overflow:hidden;clear:both;}
 .detail .comments{padding-top:40px;padding-bottom:40px;}
-.episode-detail p.episode-meta{font-size:14px;line-height:1.1;text-transform:uppercase;color:#999;margin-bottom:10px;}
+.episode-detail p.episode-meta{font-size:14px;line-height:1.1;text-transform:uppercase;color:#999;margin-bottom:20px;}
 .episode-detail .count,.episode-detail .viewer-count{font-weight:bold;}
 .episode-detail .joke-list{list-style:none;}.episode-detail .joke-list .joke h3{font-weight:bold;}
+.episode-detail .next-prev{display:table;width:100%;font-size:12px;margin:20px 0 40px;}.episode-detail .next-prev .next,.episode-detail .next-prev .prev{display:table-cell;vertical-align:top;width:50%;border-right:5px solid #fff;background-color:#eee;}.episode-detail .next-prev .next a,.episode-detail .next-prev .prev a,.episode-detail .next-prev .next span,.episode-detail .next-prev .prev span{font-size:14px;line-height:1.1;}
+.episode-detail .next-prev .next a,.episode-detail .next-prev .prev a{font-weight:bold;background-color:#eee;padding:20px;display:block;}
+.episode-detail .next-prev .next span,.episode-detail .next-prev .prev span{display:block;text-transform:uppercase;color:#666;font-size:11px;font-weight:normal;margin-bottom:6px;}
+.episode-detail .next-prev .next{text-align:right;border-right:none;border-left:5px solid #fff;}
 .joke-detail .detail-header h1{text-transform:capitalize;}
 .joke-detail .episode-list{list-style:none;}.joke-detail .episode-list .episode h3{font-weight:bold;}
 .joke-detail .episode-list .episode-number{color:#000;font-weight:bold;}
@@ -110,4 +115,4 @@ footer .secondary{height:52px;}footer .secondary p{margin-left:30px;line-height:
 footer .secondary ul{float:right;margin-left:30px;}
 footer .secondary li{line-height:52px;font-size:12px;margin-left:15px;}
 footer .secondary a{color:#999;font-weight:normal;}
-@media (max-width:979px){nav .site-links-2{display:none;} footer .primary{float:none;} footer .secondary ul,footer .secondary p{margin-left:0;float:left;} #dataviz p{margin-left:0;} ul.ad-key{margin-bottom:33px;} ul.ad-key li{margin-bottom:5px;font-size:12px;} .adwrapper,.viz-index .title-header .span10 .adwrapper,.detail .detail-header .detail-header-content .adwrapper{display:none !important;}}@media (max-width:767px){.project-nav .navbar-inner{padding:0 20px;}.project-nav .navbar-inner .brand{padding-left:0;} nav,header,footer{margin-left:-20px;margin-right:-20px;} .viz-index>header{padding:20px;} nav .site-links{margin-left:20px;} footer .primary{display:none;} footer .secondary p{float:left;font-size:10px;color:#bccae5;} footer .secondary ul{float:right;} footer .secondary li{font-size:10px;text-transform:none;} footer .secondary a{color:#bccae5;} .viz h4.joke-group-header{margin-top:-30px;} .viz .episode-labels,.viz .season-line,.viz .connection-line{display:none;} .viz .joke-line{stroke-width:28px;} .viz #viz-labels{margin-top:-9px;}.viz #viz-labels li{height:28px;display:table;line-height:1.2;font-size:12px;}.viz #viz-labels li a{white-space:normal;display:table-cell;vertical-align:middle;} ul.ad-key{margin-left:0;} .detail .character h2,.detail .season h2{text-align:left;} .detail .character-icon{display:block;max-width:33%;margin:0 auto 20px !important;}}@media (max-width:480px){h1{font-size:26px;} #story-meta p{font-size:11px;} nav .site-links li{display:none;} nav .site-links .npr{display:block;} .viz-index>header{padding:33px 20px;}.viz-index>header h1{font-size:36px;} .detail .small-header p{font-size:11px;} .detail .detail-count{font-size:18px;} footer{border-top:1px solid #CCC;margin-top:24px;}}
+@media (max-width:979px){nav .site-links-2{display:none;} footer .primary{float:none;} footer .secondary ul,footer .secondary p{margin-left:0;float:left;} #dataviz p{margin-left:0;} ul.ad-key{margin-bottom:33px;} ul.ad-key li{margin-bottom:5px;font-size:12px;} .adwrapper,.viz-index .title-header .span10 .adwrapper,.detail .detail-header .detail-header-content .adwrapper{display:none !important;}}@media (max-width:767px){.project-nav .navbar-inner{padding:0 20px;}.project-nav .navbar-inner .brand{padding-left:0;} nav,header,footer{margin-left:-20px;margin-right:-20px;} .viz-index>header{padding:20px;} nav .site-links{margin-left:20px;} footer .primary{display:none;} footer .secondary p{float:left;font-size:10px;color:#bccae5;} footer .secondary ul{float:right;} footer .secondary li{font-size:10px;text-transform:none;} footer .secondary a{color:#bccae5;} .viz h4.joke-group-header{margin-top:-30px;} .viz .episode-labels,.viz .season-line,.viz .connection-line{display:none;} .viz .joke-line{stroke-width:28px;} .viz #viz-labels{margin-top:-9px;background:none;}.viz #viz-labels li{height:28px;display:table;line-height:1.2;font-size:12px;}.viz #viz-labels li a{white-space:normal;display:table-cell;vertical-align:middle;} ul.ad-key{margin-left:0;}ul.ad-key li.key-c{display:none;} .detail .character h2,.detail .season h2{text-align:left;} .detail .character-icon{display:block;max-width:33%;margin:0 auto 20px !important;}}@media (max-width:480px){h1{font-size:26px;} #story-meta p{font-size:11px;} nav .site-links li{display:none;} nav .site-links .npr{display:block;} .viz-index>header{padding:33px 20px;}.viz-index>header h1{font-size:36px;} .detail .small-header p{font-size:11px;} .detail .detail-count{font-size:18px;} footer{border-top:1px solid #CCC;margin-top:24px;}}
