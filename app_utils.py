@@ -304,7 +304,7 @@ def _parse_episodejoke_details(sheet, sheet_num):
     field = FIELDS[int(sheet_num)]
     broken = []
     for row in sheet:
-        for column in range(2, 55):
+        for column in range(2, 70):
             episode_title, value = row.items()[column]
             if value:
                 e = Episode.get(Episode.title == episode_title.decode('utf-8'))
