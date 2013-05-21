@@ -1,0 +1,49 @@
+<html>
+<head>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+</head>
+<body>
+    <form>
+        <label>Title
+            <input type="text" value="{{ episode.title }}"></input>
+        </label>
+        <label>Blurb
+            <textarea>{{ episode.blurb }}</textarea>
+        </label>
+    </form>
+
+    <h2>Jokes</h2>
+    <form>
+        {% for ej in episodejokes %}
+        <div id="episodejoke-{{ ej.id }}">
+            <button class="btn btn-danger btn-mini delete" data-ejid="episodejoke-{{ ej.id }}">Delete</button>
+            <span><strong>{{ ej.joke.primary_character }}</strong></span>
+            <span>{{ ej.joke.text }}</span>
+            <span>{{ ej.details }}</span>
+        </div>
+        {% endfor %}
+        <div><button class="btn btn-success btn-mini save">Save</button><label>Joke<input class="typeahead" type="text" data-provide="typeahead" data-items="10"></input></label><label>Details<textarea></textarea></label></div>
+    </form>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $('.typeahead').typeahead({
+            'source': [{% for joke in jokes %}"<h5>{{ joke.code }}: {{ joke.text }}</h5><p class='tiny'>{{ joke.blurb }}</p>",{% endfor %}],
+            'updater': function(item){
+                console.log(item.split(':')[0]);
+            }
+        });
+        $('button.delete').on('click', function(){
+            var ejid = $(this).attr('data-ejid');
+            $('#' + ejid).remove();
+            return false;
+        });
+        $('button.save').on('click', function(){
+            var joke =
+            console.log('yay!');
+            return false;
+        });
+    </script>
+</body>
+</html>

@@ -134,6 +134,15 @@ def index():
     return render_template('viz.html', **context)
 
 
+@app.route('/admin/episodes/<episode_code>/')
+def _admin_episodes(episode_code):
+    context = {}
+    context['episode'] = Episode.get(code=episode_code)
+    context['episodejokes'] = EpisodeJoke.select().join(Episode).where(Episode.code == episode_code)
+    context['jokes'] = Joke.select()
+    return render_template('admin_episode_detail.html', **context)
+
+
 # Render LESS files on-demand
 @app.route('/less/<string:filename>')
 def _less(filename):
