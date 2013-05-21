@@ -169,7 +169,7 @@ def index():
     return render_template('viz.html', **context)
 
 
-@app.route('/admin/episodes/<episode_code>/', methods=['GET', 'PUT', 'POST'])
+@app.route('/admin/episodes/<episode_code>/', methods=['GET', 'PUT'])
 def _admin_episodes(episode_code):
     from flask import request
     if request.method == 'GET':
@@ -179,6 +179,16 @@ def _admin_episodes(episode_code):
         context['jokes'] = Joke.select()
         return render_template('admin_episode_detail.html', **context)
 
+    if request.method == 'PUT':
+        e = Episode.get(code=episode_code)
+        e.blurb = request.form.get('blurb', None)
+        e.save()
+        return '%s' % e.id
+
+
+@app.route('/admin/episodes/<episode_code>/episodejoke/', methods=['PUT', 'POST'])
+def _admin_episodejokes(episode_code):
+    from flask import request
     if request.method == 'POST':
         episode_joke_id = request.form.get('episode_joke_id', None)
         EpisodeJoke.delete().where(EpisodeJoke.id == int(episode_joke_id)).execute()

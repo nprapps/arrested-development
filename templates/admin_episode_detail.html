@@ -3,11 +3,20 @@
 {% block title %}{{ episode.title }}{% endblock %}
 
 {% block content %}
-    <label>Blurb<label>
-    <textarea>{{ episode.blurb }}</textarea>
+    <div id="episode">
+        <div class="row-fluid">
+            <p class="span12">
+                <label>Blurb</label>
+                <textarea>{{ episode.blurb }}</textarea>
+            </p>
+        </div>
+        <div class="row-fluid">
+            <p class="span12"><a href="#" class="btn btn-success btn save"><i class="icon-ok icon-white"></i> Save</a></p>
+        </div>
+    </div>
 
-    <h4>New joke <a href="#" class="btn btn btn-info show-form"><i class="icon-plus icon-white"></i></a></h4>
-    <div id="new" class="clearfix" style="display:none;">
+    <a href="#" class="btn btn btn-info show-form"><i class="icon-plus icon-white"></i> New Joke</a>
+    <div id="episodejoke" class="clearfix" style="display:none;">
         <div class="row-fluid">
             <p class="span12"><label>Joke</label>
                 <input class="typeahead" type="text" data-provide="typeahead" data-items="10"></input>
@@ -15,20 +24,19 @@
             </p>
         </div>
         <div class="row-fluid">
-            <p class="span12"><label>Details</label> <textarea></textarea></p>
-        </div>
-        <div class="row-fluid">
-            <p class="span3"><label>Type</label>
+            <p class="span12"><label>Type</label>
                 <select>
                     <option value="1">mention</option>
                     <option value="f">foreshadowing</option>
                     <option value="b">background</option>
                 </select>
             </p>
-            <p class="span6"><a href="#" class="btn btn-success btn save">Save</a></p>
         </div>
         <div class="row-fluid">
-
+            <p class="span12"><label>Details</label> <textarea></textarea></p>
+        </div>
+        <div class="row-fluid">
+            <p class="span12"><a href="#" class="btn btn-success btn save"><i class="icon-ok icon-white"></i> Save</a></p>
         </div>
     </div>
 
@@ -42,21 +50,60 @@
 
 {% block scripts %}
     <script type="text/javascript">
+        $('a.show-form').on('click', function(){
+            $('#episodejoke').toggle();
+            return false;
+        });
         $('.typeahead').typeahead({
-            'source': [{% for joke in jokes %}"{{ joke.code }}: {{ joke.text }}<br/>{{ joke.blurb }}",{% endfor %}],
+            'source': [{% for joke in jokes %}"{{ joke.code }}: {{ joke.primary_character}}<br/>{{ joke.text }}<br/>{{ joke.blurb }}",{% endfor %}],
             'updater': function(item){
                 $('#selected').attr('data-joke-code', item.split(':')[0]);
-                $('#selected').html('<a href="#" id="kill-new-ej" class="btn btn-mini btn-danger">X</a>' + item);
-                $('#new input.typeahead').toggle();
+                $('#selected').html('<a id="kill-new-ej" class="btn btn-danger btn-small delete"><i class="icon-remove icon-white"></i></a> ' + item);
+                $('#episodejoke input.typeahead').toggle();
                 $('#selected').toggle();
             }
         });
-        $('a.show-form').on('click', function(){
-            $('#new').toggle();
-        });
-        $('#new').on('click', 'a#kill-new-ej', function(){
-            $('#new input.typeahead').toggle();
+        $('#episodejoke').on('click', 'a#kill-new-ej', function(){
+            $('#episodejoke input.typeahead').toggle();
             $('#selected').toggle();
+            return false;
+        });
+        $('#episode a.save').on('click', function(){
+            data = {}
+            data['blurb'] = $('#episode textarea').val();
+
+            $.ajax({
+                'async': true,
+                'cache': false,
+                'data': data,
+                'type': 'PUT',
+                'success': function(response){
+                    console.log(response);
+                }
+            });
+            return false;
+        });
+        $('#episodejoke a.save').on('click', function(){
+            data = {}
+            data['joke_code'] = $('#selected').attr('data-joke-code');
+            data['details'] = $('#episodejoke textarea').val();
+            data['type'] = $('#episodejoke option:selected').attr('value');
+
+            $.ajax('episodejoke/', {
+                'async': true,
+                'cache': false,
+                'data': data,
+                'type': 'PUT',
+                'success': function(response){
+                    $('#selected').html('');
+                    $('#selected').attr('data-joke-code', '');
+                    $('#episodejoke textarea').val('');
+                    $('#episodejoke option:selected').removeAttr('selected');
+                    $('#joke-list').append(response);
+                    $('#episodejoke input.typeahead').toggle();
+                    $('#selected').toggle();
+                }
+            });
             return false;
         });
         $('#joke-list').on('click', 'a.delete', function(){
@@ -70,27 +117,6 @@
                 'success': function(response){
                     var $deathElement = $('div#episodejoke-' + response);
                     $deathElement.remove();
-                }
-            });
-            return false;
-        });
-        $('a.save').on('click', function(){
-            data = {}
-            data['joke_code'] = $('#new .selected').attr('data-joke-code');
-            data['details'] = $('#new textarea').val();
-            data['type'] = $('#new option:selected').attr('value');
-
-            $.ajax('episodejoke/', {
-                'async': true,
-                'cache': false,
-                'data': data,
-                'type': 'PUT',
-                'success': function(response){
-                    $('#selected').html('');
-                    $('#selected').attr('data-joke-code', '');
-                    $('#new textarea').val('');
-                    $('#new option:selected').removeAttr('selected');
-                    $('#joke-list').append(response);
                 }
             });
             return false;
