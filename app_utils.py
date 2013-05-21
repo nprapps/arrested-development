@@ -250,7 +250,7 @@ def _parse_episodes(sheet):
             episode_dict['title'] = episode[3].decode('utf-8')
             episode_dict['rating'] = episode[2]
             episode_dict['code'] = 's%se%s' % (episode[1].zfill(2), episode[0].zfill(2))
-            episode_dict['number'] = int(episode[4]) + 1
+            episode_dict['number'] = int(episode[4])
             output.append(episode_dict)
 
     for row in output:
