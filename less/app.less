@@ -680,13 +680,20 @@ header {
         font-size: 12px;
         margin: 20px 0 40px;
 
+        .has-prev,
+        .has-next {
+            .next,
+            .prev {
+                background-color: #eee;
+            }
+        }
+
         .next,
         .prev {
             display: table-cell;
             vertical-align: top;
             width: 50%;
             border-right: 5px solid #fff;
-            background-color: #eee;
 
             a,
             span {

@@ -96,7 +96,8 @@ header p.sources{margin:22px 0 3px 0;}
 .episode-detail p.episode-meta{font-size:14px;line-height:1.1;text-transform:uppercase;color:#999;margin-bottom:20px;}
 .episode-detail .count,.episode-detail .viewer-count{font-weight:bold;}
 .episode-detail .joke-list{list-style:none;}.episode-detail .joke-list .joke h3{font-weight:bold;}
-.episode-detail .next-prev{display:table;width:100%;font-size:12px;margin:20px 0 40px;}.episode-detail .next-prev .next,.episode-detail .next-prev .prev{display:table-cell;vertical-align:top;width:50%;border-right:5px solid #fff;background-color:#eee;}.episode-detail .next-prev .next a,.episode-detail .next-prev .prev a,.episode-detail .next-prev .next span,.episode-detail .next-prev .prev span{font-size:14px;line-height:1.1;}
+.episode-detail .next-prev{display:table;width:100%;font-size:12px;margin:20px 0 40px;}.episode-detail .next-prev .has-prev .next,.episode-detail .next-prev .has-next .next,.episode-detail .next-prev .has-prev .prev,.episode-detail .next-prev .has-next .prev{background-color:#eee;}
+.episode-detail .next-prev .next,.episode-detail .next-prev .prev{display:table-cell;vertical-align:top;width:50%;border-right:5px solid #fff;}.episode-detail .next-prev .next a,.episode-detail .next-prev .prev a,.episode-detail .next-prev .next span,.episode-detail .next-prev .prev span{font-size:14px;line-height:1.1;}
 .episode-detail .next-prev .next a,.episode-detail .next-prev .prev a{font-weight:bold;background-color:#eee;padding:20px;display:block;}
 .episode-detail .next-prev .next span,.episode-detail .next-prev .prev span{display:block;text-transform:uppercase;color:#666;font-size:11px;font-weight:normal;margin-bottom:6px;}
 .episode-detail .next-prev .next{text-align:right;border-right:none;border-left:5px solid #fff;}
