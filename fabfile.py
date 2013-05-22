@@ -460,7 +460,7 @@ def ship_db():
 def get_db():
     require('settings', provided_by=[production, staging])
     for bucket in env.s3_buckets:
-        r = requests.get('http://%s/%s/data/app.db.gz' % (bucket, app_config.PROJECT_SLUG))
+        r = requests.get('http://%s/%s/data/app.db' % (bucket, app_config.PROJECT_SLUG))
         with open('data/app.db', 'wb') as dbfile:
             dbfile.write(r.content)
 

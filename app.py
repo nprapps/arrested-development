@@ -128,7 +128,6 @@ def _joke_detail(joke_code):
     jokes_list = sorted(jokes_list, key=lambda joke: (joke.character_value(), joke.first_appearance()))
 
     for joke in jokes_list:
-        print joke.text
         if joke == context['joke']:
             if counter == 0:
                 context['prev'] = None
