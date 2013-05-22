@@ -1,9 +1,18 @@
-<div class="joke-row clearfix" id="episodejoke-{{ ej.id }}">
-    <span class="span4">
-        <a class="btn btn-danger btn-small delete" data-episodejoke-id="{{ ej.id }}"><i class="icon-remove icon-white"></i></a>
-        <a class="btn btn-success btn-small save" data-episodejoke-id="{{ ej.id }}"><i class="icon-ok icon-white"></i></a>
-        <strong>{{ ej.joke.primary_character|safe }}</strong>
-        {{ ej.joke.text|safe }}
-    </span>
-    <span class="span5"><textarea>{% if ej.details %}{{ ej.details }}{% endif %}</textarea></span>
+<div id="joke-{{ ej.joke.code }}">
+    <div class="joke-row clearfix" id="episodejoke-{{ ej.id }}">
+        <span class="span4">
+            <a class="btn btn-danger btn-small delete" data-episodejoke-id="{{ ej.id }}"><i class="icon-remove icon-white"></i></a>
+            <a class="btn btn-success btn-small save" data-episodejoke-id="{{ ej.id }}"><i class="icon-ok icon-white"></i></a>
+            <strong>{{ ej.joke.primary_character|safe }}</strong>
+            {{ ej.joke.text|safe }}
+            {% if ej.connections() %}
+            {% for connection in ej.connections() %}<br/>
+                <a class="related" href="#joke-{{ connection.joke_code }}">{{ connection.text }} &rarr;</a>
+            {% endfor %}
+            {% else %}
+                <a class="add-related" href="#">&plus;</a>
+            {% endif %}
+        </span>
+        <span class="span7"><textarea>{% if ej.details %}{{ ej.details }}{% endif %}</textarea></span>
+    </div>
 </div>

@@ -103,13 +103,18 @@ class EpisodeJoke(Model):
         except JokeConnection.DoesNotExist:
             pass
         for joke in results:
+            related = None
             if joke['joke1'] == self.joke.id:
                 related = Joke.get(id=int(joke['joke2']))
-                output.append({'url': 'joke-%s.html' % related.code, 'text': related.text, 'primary_character': related.primary_character})
             if joke['joke2'] == self.id:
                 related = Joke.get(id=int(joke['joke1']))
-                output.append({'url': 'joke-%s.html' % related.code, 'text': related.text, 'primary_character': related.primary_character})
-
+            if related:
+                output.append({
+                    'url': 'joke-%s.html' % related.code,
+                    'text': related.text,
+                    'primary_character': related.primary_character,
+                    'joke_code': related.code
+                })
         return output
 
 
