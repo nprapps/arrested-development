@@ -28,7 +28,7 @@
         <div class="detail-header-wrapper">
             <h2><a href="./#{{ joke.category().replace(' ', '-') }}">{{ joke.category() }}</a></h2>
             <h1>{{ joke.text|safe }}</h1>
-            <p class="next-prev">
+            <!-- <nav class="next-prev{% if prev %} has-prev{% endif %}{% if next %} has-next{% endif %}">
                 {% if next %}
                 <p class="next">
                     <a href="joke-{{ next.code }}.html">{{ next.primary_character }} {{ next.text }} &rarr;</a>
@@ -41,7 +41,7 @@
                     </a>
                 </p>
                 {% endif %}
-            </p>
+            </nav> -->
             <p>{{ joke.blurb|safe }}</p>
         </div>
         {# 300x250 ad #}
