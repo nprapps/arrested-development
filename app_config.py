@@ -67,17 +67,17 @@ PRIMARY_CHARACTER_LIST = [
     'Miscellaneous'
 ]
 
-IMPORT_NEW_SEASON = True
+IMPORT_NEW_SEASON = False
 
 """
 SHARING
 """
-PROJECT_DESCRIPTION = 'NPR\'s slightly obsessive guide to the running gags on Arrested Development, updated for season 4.'
+PROJECT_DESCRIPTION = 'NPR\'s slightly obsessive guide to the running gags on Arrested Development.'
 SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
 
 
 TWITTER = {
-    'TEXT': 'We\'ve made a huge mistake. Now with season 4. Previously, on Arrested Development...',
+    'TEXT': 'Hey, brother. Previously, on Arrested Development...',
     'URL': SHARE_URL
 }
 

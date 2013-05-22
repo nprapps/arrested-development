@@ -300,11 +300,16 @@ def _parse_episodejoke_details(sheet, sheet_num):
     Parses the details, origin and connection sheets.
     Adds data to existing episodejokes.
     """
+    if app_config.IMPORT_NEW_SEASON is True:
+        end = 55
+    else:
+        end = 70
+
     FIELDS = [None, None, None, 'details', 'origin', 'connection']
     field = FIELDS[int(sheet_num)]
     broken = []
     for row in sheet:
-        for column in range(2, 70):
+        for column in range(2, end):
             episode_title, value = row.items()[column]
             if value:
                 e = Episode.get(Episode.title == episode_title.decode('utf-8'))

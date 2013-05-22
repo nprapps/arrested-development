@@ -1,4 +1,4 @@
-var EPISODE_COUNT = 68;
+var EPISODE_COUNT = 53;
 
 var DOT_RADIUS = 5;
 var LABEL_WIDTH = 200;
