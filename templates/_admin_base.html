@@ -2,27 +2,27 @@
 <head>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
     <style type="text/css">
+        div#episode {
+            margin:0 0 10px 0;
+            padding: 0 0 10px 0;
+            border-bottom:1px solid #ccc;
+        }
         div.joke-row {
-            width:100%;
-            display:block;
+            padding:10px;
+            margin:5px 0;
+            background:#eee;
+            border:1px solid #ccc;
         }
         div.joke-row span.delete {
             text-align:right;
         }
         input { width:500px; padding:10px; font-size:14px; line-height:16px; }
-        textarea { width:500px; padding:10px; height:180px; font-size:14px; line-height:16px; }
+        textarea { width:500px; padding:10px; height:140px; font-size:14px; line-height:16px; }
         div.clearfix:after{visibility: hidden; display: block; content: ""; clear: both; }
-        #episodejoke {
-            margin:15px 0;
-            padding:15px;
-            border-top:1px solid #ccc;
-            border-bottom:1px solid #ccc;
-            background-color:#eee;
-        }
         .joke-row textarea { height:70px; font-size:12px; line-height:15px; }
         label {
             font-weight:bold;
-            color:#888;
+            color:#555;
             font-size:16px;
         }
         div#alerts {
@@ -32,6 +32,10 @@
             width:100%;
             padding:0;
             margin:0;
+            font-size:24px;
+        }
+        .unsaved {
+            background-color:#fff3f5;
         }
     </style>
 </head>

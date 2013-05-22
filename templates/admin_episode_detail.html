@@ -11,52 +11,59 @@
         <div class="row-fluid">
             <p class="span12">
                 <label>Blurb</label>
-                <textarea>{{ episode.blurb }}</textarea>
+                <textarea>{% if episode.blurb %}{{ episode.blurb }}{% endif %}</textarea>
             </p>
         </div>
         <div class="row-fluid">
-            <p class="span12"><a href="#" class="btn btn-success btn save"><i class="icon-ok icon-white"></i> Save</a></p>
+            <p class="span12"><a href="#" class="btn btn-success btn save">Save</a></p>
         </div>
     </div>
 
-    <a href="#" class="btn btn btn-info show-form"><i class="icon-plus icon-white"></i> New Joke</a>
-    <div id="episodejoke" class="clearfix" style="display:none;">
-        <div class="row-fluid">
-            <p class="span12"><label>Joke</label>
-                <input class="typeahead" type="text" data-provide="typeahead" data-items="10"></input>
-                <p id="selected" style="display:none;"></p>
-            </p>
-        </div>
-        <div class="row-fluid">
-            <p class="span12"><label>Type</label>
-                <select>
-                    <option value="1">mention</option>
-                    <option value="f">foreshadowing</option>
-                    <option value="b">background</option>
-                </select>
-            </p>
-        </div>
-        <div class="row-fluid">
-            <p class="span12"><label>Details</label> <textarea></textarea></p>
-        </div>
-        <div class="row-fluid">
-            <p class="span12"><a href="#" class="btn btn-success btn save"><i class="icon-ok icon-white"></i> Save</a></p>
-        </div>
-    </div>
-
-    <h4>Jokes</h4>
+    <h4>Jokes <a href="#newEpisodeJokeModal" role="button" class="show-form" data-toggle="modal">(add)</a>
+</h4>
     <div id="joke-list">
         {% for ej in episodejokes %}
             {% include '_episodejoke_form_row.html' %}
         {% endfor %}
     </div>
     <div id="alerts"></div>
+    <div id="newEpisodeJokeModal" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Create joke</h3>
+        </div>
+        <div class="modal-body">
+            <div id="episodejoke" class="clearfix">
+                <div class="row-fluid">
+                    <p class="span12"><label>Joke</label>
+                        <input class="typeahead" type="text" data-provide="typeahead" data-items="10"></input>
+                        <p id="selected" style="display:none;"></p>
+                    </p>
+                </div>
+                <div class="row-fluid">
+                    <p class="span12"><label>Type</label>
+                        <select>
+                            <option value="1">mention</option>
+                            <option value="f">foreshadowing</option>
+                            <option value="b">background</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="row-fluid">
+                    <p class="span12"><label>Details</label> <textarea></textarea></p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-success btn save">Save</a>
+        </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}
     <script type="text/javascript">
         function make_alert(text, klass){
-            var alert_template = _.template('<div class="alert <%= klass %>"><button type="button" class="close" data-dismiss="alert">&times;</button><%= text %></div>')
+            var alert_template = _.template('<div class="alert <%= klass %>"><%= text %></div>')
             $('#alerts').html('');
             $('#alerts').append(alert_template({'text': text, 'klass': klass}));
             var t = setTimeout(function(){
@@ -66,7 +73,7 @@
             }, 1000)
         }
         $('a.show-form').on('click', function(){
-            $('#episodejoke').toggle();
+            $('#newEpisodeJokeModal').modal();
             return false;
         });
         $('.typeahead').typeahead({
@@ -94,11 +101,12 @@
                 'type': 'PUT',
                 'success': function(response){
                     make_alert('You have updated this episode.' , 'alert-info');
+                    $('#episode textarea').removeClass('unsaved');
                 }
             });
             return false;
         });
-        $('#episodejoke a.save').on('click', function(){
+        $('#newEpisodeJokeModal a.save').on('click', function(){
             var data = {}
             data['joke_code'] = $('#selected').attr('data-joke-code');
             data['details'] = $('#episodejoke textarea').val();
@@ -110,14 +118,14 @@
                 'data': data,
                 'type': 'PUT',
                 'success': function(response){
+                    $('#newEpisodeJokeModal').modal('toggle');
                     $('#selected').html('');
                     $('#selected').attr('data-joke-code', '');
+                    $('#selected').toggle();
                     $('#episodejoke textarea').val('');
                     $('#episodejoke option:selected').removeAttr('selected');
-                    $('#joke-list').append(response);
                     $('#episodejoke input.typeahead').toggle();
-                    $('#selected').toggle();
-                    make_alert('You have created an episodejoke.' , 'alert-success');
+                    $('#joke-list').append(response);
                 }
             });
             return false;
@@ -133,6 +141,7 @@
                 'type': 'POST',
                 'success': function(response){
                     make_alert('You have updated an episodejoke.' , 'alert-info');
+                    $('#episodejoke-'+ response +' textarea').removeClass('unsaved');
                 }
             });
         });
@@ -151,6 +160,9 @@
                 }
             });
             return false;
+        });
+        $('#joke-list textarea, #episode textarea').on('change', function(){
+            $(this).addClass('unsaved');
         });
     </script>
 {% endblock %}

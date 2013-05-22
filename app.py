@@ -215,9 +215,7 @@ def _admin_episodejokes(episode_code):
         ej = EpisodeJoke.get(id=int(episode_joke_id))
         ej.details = details
         ej.save()
-        context = {}
-        context['ej'] = ej
-        return render_template('_episodejoke_form_row.html', **context)
+        return '%s' % ej.id
 
     if request.method == 'PUT':
         joke_code = request.form.get('joke_code', None)
