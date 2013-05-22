@@ -22,7 +22,7 @@
         <div class="detail-header-wrapper">
             <h2>Season {{ episode.season}}, Episode {{ episode.episode }}</h2>
             <h1>{{ episode.title }}</h1>
-            <p class="episode-meta">Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }} | Watched by <span class="viewer-count">{{ episode.rating }} million</span> viewers.</p>
+            <p class="episode-meta">Originally aired {{ episode.run_date.strftime('%A, %B %e, %Y') }}{% if episode.rating %} | Watched by <span class="viewer-count">{{ episode.rating }} million</span> viewers.{% endif %}</p>
             <p class="blurb">{{ episode.blurb }}</p>
             <nav class="next-prev{% if prev %} has-prev{% endif %}{% if next %} has-next{% endif %}">
                 <p class="prev">
