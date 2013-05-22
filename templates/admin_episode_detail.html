@@ -93,7 +93,6 @@
         }
         $('body').on('click', 'a.related', function(){
             var targetId = $(this).attr('href');
-            console.log($(targetId));
             $(targetId).addClass('flash');
             var t = setTimeout(function(){
                 $(targetId).removeClass('flash');
