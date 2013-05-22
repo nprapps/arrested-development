@@ -118,31 +118,6 @@ def _joke_detail(joke_code):
 
     context['group'] = group
 
-    counter = 0
-    jokes_list = []
-    for joke in Joke.select():
-        if joke.primary_character not in app_config.PRIMARY_CHARACTER_LIST:
-            joke.primary_character = 'Miscellaneous'
-        jokes_list.append(joke)
-
-    jokes_list = sorted(jokes_list, key=lambda joke: (joke.character_value(), joke.first_appearance()))
-
-    for joke in jokes_list:
-        if joke == context['joke']:
-            if counter == 0:
-                context['prev'] = None
-            else:
-                try:
-                    context['prev'] = jokes_list[counter - 1]
-                except IndexError:
-                    context['prev'] = None
-
-            try:
-                context['next'] = jokes_list[counter + 1]
-            except IndexError:
-                context['next'] = None
-        counter += 1
-
     return render_template('joke_detail.html', **context)
 
 
