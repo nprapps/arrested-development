@@ -197,17 +197,30 @@ def _admin_episodes(episode_code):
         return '%s' % e.id
 
 
-@app.route('/admin/episodes/<episode_code>/episodejoke/', methods=['PUT', 'POST'])
-def _admin_episodejokes(episode_code):
+@app.route('/admin/episodes/<episode_code>/episodejoke/<episode_joke_id>/delete/', methods=['DELETE'])
+def _admin_episodejokes_delete(episode_code, episode_joke_id):
     from flask import request
-    if request.method == 'POST':
-        episode_joke_id = request.form.get('episode_joke_id', None)
+    if request.method == 'DELETE':
         EpisodeJoke.delete().where(EpisodeJoke.id == int(episode_joke_id)).execute()
         return episode_joke_id
 
+@app.route('/admin/episodes/<episode_code>/episodejoke/', methods=['PUT', 'POST'])
+def _admin_episodejokes(episode_code):
+    from flask import request
+
+    details = request.form.get('details', None)
+
+    if request.method == 'POST':
+        episode_joke_id = request.form.get('episode_joke_id', None)
+        ej = EpisodeJoke.get(id=int(episode_joke_id))
+        ej.details = details
+        ej.save()
+        context = {}
+        context['ej'] = ej
+        return render_template('_episodejoke_form_row.html', **context)
+
     if request.method == 'PUT':
         joke_code = request.form.get('joke_code', None)
-        details = request.form.get('details', None)
         joke_type = request.form.get('type', None)
 
         joke = Joke.get(code=int(joke_code))

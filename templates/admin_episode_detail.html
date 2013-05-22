@@ -50,10 +50,21 @@
             {% include '_episodejoke_form_row.html' %}
         {% endfor %}
     </div>
+    <div id="alerts"></div>
 {% endblock %}
 
 {% block scripts %}
     <script type="text/javascript">
+        function make_alert(text, klass){
+            var alert_template = _.template('<div class="alert <%= klass %>"><button type="button" class="close" data-dismiss="alert">&times;</button><%= text %></div>')
+            $('#alerts').html('');
+            $('#alerts').append(alert_template({'text': text, 'klass': klass}));
+            var t = setTimeout(function(){
+                $('#alerts .alert').fadeOut(500, function(){
+                    $('#alerts').html('');
+                });
+            }, 1000)
+        }
         $('a.show-form').on('click', function(){
             $('#episodejoke').toggle();
             return false;
@@ -73,7 +84,7 @@
             return false;
         });
         $('#episode a.save').on('click', function(){
-            data = {}
+            var data = {}
             data['blurb'] = $('#episode textarea').val();
 
             $.ajax({
@@ -82,13 +93,13 @@
                 'data': data,
                 'type': 'PUT',
                 'success': function(response){
-                    console.log(response);
+                    make_alert('You have updated this episode.' , 'alert-info');
                 }
             });
             return false;
         });
         $('#episodejoke a.save').on('click', function(){
-            data = {}
+            var data = {}
             data['joke_code'] = $('#selected').attr('data-joke-code');
             data['details'] = $('#episodejoke textarea').val();
             data['type'] = $('#episodejoke option:selected').attr('value');
@@ -106,21 +117,37 @@
                     $('#joke-list').append(response);
                     $('#episodejoke input.typeahead').toggle();
                     $('#selected').toggle();
+                    make_alert('You have created an episodejoke.' , 'alert-success');
                 }
             });
             return false;
         });
-        $('#joke-list').on('click', 'a.delete', function(){
-            data = {}
+        $('#joke-list').on('click', 'a.save', function(){
+            var data = {}
             data['episode_joke_id'] = parseInt($(this).attr('data-episodejoke-id'));
+            data['details'] = $('#episodejoke-' + data['episode_joke_id'] + ' textarea').val();
             $.ajax('episodejoke/', {
                 'async': true,
                 'cache': false,
                 'data': data,
                 'type': 'POST',
                 'success': function(response){
+                    make_alert('You have updated an episodejoke.' , 'alert-info');
+                }
+            });
+        });
+        $('#joke-list').on('click', 'a.delete', function(){
+            var data = {}
+            data['episode_joke_id'] = parseInt($(this).attr('data-episodejoke-id'));
+            $.ajax('episodejoke/' + data['episode_joke_id'] + '/delete/', {
+                'async': true,
+                'cache': false,
+                'data': data,
+                'type': 'DELETE',
+                'success': function(response){
                     var $deathElement = $('div#episodejoke-' + response);
                     $deathElement.remove();
+                    make_alert('You have deleted an episodejoke.' , 'alert-danger');
                 }
             });
             return false;
