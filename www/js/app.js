@@ -1,4 +1,4 @@
-var EPISODE_COUNT = 53;
+var EPISODE_COUNT = 68;
 
 var DOT_RADIUS = 5;
 var LABEL_WIDTH = 200;
@@ -31,7 +31,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
     var width = $viz.width();
     var height = $viz.height();
     var joke_code = joke_code || null;
-    
+
     if (WINDOW_WIDTH < 768) {
         IS_MOBILE = true;
         height = 5000;
@@ -80,7 +80,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 }
                 line.node.setAttribute('data-joke', joke['code']);
             }
-            
+
             // add label
             joke_labels += '<li id="label-' + joke['code'] + '" style="top: ' + line_y + 'px;" data-joke="' + joke['code'] + '"';
             if (joke_code == joke['code']) {
@@ -92,7 +92,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             joke_labels += '<a href="joke-' + joke['code'] + '.html">';
             joke_labels += joke['text'];
             joke_labels += '</a></li>';
-            
+
             // add header if applicable
             if (i == 0 || (joke['primary_character'] != jokes[i-1]['primary_character'])) {
                 joke_headers += '<h4 id="' + group.replace(' ', '-') + '"class="joke-group-header" style="width: ' + LABEL_WIDTH + 'px; top: ' + line_y + 'px">' + joke['primary_character'] + '</h4>';
@@ -100,7 +100,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
             line_y += LINE_INTERVAL;
         }
-    
+
         line_y += GROUP_INTERVAL;
     }
 
@@ -111,7 +111,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
     height = line_y + OFFSET_Y - GROUP_INTERVAL
     $viz.height(height);
     $viz.find('#viz-labels').height(height);
-    
+
     // render season labels
     // loop through episodes and create labels (appended to page when various joke groupings are rendered)
     if (!IS_IE8) {
@@ -126,7 +126,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 season_labels += '<li class="episode-season-number" style="left: ' + label_x + 'px;">';
                 season_labels += 'Season ' + episode['season'];
                 season_labels += '</li>';
-                
+
                 if (e != 1) { // a dividing line before all seasons after the first
                     var line_x = dot_interval * (episode_number - 1) + OFFSET_X_LEFT + (dot_interval / 2);
                     var path = 'M' + line_x + ',' + 0 + 'L' + line_x + ',' + height;
@@ -135,7 +135,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 }
             }
         }
-    
+
         // Render related joke curves
         for (var i = 0; i < connection_data.length; i++) {
             var connection = connection_data[i];
@@ -217,9 +217,9 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
                     episode_number_to_jokes_map[episode_number].push(joke_code);
 
-                    var dot = paper.circle((episode_number * dot_interval) + OFFSET_X_LEFT, line_y, 5); 
-                    var dot_class = 'dot ' + 'joke-type-' + episodejoke['joke_type'];  
-                
+                    var dot = paper.circle((episode_number * dot_interval) + OFFSET_X_LEFT, line_y, 5);
+                    var dot_class = 'dot ' + 'joke-type-' + episodejoke['joke_type'];
+
                     dot.node.setAttribute('class', dot_class);
                     dot.node.setAttribute('data-primary-character', joke_primary_character);
                     dot.node.setAttribute('data-joke', joke_code);
@@ -241,14 +241,14 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             line_y += GROUP_INTERVAL;
         }
     }
-    
+
     if (!IS_MOBILE && !IS_IE8) {
         $('.dot').hover(
             function() {
                 var $dot = $(this);
                 var dot_position = $dot.position();
                 var tt_height;
-            
+
                 $tooltip.empty();
                 if (svgHasClass($dot,'joke-type-b')) {
                     $tooltip.append('<span class="joke-type">Joke In The Background</span>');
@@ -265,7 +265,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                     $tooltip.append('<span class="joke-details"><strong>Details:</strong> ' + $dot.data('details') + '</span>');
                 }
                 $tooltip.append('<span class="episode-info"><strong>Episode:</strong> &ldquo;' + $dot.data('episode-title') + '&rdquo; (' + $dot.data('episode') + ')</span>');
-            
+
                 tt_height = $tooltip.height();
                 tt_width = $tooltip.outerWidth();
                 tt_top = dot_position.top - (tt_height / 2);
@@ -274,7 +274,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 if ((tt_left + tt_width) > width) {
                     tt_left = dot_position.left - tt_width - DOT_RADIUS;
                 }
-                
+
                 if (!IS_WEBKIT) {
                     tt_left -= $viz.offset().left;
                     tt_top -= $viz.offset().top;
@@ -291,13 +291,13 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 var $dot = $(this);
 
                 $tooltip.fadeOut('fast');
-            
+
                 dehighlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
             }
         ).click(function() {
             window.open('episode-' + $(this).data('episode') + '.html','_self');
         });
-        
+
         $('.joke-line, .joke-label').hover(
             function(e) {
                 var joke_code = $(this).data('joke');
@@ -332,7 +332,7 @@ function highlight_joke_network(joke_code, episode_number) {
 
     for (var j = 0; j < related_jokes.length; j++) {
         var joke_code2 = related_jokes[j];
-        
+
         if (episode_number) {
             // When we have an episode number, only highlight directly connected joke lines
             if (!_.indexOf(episode_number_to_jokes_map[episode_number], joke_code)) {
@@ -344,7 +344,7 @@ function highlight_joke_network(joke_code, episode_number) {
         var el = $('.joke-line.joke-' + joke_code2)[0];
         var attr = el.getAttribute('class') + ' ' + klass;
         el.setAttribute('class', attr);
-    
+
         $('#label-' + joke_code2).addClass('highlight');
     }
 
@@ -373,7 +373,7 @@ function dehighlight_joke_network(joke_code, episode_number) {
         var el = $('.joke-line.joke-' + joke_code2)[0];
         var attr = el.getAttribute('class').replace(' ' + klass, '');
         el.setAttribute('class', attr);
-        
+
         $('#label-' + joke_code2).removeClass('highlight');
     }
 
@@ -382,7 +382,7 @@ function dehighlight_joke_network(joke_code, episode_number) {
 
 
 /*
- * Check if an SVG object has a particular class, 
+ * Check if an SVG object has a particular class,
  * since jQuery .hasClass() doesn't work w/ classes applied to SVGs
  */
 function svgHasClass(obj,c) {
@@ -418,7 +418,7 @@ function resize_viz() {
             paper.remove();
             $viz.empty();
         }
-        
+
         render_viz($viz, group_order, joke_data, connection_data, episodes, joke_code);
         INITIAL_LOAD = true;
     }
