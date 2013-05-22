@@ -1,6 +1,6 @@
 var EPISODE_COUNT = 68;
 
-var DOT_RADIUS = 5;
+var DOT_RADIUS = 3;
 var LABEL_WIDTH = 200;
 var GROUP_LABEL_HEIGHT = 16;
 var LINE_INTERVAL = 18;
@@ -150,10 +150,10 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             var to_episode_id = episode_number;
 
             var from_y = joke_code_to_line_y_map[joke1_code];;
-            var from_x = from_episode_id * dot_interval + OFFSET_X_LEFT;
+            var from_x = from_episode_id * dot_interval + OFFSET_X_LEFT + 1;
 
             var to_y = joke_code_to_line_y_map[joke2_code];;
-            var to_x = to_episode_id * dot_interval + OFFSET_X_LEFT;
+            var to_x = to_episode_id * dot_interval + OFFSET_X_LEFT + 1;
 
             // Ensure connections are drawn north->south
             if (to_y < from_y) {

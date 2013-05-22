@@ -169,7 +169,7 @@ header {
 
         &.highlight {
             stroke: @orange-4;
-            stroke-width: 1.5px;
+            stroke-width: 1px;
             cursor: pointer;
         }
     }
@@ -195,7 +195,7 @@ header {
             &:hover { stroke: #AA6A21; }
         }
         &.joke-type-f { // joke foreshadowed
-            fill: #999;
+            fill: #ccc;
             stroke: #B39429;
             &:hover { stroke: #AA6A21; }
         }
@@ -330,13 +330,31 @@ header {
         font-size: 14px;
         line-height: 14px;
         color: #333;
-        background: url('../img/ad-key.png') no-repeat;
-        padding-left: 18px;
+        //background: url('../img/ad-key.png') no-repeat;
+        padding-left: 0;
         
-        &.key-j { background-position: 0 -40px; }
-        &.key-b { background-position: 0 -20px; }
-        &.key-f { background-position: 0 0; }
-        &.key-c { background-position: 0 -54px; margin-right: 0; }
+        // &.key-j { background-position: 0 -40px; }
+        // &.key-b { background-position: 0 -20px; }
+        // &.key-f { background-position: 0 0; }
+        // &.key-c { background-position: 0 -54px; margin-right: 0; }
+
+        &:before {
+            content: '';
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background: @orange;
+            margin-right: 5px;
+            position: relative;
+            bottom: -2px;
+        }
+
+        &.key-j:before { background-color: @orange-4; }
+        &.key-b:before { background-color: #EFC637; }
+        &.key-f:before { background-color: #ccc; }
+        &.key-c:before { background-color: #ccc; width: 14px; height: 2px; bottom: 4px; position: relative; }
+
+        
     }
 }
 .detail {
