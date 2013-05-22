@@ -65,7 +65,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
             var episodejokes = joke['episodejokes'];
             var first_episode_number = episodejokes[0]['episode_number'];
-            var last_episode_number = EPISODE_COUNT + 1; // +1 to make sure it goes off the side
+            var last_episode_number = episodejokes[episodejokes.length-1]['episode_number'] + 1; // +1 to make sure it goes off the side
 
             var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT - DOT_RADIUS) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT) + ',' + line_y;
 
@@ -217,7 +217,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
                     episode_number_to_jokes_map[episode_number].push(joke_code);
 
-                    var dot = paper.circle((episode_number * dot_interval) + OFFSET_X_LEFT, line_y, 5);
+                    var dot = paper.rect((episode_number * dot_interval) + OFFSET_X_LEFT, line_y - 8, 2, 16);
                     var dot_class = 'dot ' + 'joke-type-' + episodejoke['joke_type'];
 
                     dot.node.setAttribute('class', dot_class);

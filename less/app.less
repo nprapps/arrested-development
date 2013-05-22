@@ -143,6 +143,7 @@ header {
 .viz-wrap {
     position: relative;
 }
+
 .viz {
     position: relative;
     
@@ -164,11 +165,11 @@ header {
     .connection-line {
         stroke: #ccc;
         stroke-opacity: .6;
-        stroke-width: 1.5px;
+        stroke-width: 1px;
 
         &.highlight {
             stroke: @orange-4;
-            stroke-width: 3px;
+            stroke-width: 1.5px;
             cursor: pointer;
         }
     }
@@ -177,7 +178,7 @@ header {
         stroke: #fff;
     }
     .dot {
-        stroke-width: 1px;
+        stroke-width: 0;
         
         &:hover {
             stroke-width: 2px;
@@ -194,7 +195,7 @@ header {
             &:hover { stroke: #AA6A21; }
         }
         &.joke-type-f { // joke foreshadowed
-            fill: white;
+            fill: #999;
             stroke: #B39429;
             &:hover { stroke: #AA6A21; }
         }
@@ -267,6 +268,13 @@ header {
         }
     }
 }
+
+.viz-index {
+    .connection-line {
+        stroke-width: 0;
+    }
+}
+
 #viz-tooltip {
     display: none;
     position: absolute;
@@ -541,6 +549,57 @@ header {
         }
     }
 
+    .next-prev {
+        display: table;
+        width: 100%;
+        font-size: 12px;
+        margin: 20px 0 40px;
+
+        .has-prev,
+        .has-next {
+            .next,
+            .prev {
+                background-color: #eee;
+            }
+        }
+
+        .next,
+        .prev {
+            display: table-cell;
+            vertical-align: top;
+            width: 50%;
+            border-right: 5px solid #fff;
+
+            a,
+            span {
+                font-size: 14px;
+                line-height: 1.1;
+            }
+
+            a {
+                font-weight: bold;
+                background-color: #eee;
+                padding: 20px;
+                display: block;
+            }
+
+            span {
+                display: block;
+                text-transform: uppercase;
+                color: #666;
+                font-size: 11px;
+                font-weight: normal;
+                margin-bottom: 6px;
+            }
+
+        }
+        .next {
+            text-align: right;
+            border-right: none;
+            border-left: 5px solid #fff;
+        }
+    }
+
     .detail-count {
         color: #000;
         font-size: 24px;
@@ -673,57 +732,6 @@ header {
             }
         }
     }
-
-    .next-prev {
-        display: table;
-        width: 100%;
-        font-size: 12px;
-        margin: 20px 0 40px;
-
-        .has-prev,
-        .has-next {
-            .next,
-            .prev {
-                background-color: #eee;
-            }
-        }
-
-        .next,
-        .prev {
-            display: table-cell;
-            vertical-align: top;
-            width: 50%;
-            border-right: 5px solid #fff;
-
-            a,
-            span {
-                font-size: 14px;
-                line-height: 1.1;
-            }
-
-            a {
-                font-weight: bold;
-                background-color: #eee;
-                padding: 20px;
-                display: block;
-            }
-
-            span {
-                display: block;
-                text-transform: uppercase;
-                color: #666;
-                font-size: 11px;
-                font-weight: normal;
-                margin-bottom: 6px;
-            }
-
-        }
-        .next {
-            text-align: right;
-            border-right: none;
-            border-left: 5px solid #fff;
-        }
-    }
 }
 
 // Joke detail 
@@ -833,7 +841,7 @@ footer {
 	.viz {
         h4.joke-group-header { margin-top: -30px; }
 	    .episode-labels, .season-line, .connection-line { display: none; }
-	    .joke-line { stroke-width: 28px; }
+	    .joke-line { stroke-width: 16px; }
 	    #viz-labels {
 	        margin-top: -9px;
 	        background: none;
@@ -872,7 +880,10 @@ footer {
 		padding: 33px 20px;
 		h1 { font-size: 36px; }
 	}
-    .detail .small-header p { font-size:11px; }
+    .detail .small-header {
+        p { font-size:11px; }
+    }
+
     .detail .detail-count {font-size:18px;}
 	footer { border-top: 1px solid #CCC; margin-top: 24px; }
 }
