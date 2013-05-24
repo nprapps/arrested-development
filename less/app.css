@@ -76,6 +76,7 @@ header p.sources{margin:22px 0 3px 0;}
 .viz-index>header h2{font-size:24px;line-height:1.1;color:#fff;font-weight:bold;margin:20px 0;}
 .viz-index>header .credits{color:rgba(255, 255, 255, 0.6);font-size:14px;line-height:1.5em;}
 .viz-index .content-footer{margin-bottom:0;}
+#dataviz p#read-banner-michael{font-weight:bold;font-size:20px;}
 .detail .small-header{background:#f95d1a;}.detail .small-header p{margin:11px 0 0;line-height:14px;font-size:14px;font-weight:bold;color:white;}
 .detail .small-header .row-fluid{background:#f95d1a;margin:0 -20px;padding:20px;}
 .detail #main-content{display:table;}.detail #main-content .detail-wrapper,.detail #main-content .adwrapper{display:table-cell;vertical-align:top;}
