@@ -82,7 +82,7 @@
                     {{ ej.details.replace("/", "</p><p class='extra details'>")|safe }}
                 </p>
             {% endif %}
-            {% if ej.connections() != [] %}{% for joke in ej.connections() %}
+            {% if ej.connections() %}{% for joke in ej.connections() %}
                 <p class="extra connection {{ ej.formatted_type() }}">
                     <strong>Related Joke:</strong> <a href="{{ joke.url }}">{{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}</a>
                 </p>

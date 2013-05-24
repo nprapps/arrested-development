@@ -39,6 +39,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
         LABEL_WIDTH = Math.round(width * .4);
         DOT_RADIUS = 2;
         LINE_INTERVAL = 30;
+        OFFSET_X_RIGHT = DOT_RADIUS;
         OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
     } else {
         IS_MOBILE = false;
@@ -75,7 +76,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             var first_episode_number = episodejokes[0]['episode_number'];
             var last_episode_number = episodejokes[episodejokes.length-1]['episode_number'] + 1; // +1 to make sure it goes off the side
 
-            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT - DOT_RADIUS) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT) + ',' + line_y;
+            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT - DOT_RADIUS) + ',' + line_y;
 
             if (!IS_IE8) {
                 var line = paper.path(path)
@@ -116,7 +117,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
     $viz.append(joke_labels);
     $viz.append(joke_headers);
 
-    height = line_y + OFFSET_Y - GROUP_INTERVAL
+    height = line_y + OFFSET_Y - GROUP_INTERVAL;
     $viz.height(height);
     $viz.find('#viz-labels').height(height);
 
@@ -158,10 +159,10 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
             var to_episode_id = episode_number;
 
             var from_y = joke_code_to_line_y_map[joke1_code];;
-            var from_x = from_episode_id * dot_interval + OFFSET_X_LEFT + 1;
+            var from_x = from_episode_id * dot_interval + OFFSET_X_LEFT;
 
             var to_y = joke_code_to_line_y_map[joke2_code];;
-            var to_x = to_episode_id * dot_interval + OFFSET_X_LEFT + 1;
+            var to_x = to_episode_id * dot_interval + OFFSET_X_LEFT;
 
             // Ensure connections are drawn north->south
             if (to_y < from_y) {
@@ -225,7 +226,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
                     episode_number_to_jokes_map[episode_number].push(joke_code);
 
-                    var dot = paper.rect((episode_number * dot_interval) + OFFSET_X_LEFT, line_y - 8, DOT_RADIUS, 16);
+                    var dot = paper.rect((episode_number * dot_interval) + OFFSET_X_LEFT - DOT_RADIUS / 2, line_y - 8, DOT_RADIUS, 16);
                     var dot_class = 'dot ' + 'joke-type-' + episodejoke['joke_type'];
 
                     dot.node.setAttribute('class', dot_class);
