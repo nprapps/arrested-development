@@ -115,7 +115,10 @@ class EpisodeJoke(Model):
                     'primary_character': related.primary_character,
                     'joke_code': related.code
                 })
-        return output
+        if len(output) > 0:
+            return output
+        else:
+            return None
 
 
 class JokeConnection(Model):
