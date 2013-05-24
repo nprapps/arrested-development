@@ -1,6 +1,6 @@
 var EPISODE_COUNT = 68;
 
-var DOT_RADIUS = 3;
+var DOT_RADIUS = 5;
 var LABEL_WIDTH = 200;
 var GROUP_LABEL_HEIGHT = 16;
 var LINE_INTERVAL = 18;
@@ -37,7 +37,15 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
         height = 5000;
         $viz.height(height + 'px');
         LABEL_WIDTH = Math.round(width * .4);
+        DOT_RADIUS = 2;
         LINE_INTERVAL = 30;
+        OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
+    } else {
+        IS_MOBILE = false;
+        DOT_RADIUS = 5;
+        LABEL_WIDTH = 200;
+        LINE_INTERVAL = 18;
+        OFFSET_X_RIGHT = DOT_RADIUS;
         OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
     }
 
@@ -217,7 +225,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
                     episode_number_to_jokes_map[episode_number].push(joke_code);
 
-                    var dot = paper.rect((episode_number * dot_interval) + OFFSET_X_LEFT, line_y - 8, 2, 16);
+                    var dot = paper.rect((episode_number * dot_interval) + OFFSET_X_LEFT, line_y - 8, DOT_RADIUS, 16);
                     var dot_class = 'dot ' + 'joke-type-' + episodejoke['joke_type'];
 
                     dot.node.setAttribute('class', dot_class);
@@ -404,6 +412,7 @@ function resize_viz() {
     if (new_width != WINDOW_WIDTH || INITIAL_LOAD == false) {
         var $viz = null;
         var joke_code = null;
+        WINDOW_WIDTH = new_width;
 
         // Joke detail page
         if ($body.hasClass('joke-detail')) {
