@@ -477,7 +477,6 @@ def bootstrap_data():
     update_episode_extras()
     update_joke_blurbs()
     update_details()
-    update_origin()
     update_connection()
     build_connections()
     write_jokes_json()
@@ -525,14 +524,6 @@ def update_joke_blurbs():
     """
     import_sheet('7')
     parse_sheet('7', 'blurbs')
-
-
-def update_origin():
-    """
-    GoogleDocs: Parses episodejoke origin data.
-    """
-    import_sheet('4')
-    parse_sheet('4', 'episodejokes')
 
 
 def update_connection():

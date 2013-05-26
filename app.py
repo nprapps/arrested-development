@@ -195,7 +195,7 @@ def _admin_episodes(episode_code):
         context = {}
         context['episode'] = Episode.get(code=episode_code)
         context['episodejokes'] = EpisodeJoke.select().join(Episode).where(Episode.code == episode_code)
-        context['jokes'] = Joke.select()
+        context['jokes'] = Joke.select().order_by(Joke.primary_character)
         context['seasons'] = _all_seasons()
 
         try:
