@@ -12,8 +12,8 @@
   <Network>FOX</Network>
   <NetworkID></NetworkID>
   <Overview>Level-headed son Michael Bluth takes over family affairs after his father is imprisoned. But the rest of his spoiled, dysfunctional family are making his job unbearable.</Overview>
-  <Rating>9.4</Rating>
-  <RatingCount>159</RatingCount>
+  <Rating>9.5</Rating>
+  <RatingCount>160</RatingCount>
   <Runtime>30</Runtime>
   <SeriesID>17005</SeriesID>
   <SeriesName>Arrested Development</SeriesName>
@@ -22,7 +22,7 @@
   <addedBy></addedBy>
   <banner>graphical/72173-g5.jpg</banner>
   <fanart>fanart/original/72173-15.jpg</fanart>
-  <lastupdated>1369613495</lastupdated>
+  <lastupdated>1369657497</lastupdated>
   <poster>posters/72173-6.jpg</poster>
   <zap2it_id>EP00598470</zap2it_id>
 </Series>
@@ -2225,34 +2225,6 @@
   <seriesid>72173</seriesid>
 </Episode>
 <Episode>
-  <id>4579004</id>
-  <Combined_episodenumber>0</Combined_episodenumber>
-  <Combined_season>4</Combined_season>
-  <DVD_chapter></DVD_chapter>
-  <DVD_discid></DVD_discid>
-  <DVD_episodenumber></DVD_episodenumber>
-  <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
-  <EpisodeName>Arrested Development returns in Jun (Netflix only)</EpisodeName>
-  <EpisodeNumber>0</EpisodeNumber>
-  <FirstAired></FirstAired>
-  <GuestStars></GuestStars>
-  <IMDB_ID></IMDB_ID>
-  <Language>en</Language>
-  <Overview>Arrested Development returns in Jun (Netflix only)</Overview>
-  <ProductionCode></ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
-  <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
-  <absolute_number></absolute_number>
-  <filename></filename>
-  <lastupdated>1369606112</lastupdated>
-  <seasonid>500127</seasonid>
-  <seriesid>72173</seriesid>
-</Episode>
-<Episode>
   <id>4392165</id>
   <Combined_episodenumber>1</Combined_episodenumber>
   <Combined_season>4</Combined_season>
@@ -2260,7 +2232,7 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
   <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Flight of the Phoenix</EpisodeName>
   <EpisodeNumber>1</EpisodeNumber>
@@ -2268,15 +2240,15 @@
   <GuestStars></GuestStars>
   <IMDB_ID></IMDB_ID>
   <Language>en</Language>
-  <Overview>Michael says goodbye to the family business and starts his own. And the life of the family is turned upside down when their mailman Pete dies.</Overview>
+  <Overview>Michael says goodbye to the family business and starts his own. And the life of the family is turned upside down when their mail man Pete dies.</Overview>
   <ProductionCode>4AJD01</ProductionCode>
-  <Rating>8.0</Rating>
-  <RatingCount>2</RatingCount>
+  <Rating>8.2</Rating>
+  <RatingCount>5</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Mitchell Hurwitz</Writer>
   <absolute_number>54</absolute_number>
   <filename>episodes/72173/4392165.jpg</filename>
-  <lastupdated>1369602930</lastupdated>
+  <lastupdated>1369636580</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2288,7 +2260,7 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
   <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Borderline Personalities</EpisodeName>
   <EpisodeNumber>2</EpisodeNumber>
@@ -2298,13 +2270,13 @@
   <Language>en</Language>
   <Overview>George Sr. comes up with a get rich quick scam after his family falls apart.</Overview>
   <ProductionCode>4AJD02</ProductionCode>
-  <Rating>7.0</Rating>
-  <RatingCount>2</RatingCount>
+  <Rating>7.8</Rating>
+  <RatingCount>4</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Jim Vallely|Richard Rosenstock</Writer>
   <absolute_number>55</absolute_number>
   <filename>episodes/72173/4460000.jpg</filename>
-  <lastupdated>1369602973</lastupdated>
+  <lastupdated>1369638439</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2316,8 +2288,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Indian Takers</EpisodeName>
   <EpisodeNumber>3</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2329,10 +2301,10 @@
   <Rating>7.5</Rating>
   <RatingCount>2</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Caroline Williams|Dean Lorey</Writer>
   <absolute_number>56</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579048</lastupdated>
+  <filename>episodes/72173/4460002.jpg</filename>
+  <lastupdated>1369638592</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2344,23 +2316,23 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>The B. Team</EpisodeName>
   <EpisodeNumber>4</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
   <GuestStars></GuestStars>
   <IMDB_ID></IMDB_ID>
   <Language>en</Language>
-  <Overview>Michael is presented with a new business opportunity that could change his life, but nfortunately, he needs his family to sign off.</Overview>
+  <Overview>Michael is presented with a new business opportunity that could change his life, but unfortunately, he needs his family to sign off.</Overview>
   <ProductionCode>4AJD04</ProductionCode>
   <Rating>7.0</Rating>
   <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Jim Vallely|Mitchell Hurwitz</Writer>
   <absolute_number>57</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579107</lastupdated>
+  <filename>episodes/72173/4460003.jpg</filename>
+  <lastupdated>1369638706</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2372,8 +2344,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>A New Start</EpisodeName>
   <EpisodeNumber>5</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2382,13 +2354,13 @@
   <Language>en</Language>
   <Overview>Tobias searches for meaning after splitting with Lindsay, only to find that old habits die hard.</Overview>
   <ProductionCode>4AJD05</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>7.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Jim Vallely|Dean Lorey</Writer>
   <absolute_number>58</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579134</lastupdated>
+  <filename>episodes/72173/4460004.jpg</filename>
+  <lastupdated>1369638761</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2400,8 +2372,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Double Crossers</EpisodeName>
   <EpisodeNumber>6</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2410,13 +2382,13 @@
   <Language>en</Language>
   <Overview>George Sr.'s new business hits a rough patch, and he must bribe a politician to get his scam back on track.</Overview>
   <ProductionCode>4AJD06</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>6.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Dean Lorey|Richard Rosenstock</Writer>
   <absolute_number>59</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579180</lastupdated>
+  <filename>episodes/72173/4460005.jpg</filename>
+  <lastupdated>1369644255</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2428,8 +2400,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Colony Collapse</EpisodeName>
   <EpisodeNumber>7</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2441,10 +2413,10 @@
   <Rating></Rating>
   <RatingCount>0</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Jim Vallely|Mitchell Hurwitz</Writer>
   <absolute_number>60</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579205</lastupdated>
+  <filename>episodes/72173/4460007.jpg</filename>
+  <lastupdated>1369644323</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2456,8 +2428,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Red Hairing</EpisodeName>
   <EpisodeNumber>8</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2469,10 +2441,10 @@
   <Rating></Rating>
   <RatingCount>0</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Caroline Williams|Richard Rosenstock</Writer>
   <absolute_number>61</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579274</lastupdated>
+  <filename>episodes/72173/4460008.jpg</filename>
+  <lastupdated>1369644401</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2484,8 +2456,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Smashed</EpisodeName>
   <EpisodeNumber>9</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2497,10 +2469,10 @@
   <Rating></Rating>
   <RatingCount>0</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Dean Lorey|Richard Rosenstock</Writer>
   <absolute_number>62</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579301</lastupdated>
+  <filename>episodes/72173/4460009.jpg</filename>
+  <lastupdated>1369644480</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2512,8 +2484,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Queen B.</EpisodeName>
   <EpisodeNumber>10</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2525,10 +2497,10 @@
   <Rating></Rating>
   <RatingCount>0</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Dean Lorey|Richard Rosenstock</Writer>
   <absolute_number>63</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579351</lastupdated>
+  <filename>episodes/72173/4460011.jpg</filename>
+  <lastupdated>1369644546</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2540,8 +2512,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>A New Attitude</EpisodeName>
   <EpisodeNumber>11</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2553,10 +2525,10 @@
   <Rating></Rating>
   <RatingCount>0</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Jim Vallely|Mitchell Hurwitz</Writer>
   <absolute_number>64</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579372</lastupdated>
+  <filename>episodes/72173/4460012.jpg</filename>
+  <lastupdated>1369644599</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2568,8 +2540,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Señoritis</EpisodeName>
   <EpisodeNumber>12</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2581,10 +2553,10 @@
   <Rating></Rating>
   <RatingCount>0</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Jim Brandon|Brian Singleton</Writer>
   <absolute_number>65</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579420</lastupdated>
+  <filename>episodes/72173/4460013.jpg</filename>
+  <lastupdated>1369644768</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2596,8 +2568,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>It Gets Better</EpisodeName>
   <EpisodeNumber>13</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2609,10 +2581,10 @@
   <Rating></Rating>
   <RatingCount>0</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Dean Lorey|Richard Rosenstock</Writer>
   <absolute_number>66</absolute_number>
-  <filename></filename>
-  <lastupdated>1369579447</lastupdated>
+  <filename>episodes/72173/4460014.jpg</filename>
+  <lastupdated>1369644807</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2624,8 +2596,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Off the Hook</EpisodeName>
   <EpisodeNumber>14</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2637,10 +2609,10 @@
   <Rating></Rating>
   <RatingCount>0</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Jim Vallely|Mitchell Hurwitz</Writer>
   <absolute_number>67</absolute_number>
-  <filename></filename>
-  <lastupdated>1369605974</lastupdated>
+  <filename>episodes/72173/4460015.jpg</filename>
+  <lastupdated>1369644867</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2652,8 +2624,8 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Blockheads</EpisodeName>
   <EpisodeNumber>15</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2665,10 +2637,10 @@
   <Rating></Rating>
   <RatingCount>0</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer></Writer>
+  <Writer>Jim Vallely|Mitchell Hurwitz</Writer>
   <absolute_number></absolute_number>
-  <filename></filename>
-  <lastupdated>1369605996</lastupdated>
+  <filename>episodes/72173/4543822.jpg</filename>
+  <lastupdated>1369644900</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>

@@ -80,6 +80,8 @@
 
 {% block scripts %}
     <script type="text/javascript">
+        var ej_id = null;
+
         function make_alert(text, klass){
             var alert_template = _.template('<div class="alert <%= klass %>"><%= text %></div>')
             $('#alerts').html('');
@@ -109,6 +111,7 @@
                 }
             });
             $('#newRelatedJokeModal').modal();
+            ej_id = $(this).attr('data-ej-id');
             return false;
         });
         $('a.show-form').on('click', function(){
@@ -153,7 +156,7 @@
         });
         $('#newEpisodeJokeModal a.save').on('click', function(){
             var data = {}
-            data['joke_code'] = $('.selected').attr('data-joke-code');
+            data['joke_code'] = $('#newEpisodeJokeModal .selected').attr('data-joke-code');
             data['details'] = $('#episodejoke textarea').val();
             data['type'] = $('#episodejoke option:selected').attr('value');
 
@@ -164,13 +167,50 @@
                 'type': 'PUT',
                 'success': function(response){
                     $('#newEpisodeJokeModal').modal('toggle');
-                    $('.selected').html('');
-                    $('.selected').attr('data-joke-code', '');
-                    $('.selected').toggle();
+                    $('#newEpisodeJokeModal .selected').html('');
+                    $('#newEpisodeJokeModal .selected').attr('data-joke-code', '');
+                    $('#newEpisodeJokeModal .selected').toggle();
                     $('#episodejoke textarea').val('');
                     $('#episodejoke option:selected').removeAttr('selected');
                     $('#episodejoke .typeahead-episode').toggle();
                     $('#joke-list').append(response);
+                }
+            });
+            return false;
+        });
+        $('#newRelatedJokeModal a.save').on('click', function(){
+            var data = {}
+            data['joke_code'] = $('#newRelatedJokeModal .selected').attr('data-joke-code');
+            data['episode_joke_id'] = ej_id;
+            $.ajax('jokeconnection/', {
+                'async': true,
+                'cache': false,
+                'data': data,
+                'type': 'PUT',
+                'success': function(response){
+                    console.log('response');
+                    $('#newRelatedJokeModal').modal('toggle');
+                    $('#newRelatedJokeModal .selected').html('');
+                    $('#newRelatedJokeModal .selected').attr('data-joke-code', '');
+                    $('#newRelatedJokeModal .selected').toggle();
+                    $('#episodejoke-' + ej_id + ' span.joke-connections-target').html(response);
+                }
+            });
+            return false;
+        });
+        $('#joke-list').on('click', 'a.kill-related', function(){
+            var data = {}
+            data['jc_id'] = $(this).attr('data-jc-id');
+            $.ajax('jokeconnection/' + data['jc_id'] + '/delete/', {
+                'async': true,
+                'cache': false,
+                'data': data,
+                'type': 'DELETE',
+                'success': function(response){
+                    console.log(response);
+                    var $deathElement = $('#jokeconnection-' + response);
+                    $deathElement.remove();
+                    make_alert('You have deleted a joke connection.', 'alert-danger');
                 }
             });
             return false;

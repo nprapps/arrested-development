@@ -5,13 +5,18 @@
             <a class="btn btn-success btn-small save" data-episodejoke-id="{{ ej.id }}"><i class="icon-ok icon-white"></i></a>
             <strong>{{ ej.joke.primary_character|safe }}</strong>
             {{ ej.joke.text|safe }}
+            <span class="joke-connections-target">
             {% if ej.connections() %}
             {% for connection in ej.connections() %}<br/>
+            <span id="jokeconnection-{{ connection.id }}">
+                <a href="#" class="related kill-related" data-jc-id="{{ connection.id }}">&times;</a>
                 <a class="related" href="#joke-{{ connection.joke_code }}">{{ connection.text }} &rarr;</a>
+            </span>
             {% endfor %}
             {% else %}
-                <a class="add-related" href="#">&plus;</a>
+            <a class="add-related" href="#" data-ej-id="{{ ej.id }}" >&plus;</a>
             {% endif %}
+            </span>
         </span>
         <span class="span7"><textarea>{% if ej.details %}{{ ej.details }}{% endif %}</textarea></span>
     </div>

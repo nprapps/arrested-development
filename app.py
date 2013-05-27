@@ -8,7 +8,7 @@ import envoy
 from flask import Flask, Markup, abort, render_template, redirect, Response
 
 import app_config
-from models import Joke, Episode, EpisodeJoke
+from models import Joke, Episode, EpisodeJoke, JokeConnection
 from render_utils import flatten_app_config, make_context
 
 app = Flask(app_config.PROJECT_NAME)
@@ -143,6 +143,14 @@ def index():
     return render_template('viz.html', **context)
 
 
+@app.route('/admin/episodes/<episode_code>/jokeconnection/<joke_connection_id>/delete/', methods=['DELETE'])
+def _admin_jokeconnection_delete(episode_code, joke_connection_id):
+    from flask import request
+    if request.method == 'DELETE':
+        JokeConnection.delete().where(JokeConnection.id == int(joke_connection_id)).execute()
+        return joke_connection_id
+
+
 @app.route('/admin/episodes/<episode_code>/episodejoke/<episode_joke_id>/delete/', methods=['DELETE'])
 def _admin_episodejokes_delete(episode_code, episode_joke_id):
     from flask import request
@@ -180,6 +188,30 @@ def _admin_episodejokes(episode_code):
         context['ej'] = EpisodeJoke(joke=joke, episode=episode, joke_type=joke_type, details=details, code=code)
         context['ej'].save()
         return render_template('_episodejoke_form_row.html', **context)
+
+
+@app.route('/admin/episodes/<episode_code>/jokeconnection/', methods=['PUT'])
+def _admin_jokeconnections(episode_code):
+    from flask import request
+
+    if request.method == 'POST':
+        pass
+
+    if request.method == 'PUT':
+        payload = {}
+
+        ej = EpisodeJoke.get(id=int(request.form.get('episode_joke_id')))
+        payload['joke1'] = ej.joke
+        payload['joke2'] = Joke.get(code=int(request.form.get('joke_code')))
+        payload['episode'] = ej.episode
+
+        j = JokeConnection(**payload)
+        j.save()
+
+        return("""
+            <br/>
+            <a class="related kill-connection" href="#">&times;</a>
+            <a class="related" href="#joke-%s">%s &rarr;</a>""" % (j.joke2.code, j.joke2.text))
 
 
 @app.route('/admin/episodes/')
