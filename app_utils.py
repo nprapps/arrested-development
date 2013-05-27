@@ -158,18 +158,6 @@ def parse_tvdb_xml(xmlfile):
                 Episode.update(**episode_dict).where(Episode.code == episode_dict['code']).execute()
             except Episode.DoesNotExist:
                 pass
-                ## Probably do not want to create new episodes
-                ## from the TVDB. Uses the spreadsheet instead.
-                # if app_config.IMPORT_NEW_SEASON is True:
-                #     if episode_dict['season'] == 4:
-                #         episode_dict['number'] = episode_dict['episode'] + 53
-                #         episode_dict['code'] = 's%se%s' % (
-                #             str(episode_dict['season']).zfill(2),
-                #             str(episode_dict['episode']).zfill(2))
-                #         episode_dict['title'] = episode.find('EpisodeName').text
-                #     Episode(**episode_dict).save()
-                # else:
-                #     pass
 
 
 def update_episode_extras():
@@ -263,13 +251,10 @@ def _parse_episodes(sheet):
 
     for row in output:
         try:
-            r = Episode.get(Episode.code == row['code'])
-            # print '* Episode: %s' % r.title
+            Episode.get(Episode.code == row['code'])
 
         except Episode.DoesNotExist:
-            r = Episode.create(**row)
-            r.save()
-            # print '+ Episode: %s' % r.title
+            Episode.create(**row).save()
 
 
 def _parse_jokes(sheet):
@@ -286,13 +271,10 @@ def _parse_jokes(sheet):
             except ValueError:
                 joke_dict[item] = row[item].decode('utf-8')
         try:
-            j = Joke.get(Joke.code == joke_dict['code'])
-            # print '* Joke: %s' % j.text
+            Joke.get(Joke.code == joke_dict['code'])
 
         except Joke.DoesNotExist:
-            j = Joke.create(**joke_dict)
-            j.save()
-            # print '+ Joke: %s' % j.text
+            Joke.create(**joke_dict).save()
 
 
 def _parse_episodejoke_details(sheet, sheet_num):
