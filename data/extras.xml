@@ -13,16 +13,16 @@
   <NetworkID></NetworkID>
   <Overview>Level-headed son Michael Bluth takes over family affairs after his father is imprisoned. But the rest of his spoiled, dysfunctional family are making his job unbearable.</Overview>
   <Rating>9.4</Rating>
-  <RatingCount>158</RatingCount>
+  <RatingCount>159</RatingCount>
   <Runtime>30</Runtime>
   <SeriesID>17005</SeriesID>
   <SeriesName>Arrested Development</SeriesName>
   <Status>Continuing</Status>
   <added></added>
   <addedBy></addedBy>
-  <banner>graphical/72173-g4.jpg</banner>
+  <banner>graphical/72173-g5.jpg</banner>
   <fanart>fanart/original/72173-15.jpg</fanart>
-  <lastupdated>1369585400</lastupdated>
+  <lastupdated>1369613495</lastupdated>
   <poster>posters/72173-6.jpg</poster>
   <zap2it_id>EP00598470</zap2it_id>
 </Series>
@@ -1962,8 +1962,8 @@
   <Language>en</Language>
   <Overview>To prove he's a man to Rita, Michael and his nephew Steve Holt compete in the Church And State Fair's annual triathlon. George Sr. tries to scare some at-risk youth, and Tobias tries to help George-Michael's girlfriend Ann to compete in the fairs' &quot;inner beauty&quot; pageant.</Overview>
   <ProductionCode>3AJD04</ProductionCode>
-  <Rating>8.0</Rating>
-  <RatingCount>36</RatingCount>
+  <Rating>7.9</Rating>
+  <RatingCount>37</RatingCount>
   <SeasonNumber>3</SeasonNumber>
   <Writer>Ron Weiner</Writer>
   <absolute_number></absolute_number>
@@ -2047,7 +2047,7 @@
   <Overview>The family plans their annual fund raiser, and they actually have a cause this time. Tobias is ailing due to his transplanted hair plugs, which appear to be rejecting him. Lindsay uses the illness as her ticket back into high society, and Michael learns of the prison warden's true intentions with his mother after reading the warden's screenplay.</Overview>
   <ProductionCode>3AJD07</ProductionCode>
   <Rating>7.9</Rating>
-  <RatingCount>38</RatingCount>
+  <RatingCount>39</RatingCount>
   <SeasonNumber>3</SeasonNumber>
   <Writer>|Karey Dornetto|</Writer>
   <absolute_number></absolute_number>
@@ -2225,6 +2225,34 @@
   <seriesid>72173</seriesid>
 </Episode>
 <Episode>
+  <id>4579004</id>
+  <Combined_episodenumber>0</Combined_episodenumber>
+  <Combined_season>4</Combined_season>
+  <DVD_chapter></DVD_chapter>
+  <DVD_discid></DVD_discid>
+  <DVD_episodenumber></DVD_episodenumber>
+  <DVD_season></DVD_season>
+  <Director></Director>
+  <EpImgFlag></EpImgFlag>
+  <EpisodeName>Arrested Development returns in Jun (Netflix only)</EpisodeName>
+  <EpisodeNumber>0</EpisodeNumber>
+  <FirstAired></FirstAired>
+  <GuestStars></GuestStars>
+  <IMDB_ID></IMDB_ID>
+  <Language>en</Language>
+  <Overview>Arrested Development returns in Jun (Netflix only)</Overview>
+  <ProductionCode></ProductionCode>
+  <Rating></Rating>
+  <RatingCount>0</RatingCount>
+  <SeasonNumber>4</SeasonNumber>
+  <Writer></Writer>
+  <absolute_number></absolute_number>
+  <filename></filename>
+  <lastupdated>1369606112</lastupdated>
+  <seasonid>500127</seasonid>
+  <seriesid>72173</seriesid>
+</Episode>
+<Episode>
   <id>4392165</id>
   <Combined_episodenumber>1</Combined_episodenumber>
   <Combined_season>4</Combined_season>
@@ -2233,22 +2261,22 @@
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
   <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Flight of the Phoenix</EpisodeName>
   <EpisodeNumber>1</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
   <GuestStars></GuestStars>
   <IMDB_ID></IMDB_ID>
   <Language>en</Language>
-  <Overview>Michael says goodbye to the family business and starts his own. The life of the Bluth family is turned upside down when their mailman Pete dies.</Overview>
+  <Overview>Michael says goodbye to the family business and starts his own. And the life of the family is turned upside down when their mailman Pete dies.</Overview>
   <ProductionCode>4AJD01</ProductionCode>
   <Rating>8.0</Rating>
-  <RatingCount>1</RatingCount>
+  <RatingCount>2</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer></Writer>
   <absolute_number>54</absolute_number>
-  <filename></filename>
-  <lastupdated>1369578919</lastupdated>
+  <filename>episodes/72173/4392165.jpg</filename>
+  <lastupdated>1369602930</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2261,7 +2289,7 @@
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
   <Director></Director>
-  <EpImgFlag></EpImgFlag>
+  <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Borderline Personalities</EpisodeName>
   <EpisodeNumber>2</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
@@ -2271,12 +2299,12 @@
   <Overview>George Sr. comes up with a get rich quick scam after his family falls apart.</Overview>
   <ProductionCode>4AJD02</ProductionCode>
   <Rating>7.0</Rating>
-  <RatingCount>1</RatingCount>
+  <RatingCount>2</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer></Writer>
   <absolute_number>55</absolute_number>
-  <filename></filename>
-  <lastupdated>1369578997</lastupdated>
+  <filename>episodes/72173/4460000.jpg</filename>
+  <lastupdated>1369602973</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2298,8 +2326,8 @@
   <Language>en</Language>
   <Overview>Lindsay tries to reclaim her sense of self while traveling and getting back to her political activist roots.</Overview>
   <ProductionCode>4AJD03</ProductionCode>
-  <Rating>8.0</Rating>
-  <RatingCount>1</RatingCount>
+  <Rating>7.5</Rating>
+  <RatingCount>2</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer></Writer>
   <absolute_number>56</absolute_number>
@@ -2326,8 +2354,8 @@
   <Language>en</Language>
   <Overview>Michael is presented with a new business opportunity that could change his life, but nfortunately, he needs his family to sign off.</Overview>
   <ProductionCode>4AJD04</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>7.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer></Writer>
   <absolute_number>57</absolute_number>
@@ -2612,7 +2640,7 @@
   <Writer></Writer>
   <absolute_number>67</absolute_number>
   <filename></filename>
-  <lastupdated>1369579468</lastupdated>
+  <lastupdated>1369605974</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2640,7 +2668,7 @@
   <Writer></Writer>
   <absolute_number></absolute_number>
   <filename></filename>
-  <lastupdated>1369579488</lastupdated>
+  <lastupdated>1369605996</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>

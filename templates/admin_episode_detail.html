@@ -206,7 +206,7 @@
             });
             return false;
         });
-        $('#joke-list textarea, #episode textarea').on('change', function(){
+        $('body').on('change', 'textarea', function(){
             $(this).addClass('unsaved');
         });
     </script>
