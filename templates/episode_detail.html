@@ -73,7 +73,7 @@
 
         <li class="joke {{ ej.formatted_type() }}">
             <h3>
-                <a href="joke-{{ ej.joke.code }}.html">
+                <a href="joke-{{ ej.joke.code }}.html" id="joke-{{ ej.joke.code }}">
                     {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
                 </a>
             </h3>

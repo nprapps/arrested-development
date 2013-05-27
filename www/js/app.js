@@ -304,7 +304,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 dehighlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
             }
         ).click(function() {
-            window.open('episode-' + $(this).data('episode') + '.html','_self');
+            window.open('episode-' + $(this).data('episode') + '.html#joke-' + $(this).data('joke'),'_self');
         });
 
         $('.joke-line, .joke-label').hover(
