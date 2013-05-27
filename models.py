@@ -113,9 +113,13 @@ class EpisodeJoke(Model):
                     'url': 'joke-%s.html' % related.code,
                     'text': related.text,
                     'primary_character': related.primary_character,
-                    'joke_code': related.code
+                    'joke_code': related.code,
+                    'id': joke['id']
                 })
-        return output
+        if len(output) > 0:
+            return output
+        else:
+            return None
 
 
 class JokeConnection(Model):

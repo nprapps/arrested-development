@@ -1,0 +1,23 @@
+{% extends '_admin_base.html' %}
+
+{% block content %}
+<style type="text/css">
+    .output textarea { overflow:hidden; border:none; background:#eee; }
+</style>
+<div class="row-fluid output">
+    <div class="span6">
+        <h1>joke main</h1>
+        <textarea>{{ joke_main }}</textarea>
+    </div>
+    <div class="span6">
+        <h1>joke details</h1>
+        <textarea>{{ joke_details }}</textarea>
+    </div>
+</div>
+<div class="row-fluid output">
+    <div class="span6">
+        <h1>joke connection</h1>
+        <textarea>{{ joke_connections }}</textarea>
+    </div>
+</div>
+{% endblock %}

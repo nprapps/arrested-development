@@ -37,7 +37,16 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
         height = 5000;
         $viz.height(height + 'px');
         LABEL_WIDTH = Math.round(width * .4);
+        DOT_RADIUS = 2;
         LINE_INTERVAL = 30;
+        OFFSET_X_RIGHT = DOT_RADIUS;
+        OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
+    } else {
+        IS_MOBILE = false;
+        DOT_RADIUS = 5;
+        LABEL_WIDTH = 200;
+        LINE_INTERVAL = 18;
+        OFFSET_X_RIGHT = DOT_RADIUS;
         OFFSET_X_LEFT = OFFSET_X_RIGHT + LABEL_WIDTH;
     }
 
@@ -65,9 +74,9 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
             var episodejokes = joke['episodejokes'];
             var first_episode_number = episodejokes[0]['episode_number'];
-            var last_episode_number = EPISODE_COUNT + 1; // +1 to make sure it goes off the side
+            var last_episode_number = episodejokes[episodejokes.length-1]['episode_number'] + 1; // +1 to make sure it goes off the side
 
-            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT - DOT_RADIUS) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT) + ',' + line_y;
+            var path = 'M' + (dot_interval * first_episode_number + OFFSET_X_LEFT) + "," + line_y + 'L' + (dot_interval * last_episode_number + OFFSET_X_LEFT - OFFSET_X_RIGHT - DOT_RADIUS) + ',' + line_y;
 
             if (!IS_IE8) {
                 var line = paper.path(path)
@@ -95,7 +104,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
             // add header if applicable
             if (i == 0 || (joke['primary_character'] != jokes[i-1]['primary_character'])) {
-                joke_headers += '<h4 id="' + group.replace(' ', '-') + '"class="joke-group-header" style="width: ' + LABEL_WIDTH + 'px; top: ' + line_y + 'px">' + joke['primary_character'] + '</h4>';
+                joke_headers += '<h4 id="' + group.replace(' ', '-').replace(/\./g, '') + '"class="joke-group-header" style="width: ' + LABEL_WIDTH + 'px; top: ' + line_y + 'px">' + joke['primary_character'] + '</h4>';
             }
 
             line_y += LINE_INTERVAL;
@@ -108,7 +117,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
     $viz.append(joke_labels);
     $viz.append(joke_headers);
 
-    height = line_y + OFFSET_Y - GROUP_INTERVAL
+    height = line_y + OFFSET_Y - GROUP_INTERVAL;
     $viz.height(height);
     $viz.find('#viz-labels').height(height);
 
@@ -217,7 +226,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
 
                     episode_number_to_jokes_map[episode_number].push(joke_code);
 
-                    var dot = paper.circle((episode_number * dot_interval) + OFFSET_X_LEFT, line_y, 5);
+                    var dot = paper.rect((episode_number * dot_interval) + OFFSET_X_LEFT - DOT_RADIUS / 2, line_y - 8, DOT_RADIUS, 16);
                     var dot_class = 'dot ' + 'joke-type-' + episodejoke['joke_type'];
 
                     dot.node.setAttribute('class', dot_class);
@@ -295,7 +304,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 dehighlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
             }
         ).click(function() {
-            window.open('episode-' + $(this).data('episode') + '.html','_self');
+            window.open('episode-' + $(this).data('episode') + '.html#joke-' + $(this).data('joke'),'_self');
         });
 
         $('.joke-line, .joke-label').hover(
@@ -404,6 +413,7 @@ function resize_viz() {
     if (new_width != WINDOW_WIDTH || INITIAL_LOAD == false) {
         var $viz = null;
         var joke_code = null;
+        WINDOW_WIDTH = new_width;
 
         // Joke detail page
         if ($body.hasClass('joke-detail')) {

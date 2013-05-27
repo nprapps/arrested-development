@@ -42,7 +42,7 @@
                     {% endif %}
                 </p>
             </nav>
-            <p class="detail-count"><span class="count">{{ joke_count }}</span> recurring jokes in this episode:</p>
+            <p class="detail-count"><span class="count">{{ joke_count }}</span> recurring jokes in this episode <span class="comments-prompt">(<a href="#comments-header">What did we miss?</a>)</span></p>
         </div>
 
         {# 300x250 ad #}
@@ -73,7 +73,7 @@
 
         <li class="joke {{ ej.formatted_type() }}">
             <h3>
-                <a href="joke-{{ ej.joke.code }}.html">
+                <a href="joke-{{ ej.joke.code }}.html" id="joke-{{ ej.joke.code }}">
                     {{ ej.joke.text.strip() }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}
                 </a>
             </h3>
@@ -82,7 +82,7 @@
                     {{ ej.details.replace("/", "</p><p class='extra details'>")|safe }}
                 </p>
             {% endif %}
-            {% if ej.connections() != [] %}{% for joke in ej.connections() %}
+            {% if ej.connections() %}{% for joke in ej.connections() %}
                 <p class="extra connection {{ ej.formatted_type() }}">
                     <strong>Related Joke:</strong> <a href="{{ joke.url }}">{{ joke.text }} {% if ej.formatted_type() != 'standard' %}({{ ej.formatted_type() }}){% endif %}</a>
                 </p>

@@ -5,10 +5,10 @@ from mimetypes import guess_type
 import urllib
 
 import envoy
-from flask import Flask, Markup, abort, render_template
+from flask import Flask, Markup, abort, render_template, redirect, Response
 
 import app_config
-from models import Joke, Episode, EpisodeJoke
+from models import Joke, Episode, EpisodeJoke, JokeConnection
 from render_utils import flatten_app_config, make_context
 
 app = Flask(app_config.PROJECT_NAME)
@@ -145,32 +145,12 @@ def index():
     return render_template('viz.html', **context)
 
 
-@app.route('/admin/episodes/<episode_code>/', methods=['GET', 'PUT'])
-def _admin_episodes(episode_code):
+@app.route('/admin/episodes/<episode_code>/jokeconnection/<joke_connection_id>/delete/', methods=['DELETE'])
+def _admin_jokeconnection_delete(episode_code, joke_connection_id):
     from flask import request
-    if request.method == 'GET':
-        context = {}
-        context['episode'] = Episode.get(code=episode_code)
-        context['episodejokes'] = EpisodeJoke.select().join(Episode).where(Episode.code == episode_code)
-        context['jokes'] = Joke.select()
-        context['seasons'] = _all_seasons()
-
-        try:
-            context['next'] = Episode.get(number=context['episode'].number + 1)
-        except Episode.DoesNotExist:
-            context['next'] = None
-        try:
-            context['prev'] = Episode.get(number=context['episode'].number - 1)
-        except Episode.DoesNotExist:
-            context['prev'] = None
-
-        return render_template('admin_episode_detail.html', **context)
-
-    if request.method == 'PUT':
-        e = Episode.get(code=episode_code)
-        e.blurb = request.form.get('blurb', None)
-        e.save()
-        return '%s' % e.id
+    if request.method == 'DELETE':
+        JokeConnection.delete().where(JokeConnection.id == int(joke_connection_id)).execute()
+        return joke_connection_id
 
 
 @app.route('/admin/episodes/<episode_code>/episodejoke/<episode_joke_id>/delete/', methods=['DELETE'])
@@ -179,6 +159,7 @@ def _admin_episodejokes_delete(episode_code, episode_joke_id):
     if request.method == 'DELETE':
         EpisodeJoke.delete().where(EpisodeJoke.id == int(episode_joke_id)).execute()
         return episode_joke_id
+
 
 @app.route('/admin/episodes/<episode_code>/episodejoke/', methods=['PUT', 'POST'])
 def _admin_episodejokes(episode_code):
@@ -209,6 +190,90 @@ def _admin_episodejokes(episode_code):
         context['ej'] = EpisodeJoke(joke=joke, episode=episode, joke_type=joke_type, details=details, code=code)
         context['ej'].save()
         return render_template('_episodejoke_form_row.html', **context)
+
+
+@app.route('/admin/episodes/<episode_code>/jokeconnection/', methods=['PUT'])
+def _admin_jokeconnections(episode_code):
+    from flask import request
+
+    if request.method == 'POST':
+        pass
+
+    if request.method == 'PUT':
+        payload = {}
+
+        ej = EpisodeJoke.get(id=int(request.form.get('episode_joke_id')))
+        payload['joke1'] = ej.joke
+        payload['joke2'] = Joke.get(code=int(request.form.get('joke_code')))
+        payload['episode'] = ej.episode
+
+        j = JokeConnection(**payload)
+        j.save()
+
+        return("""
+            <br/>
+            <a class="related kill-connection" href="#">&times;</a>
+            <a class="related" href="#joke-%s">%s &rarr;</a>""" % (j.joke2.code, j.joke2.text))
+
+
+@app.route('/admin/episodes/')
+def _admin_episodes_nocode():
+    return redirect('/admin/episodes/s04e01/')
+
+
+@app.route('/admin/episodes/<episode_code>/', methods=['GET', 'PUT'])
+def _admin_episodes(episode_code):
+    from flask import request
+
+    if request.method == 'GET':
+        context = {}
+        context['episode'] = Episode.get(code=episode_code)
+        context['episodejokes'] = EpisodeJoke.select().join(Episode).where(Episode.code == episode_code)
+        context['jokes'] = Joke.select().order_by(Joke.primary_character)
+        context['seasons'] = _all_seasons()
+
+        try:
+            context['next'] = Episode.get(number=context['episode'].number + 1)
+        except Episode.DoesNotExist:
+            context['next'] = None
+        try:
+            context['prev'] = Episode.get(number=context['episode'].number - 1)
+        except Episode.DoesNotExist:
+            context['prev'] = None
+
+        return render_template('admin_episode_detail.html', **context)
+
+    if request.method == 'PUT':
+        e = Episode.get(code=episode_code)
+        e.blurb = request.form.get('blurb', None)
+        e.save()
+        return '%s' % e.id
+
+
+@app.route('/admin/output/')
+def _admin_output():
+        output = {}
+        output['joke_main'] = ''
+        output['joke_details'] = ''
+        output['joke_connections'] = ''
+        for joke in Joke.select():
+            for episode in Episode.select().where(Episode.season == 4).order_by(Episode.number):
+                try:
+                    ej = EpisodeJoke.get(episode=episode, joke=joke)
+                    output['joke_main'] += '%s\t' % ej.joke_type
+                    output['joke_details'] += '%s\t' % ej.details
+                    if ej.connections():
+                        output['joke_connections'] += '%s\t' % ej.connections()[0]['text']
+                    else:
+                        output['joke_connections'] += '\t'
+                except EpisodeJoke.DoesNotExist:
+                    output['joke_main'] += '\t'
+                    output['joke_details'] += '\t'
+                    output['joke_connections'] += '\t'
+            output['joke_main'] += '\n'
+            output['joke_details'] += '\n'
+            output['joke_connections'] += '\n'
+        return render_template('_output.html', **output)
 
 
 # Render LESS files on-demand

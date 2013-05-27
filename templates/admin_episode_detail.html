@@ -2,7 +2,7 @@
 
 {% block title %}
     {% if prev %}<a href="/admin/episodes/{{ prev.code }}/">&larr;</a>{% endif %}
-    <a target="_blank" href="https://docs.google.com/spreadsheet/ccc?key=0Akb_aqtU8lsGdGhIRXhsT24taTlXNGI4YndnS1c4eEE#gid=1">{{ episode.title }}</a>
+    {{ episode.title }}
     {% if next %}<a href="/admin/episodes/{{ next.code }}/">&rarr; </a>{% endif %}
 {% endblock %}
 
@@ -19,8 +19,7 @@
         </div>
     </div>
 
-    <h4>Jokes <a href="#newEpisodeJokeModal" role="button" class="show-form" data-toggle="modal">&plus;</a>
-</h4>
+    <h4>Jokes <a href="#newEpisodeJokeModal" role="button" class="show-form" data-toggle="modal">&plus;</a></h4>
     <div id="joke-list">
         {% for ej in episodejokes %}
             {% include '_episodejoke_form_row.html' %}
@@ -35,10 +34,10 @@
         <div class="modal-body">
             <div id="episodejoke" class="clearfix">
                 <div class="row-fluid">
-                    <p class="span12"><label>Joke</label>
-                        <input class="typeahead-episode" type="text" data-provide="typeahead" data-items="10"></input>
-                        <p class"selected" style="display:none;"></p>
-                    </p>
+                    <div class="span12"><label>Joke</label>
+                        <input class="typeahead-episode" type="text" data-provide="typeahead" data-items="6"></input>
+                        <p class="selected" style="display:none;">&nbsp;</p>
+                    </div>
                 </div>
                 <div class="row-fluid">
                     <p class="span12"><label>Type</label>
@@ -66,10 +65,10 @@
         <div class="modal-body">
             <div id="related-joke" class="clearfix">
                 <div class="row-fluid">
-                    <p class="span12"><label>Joke</label>
-                        <input class="typeahead-related" type="text" data-provide="typeahead" data-items="10"></input>
-                        <p class="selected" style="display:none;"></p>
-                    </p>
+                    <div class="span12"><label>Joke</label>
+                        <input class="typeahead-related" type="text" data-provide="typeahead" data-items="6"></input>
+                        <p class="selected" style="display:none;">&nbsp;</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,6 +80,8 @@
 
 {% block scripts %}
     <script type="text/javascript">
+        var ej_id = null;
+
         function make_alert(text, klass){
             var alert_template = _.template('<div class="alert <%= klass %>"><%= text %></div>')
             $('#alerts').html('');
@@ -103,31 +104,38 @@
             $('.typeahead-related').typeahead({
                 'source': [{% for joke in jokes %}"{{ joke.code }}: {{ joke.primary_character}} {{ joke.text }}<br/>{{ joke.blurb }}",{% endfor %}],
                 'updater': function(item){
-                    $('.selected').attr('data-joke-code', item.split(':')[0]);
-                    $('.selected').html('<a id="kill-new-ej" class="btn btn-danger btn-small delete"><i class="icon-remove icon-white"></i></a> ' + item);
-                    $('#episodejoke input.typeahead').toggle();
-                    $('.selected').toggle();
+                    $('#newRelatedJokeModal .selected').attr('data-joke-code', item.split(':')[0]);
+                    $('#newRelatedJokeModal .selected').html('<a class="kill new-ej-rel btn btn-danger btn-small delete"><i class="icon-remove icon-white"></i></a> ' + item);
+                    $('.typeahead-related').toggle();
+                    $('#newRelatedJokeModal .selected').toggle();
                 }
             });
             $('#newRelatedJokeModal').modal();
+            ej_id = $(this).attr('data-ej-id');
             return false;
         });
         $('a.show-form').on('click', function(){
             $('.typeahead-episode').typeahead({
                 'source': [{% for joke in jokes %}"{{ joke.code }}: {{ joke.primary_character}} {{ joke.text }}<br/>{{ joke.blurb }}",{% endfor %}],
                 'updater': function(item){
-                    $('.selected').attr('data-joke-code', item.split(':')[0]);
-                    $('.selected').html('<a id="kill-new-ej" class="btn btn-danger btn-small delete"><i class="icon-remove icon-white"></i></a> ' + item);
-                    $('#episodejoke input.typeahead').toggle();
-                    $('.selected').toggle();
+                    $('#episodejoke .selected').attr('data-joke-code', item.split(':')[0]);
+                    $('#episodejoke .selected').html('<a class="kill new-ej btn btn-danger btn-small delete"><i class="icon-remove icon-white"></i></a> ' + item);
+                    console.log($('#episodejoke .selected'));
+                    $('.typeahead-episode').toggle();
+                    $('#episodejoke .selected').toggle();
                 }
             });
             $('#newEpisodeJokeModal').modal();
             return false;
         });
-        $('#episodejoke').on('click', 'a#kill-new-ej', function(){
-            $('#episodejoke input.typeahead').toggle();
-            $('.selected').toggle();
+        $('#episodejoke').on('click', 'a.new-ej', function(){
+            $('.typeahead-episode').toggle();
+            $('#episodejoke .selected').toggle();
+            return false;
+        });
+        $('#episodejoke').on('click', 'a.new-ej-rel', function(){
+            $('.typeahead-related').toggle();
+            $('#related-joke .selected').toggle();
             return false;
         });
         $('#episode a.save').on('click', function(){
@@ -148,7 +156,7 @@
         });
         $('#newEpisodeJokeModal a.save').on('click', function(){
             var data = {}
-            data['joke_code'] = $('.selected').attr('data-joke-code');
+            data['joke_code'] = $('#newEpisodeJokeModal .selected').attr('data-joke-code');
             data['details'] = $('#episodejoke textarea').val();
             data['type'] = $('#episodejoke option:selected').attr('value');
 
@@ -159,13 +167,51 @@
                 'type': 'PUT',
                 'success': function(response){
                     $('#newEpisodeJokeModal').modal('toggle');
-                    $('.selected').html('');
-                    $('.selected').attr('data-joke-code', '');
-                    $('.selected').toggle();
+                    $('#newEpisodeJokeModal .selected').html('');
+                    $('#newEpisodeJokeModal .selected').attr('data-joke-code', '');
+                    $('#newEpisodeJokeModal .selected').toggle();
                     $('#episodejoke textarea').val('');
                     $('#episodejoke option:selected').removeAttr('selected');
-                    $('#episodejoke input.typeahead').toggle();
+                    $('#episodejoke .typeahead-episode').toggle();
                     $('#joke-list').append(response);
+                }
+            });
+            return false;
+        });
+        $('#newRelatedJokeModal a.save').on('click', function(){
+            var data = {}
+            data['joke_code'] = $('#newRelatedJokeModal .selected').attr('data-joke-code');
+            data['episode_joke_id'] = ej_id;
+            $.ajax('jokeconnection/', {
+                'async': true,
+                'cache': false,
+                'data': data,
+                'type': 'PUT',
+                'success': function(response){
+                    console.log('response');
+                    $('#newRelatedJokeModal').modal('toggle');
+                    $('#newRelatedJokeModal .selected').html('');
+                    $('#newRelatedJokeModal .selected').attr('data-joke-code', '');
+                    $('#newRelatedJokeModal .selected').toggle();
+                    $('.typeahead-related').toggle();
+                    $('#episodejoke-' + ej_id + ' span.joke-connections-target').html(response);
+                }
+            });
+            return false;
+        });
+        $('#joke-list').on('click', 'a.kill-related', function(){
+            var data = {}
+            data['jc_id'] = $(this).attr('data-jc-id');
+            $.ajax('jokeconnection/' + data['jc_id'] + '/delete/', {
+                'async': true,
+                'cache': false,
+                'data': data,
+                'type': 'DELETE',
+                'success': function(response){
+                    console.log(response);
+                    var $deathElement = $('#jokeconnection-' + response);
+                    $deathElement.remove();
+                    make_alert('You have deleted a joke connection.', 'alert-danger');
                 }
             });
             return false;
@@ -201,7 +247,7 @@
             });
             return false;
         });
-        $('#joke-list textarea, #episode textarea').on('change', function(){
+        $('body').on('change', 'textarea', function(){
             $(this).addClass('unsaved');
         });
     </script>
