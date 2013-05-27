@@ -67,7 +67,7 @@ PRIMARY_CHARACTER_LIST = [
     'Miscellaneous'
 ]
 
-IMPORT_NEW_SEASON = False
+IMPORT_NEW_SEASON = True
 
 """
 SHARING
