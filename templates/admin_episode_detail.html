@@ -193,6 +193,7 @@
                     $('#newRelatedJokeModal .selected').html('');
                     $('#newRelatedJokeModal .selected').attr('data-joke-code', '');
                     $('#newRelatedJokeModal .selected').toggle();
+                    $('.typeahead-related').toggle();
                     $('#episodejoke-' + ej_id + ' span.joke-connections-target').html(response);
                 }
             });
