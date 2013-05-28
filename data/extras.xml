@@ -2,14 +2,14 @@
 <Data><Series>
   <id>72173</id>
   <Actors>|Jason Bateman|Jeffrey Tambor|Michael Cera|Jessica Walter|David Cross|Tony Hale|Alia Shawkat|Will Arnett|Portia de Rossi|</Actors>
-  <Airs_DayOfWeek>Monday</Airs_DayOfWeek>
-  <Airs_Time>8:00 PM</Airs_Time>
+  <Airs_DayOfWeek></Airs_DayOfWeek>
+  <Airs_Time></Airs_Time>
   <ContentRating>TV-14</ContentRating>
   <FirstAired>2003-11-01</FirstAired>
   <Genre>|Comedy|</Genre>
   <IMDB_ID>tt0367279</IMDB_ID>
   <Language>en</Language>
-  <Network>FOX</Network>
+  <Network>Netflix</Network>
   <NetworkID></NetworkID>
   <Overview>Level-headed son Michael Bluth takes over family affairs after his father is imprisoned. But the rest of his spoiled, dysfunctional family are making his job unbearable.</Overview>
   <Rating>9.5</Rating>
@@ -22,7 +22,7 @@
   <addedBy></addedBy>
   <banner>graphical/72173-g5.jpg</banner>
   <fanart>fanart/original/72173-15.jpg</fanart>
-  <lastupdated>1369657497</lastupdated>
+  <lastupdated>1369770015</lastupdated>
   <poster>posters/72173-6.jpg</poster>
   <zap2it_id>EP00598470</zap2it_id>
 </Series>
@@ -759,7 +759,7 @@
 </Overview>
   <ProductionCode>1AJD79</ProductionCode>
   <Rating>8.0</Rating>
-  <RatingCount>82</RatingCount>
+  <RatingCount>83</RatingCount>
   <SeasonNumber>1</SeasonNumber>
   <Writer>|Mitchell Hurwitz|</Writer>
   <absolute_number></absolute_number>
@@ -787,7 +787,7 @@
   <Overview>Michael puts George Michael in charge of the Bluth Bannana Stand, and his son subsequently burns down the stand. Elsewhere, Tobias auditions for a commercial, and Lindsay inadvertantly gets the part.</Overview>
   <ProductionCode>1AJD01</ProductionCode>
   <Rating>8.0</Rating>
-  <RatingCount>67</RatingCount>
+  <RatingCount>68</RatingCount>
   <SeasonNumber>1</SeasonNumber>
   <Writer>|John Levenstein|Mitchell Hurwitz|</Writer>
   <absolute_number></absolute_number>
@@ -1095,7 +1095,7 @@
   <Overview>After learning that Marta has feelings for him, Michael goes to her and they decide to get permission from Gob before taking things to the next level. Meanwhile, Lindsay and Tobias finally get to the heart of his &quot;never-nude&quot; problem and George Sr. faces his first hearing.</Overview>
   <ProductionCode>1AJD12</ProductionCode>
   <Rating>8.1</Rating>
-  <RatingCount>47</RatingCount>
+  <RatingCount>48</RatingCount>
   <SeasonNumber>1</SeasonNumber>
   <Writer>|Chuck Martin|Richard Rosenstock|</Writer>
   <absolute_number></absolute_number>
@@ -1123,7 +1123,7 @@
   <Overview>Michael falls for his George Michael's ethics teacher, whom his son also has a crush on. Meanwhile, Lucille adopts a 14-year old Korean boy, and George Sr.'s &quot;Caged Wisdom&quot; tapes have given him a new admirer.</Overview>
   <ProductionCode>1AJD13</ProductionCode>
   <Rating>8.0</Rating>
-  <RatingCount>49</RatingCount>
+  <RatingCount>50</RatingCount>
   <SeasonNumber>1</SeasonNumber>
   <Writer>|Jim Vallely|Chuck Martin|</Writer>
   <absolute_number></absolute_number>
@@ -1626,8 +1626,8 @@
   <Language>en</Language>
   <Overview>With the company in dire financial straits and the Bluths no longer the primary shareholders, Michael must turn to old family friend &quot;Uncle&quot; Jack Dorso for financial assistance. Uncle Jack, however, wants something in return.</Overview>
   <ProductionCode>2AJD10</ProductionCode>
-  <Rating>7.7</Rating>
-  <RatingCount>40</RatingCount>
+  <Rating>7.8</Rating>
+  <RatingCount>41</RatingCount>
   <SeasonNumber>2</SeasonNumber>
   <Writer>|Lisa Parsons|Chuck Martin|</Writer>
   <absolute_number></absolute_number>
@@ -2232,23 +2232,23 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <Director>Mitchell Hurwitz|Troy Miller|</Director>
   <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Flight of the Phoenix</EpisodeName>
   <EpisodeNumber>1</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
-  <GuestStars></GuestStars>
-  <IMDB_ID></IMDB_ID>
+  <GuestStars>Kristen Wiig|Seth Rogen|Richard Jin Namkung|Adam DeVine|Anders Holm|Blake Anderson|</GuestStars>
+  <IMDB_ID>tt2128813</IMDB_ID>
   <Language>en</Language>
   <Overview>Michael says goodbye to the family business and starts his own. And the life of the family is turned upside down when their mail man Pete dies.</Overview>
   <ProductionCode>4AJD01</ProductionCode>
-  <Rating>8.2</Rating>
-  <RatingCount>5</RatingCount>
+  <Rating>7.9</Rating>
+  <RatingCount>11</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Mitchell Hurwitz</Writer>
   <absolute_number>54</absolute_number>
   <filename>episodes/72173/4392165.jpg</filename>
-  <lastupdated>1369636580</lastupdated>
+  <lastupdated>1369697223</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2265,18 +2265,18 @@
   <EpisodeName>Borderline Personalities</EpisodeName>
   <EpisodeNumber>2</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
-  <GuestStars></GuestStars>
-  <IMDB_ID></IMDB_ID>
+  <GuestStars>Kristen Wiig|Seth Rogen|John Beard|Ed Begley Jr.|John Slattery</GuestStars>
+  <IMDB_ID>tt2128815</IMDB_ID>
   <Language>en</Language>
   <Overview>George Sr. comes up with a get rich quick scam after his family falls apart.</Overview>
   <ProductionCode>4AJD02</ProductionCode>
-  <Rating>7.8</Rating>
-  <RatingCount>4</RatingCount>
+  <Rating>7.6</Rating>
+  <RatingCount>9</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Jim Vallely|Richard Rosenstock</Writer>
   <absolute_number>55</absolute_number>
   <filename>episodes/72173/4460000.jpg</filename>
-  <lastupdated>1369638439</lastupdated>
+  <lastupdated>1369697337</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2288,23 +2288,23 @@
   <DVD_discid></DVD_discid>
   <DVD_episodenumber></DVD_episodenumber>
   <DVD_season></DVD_season>
-  <Director>Mitchell Hurwitz|Troy Miller</Director>
+  <Director>Mitchell Hurwitz|Troy Miller|</Director>
   <EpImgFlag>2</EpImgFlag>
   <EpisodeName>Indian Takers</EpisodeName>
   <EpisodeNumber>3</EpisodeNumber>
   <FirstAired>2013-05-26</FirstAired>
-  <GuestStars></GuestStars>
-  <IMDB_ID></IMDB_ID>
+  <GuestStars>Ed Helms|</GuestStars>
+  <IMDB_ID>tt2128816</IMDB_ID>
   <Language>en</Language>
   <Overview>Lindsay tries to reclaim her sense of self while traveling and getting back to her political activist roots.</Overview>
   <ProductionCode>4AJD03</ProductionCode>
-  <Rating>7.5</Rating>
-  <RatingCount>2</RatingCount>
+  <Rating>8.2</Rating>
+  <RatingCount>6</RatingCount>
   <SeasonNumber>4</SeasonNumber>
-  <Writer>Caroline Williams|Dean Lorey</Writer>
+  <Writer>Caroline Williams|Dean Lorey|</Writer>
   <absolute_number>56</absolute_number>
   <filename>episodes/72173/4460002.jpg</filename>
-  <lastupdated>1369638592</lastupdated>
+  <lastupdated>1369701121</lastupdated>
   <seasonid>500127</seasonid>
   <seriesid>72173</seriesid>
 </Episode>
@@ -2326,8 +2326,8 @@
   <Language>en</Language>
   <Overview>Michael is presented with a new business opportunity that could change his life, but unfortunately, he needs his family to sign off.</Overview>
   <ProductionCode>4AJD04</ProductionCode>
-  <Rating>7.0</Rating>
-  <RatingCount>1</RatingCount>
+  <Rating>8.0</Rating>
+  <RatingCount>4</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Jim Vallely|Mitchell Hurwitz</Writer>
   <absolute_number>57</absolute_number>
@@ -2354,8 +2354,8 @@
   <Language>en</Language>
   <Overview>Tobias searches for meaning after splitting with Lindsay, only to find that old habits die hard.</Overview>
   <ProductionCode>4AJD05</ProductionCode>
-  <Rating>7.0</Rating>
-  <RatingCount>1</RatingCount>
+  <Rating>8.3</Rating>
+  <RatingCount>4</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Jim Vallely|Dean Lorey</Writer>
   <absolute_number>58</absolute_number>
@@ -2382,8 +2382,8 @@
   <Language>en</Language>
   <Overview>George Sr.'s new business hits a rough patch, and he must bribe a politician to get his scam back on track.</Overview>
   <ProductionCode>4AJD06</ProductionCode>
-  <Rating>6.0</Rating>
-  <RatingCount>1</RatingCount>
+  <Rating>7.0</Rating>
+  <RatingCount>2</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Dean Lorey|Richard Rosenstock</Writer>
   <absolute_number>59</absolute_number>
@@ -2410,8 +2410,8 @@
   <Language>en</Language>
   <Overview>Gob finds a new group of friends after his relationship falls apart and his family abandons him.</Overview>
   <ProductionCode>4AJD07</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>8.0</Rating>
+  <RatingCount>2</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Jim Vallely|Mitchell Hurwitz</Writer>
   <absolute_number>60</absolute_number>
@@ -2438,8 +2438,8 @@
   <Language>en</Language>
   <Overview>Lindsay continues to push away from being a Bluth by embracing a relationship and finding a new career.</Overview>
   <ProductionCode>4AJD08</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>8.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Caroline Williams|Richard Rosenstock</Writer>
   <absolute_number>61</absolute_number>
@@ -2466,8 +2466,8 @@
   <Language>en</Language>
   <Overview>Tobias returns to his roots and reunites with his leading lady after a rough few weeks.</Overview>
   <ProductionCode>4AJD09</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>8.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Dean Lorey|Richard Rosenstock</Writer>
   <absolute_number>62</absolute_number>
@@ -2494,8 +2494,8 @@
   <Language>en</Language>
   <Overview>Lucille finds that her children have started dividing up her things, and adjusts to her new home.</Overview>
   <ProductionCode>4AJD10</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>8.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Dean Lorey|Richard Rosenstock</Writer>
   <absolute_number>63</absolute_number>
@@ -2522,8 +2522,8 @@
   <Language>en</Language>
   <Overview>Gob accepts a job from his brother, but is distracted by a scheme of his own.</Overview>
   <ProductionCode>4AJD11</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>8.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Jim Vallely|Mitchell Hurwitz</Writer>
   <absolute_number>64</absolute_number>
@@ -2550,8 +2550,8 @@
   <Language>en</Language>
   <Overview>Maeby moves out on her own and reconnects with her cousin George-Michael.</Overview>
   <ProductionCode>4AJD12</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>8.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Jim Brandon|Brian Singleton</Writer>
   <absolute_number>65</absolute_number>
@@ -2578,8 +2578,8 @@
   <Language>en</Language>
   <Overview>At UC Irvine things get steamy when George-Michael finds himself in a love triangle with his best friend Ray and his girlfriend Becky.</Overview>
   <ProductionCode>4AJD13</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>8.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Dean Lorey|Richard Rosenstock</Writer>
   <absolute_number>66</absolute_number>
@@ -2606,8 +2606,8 @@
   <Language>en</Language>
   <Overview>Buster struggles to make it on his own and break away from his overbearing mother.</Overview>
   <ProductionCode>4AJD14</ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>8.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Jim Vallely|Mitchell Hurwitz</Writer>
   <absolute_number>67</absolute_number>
@@ -2634,8 +2634,8 @@
   <Language>en</Language>
   <Overview>George-Michael tries to reconnect with his father, but is finding himself overwhelmed by the responsibility of running his business.</Overview>
   <ProductionCode></ProductionCode>
-  <Rating></Rating>
-  <RatingCount>0</RatingCount>
+  <Rating>8.0</Rating>
+  <RatingCount>1</RatingCount>
   <SeasonNumber>4</SeasonNumber>
   <Writer>Jim Vallely|Mitchell Hurwitz</Writer>
   <absolute_number></absolute_number>
