@@ -210,8 +210,8 @@ def _admin_jokeconnections(episode_code):
 
         return("""
             <br/>
-            <a class="related kill-connection" href="#">&times;</a>
-            <a class="related" href="#joke-%s">%s &rarr;</a>""" % (j.joke2.code, j.joke2.text))
+            <a class="related kill-related" href="#" data-jc-id="%s">&times;</a>
+            <a class="related" href="#joke-%s">%s &rarr;</a>""" % (j.id, j.joke2.code, j.joke2.text))
 
 
 @app.route('/admin/episodes/')

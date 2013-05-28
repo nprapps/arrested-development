@@ -100,7 +100,7 @@
             }, 1000)
             $(targetId)
         })
-        $('a.add-related').on('click', function(){
+        $('#joke-list').on('click', 'a.add-related', function(){
             $('.typeahead-related').typeahead({
                 'source': [{% for joke in jokes %}"{{ joke.code }}: {{ joke.primary_character}} {{ joke.text }}<br/>{{ joke.blurb }}",{% endfor %}],
                 'updater': function(item){
@@ -120,7 +120,6 @@
                 'updater': function(item){
                     $('#episodejoke .selected').attr('data-joke-code', item.split(':')[0]);
                     $('#episodejoke .selected').html('<a class="kill new-ej btn btn-danger btn-small delete"><i class="icon-remove icon-white"></i></a> ' + item);
-                    console.log($('#episodejoke .selected'));
                     $('.typeahead-episode').toggle();
                     $('#episodejoke .selected').toggle();
                 }
@@ -188,19 +187,21 @@
                 'data': data,
                 'type': 'PUT',
                 'success': function(response){
-                    console.log('response');
+                    var jc_id = response.split('data-jc-id="')[1].split('"')[0];
                     $('#newRelatedJokeModal').modal('toggle');
                     $('#newRelatedJokeModal .selected').html('');
                     $('#newRelatedJokeModal .selected').attr('data-joke-code', '');
                     $('#newRelatedJokeModal .selected').toggle();
                     $('.typeahead-related').toggle();
                     $('#episodejoke-' + ej_id + ' span.joke-connections-target').html(response);
+                    $('#episodejoke-' + ej_id + ' span.joke-connections-target').attr('id', 'jokeconnection-' + jc_id);
                 }
             });
             return false;
         });
         $('#joke-list').on('click', 'a.kill-related', function(){
             var data = {}
+            var $this = $(this);
             data['jc_id'] = $(this).attr('data-jc-id');
             $.ajax('jokeconnection/' + data['jc_id'] + '/delete/', {
                 'async': true,
@@ -208,9 +209,10 @@
                 'data': data,
                 'type': 'DELETE',
                 'success': function(response){
-                    console.log(response);
+                    var ej_id = $this.parent('span').parent('span').parent('div').attr('id').split('episodejoke-')[1];
                     var $deathElement = $('#jokeconnection-' + response);
-                    $deathElement.remove();
+                    $deathElement.html('<a class="add-related" href="#" data-ej-id="' + ej_id + '" >&plus;</a>');
+                    $deathElement.removeAttr('id');
                     make_alert('You have deleted a joke connection.', 'alert-danger');
                 }
             });
