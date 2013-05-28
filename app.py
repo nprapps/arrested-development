@@ -259,9 +259,9 @@ def _admin_output():
                 try:
                     ej = EpisodeJoke.get(episode=episode, joke=joke)
                     output['joke_main'] += '%s\t' % ej.joke_type
-                    output['joke_details'] += '%s\t' % ej.details
+                    output['joke_details'] += '\'%s\t' % ej.details
                     if ej.connections():
-                        output['joke_connections'] += '%s\t' % ej.connections()[0]['text']
+                        output['joke_connections'] += '\'%s\t' % ej.connections()[0]['text']
                     else:
                         output['joke_connections'] += '\t'
                 except EpisodeJoke.DoesNotExist:
