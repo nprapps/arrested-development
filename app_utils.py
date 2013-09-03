@@ -284,8 +284,11 @@ def _parse_episodejoke_details(sheet, sheet_num):
     """
     FIELDS = [None, None, None, 'details', None, 'connection']
     field = FIELDS[int(sheet_num)]
+
+    episodes = list(Episode.select())
+
     for row in sheet:
-        for episode in Episode.select():
+        for episode in episodes:
             joke = Joke.get(Joke.code == row['code'])
             if episode.code == 's02e03':
                 episode.title = '\xc2\xa1Amigos!'
@@ -306,9 +309,10 @@ def _parse_episodejokes(sheet):
     Imports episodejokes.
     Will not update.
     """
+    episodes = list(Episode.select())
 
     for row in sheet:
-        for episode in Episode.select():
+        for episode in episodes:
             joke = Joke.get(Joke.code == row['code'])
             if episode.code == 's02e03':
                 episode.title = '\xc2\xa1Amigos!'
@@ -320,7 +324,7 @@ def _parse_episodejokes(sheet):
                 ej_dict['episode'] = episode
                 ej_dict['joke_type'] = row[episode.title]
                 ej_dict['code'] = '%sj%s' % (ej_dict['episode'].code, ej_dict['joke'].code)
-
+                    
                 try:
                     EpisodeJoke.get(EpisodeJoke.code == ej_dict['code'])
 
