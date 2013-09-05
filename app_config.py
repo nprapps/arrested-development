@@ -47,6 +47,7 @@ DEPLOY_SERVICES = False
 # These variables will be set at runtime. See configure_targets() below
 S3_BUCKETS = []
 SERVERS = []
+PROJECT_ROOT = '/'
 DEBUG = True
 
 """
@@ -131,15 +132,21 @@ def configure_targets(deployment_target):
     global S3_BUCKETS
     global SERVERS
     global DEBUG
+    global PROJECT_ROOT
 
     if deployment_target == 'production':
         S3_BUCKETS = PRODUCTION_S3_BUCKETS
         SERVERS = PRODUCTION_SERVERS
         DEBUG = False
-    else:
+        PROJECT_ROOT = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
+    elif deployment_target == 'staging':
         S3_BUCKETS = STAGING_S3_BUCKETS
         SERVERS = STAGING_SERVERS
         DEBUG = True
+        PROJECT_ROOT = 'http://%s/%s/' % (STAGING_S3_BUCKETS[0], PROJECT_SLUG)
+    else:
+        PROJECT_ROOT = '/'
+
 
 """
 Run automated configuration

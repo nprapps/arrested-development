@@ -52,12 +52,14 @@ class Includer(object):
             # See "fab render"
             g.compiled_includes.append(out_filename)
 
+            path = app_config.PROJECT_ROOT + path
+
             markup = Markup(self.tag_string % path)
         else:
             response = ','.join(self.includes)
 
             response = '\n'.join([
-                self.tag_string % src for src in self.includes
+                self.tag_string % (app_config.PROJECT_ROOT + src) for src in self.includes
             ])
 
             markup = Markup(response)

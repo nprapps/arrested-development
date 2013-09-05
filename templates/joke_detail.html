@@ -8,7 +8,7 @@
 <div class="small-header container-fluid">
     <div class="row-fluid">
         <div class="span10 offset1">
-            <a href="./"><img alt="{{ PROJECT_NAME }}" src="img/title-small.png"></a>
+            <a href="./"><img alt="{{ PROJECT_NAME }}" src="{{ PROJECT_ROOT }}img/title-small.png"></a>
             <p>{{ PROJECT_SUBTITLE }}</p>
         </div>
     </div>
@@ -21,7 +21,7 @@
 <div class="detail-header row-fluid">
     <div class="span2 offset1">
         <a href="./#{{ joke.category().replace(' ', '-') }}">
-            <img class="character-icon" src="img/characters/{{ joke.primary_character|lower|replace(" ", "")|replace(".", "")|replace("miscellaneous", "banana") }}.png">
+            <img class="character-icon" src="{{ PROJECT_ROOT }}img/characters/{{ joke.primary_character|lower|replace(" ", "")|replace(".", "")|replace("miscellaneous", "banana") }}.png">
         </a>
     </div>
     <div class="span8 detail-header-content">
@@ -68,7 +68,7 @@
 <ul class="episode-list span7">{% for ej in group.list %}
     <li class="episode">
         <h3>
-            <a href="episode-{{ ej.episode.code }}.html">
+            <a href="{{ PROJECT_ROOT }}episode/{{ ej.episode.code }}/">
                 <span class="episode-number">{{ ej.episode.episode }}:</span> {{ ej.episode.title.strip() }}
             </a>
         </h3>
@@ -91,6 +91,7 @@
 {% include "_source.html" %}
 
 <script type="text/javascript">
+    var project_root = "{{ PROJECT_ROOT }}";
     var group_order = {{ group_order }};
     var joke_data = {{ joke_data }};
     var connection_data = {{ connection_data }};

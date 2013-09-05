@@ -194,7 +194,8 @@ def _render_iterable(iterable, model, lookup):
     compiled_includes = []
 
     for instance in iterable:
-        path = '%s-%s.html' % (model, getattr(instance, lookup))
+        path = '%s/%s/' % (model, getattr(instance, lookup))
+        directory = 'www/' + path
         with app.app.test_request_context(path=path):
 
             g.compile_includes = True
@@ -205,7 +206,10 @@ def _render_iterable(iterable, model, lookup):
 
             compiled_includes = g.compiled_includes
 
-        with open('www/%s' % path, 'w') as f:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        with open('www/%s/index.html' % path, 'w') as f:
             f.write(content.encode('utf-8'))
 
     # Un-fake-out deployment target

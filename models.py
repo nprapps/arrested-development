@@ -1,5 +1,7 @@
 import re
 
+import app_config
+
 from peewee import *
 
 from app_config import PRIMARY_CHARACTER_LIST
@@ -110,7 +112,7 @@ class EpisodeJoke(Model):
                 related = Joke.get(id=int(joke['joke1']))
             if related:
                 output.append({
-                    'url': 'joke-%s.html' % related.code,
+                    'url': '%sjoke/%s/' % (app_config.PROJECT_ROOT, related.code),
                     'text': related.text,
                     'primary_character': related.primary_character,
                     'joke_code': related.code,

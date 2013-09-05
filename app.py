@@ -25,7 +25,7 @@ def _all_seasons():
         season_dict['episodes'] = []
         for episode in Episode.select().where(Episode.season == season):
             season_dict['episodes'].append({
-                'url': 'episode-%s.html' % episode.code,
+                'url': '%sepisode/%s/' % (app_config.PROJECT_ROOT, episode.code),
                 'text': '%s: %s' % (episode.episode, episode.title),
                 'episode': episode.episode,
                 'code': episode.code
@@ -35,7 +35,7 @@ def _all_seasons():
     return output
 
 
-@app.route('/episode-<episode_code>.html')
+@app.route('/episode/<episode_code>/')
 def _episode_detail(episode_code):
     context = make_context()
     context['episode'] = Episode.get(Episode.code == episode_code)
@@ -70,7 +70,7 @@ def _episode_detail(episode_code):
     return render_template('episode_detail.html', **context)
 
 
-@app.route('/joke-<joke_code>.html')
+@app.route('/joke/<joke_code>/')
 def _joke_detail(joke_code):
     context = make_context()
     context['joke'] = Joke.get(Joke.code == int(joke_code))

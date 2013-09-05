@@ -98,7 +98,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 joke_labels += ' class="joke-label"';
             }
             joke_labels += '>';
-            joke_labels += '<a href="joke-' + joke['code'] + '.html">';
+            joke_labels += '<a href="' + project_root + 'joke/' + joke['code'] + '/">';
             joke_labels += joke['text'];
             joke_labels += '</a></li>';
 
@@ -304,7 +304,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
                 dehighlight_joke_network($dot.data('joke'), $dot.data('episode-number'));
             }
         ).click(function() {
-            window.open('episode-' + $(this).data('episode') + '.html#joke-' + $(this).data('joke'),'_self');
+            window.open( project_root + 'episode/' + $(this).data('episode') + '/#joke-' + $(this).data('joke'),'_self');
         });
 
         $('.joke-line, .joke-label').hover(
@@ -319,7 +319,7 @@ function render_viz($viz, group_order, joke_data, connection_data, episodes, jok
         );
     }
     $('.joke-line, .joke-label').click(function() {
-        window.open('joke-' + $(this).data('joke') + '.html','_self');
+        window.open( project_root + 'joke/' + $(this).data('joke') + '/','_self');
     });
 }
 
