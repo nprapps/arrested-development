@@ -132,6 +132,13 @@ def configure_targets(deployment_target):
     global SERVERS
     global DEBUG
 
+    global APPS_NODE_PATH
+
+    APPS_NODE_PATH = 'node_modules/.bin'
+
+    if os.path.exists('node_modules/bin/lessc'):
+        APPS_NODE_PATH = 'node_modules/bin'
+
     if deployment_target == 'production':
         S3_BUCKETS = PRODUCTION_S3_BUCKETS
         SERVERS = PRODUCTION_SERVERS

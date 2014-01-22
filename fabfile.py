@@ -95,13 +95,13 @@ def less():
         name = os.path.splitext(filename)[0]
         out_path = 'www/css/%s.less.css' % name
 
-        local('node_modules/.bin/lessc %s %s' % (path, out_path))
+        local('%s/lessc %s %s' % (app_config.APPS_NODE_PATH, path, out_path))
 
 def jst():
     """
     Render Underscore templates to a JST package.
     """
-    local('node_modules/.bin/jst --template underscore jst www/js/templates.js')
+    local('%s/jst --template underscore jst www/js/templates.js' % app_config.APPS_NODE_PATH)
 
 def app_config_js():
     """
