@@ -42,7 +42,7 @@
                     {% endif %}
                 </p>
             </nav>
-            <p class="detail-count"><span class="count">{{ joke_count }}</span> recurring jokes in this episode <span class="comments-prompt">(<a href="#comments-header">What did we miss?</a>)</span></p>
+            <p class="detail-count"><span class="count">{{ joke_count }}</span> recurring jokes in this episode</p>
         </div>
 
         {# 300x250 ad #}
@@ -90,8 +90,6 @@
         </li>
     {% endfor %}</ul>
 </div>{% endfor %}
-
-{% include "_comments.html" %}
 
 {% include "_source.html" %}
 
