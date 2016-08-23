@@ -8,6 +8,7 @@ They will be exposed to users. Use environment variables instead.
 See get_secrets() below for a fast way to access them.
 """
 
+import logging
 import os
 
 """
@@ -27,10 +28,10 @@ REPOSITORY_NAME = 'arrested-development'
 """
 DEPLOYMENT
 """
-PRODUCTION_S3_BUCKETS = ['apps.npr.org', 'apps2.npr.org']
+PRODUCTION_S3_BUCKET = 'apps.npr.org'
 PRODUCTION_SERVERS = ['cron.nprapps.org']
 
-STAGING_S3_BUCKETS = ['stage-apps.npr.org']
+STAGING_S3_BUCKET = 'stage-apps.npr.org'
 STAGING_SERVERS = ['50.112.92.131']
 
 # Should code be deployed to the web/cron servers?
@@ -73,7 +74,7 @@ IMPORT_NEW_SEASON = True
 SHARING
 """
 PROJECT_DESCRIPTION = 'NPR\'s slightly obsessive guide to the running gags on Arrested Development, updated for season 4.'
-SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKETS[0], PROJECT_SLUG)
+SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKET, PROJECT_SLUG)
 
 
 TWITTER = {
@@ -98,6 +99,12 @@ NPR_DFP = {
 SERVICES
 """
 GOOGLE_ANALYTICS_ID = 'UA-5828686-4'
+
+
+"""
+Logging
+"""
+LOG_FORMAT = '%(levelname)s:%(name)s:%(asctime)s: %(message)s'
 
 """
 Utilities
@@ -128,9 +135,10 @@ def configure_targets(deployment_target):
     Configure deployment targets. Abstracted so this can be
     overriden for rendering before deployment.
     """
-    global S3_BUCKETS
+    global S3_BUCKET
     global SERVERS
     global DEBUG
+    global LOG_LEVEL
 
     global APPS_NODE_PATH
 
@@ -140,13 +148,15 @@ def configure_targets(deployment_target):
         APPS_NODE_PATH = 'node_modules/bin'
 
     if deployment_target == 'production':
-        S3_BUCKETS = PRODUCTION_S3_BUCKETS
+        S3_BUCKET = PRODUCTION_S3_BUCKET
         SERVERS = PRODUCTION_SERVERS
         DEBUG = False
+        LOG_LEVEL = logging.WARNING
     else:
-        S3_BUCKETS = STAGING_S3_BUCKETS
+        S3_BUCKET = STAGING_S3_BUCKET
         SERVERS = STAGING_SERVERS
         DEBUG = True
+        LOG_LEVEL = logging.DEBUG
 
 """
 Run automated configuration

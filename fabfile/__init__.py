@@ -5,6 +5,7 @@ import gzip
 import os
 
 import boto
+from boto.s3.connection import OrdinaryCallingFormat
 from fabric.api import *
 from jinja2 import Template
 import requests
@@ -14,6 +15,9 @@ import app_config
 import app_utils
 from etc import github
 from models import Joke, Episode
+
+import flat
+import utils
 
 """
 Base configuration
@@ -48,12 +52,13 @@ bucket.
 """
 def production():
     env.settings = 'production'
-    env.s3_buckets = app_config.PRODUCTION_S3_BUCKETS
+    env.s3_buckets = app_config.PRODUCTION_S3_BUCKET
     env.hosts = app_config.PRODUCTION_SERVERS
+    app_config.configure_targets(env.settings)
 
 def staging():
     env.settings = 'staging'
-    env.s3_buckets = app_config.STAGING_S3_BUCKETS
+    env.s3_buckets = app_config.STAGING_S3_BUCKET
     env.hosts = app_config.STAGING_SERVERS
 
 """
@@ -168,7 +173,7 @@ def render():
             f.write(content.encode('utf-8'))
 
     # Un-fake-out deployment target
-    app_config.configure_targets(app_config.DEPLOYMENT_TARGET)
+    app_config.configure_targets(env.settings)
 
 
 def render_pages():
@@ -209,7 +214,7 @@ def _render_iterable(iterable, model, lookup):
             f.write(content.encode('utf-8'))
 
     # Un-fake-out deployment target
-    app_config.configure_targets(app_config.DEPLOYMENT_TARGET)
+    app_config.configure_targets(env.settings)
 
 
 def tests():
@@ -411,7 +416,27 @@ def deploy(remote='origin'):
 
     render_pages()
     _gzip_www()
-    _deploy_to_s3()
+
+    print app_config.S3_BUCKET
+
+    flat.deploy_folder(
+        app_config.S3_BUCKET,
+        'www',
+        app_config.PROJECT_SLUG,
+        headers={
+            'Cache-Control': 'max-age=20'
+        },
+        ignore=['www/assets/*', 'www/live-data/*']
+    )
+
+    flat.deploy_folder(
+        app_config.S3_BUCKET,
+        'www/assets',
+        '%s/assets' % app_config.PROJECT_SLUG,
+        headers={
+            'Cache-Control': 'max-age=86400'
+        }
+    )
 
     if env['deploy_to_servers']:
         checkout_latest(remote)
