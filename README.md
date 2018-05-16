@@ -74,7 +74,7 @@ Then install the project requirements:
 
 ```
 cd arrested-development
-npm install less universal-jst
+npm install
 mkvirtualenv arrested-development
 pip install -r requirements.txt
 ```
